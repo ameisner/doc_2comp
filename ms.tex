@@ -25,16 +25,17 @@ Cambridge, MA 02138, USA; ameisner@fas.harvard.edu}
 Cambridge, MA 02138, USA; dfinkbeiner@cfa.harvard.edu}
 
 \begin{abstract}
-We have fit the FDS99 two-component dust emission model over
-the full sky, based on dust SEDs comprised of  Planck HFI and IRAS 100$\mu$m. 
-As a result, we have obtained maps of optical depth $\tau_{545}$ and dust 
-temperatures $T_1$ and $T_2$,  with angular resolution  $\sim$6$'$. These maps 
+We have fit the \cite{FDS99} two-component dust emission model over
+the full sky, based on Galactic dust SEDs composed of  Planck HFI and \cite{SFD} 
+\IRAS~100$\mu$m. As a result, we have obtained maps of dust optical depth $\tau_{545}$ 
+and temperatures $T_1$ and $T_2$,  with angular resolution  $\sim$6$'$. These maps 
 serve as an interesting comparison to alternative models, for example 
 one-component models with varying $T$ and $\beta$. We also expect the derived 
 optical depth to be useful as a cross-check for other extinction estimates, 
 such as the SFD98 map, which assumed $\beta = 2$ single-component dust 
 emission, as well as forthcoming dust maps based on observations of stars in 
-the optical rather than infrared emission.
+the optical rather than infrared emission. %mention the enhanced temperature resolution relative
+% to SFD
 \end{abstract}
 
 \section{Introduction}
@@ -52,6 +53,8 @@ $5.5$. TODO: actually smooth all of the maps to a common PSF of XX arcmin.
 To add information about the dust emission on the Wien side of its spectrum,
 we include IRAS 100$\mu$m. We use the SFD reprocessing of IRAS 100$\mu$m, which
 we will refer to as \verb|i100| (Schegel et al. 1998). \verb|i100|
+
+
 \section{Pre-processing}
 
 \subsection{Unit Conversions}
@@ -84,10 +87,12 @@ subtracted the best-fit offset such that
 
 \subsection{Molecular Emission}
 
+\subsection{Point Sources}
+
 \section{Model}
 Our model is that of FDS99, which consists of two populations of dust 
 grain emitting as modified blackbodies, but with different temperatures
-and different power law emissivities $\beta$.
+and different emissivity power law indices $\beta$.
 
 
 \subsection{Fitting Methodology}
@@ -98,5 +103,14 @@ and different power law emissivities $\beta$.
 \caption{Our best-fit $T_2$, binned to 27.5$'$ resolution}
 \end{center}
 \end{figure*}
+
+\section{Conclusion}
+
+Based on observations obtained with Planck (http://www.esa.int/Planck), 
+an ESA science mission with instruments and contributions directly funded 
+by ESA Member States, NASA, and Canada.
+
+\bibliographystyle{apj}
+\bibliography{twocomp.bib}
 
 \end{document}
