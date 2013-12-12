@@ -1,0 +1,21 @@
+### auxiliary files
+*.cls
+*.bst
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.log
+
+### ps/pdf output
+*.pdf
+*.ps
+
+### autosaves
+*~
+
+### figures
+*.eps
+
+### directories
+fig
