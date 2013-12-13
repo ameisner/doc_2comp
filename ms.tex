@@ -157,8 +157,29 @@ far IR emission as a constant times HI emission, plus some offset. We then
 subtracted the best-fit offset such that 
 
 \subsection{Molecular Emission}
+One advantage of the FIRAS data used by FDS99 was its many narrow bins in 
+frequency, which allowed those frequency ranges contaminated by strong 
+molecular line emission to be discarded from the analysis. Unfortunately, with 
+the broad \PLANCK~and \IRAS~bandpasses we do not have such a luxury. This means
+ that we cannot truly separate out the thermal continuum of dust emission we 
+wish to study from the molecular line emission. The most prominent molecular 
+line emission in the Planck bands of interest arises from CO lines in the XX, 
+YY bands. We investigated the possibility of subtracting out CO emission based 
+on the template of 
 
-\subsection{Point Sources}
+\subsection{Compact Sources}
+To mask compact sources, we use the SFD compact source mask, which was 
+originally constructed to mask point sources and resolved compact objects
+that are not part of the Galactic cirrus at 3000 GHz. Given our pixelization 
+(see $\S$\ref{sec:pix}), 1.56\% of pixels are masked. We have inspected all of 
+the maps used in this analysis and do not see any evidence that this compact 
+source mask fails to adequately mask compact sources in the \PLANCK~data. In 
+practice, we perform our dust SED fits in all pixels, even those flagged by 
+the point source mask. Compact source affected pixels can be ignored or 
+interpolated over downstream.
+%maybe say that we're releasing a version of the map with point sources
+%interpolated over by us as well
+
 
 \section{Dust Emission Model}
 \label{sec:modeling}
@@ -179,13 +200,14 @@ T_1 = 0.352T_2^{1.18}
 \end{equation}
 
 At each sky location, we have five independent intensity 
-measurements (four ) FDS99 found typical values for T2 and 
+measurements (four ) FDS99 found typical values for $T_2$ and 
 
 \subsection{Fitting Methodology}
 
 \section{Pixelization}
+\label{sec:pix}
 For the purpose of fitting, we break the sky into independent pixels of 
-angular diameter $\sim$, defined by the HEALPix pixelization with nside=2048 \citep{healpix}. 
+angular size $\sim$1.72$'$, defined by the HEALPix pixelization with nside=2048 \citep{healpix}. 
 This is convenient because the Planck maps are provided in this format and 
 this pixelization adequately samples the $6.1'$ resolution maps under 
 consideration. We reiterate that each pixel is fit independently of 
@@ -201,7 +223,7 @@ Markov chain sampling the posterior probability as a function of the two paramet
 given by:
 
 \begin{equation}
-P(I^{*}_{545}, T_2) \propto L({I_i}|I^{*}_{545}, T_2)P(T_2)
+P(I^{*}_{545}, T_2) \propto \mathcal{L}(\{I_i\}|I^{*}_{545}, T_2)P(T_2)
 \end{equation}
 
 The likelihood function is given by:
@@ -210,6 +232,8 @@ Where the errors on each intensity measurement, $\sigma_{\nu}$ are given by:
 
 In order to obtain reasonable fitting results at high latitude where the
 data is noisy, we include a prior on $T_2$
+
+%mention something about the proposal distribution at some point?
 
 \section{Results}
 
@@ -228,9 +252,13 @@ the results of of our two-component dust fits.
 
 \section{Conclusion}
 
-Based on observations obtained with Planck (http://www.esa.int/Planck), 
-an ESA science mission with instruments and contributions directly funded 
-by ESA Member States, NASA, and Canada.
+This material is based upon work supported by the National Science Foundation 
+Graduate Research Fellowship under Grant No.Based on observations obtained with
+ Planck (http://www.esa.int/Planck), an ESA science mission with instruments 
+and contributions directly funded by ESA Member States, NASA, and Canada. This 
+research made use of the NASA Astrophysics Data System (ADS) and the IDL 
+Astronomy User's Library at Goddard. \footnote{Available at 
+\texttt{http://idlastro.gsfc.nasa.gov}}
 
 \bibliographystyle{apj}
 \bibliography{twocomp.bib}
