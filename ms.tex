@@ -106,8 +106,9 @@ silicates and carbonaceous grains.
 
 \section{Data}
 
-All \PLANCK~data products utilized throughout this work are drawn from the\PLANCK~2013 data release \citep{planck2013}. Specifically, we have made use of the
-the 217 GHz, 353 GHz, 545 GHz and 857 GHz intensity maps. We use the 
+All \PLANCK~data products utilized throughout this work are drawn from the 
+\PLANCK~2013 data release \citep{planck2013}. Specifically, we have made use 
+of the the 217 GHz, 353 GHz, 545 GHz and 857 GHz intensity maps. We use the 
 versions of these maps which have been corrected for zodiacal light 
 \citep[\texttt{R1.10\_nominal\_ZodiCorrected},][]{planckzodi}.
 
@@ -118,7 +119,7 @@ versions of these maps which have been corrected for zodiacal light
 
 To incorporate information about the dust emission on the Wien side of its 
 spectrum, we make use of 100$\mu$m data. In particular, we use the SFD 
-reprocessing of IRAS 100$\mu$m, which we will refer to as \verb|i100| (Schegel et al. 1998). \verb|i100| has angular resolution of $6.1'$. %list other
+reprocessing of IRAS 100$\mu$m, which we will refer to as \verb|i100|. \verb|i100| has angular resolution of $6.1'$. %list other
 %important characteristics of i100 e.g. that it has been zodi-corrected
 % and relies on dirbe on scales larger than ???
 
@@ -148,7 +149,7 @@ from each of our Planck maps \citep{smica}, after appropriate unit conversions.
 \subsection{Finite Bandpass Correction}
 
 
-\subsection{Correlation against HI}
+\subsection{Correlation versus HI}
 The raw \PLANCK~maps we have downloaded show offsets relative to HI, in the
 sense that the FIR emission does not go to zero when HI emission goes to
 zero. Since HI correlates linearly with far-IR emission in the diffuse ISM, 
@@ -165,7 +166,10 @@ the broad \PLANCK~and \IRAS~bandpasses we do not have such a luxury. This means
 wish to study from the molecular line emission. The most prominent molecular 
 line emission in the Planck bands of interest arises from CO lines in the XX, 
 YY bands. We investigated the possibility of subtracting out CO emission based 
-on the template of 
+on the template of \cite{planckco}. However, we found that the CO emission
+rarely amounted to more than XX\% of the total intensity, and following
+the treatment of \cite{planckdust}, $\S$2.1, we do not attempt to remove CO
+emission.
 
 \subsection{Compact Sources}
 To mask compact sources, we use the SFD compact source mask, which was 
@@ -217,13 +221,13 @@ neighboring pixels.
 As explained in $\S$\ref{sec:modeling}, the two free parameters in our 
 per-pixel dust emission SED are the hot dust temperature $T_2$, which 
 determinesthe shape of the SED, and the spectrum normalization. In practice,
-the normalization is controlled via $I^{*}_{545}$, the amplitude of the SED
-in MJy/sr at $\nu$ = 545 GHz. For each pixel, we run a Metropolis-Hastings 
-Markov chain sampling the posterior probability as a function of the two parameters $T_2$ and $I^{*}_{545}$. To be clear, we are sampling the posterior
+the normalization is controlled via $\tilde{I}_{545}$, the amplitude of the 
+model SED in MJy/sr at $\nu$ = 545 GHz. For each pixel, we run a 
+Metropolis-Hastings Markov chain sampling the posterior probability as a function of the two parameters $T_2$ and $\tilde{I}_{545}$. To be clear, we are sampling the posterior
 given by:
 
 \begin{equation}
-P(I^{*}_{545}, T_2) \propto \mathcal{L}(\{I_i\}|I^{*}_{545}, T_2)P(T_2)
+P(\tilde{I}_{545}, T_2) \propto \mathcal{L}(\{I_i\}|\tilde{I}_{545}, T_2)P(T_2)
 \end{equation}
 
 The likelihood function is given by:
