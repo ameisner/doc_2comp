@@ -7,16 +7,17 @@
 \newcommand{\IRAS}{{\it IRAS}}
 \newcommand{\HERSCHEL}{{\it Herschel}}
 \newcommand{\SPITZER}{{\it Spitzer}}
+\newcommand{\PLANCK}{{\it Planck}}
 
 \bibpunct{(}{)}{;}{a}{}{,} 
  
-\shorttitle{Planck Dust Model}
+\shorttitle{\PLANCK~Dust Model}
  
 \shortauthors{Meisner \& Finkbeiner} 
 
 \begin{document} 
 
-\title{Two-component thermal dust emission model: application to the Planck HFI maps}
+\title{Two-component thermal dust emission model: application to the {\it PLANCK} HFI maps}
 \author{Aaron M. Meisner\altaffilmark{1,2}}
 \author{Douglas P. Finkbeiner\altaffilmark{1,2}}
 \altaffiltext{1}{Department of Physics, Harvard University, 17 Oxford Street, 
@@ -25,37 +26,106 @@ Cambridge, MA 02138, USA; ameisner@fas.harvard.edu}
 Cambridge, MA 02138, USA; dfinkbeiner@cfa.harvard.edu}
 
 \begin{abstract}
-We have fit the \cite{FDS99} two-component dust emission model over
-the full sky, based on Galactic dust SEDs composed of  Planck HFI and \cite{SFD} 
-\IRAS~100$\mu$m. As a result, we have obtained maps of dust optical depth $\tau_{545}$ 
-and temperatures $T_1$ and $T_2$,  with angular resolution  $\sim$6$'$. These maps 
-serve as an interesting comparison to alternative models, for example 
-one-component models with varying $T$ and $\beta$. We also expect the derived 
-optical depth to be useful as a cross-check for other extinction estimates, 
-such as the SFD98 map, which assumed $\beta = 2$ single-component dust 
-emission, as well as forthcoming dust maps based on observations of stars in 
-the optical rather than infrared emission. %mention the enhanced temperature resolution relative
-% to SFD
+We present full-sky maps of dust optical depth and temperature derived from 
+the \cite{FDS99} two-component dust emission model fitted to \PLANCK~217, 353, 
+545, 857 GHz and \cite{SFD} \IRAS~100$\mu$m data. Both the optical 
+depth and temperature maps have angular resolution of $6.1'$. Such maps serve 
+as an important alternative to and comparison for other dust 
+emission models, especially the single modified blackbody model in which 
+$\beta$ and $T$ both vary spatially. We also expect the derived optical 
+depth to provide valuable cross-checks for other dust-column related data 
+products, specifically the \cite{SFD} map, which assumed 
+$\beta = 2$ single-component dust emission and included a temperature map of 
+inferior $\sim$$1.3^{\circ}$ resolution. We briefly compare our 
+best-fit two-component spectral energy distributions to those of the 
+\cite{planckdust} single-component parametrization.
+%mention the enhanced temperature resolution relative to SFD
+%Our optical depth map will also provide a useful reference for dust maps 
+%based on stellar colors rather than infrared emission.
 \end{abstract}
 
 \section{Introduction}
+%why dust important in astronomy/astrophysics
+The presence of Galactic interstellar dust affects
+astronomical observations over a wide range of wavelengths. At mid-infrared
+and far-infrared wavelengths, Galactic dust emission is a major contributor
+to the observed sky intensity. In the optical and ultraviolet, extinction
+by foreground dust grains attenuates the signal from extragalactic sources
+over the entire sky. Understanding the properties of dust in the interstellar 
+medium (ISM) is valuable in its own right, as the ISM is the site of star 
+formation, thereby playing a crucial role in galaxy evolution. Equally if not 
+more important to the practice of astronomy, however, is accounting for dust 
+as a foreground which reddens optical/UV observations and superimposes 
+Galactic emission on low-frequency observations of the 
+cosmic microwave background (CMB). %specify ``low frequency more precisely eventually
+
+%basic background about interstellar dust emission
+
+%maybe say instead ``over the past 30/40 years...''
+%Barnard first recognized evidence for dust in astronomical observations, and
+%ever since it has been mapped in increasing detail. 
+Over the past decades, satellite observations have dramatically enhanced our
+knowledge about infrared emission from the ISM. High-latitude complexes of 
+resolved infrared sources were first identified by \cite{low84} using 
+\IRAS~60$\mu$m and 100$\mu$m observations \citep{wheelock94}. This so-called 
+``infrared cirrus,'' attributable to thermal emission from large dust grains in
+the interstellar medium, has since been probed in greater detail by a variety 
+of instruments and detected over virtually the entire sky. Beginning in 1989, 
+DIRBE  mapped the full sky at ten infrared wavelengths from 1.25$\mu$m to 
+240$\mu$m with a reliable zero point, but inferior 0.7$^{\circ}$ angular 
+resolution \citep{boggess92}.mention FIRAS specifically, since it is important 
+to FDS99.
+
+FDS99 used FIRAS to make a globally best-fit model of dust emission 
+appropriate over a very broad range of frequencies. They showed that a 
+model consisting of a single modified blackbody with power law index $\beta$ 
+could not fit the IRAS/FIRAS/DIRBE spectrum at both the Wien and 
+Rayleigh-Jeans extremes. To fit both ends of the spectrum, FDS99 proposed
+a spectrum consisting of two modified black bodies, each with a different
+temperature and power law index. Physically, these two components
+represent distinct dust grain species within the ISM, specifically 
+silicates and carbonaceous grains.
+
+
+%how what we're doing fits in
+%     where FDS99 fit in
+%     Planck data qualities that improve on data used in FDS99
+%     benefits of using Planck + FDS99 model
+%utility/applications of what we're doing
+
+%list of figures : 
+% posterior surface for some pixel, with samples from markov chain overplotted
+%    --> also overplot output best-fit (T,I545) and unctertainty estimate
+% plot for some set of pixels of SED overlaid with best-fit two-component model
+%    --> done in Python instead of IDL
+%    --> overlay 
+% plot of resulting T2 and tau
+% plots of full-sky residuals relative to our model ?
+%  ---> and for lower-frequency bands to emphasize that FDS99 is better for
+%       extrapolating towards mm wavelengths
 
 \section{Data}
 
-We have made use of the Planck 2013 data release, specifically the 217 GHz, 
-353 GHz, 545 GHz and 857 GHz channels Planck Collaboration (2013a). We use the 
-versions of these maps which have been corrected for zodiacal light by the 
-Planck team, using the zodiacal light model described in Planck Collaboration 
-(2013b). For each pixel on the sky, Planck thus provides us with four data 
-points of the dust emission SED. The angular resolution of these maps is 
-$5.5$. TODO: actually smooth all of the maps to a common PSF of XX arcmin.
+All \PLANCK~data products utilized throughout this work are drawn from the\PLANCK~2013 data release \citep{planck2013}. Specifically, we have made use of the
+the 217 GHz, 353 GHz, 545 GHz and 857 GHz intensity maps. We use the 
+versions of these maps which have been corrected for zodiacal light 
+\citep[\texttt{R1.10\_nominal\_ZodiCorrected},][]{planckzodi}.
 
-To add information about the dust emission on the Wien side of its spectrum,
-we include IRAS 100$\mu$m. We use the SFD reprocessing of IRAS 100$\mu$m, which
-we will refer to as \verb|i100| (Schegel et al. 1998). \verb|i100|
+%For each pixel on the sky, Planck thus provides us with four data points of 
+%the dust emission SED. The angular resolution of these maps is $5.5$.
 
+%TODO: actually smooth all of the maps to a common PSF of 6.1 arcmin.
+
+To incorporate information about the dust emission on the Wien side of its 
+spectrum, we make use of 100$\mu$m data. In particular, we use the SFD 
+reprocessing of IRAS 100$\mu$m, which we will refer to as \verb|i100| (Schegel et al. 1998). \verb|i100| has angular resolution of $6.1'$. %list other
+%important characteristics of i100 e.g. that it has been zodi-corrected
+% and relies on dirbe on scales larger than ???
 
 \section{Pre-processing}
+
+\subsection{Smoothing}
+
 
 \subsection{Unit Conversions}
 
@@ -64,21 +134,22 @@ while others are provided in units of MJy/sr. Before performing any fits,
 we convert all measurements to MJy/sr following the guidelines of the document
 ``HFI-unit conversion and colour correction instructions v1.2''.
 
-\subsection{Zodiacal Light Removal}
-Cite the appropriate reference for the Planck ZL model.
+%\subsection{Zodiacal Light}
+%As mentioned above, we rely upon the \cite{planckzodi} zodiacal light 
+%correction. 
 
-\subsection{Smoothing to common resolution}
-
-\subsection{CMB Subtraction}
+\subsection{CMB Removal}
 The CMB is effectively imperceptible at 857 GHz, but can be noticed at a 
-low level at 545 GHz, and is extremely bright at 217 GHz and 353 GHz relative 
-to the diffuse Galactic emission we wish to characterize.
-
+low level at 545 GHz, and is prominent at 217 GHz and 353 GHz relative 
+to the diffuse Galactic emission we wish to characterize, especially at high
+latitudes. To remove the CMB anisotropies, we have subtracted the SMICA model
+from each of our Planck maps \citep{smica}, after appropriate unit conversions.
 
 \subsection{Finite Bandpass Correction}
 
+
 \subsection{Correlation against HI}
-The raw Planck maps we have downloaded show offsets relative to HI, in the
+The raw \PLANCK~maps we have downloaded show offsets relative to HI, in the
 sense that the FIR emission does not go to zero when HI emission goes to
 zero. Since HI correlates linearly with far-IR emission in the diffuse ISM, 
 when the optical depth is low and molecular effects are negligible, we modeled
@@ -89,17 +160,50 @@ subtracted the best-fit offset such that
 
 \subsection{Point Sources}
 
-\section{Model}
+\section{Dust Emission Model}
 Our model is that of FDS99, which consists of two populations of dust 
-grain emitting as modified blackbodies, but with different temperatures
-and different emissivity power law indices $\beta$.
+grains emitting as modified blackbodies, but with different temperatures
+and different emissivity power law indices $\beta$. The shape of this spectrum 
+is given by:
 
+\begin{equation}
+I_{\nu} \propto f_{1}q_{1}(\nu/\nu_{0})^{\beta_1}B_{\nu}(T_1) + (1-f_{1})q_{2}(\nu/\nu_0)^{\beta_2}B_{\nu}(T_2)
+\end{equation}
+
+With $\nu_0$ = 3000 GHz, $f_{1}$ = 0.0363, $\beta_1$ = 1.67, $\beta_2$ = 2.70, 
+and $q_1/q_2$ = 13.0. For the parameters thus far specified, the two dust temperatures are further related by:
+
+\begin{equation}
+T_1 = 0.352T_2^{1.18}
+\end{equation}
+
+At each sky location, we have five independent intensity 
+measurements (four ) FDS99 found typical values for T2 and 
 
 \subsection{Fitting Methodology}
 
-\begin{figure*}[ht]
+\section{Pixelization}
+For the purpose of fitting, we break the sky into independent pixels of 
+angular diameter $\sim$, defined by the HEALPix pixelization with nside=2048. 
+This is convenient because the Planck maps are provided in this format and 
+this pixelization adequately samples the $6.1'$ resolution maps under 
+consideration. We reiterate that each pixel is fit independently of 
+neighboring pixels.
+
+\section{Markov Chains}
+As explained in $\S$ %need to label ``model'' section so i can reference it
+
+\section{Results}
+
+\subsection{Calculating $\tau$}
+
+\subsection{Data Release}
+We are releasing nside=2048 HEALPix maps in Galactic coordinates summarizing 
+the results of of our two-component dust fits. 
+
+\begin{figure*}
 \begin{center}
-\epsfig{file=t2_0128.eps, width=7.0in}
+\epsfig{file=results.eps, width=7.0in}
 \caption{Our best-fit $T_2$, binned to 27.5$'$ resolution}
 \end{center}
 \end{figure*}
