@@ -185,7 +185,7 @@ measurements (four ) FDS99 found typical values for T2 and
 
 \section{Pixelization}
 For the purpose of fitting, we break the sky into independent pixels of 
-angular diameter $\sim$, defined by the HEALPix pixelization with nside=2048. 
+angular diameter $\sim$, defined by the HEALPix pixelization with nside=2048 \citep{healpix}. 
 This is convenient because the Planck maps are provided in this format and 
 this pixelization adequately samples the $6.1'$ resolution maps under 
 consideration. We reiterate that each pixel is fit independently of 
@@ -213,18 +213,18 @@ data is noisy, we include a prior on $T_2$
 
 \section{Results}
 
-\subsection{Calculating $\tau$}
-
-\subsection{Data Release}
-We are releasing nside=2048 HEALPix maps in Galactic coordinates summarizing 
-the results of of our two-component dust fits. 
-
 \begin{figure*}
 \begin{center}
 \epsfig{file=results.eps, width=7.0in}
 \caption{Our best-fit $T_2$, binned to 27.5$'$ resolution}
 \end{center}
 \end{figure*}
+
+\subsection{Calculating $\tau$}
+
+\subsection{Data Release}
+We are releasing nside=2048 HEALPix maps in Galactic coordinates summarizing 
+the results of of our two-component dust fits. 
 
 \section{Conclusion}
 
