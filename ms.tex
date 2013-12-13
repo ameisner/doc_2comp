@@ -161,6 +161,7 @@ subtracted the best-fit offset such that
 \subsection{Point Sources}
 
 \section{Dust Emission Model}
+\label{sec:modeling}
 Our model is that of FDS99, which consists of two populations of dust 
 grains emitting as modified blackbodies, but with different temperatures
 and different emissivity power law indices $\beta$. The shape of this spectrum 
@@ -191,7 +192,24 @@ consideration. We reiterate that each pixel is fit independently of
 neighboring pixels.
 
 \section{Markov Chains}
-As explained in $\S$ %need to label ``model'' section so i can reference it
+As explained in $\S$\ref{sec:modeling}, the two free parameters in our 
+per-pixel dust emission SED are the hot dust temperature $T_2$, which 
+determinesthe shape of the SED, and the spectrum normalization. In practice,
+the normalization is controlled via $I^{*}_{545}$, the amplitude of the SED
+in MJy/sr at $\nu$ = 545 GHz. For each pixel, we run a Metropolis-Hastings 
+Markov chain sampling the posterior probability as a function of the two parameters $T_2$ and $I^{*}_{545}$. To be clear, we are sampling the posterior
+given by:
+
+\begin{equation}
+P(I^{*}_{545}, T_2) \propto L({I_i}|I^{*}_{545}, T_2)P(T_2)
+\end{equation}
+
+The likelihood function is given by:
+
+Where the errors on each intensity measurement, $\sigma_{\nu}$ are given by:
+
+In order to obtain reasonable fitting results at high latitude where the
+data is noisy, we include a prior on $T_2$
 
 \section{Results}
 
