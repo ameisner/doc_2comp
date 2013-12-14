@@ -57,7 +57,8 @@ formation, thereby playing a crucial role in galaxy evolution. Equally if not
 more important to the practice of astronomy, however, is accounting for dust 
 as a foreground which reddens optical/UV observations and superimposes 
 Galactic emission on low-frequency observations of the 
-cosmic microwave background (CMB). %specify ``low frequency more precisely eventually
+cosmic microwave background (CMB). 
+%specify ``low frequency more precisely eventually
 
 %basic background about interstellar dust emission
 
@@ -126,7 +127,15 @@ reprocessing of IRAS 100$\mu$m, which we will refer to as \verb|i100|. \verb|i10
 \section{Pre-processing}
 
 \subsection{Smoothing}
-
+We wish to simultaneously fit \verb|i100| along with four \PLANCK~bands. To 
+properly combine these maps, they must have the same PSF. \verb|i100|, with its
+$6.1'$ symmetric Gaussian PSF, is the lowest-resolution map we have included. 
+To match PSFs, we have therefore smoothed each of the \PLANCK~maps under 
+consideration to $6.1'$ resolution by considering each native map to have
+a symmetric Gaussian beam and smoothing by the appropriate symmetric Gaussian
+such that the resulting map has a FWHM of $6.1'$. The FWHM we assign to the 
+native \PLANCK~maps is taken from \cite{planckbeam}, specifically $5.01'$ for
+217 GHz, $4.86'$ for 353 GHz, $4.84'$ for 545 GHz, and $4.63'$ for 857 GHz.
 
 \subsection{Unit Conversions}
 
@@ -193,28 +202,29 @@ and different emissivity power law indices $\beta$. The shape of this spectrum
 is given by:
 
 \begin{equation}
-I_{\nu} \propto f_{1}q_{1}(\nu/\nu_{0})^{\beta_1}B_{\nu}(T_1) + (1-f_{1})q_{2}(\nu/\nu_0)^{\beta_2}B_{\nu}(T_2)
+M_{\nu} \propto f_{1}q_{1}(\nu/\nu_{0})^{\beta_1}B_{\nu}(T_1) + (1-f_{1})q_{2}(\nu/\nu_0)^{\beta_2}B_{\nu}(T_2)
 \end{equation}
 
 With $\nu_0$ = 3000 GHz, $f_{1}$ = 0.0363, $\beta_1$ = 1.67, $\beta_2$ = 2.70, 
-and $q_1/q_2$ = 13.0. For the parameters thus far specified, the two dust temperatures are further related by:
+and $q_1/q_2$ = 13.0. For the parameters thus far specified, the two dust 
+temperatures are further related by:
 
 \begin{equation}
 T_1 = 0.352T_2^{1.18}
 \end{equation}
 
-At each sky location, we have five independent intensity 
-measurements (four ) FDS99 found typical values for $T_2$ and 
+At each sky location, we have five independent intensity measurements (four ) 
+FDS99 found typical values for $T_2$ and 
 
 \subsection{Fitting Methodology}
 
 \section{Pixelization}
 \label{sec:pix}
 For the purpose of fitting, we break the sky into independent pixels of 
-angular size $\sim$1.72$'$, defined by the HEALPix pixelization with nside=2048 \citep{healpix}. 
-This is convenient because the Planck maps are provided in this format and 
-this pixelization adequately samples the $6.1'$ resolution maps under 
-consideration. We reiterate that each pixel is fit independently of 
+angular size $\sim$1.72$'$, defined by the HEALPix pixelization with nside=2048
+\citep{healpix}. This is convenient because the Planck maps are provided in 
+this format and this pixelization adequately samples the $6.1'$ resolution maps
+under consideration. We reiterate that each pixel is fit independently of 
 neighboring pixels.
 
 \section{Markov Chains}
@@ -223,20 +233,41 @@ per-pixel dust emission SED are the hot dust temperature $T_2$, which
 determinesthe shape of the SED, and the spectrum normalization. In practice,
 the normalization is controlled via $\tilde{I}_{545}$, the amplitude of the 
 model SED in MJy/sr at $\nu$ = 545 GHz. For each pixel, we run a 
-Metropolis-Hastings Markov chain sampling the posterior probability as a function of the two parameters $T_2$ and $\tilde{I}_{545}$. To be clear, we are sampling the posterior
-given by:
+Metropolis-Hastings Markov chain sampling the posterior probability as a 
+function of the two parameters $T_2$ and $\tilde{I}_{545}$. For each pixel, we 
+are sampling the posterior given by:
 
 \begin{equation}
-P(\tilde{I}_{545}, T_2) \propto \mathcal{L}(\{I_i\}|\tilde{I}_{545}, T_2)P(T_2)
+P(\tilde{I}_{545}, T_2|\{I\}) \propto \mathcal{L}(\{I\}|\tilde{I}_{545}, T_2)P(T_2)
 \end{equation}
 
 The likelihood function is given by:
+\begin{equation}
+\mathcal{L}(\{I\}|\tilde{I}_{545}, T_2) = \displaystyle\prod\limits_{i}\mathcal{N}(M_{\nu_{i}}(\tilde{I}_{545}, T_2)|I_{\nu_{i}}, \sigma_{\nu_i})
+\end{equation}
 
-Where the errors on each intensity measurement, $\sigma_{\nu}$ are given by:
+%be more careful about notation re: color corrections
 
-In order to obtain reasonable fitting results at high latitude where the
-data is noisy, we include a prior on $T_2$
+Where the product runs over $\nu_i$ in $\{217,\ 353,\ 545,\ 857,\ 3000\}$ GHz. 
+For each pixel, the errors on each intensity measurement $\sigma_{\nu_i}$ are 
+given by:
 
+\begin{equation}
+\sigma_{\nu_i} = \sqrt{c^2_{\nu_i}I^2_{\nu_i} + c^2_{\nu_i}CMB_{\nu_i} + }
+\end{equation}
+
+This error budget is based on \cite{planckdust} Equation 7. $c_{\nu_i}$ is the 
+multiplicative calibration uncertainty for the intensity in each band, and we 
+have adopted the values listed in \cite{planckdust} Table 1. We have adopted 
+$c_{217 GHz}$ = XX. In order to obtain reasonable fitting results at high 
+latitude where the data is noisy, we include a prior on $T_2$:
+
+\begin{equation}
+P(T_2) = \mathcal{N}(T_2|\bar{T}_2, \sigma_{\bar{T}_2})
+\end{equation}
+
+With $\bar{T}_2$ = 16.2 K and $\sigma_{\bar{T}_2}$ = 1.4 K. In practice we 
+always perform computations using the logarithm of relevant probabilities.
 %mention something about the proposal distribution at some point?
 
 \section{Results}
@@ -252,7 +283,13 @@ data is noisy, we include a prior on $T_2$
 
 \subsection{Data Release}
 We are releasing nside=2048 HEALPix maps in Galactic coordinates summarizing 
-the results of of our two-component dust fits. 
+the results of of our two-component dust fits.
+
+%provide maps at multiple different nsides ?
+%   -> if so, actually smooth the maps before rebinning, or leave 
+%      undersampled?
+
+\subsection{Comparison to Planck Collaboration Dust Map}
 
 \section{Conclusion}
 
