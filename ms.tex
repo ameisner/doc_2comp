@@ -15,7 +15,7 @@
  
 \shortauthors{Meisner \& Finkbeiner} 
 
-\begin{document} 
+\begin{document}
 
 \title{Two-component thermal dust emission model: application to the {\it PLANCK} HFI maps}
 \author{Aaron M. Meisner\altaffilmark{1,2}}
@@ -106,6 +106,7 @@ silicates and carbonaceous grains.
 %       extrapolating towards mm wavelengths
 % zoom-in of region with interesting dust showing :
 %  SFD T map, two-component T map, Planck team one-component T map
+%      good spot is in polaris, centered on (lgal,bgal) ~ (112, 20)
 
 \section{Data}
 
@@ -144,11 +145,12 @@ $4.84'$ for 545 GHz, and $4.63'$ for 857 GHz.
 
 Some of the maps in native format are provided in thermodynamic $\delta T$, 
 while others are provided in units of MJy/sr. Before performing any fits, 
-we convert all measurements to MJy/sr following the guidelines of \cite{planckresponse} and the document ``HFI-unit conversion and colour correction instructions v1.2''.
+we convert all measurements to MJy/sr following the guidelines of \cite{planckresponse}.
 
 %i think it's table 5 that I specifically want to cite within the ``spectral
 %response'' paper, but i need to check that those values are consistent
-% with the ones i actually used from the other document
+% with the ones i actually used from the other document ``HFI-unit conversion 
+%and colour correction instructions v1.2''
 
 %\subsection{Zodiacal Light}
 %As mentioned above, we rely upon the \cite{planckzodi} zodiacal light 
@@ -162,7 +164,20 @@ latitudes. To remove the CMB anisotropies, we have subtracted the SMICA model
 from each of our Planck maps \citep{smica}, after appropriate unit conversions.
 
 \subsection{Finite Bandpass Correction}
+The thermal dust emission model of $\S$\ref{sec:modeling} predicts the 
+intensity $M_{\nu}$ in MJy/sr for any single frequency $\nu$. But in reality
+we are comparing to broad bands typically hundreds of GHz wide. The shape of 
+model spectrum $M_{\nu}$ is only dependent upon one parameter: the hot
+dust temperature $T_2$. We have therefore computed bandpass correction factors
+$b_{\nu_i}$ such that $M_{\nu_i}b_{\nu_i}$ is the predicted observation for the
+\PLANCK~or \IRAS~band of interest. We have used the \PLANCK~transmission 
+curves provided in the file \verb|HFI_RIMO_R1.10.fits| \citep{planckresponse}. 
+For 3000 GHz, we have used the \IRAS~bandpass, following the treatment of
+\cite{planckdust}. We note that it is not clear which bandpass should
+properly be considered for the IRAS/DIRBE composite 100$\mu$m maps used in 
+this analysis (here SFD \verb|i100|) and that of \cite{planckdust}.
 
+% check that RIMO file i've used is actually the most up-to-date version
 
 \subsection{Correlation versus HI}
 The raw \PLANCK~maps we have downloaded show offsets relative to HI, in the
@@ -208,7 +223,7 @@ and different emissivity power law indices $\beta$. The shape of this spectrum
 is given by:
 
 \begin{equation}
-M_{\nu} \propto f_{1}q_{1}(\nu/\nu_{0})^{\beta_1}B_{\nu}(T_1) + (1-f_{1})q_{2}(\nu/\nu_0)^{\beta_2}B_{\nu}(T_2)
+M_{\nu} \propto f_{1}q_{1}(\frac{\nu}{\nu_{0}})^{\beta_1}B_{\nu}(T_1) + (1-f_{1})q_{2}(\frac{\nu}{\nu_0})^{\beta_2}B_{\nu}(T_2)
 \end{equation}
 
 With $\nu_0$ = 3000 GHz, $f_{1}$ = 0.0363, $\beta_1$ = 1.67, $\beta_2$ = 2.70, 
@@ -314,7 +329,7 @@ the results of of our two-component dust fits.
 
 \subsection{Comparison to Planck Collaboration Dust Map}
 
-\subsubsection{Ignoring 217 GHz}
+\subsubsection{Omitting 217 GHz}
 The \cite{planckdust} result used only XX, YY, ZZ, 3000 GHz. When we 
 repeat our analysis ignoring 217 GHz, so that we are using the same
 set of frequencies, we find that no major changes arise. This actually
