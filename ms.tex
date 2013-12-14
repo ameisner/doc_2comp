@@ -144,8 +144,11 @@ $4.84'$ for 545 GHz, and $4.63'$ for 857 GHz.
 
 Some of the maps in native format are provided in thermodynamic $\delta T$, 
 while others are provided in units of MJy/sr. Before performing any fits, 
-we convert all measurements to MJy/sr following the guidelines of the document
-``HFI-unit conversion and colour correction instructions v1.2''.
+we convert all measurements to MJy/sr following the guidelines of \cite{planckresponse} and the document ``HFI-unit conversion and colour correction instructions v1.2''.
+
+%i think it's table 5 that I specifically want to cite within the ``spectral
+%response'' paper, but i need to check that those values are consistent
+% with the ones i actually used from the other document
 
 %\subsection{Zodiacal Light}
 %As mentioned above, we rely upon the \cite{planckzodi} zodiacal light 
@@ -260,14 +263,22 @@ given by:
 \end{equation}
 
 % what about the instrumental noise n_{\nu_i} ---> can't find anything
-% in planck literature
+% in planck literature ... nevermind n^2 <-> ii_cov in binary tables
 
-This error budget is based on \cite{planckdust} Equation 7. $c_{\nu_i}$ is the 
-multiplicative calibration uncertainty for the intensity in each band. We 
-have adopted the $c_{\nu_i}$ values listed in \cite{planckdust} Table 1. For 
-the 217 GHz band, we have assigned $c_{217 GHz}$ = 0.54, from Table 11 of 
-\cite{planckcalib}. In order to obtain reasonable fitting results at high 
-latitude where the data is noisy, we include a prior on $T_2$:
+This error budget is the same as that of \cite{planckdust} Equation 7. 
+$c_{\nu_i}$ is the multiplicative calibration uncertainty for the intensity in 
+each band. We have adopted the $c_{\nu_i}$ values listed in \cite{planckdust} 
+Table 1. For the 217 GHz band, we have assigned $c_{217 GHz}$ = 0.54, from 
+Table 11 of \cite{planckcalib}. $CMB$ represents the CMB intensity 
+subtracted at the relevant pixel. $\delta0_{\nu_i}$ represents the uncertainty
+in the offset used to tie \PLANCK~intensity to HI. We have adopted the 
+ $\delta0_{\nu_i}$ values of \cite{planckdust} Table 1. $n_{\nu_i}$ represents 
+the instrumental noise in the pixel of interest, and is taken to be the square 
+root of the \verb|ii_cov| parameter that accompanies each \PLANCK~intensity 
+map. In order to obtain reasonable fitting results at high latitude where the 
+data is noisy, we include a prior on $T_2$:
+
+%what about the offset uncertainty for 217 GHz
 
 \begin{equation}
 P(T_2) = \mathcal{N}(T_2|\bar{T}_2, \sigma_{\bar{T}_2})
@@ -302,6 +313,12 @@ the results of of our two-component dust fits.
 % IRAS missing so that parts of sky not truly 6.1' resolution map
 
 \subsection{Comparison to Planck Collaboration Dust Map}
+
+\subsubsection{Ignoring 217 GHz}
+The \cite{planckdust} result used only XX, YY, ZZ, 3000 GHz. When we 
+repeat our analysis ignoring 217 GHz, so that we are using the same
+set of frequencies, we find that no major changes arise. This actually
+should be done/investigated though.
 
 \section{Conclusion}
 
