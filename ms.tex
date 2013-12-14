@@ -104,6 +104,8 @@ silicates and carbonaceous grains.
 % plots of full-sky residuals relative to our model ?
 %  ---> and for lower-frequency bands to emphasize that FDS99 is better for
 %       extrapolating towards mm wavelengths
+% zoom-in of region with interesting dust showing :
+%  SFD T map, two-component T map, Planck team one-component T map
 
 \section{Data}
 
@@ -128,14 +130,15 @@ reprocessing of IRAS 100$\mu$m, which we will refer to as \verb|i100|. \verb|i10
 
 \subsection{Smoothing}
 We wish to simultaneously fit \verb|i100| along with four \PLANCK~bands. To 
-properly combine these maps, they must have the same PSF. \verb|i100|, with its
-$6.1'$ symmetric Gaussian PSF, is the lowest-resolution map we have included. 
-To match PSFs, we have therefore smoothed each of the \PLANCK~maps under 
-consideration to $6.1'$ resolution by considering each native map to have
-a symmetric Gaussian beam and smoothing by the appropriate symmetric Gaussian
-such that the resulting map has a FWHM of $6.1'$. The FWHM we assign to the 
-native \PLANCK~maps is taken from \cite{planckbeam}, specifically $5.01'$ for
-217 GHz, $4.86'$ for 353 GHz, $4.84'$ for 545 GHz, and $4.63'$ for 857 GHz.
+properly combine these maps, they must have the same point spread function 
+(PSF). \verb|i100|, with its $6.1'$ symmetric Gaussian PSF, is the 
+lowest-resolution map we have included. To match PSFs, we have therefore 
+smoothed each of the \PLANCK~maps under consideration to $6.1'$ resolution by 
+considering each native map to have a symmetric Gaussian beam and smoothing by 
+the appropriate symmetric Gaussian such that the resulting map has a FWHM of 
+$6.1'$. The FWHM we assign to the native \PLANCK~maps is taken from 
+\cite{planckbeam}, specifically $5.01'$ for 217 GHz, $4.86'$ for 353 GHz, 
+$4.84'$ for 545 GHz, and $4.63'$ for 857 GHz.
 
 \subsection{Unit Conversions}
 
@@ -253,13 +256,17 @@ For each pixel, the errors on each intensity measurement $\sigma_{\nu_i}$ are
 given by:
 
 \begin{equation}
-\sigma_{\nu_i} = \sqrt{c^2_{\nu_i}I^2_{\nu_i} + c^2_{\nu_i}CMB_{\nu_i} + }
+\sigma_{\nu_i} = \sqrt{c^2_{\nu_i}I^2_{\nu_i} + c^2_{\nu_i}CMB^2_{\nu_i} + (\delta O_{\nu_i})^2 + n^2_{\nu_i}}
 \end{equation}
 
+% what about the instrumental noise n_{\nu_i} ---> can't find anything
+% in planck literature
+
 This error budget is based on \cite{planckdust} Equation 7. $c_{\nu_i}$ is the 
-multiplicative calibration uncertainty for the intensity in each band, and we 
-have adopted the values listed in \cite{planckdust} Table 1. We have adopted 
-$c_{217 GHz}$ = XX. In order to obtain reasonable fitting results at high 
+multiplicative calibration uncertainty for the intensity in each band. We 
+have adopted the $c_{\nu_i}$ values listed in \cite{planckdust} Table 1. For 
+the 217 GHz band, we have assigned $c_{217 GHz}$ = 0.54, from Table 11 of 
+\cite{planckcalib}. In order to obtain reasonable fitting results at high 
 latitude where the data is noisy, we include a prior on $T_2$:
 
 \begin{equation}
@@ -288,6 +295,11 @@ the results of of our two-component dust fits.
 %provide maps at multiple different nsides ?
 %   -> if so, actually smooth the maps before rebinning, or leave 
 %      undersampled?
+% provide uncertainty maps for tau and T2 ??
+
+\subsection{Limitations}
+% CIBA !!!
+% IRAS missing so that parts of sky not truly 6.1' resolution map
 
 \subsection{Comparison to Planck Collaboration Dust Map}
 
