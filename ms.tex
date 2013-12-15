@@ -31,7 +31,7 @@ the \cite{FDS99} two-component dust emission model fitted to \PLANCK~217, 353,
 545, 857 GHz and \cite{SFD} \IRAS~100$\mu$m data. Both the optical 
 depth and temperature maps have angular resolution of $6.1'$. Such maps serve 
 as an important alternative to and comparison for other dust 
-emission models, especially the single modified blackbody model in which 
+emission models, especially the single modified blackbody (MBB) model in which 
 $\beta$ and $T$ both vary spatially. We also expect the derived optical 
 depth to provide valuable cross-checks for other dust-column related data 
 products, specifically the \cite{SFD} map, which assumed 
@@ -79,13 +79,26 @@ to FDS99.
 
 FDS99 used FIRAS to make a globally best-fit model of dust emission 
 appropriate over a very broad range of frequencies. They showed that a 
-model consisting of a single modified blackbody with power law index $\beta$ 
+model consisting of a single MBB with power law index $\beta$ 
 could not fit the IRAS/FIRAS/DIRBE spectrum at both the Wien and 
 Rayleigh-Jeans extremes. To fit both ends of the spectrum, FDS99 proposed
-a spectrum consisting of two modified black bodies, each with a different
+a spectrum consisting of two MBBs, each with a different
 temperature and power law index. Physically, these two components
 represent distinct dust grain species within the ISM, specifically 
 silicates and carbonaceous grains.
+
+\cite{planckdust} has recently conducted a study modeling
+\PLANCK~353 GHz, 545 GHz, 857 GHz and IRAS 100$\mu$m emission with a single
+MBB spectrum. 
+
+In $\S$\ref{sec:data} we discuss the data used in throughout this study. In 
+$\S$\ref{sec:prepro} we describe our preprocessing of the data to isolate 
+thermal emission from Galactic dust. In $\S$\ref{sec:modeling} we describe the 
+dust emission model we fit to the \PLANCK and \IRAS~data. In 
+$S$\ref{sec:fitting} we provide details of the Markov Chain Monte Carlo method 
+we use to estimate the parameters of our model. In $\S$\ref{sec:results} we 
+present the full-sky maps of dust temperature and optical depth we have 
+obtained, and conclude and $\S$\ref{sec:conclusion}
 
 
 %how what we're doing fits in
@@ -109,7 +122,7 @@ silicates and carbonaceous grains.
 %      good spot is in polaris, centered on (lgal,bgal) ~ (112, 20)
 
 \section{Data}
-
+\label{sec:data}
 All \PLANCK~data products utilized throughout this work are drawn from the 
 \PLANCK~2013 data release \citep{planck2013}. Specifically, we have made use 
 of the the 217 GHz, 353 GHz, 545 GHz and 857 GHz intensity maps. We use the 
@@ -128,6 +141,7 @@ reprocessing of IRAS 100$\mu$m, which we will refer to as \verb|i100|. \verb|i10
 % and relies on dirbe on scales larger than ???
 
 \section{Pre-processing}
+\label{sec:prepro}
 
 \subsection{Smoothing}
 We wish to simultaneously fit \verb|i100| along with four \PLANCK~bands. To 
@@ -218,7 +232,7 @@ interpolated over downstream.
 \section{Dust Emission Model}
 \label{sec:modeling}
 Our model is that of FDS99, which consists of two populations of dust 
-grains emitting as modified blackbodies, but with different temperatures
+grains emitting as MBBs, but with different temperatures
 and different emissivity power law indices $\beta$. The shape of this spectrum 
 is given by:
 
@@ -237,9 +251,10 @@ T_1 = 0.352T_2^{1.18}
 At each sky location, we have five independent intensity measurements (four ) 
 FDS99 found typical values for $T_2$ and 
 
-\subsection{Fitting Methodology}
+\section{Fitting Procedure}
+\label{sec:fitting}
 
-\section{Pixelization}
+\subsection{Pixelization}
 \label{sec:pix}
 For the purpose of fitting, we break the sky into independent pixels of 
 angular size $\sim$1.72$'$, defined by the HEALPix pixelization with nside=2048
@@ -248,7 +263,7 @@ this format and this pixelization adequately samples the $6.1'$ resolution maps
 under consideration. We reiterate that each pixel is fit independently of 
 neighboring pixels.
 
-\section{Markov Chains}
+\subsection{Markov Chains}
 As explained in $\S$\ref{sec:modeling}, the two free parameters in our 
 per-pixel dust emission SED are the hot dust temperature $T_2$, which 
 determinesthe shape of the SED, and the spectrum normalization. In practice,
@@ -304,6 +319,7 @@ always perform computations using the logarithm of relevant probabilities.
 %mention something about the proposal distribution at some point?
 
 \section{Results}
+\label{sec:results}
 
 \begin{figure*}
 \begin{center}
@@ -330,12 +346,13 @@ the results of of our two-component dust fits.
 \subsection{Comparison to Planck Collaboration Dust Map}
 
 \subsubsection{Omitting 217 GHz}
-The \cite{planckdust} result used only XX, YY, ZZ, 3000 GHz. When we 
+The \cite{planckdust} result used only 353, 545, 857, and 3000 GHz. When we 
 repeat our analysis ignoring 217 GHz, so that we are using the same
 set of frequencies, we find that no major changes arise. This actually
 should be done/investigated though.
 
 \section{Conclusion}
+\label{sec:conclusion}
 
 This material is based upon work supported by the National Science Foundation 
 Graduate Research Fellowship under Grant No.Based on observations obtained with
