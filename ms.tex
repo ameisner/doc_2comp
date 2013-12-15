@@ -89,7 +89,18 @@ silicates and carbonaceous grains.
 
 \cite{planckdust} has recently conducted a study modeling
 \PLANCK~353 GHz, 545 GHz, 857 GHz and IRAS 100$\mu$m emission with a single
-MBB spectrum. 
+MBB spectrum. Here we investigate the FDS99 two-component dust emission model 
+as an alernative model for the dust SED composed of \PLANCK~and \IRAS~data. In
+doing so, we obtain $6.1'$ maps of dust temperature and optical depth. Because
+we are using a model that has been validated using FIRAS data down to sub-mm
+wavelengths, this model should be useful in constructing predictions of dust
+emission over a very broad range of wavelengths. This includes low frequencies,
+which \cite{planckdust} admit their model does not adequately fit, and also
+data near the peak of the dust SED, for example Akari. We also anticipate 
+the optical depth map we derive will be useful as a comparison for extinction
+estimates based directly upon optical/NIR observations of stars.
+
+%would be nice if i had a citation here for Eddie/Greg pan-starrs dust stuff
 
 In $\S$\ref{sec:data} we discuss the data used in throughout this study. In 
 $\S$\ref{sec:prepro} we describe our preprocessing of the data to isolate 
@@ -136,9 +147,10 @@ versions of these maps which have been corrected for zodiacal light
 
 To incorporate information about the dust emission on the Wien side of its 
 spectrum, we make use of 100$\mu$m data. In particular, we use the SFD 
-reprocessing of IRAS 100$\mu$m, which we will refer to as \verb|i100|. \verb|i100| has angular resolution of $6.1'$. %list other
-%important characteristics of i100 e.g. that it has been zodi-corrected
-% and relies on dirbe on scales larger than ???
+reprocessing of IRAS 100$\mu$m, which we will refer to as \verb|i100|, and at 
+times by frequency as 3000 GHz. \verb|i100| has angular resolution of $6.1'$. 
+%list other %important characteristics of i100 e.g. that it has been 
+%zodi-corrected and relies on dirbe on scales larger than ???
 
 \section{Pre-processing}
 \label{sec:prepro}
@@ -344,6 +356,8 @@ the results of of our two-component dust fits.
 % IRAS missing so that parts of sky not truly 6.1' resolution map
 
 \subsection{Comparison to Planck Collaboration Dust Map}
+%striping in IRAS/IRIS versus in SFD IRAS ... planck dust map obvious striping
+
 
 \subsubsection{Omitting 217 GHz}
 The \cite{planckdust} result used only 353, 545, 857, and 3000 GHz. When we 
