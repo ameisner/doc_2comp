@@ -8,6 +8,7 @@
 \newcommand{\HERSCHEL}{{\it Herschel}}
 \newcommand{\SPITZER}{{\it Spitzer}}
 \newcommand{\PLANCK}{{\it Planck}}
+\newcommand{\AKARI}{{\it Akari}}
 
 \bibpunct{(}{)}{;}{a}{}{,} 
  
@@ -26,11 +27,11 @@ Cambridge, MA 02138, USA; ameisner@fas.harvard.edu}
 Cambridge, MA 02138, USA; dfinkbeiner@cfa.harvard.edu}
 
 \begin{abstract}
-We present full-sky maps of dust optical depth and temperature derived from 
-the \cite{FDS99} two-component dust emission model fitted to \PLANCK~217, 353, 
-545, 857 GHz and \cite{SFD} \IRAS~100$\mu$m data. Both the optical 
-depth and temperature maps have angular resolution of $6.1'$. Such maps serve 
-as an important alternative to and comparison for other dust 
+We present full-sky maps of dust optical depth and temperature derived by 
+applying the \cite{FDS99} two-component dust emission model fitted to 
+\PLANCK~217, 353, 545, 857 GHz and \cite{SFD} \IRAS~100$\mu$m data. Both the 
+optical depth and temperature maps have angular resolution of $6.1'$. Such maps
+ serve as an important alternative to and comparison for other dust 
 emission models, especially the single modified blackbody (MBB) model in which 
 $\beta$ and $T$ both vary spatially. We also expect the derived optical 
 depth to provide valuable cross-checks for other dust-column related data 
@@ -53,12 +54,13 @@ to the observed sky intensity. In the optical and ultraviolet, extinction
 by foreground dust grains attenuates the signal from extragalactic sources
 over the entire sky. Understanding the properties of dust in the interstellar 
 medium (ISM) is valuable in its own right, as the ISM is the site of star 
-formation, thereby playing a crucial role in galaxy evolution. Equally if not 
-more important to the practice of astronomy, however, is accounting for dust 
-as a foreground which reddens optical/UV observations and superimposes 
-Galactic emission on low-frequency observations of the 
-cosmic microwave background (CMB). 
+formation, thereby playing a crucial role in galaxy evolution. Equally, or 
+perhaps even more important to the practice of astronomy, however, is 
+accurately accounting for dust as a foreground which reddens optical/UV o
+bservations and superimposes Galactic emission on low-frequency observations 
+of the cosmic microwave background (CMB). 
 %specify ``low frequency more precisely eventually
+% somewhere mention re-radiation
 
 %basic background about interstellar dust emission
 
@@ -66,16 +68,14 @@ cosmic microwave background (CMB).
 %Barnard first recognized evidence for dust in astronomical observations, and
 %ever since it has been mapped in increasing detail. 
 Over the past decades, satellite observations have dramatically enhanced our
-knowledge about infrared emission from the ISM. High-latitude complexes of 
-resolved infrared sources were first identified by \cite{low84} using 
-\IRAS~60$\mu$m and 100$\mu$m observations \citep{wheelock94}. This so-called 
-``infrared cirrus,'' attributable to thermal emission from large dust grains in
-the interstellar medium, has since been probed in greater detail by a variety 
-of instruments and detected over virtually the entire sky. Beginning in 1989, 
-DIRBE  mapped the full sky at ten infrared wavelengths from 1.25$\mu$m to 
-240$\mu$m with a reliable zero point, but inferior 0.7$^{\circ}$ angular 
-resolution \citep{boggess92}.mention FIRAS specifically, since it is important 
-to FDS99.
+knowledge about infrared emission from the ISM. IRAS, with its $\sim$6$'$ 
+resolution, revolutionized the study of Galactic dust emission, first revealing
+ the high-latitude ``infrared cirrus'' using \IRAS~60$\mu$m and 100$\mu$m 
+observations \citep{low84, wheelock94}. Beginning in 1989, DIRBE  mapped the 
+full sky at ten infrared wavelengths from 1.25$\mu$m to 240$\mu$m with a 
+reliable zero point, but inferior 0.7$^{\circ}$ angular resolution 
+\citep{boggess92}.mention FIRAS specifically, since it is important to FDS99.
+
 
 FDS99 used FIRAS to make a globally best-fit model of dust emission 
 appropriate over a very broad range of frequencies. They showed that a 
@@ -87,7 +87,10 @@ temperature and power law index. Physically, these two components
 represent distinct dust grain species within the ISM, specifically 
 silicates and carbonaceous grains.
 
-\cite{planckdust} has recently conducted a study modeling
+
+With the advent of the Planck mission, we have an important opportunity to
+revisit foreground predictions in light of their superb data. Brief Planck
+background. \cite{planckdust} has recently conducted a study modeling
 \PLANCK~353 GHz, 545 GHz, 857 GHz and IRAS 100$\mu$m emission with a single
 MBB spectrum. Here we investigate the FDS99 two-component dust emission model 
 as an alernative model for the dust SED composed of \PLANCK~and \IRAS~data. In
