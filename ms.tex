@@ -333,15 +333,26 @@ With $\bar{T}_2$ = 16.2 K and $\sigma_{\bar{T}_2}$ = 1.4 K. In practice we
 always perform computations using the logarithm of relevant probabilities.
 %mention something about the proposal distribution at some point?
 
+For each pixel, we initialize the Markov chain to have $T_2$ = $\bar{T}_2$ and
+. We run 500 steps of burn-in and then 2000 steps during which we keep track
+of the proposed $T_{2, j}$ and $I_{545, j}$ values. We use these 2000 values 
+for each parameter to compute estimates of each parameter,  $T_2$ = 
+$\langle T_{2, j} \rangle$, $I_{545}$ = $\langle I_{545, j} \rangle$, and of 
+each parameter's variance, $\sigma^2_{T_2}$ = $\langle T^2_{2, j} \rangle-\langle T_{2, j} \rangle ^2$ and $\sigma^2_{I_{545}}$=$\langle I^2_{545, j} 
+\rangle-\langle I_{545, j} \rangle ^2$
+
 \section{Results}
 \label{sec:results}
 
-\begin{figure*}
+\begin{figure}
 \begin{center}
-\epsfig{file=results.eps, width=7.0in}
-\caption{Our best-fit $T_2$, binned to 27.5$'$ resolution}
+\epsfig{file=tcomparison.eps, width=3.3in}
+\caption{Comparison of SFD temperature, two-component model $T_2$, and 
+\cite{planckdust} temperature. Note the differing colorscales. Both models 
+incorporating \PLANCK~data clearly show a major improvement in resolution 
+relative to SFD.}
 \end{center}
-\end{figure*}
+\end{figure}
 
 \subsection{Calculating $\tau$}
 
@@ -372,6 +383,13 @@ should be done/investigated though.
 
 \section{Conclusion}
 \label{sec:conclusion}
+
+\begin{figure*} [ht]
+\begin{center}
+\epsfig{file=results.eps, width=7.0in}
+\caption{Our best-fit $T_2$, binned to 27.5$'$ resolution}
+\end{center}
+\end{figure*}
 
 This material is based upon work supported by the National Science Foundation 
 Graduate Research Fellowship under Grant No.Based on observations obtained with

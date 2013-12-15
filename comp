@@ -3,4 +3,4 @@ bibtex ms.aux
 latex ms.tex
 latex ms.tex
 dvips -f -t a4 ms.dvi > ms.ps
-ps2pdf ms.ps
+ps2pdf -dAutoFilterGrayImages=false -dGrayImageFilter=/FlateEncode -dAutoFilterColorImages=false -dColorImageFilter=/FlateEncode ms.ps
