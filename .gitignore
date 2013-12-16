@@ -17,5 +17,8 @@
 ### figures
 *.eps
 
+### FITS files
+*.fits
+
 ### directories
 fig

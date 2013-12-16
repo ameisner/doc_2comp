@@ -9,6 +9,7 @@
 \newcommand{\SPITZER}{{\it Spitzer}}
 \newcommand{\PLANCK}{{\it Planck}}
 \newcommand{\AKARI}{{\it Akari}}
+\newcommand{\FIRAS}{{\it FIRAS}}
 
 \bibpunct{(}{)}{;}{a}{}{,} 
  
@@ -48,14 +49,14 @@ best-fit two-component spectral energy distributions to those of the
 \section{Introduction}
 %why dust important in astronomy/astrophysics
 The presence of Galactic interstellar dust affects
-astronomical observations over a wide range of wavelengths. At mid-infrared
-and far-infrared wavelengths, Galactic dust emission is a major contributor
-to the observed sky intensity. In the optical and ultraviolet, extinction
-by foreground dust grains attenuates the signal from extragalactic sources
-over the entire sky. Understanding the properties of dust in the interstellar 
-medium (ISM) is valuable in its own right, as the ISM is the site of star 
-formation, thereby playing a crucial role in galaxy evolution. Equally, or 
-perhaps even more important to the practice of astronomy, however, is 
+astronomical observations over a wide range of wavelengths. In the mid-infrared
+and far-infrared, Galactic dust emission is a major contributor
+to the observed sky intensity. At optical and ultraviolet wavelengths, 
+extinction by foreground dust grains attenuates the signal from extragalactic 
+sources over the entire sky. Understanding the properties of dust in the 
+interstellar medium (ISM) is valuable in its own right, as the ISM is the site 
+of star formation, thereby playing a crucial role in galaxy evolution. Equally,
+ or perhaps even more important to the practice of astronomy, however, is 
 accurately accounting for dust as a foreground which reddens optical/UV o
 bservations and superimposes Galactic emission on low-frequency observations 
 of the cosmic microwave background (CMB). 
@@ -64,52 +65,56 @@ of the cosmic microwave background (CMB).
 
 %basic background about interstellar dust emission
 Over the past decades, satellite observations have dramatically enhanced our
-knowledge about infrared emission from the ISM. IRAS, with its $\sim$6$'$ 
+knowledge about infrared emission from the ISM. \IRAS, with its $\sim$4$'$ 
 resolution, revolutionized the study of Galactic dust emission, first revealing
- the high-latitude ``infrared cirrus'' using \IRAS~60$\mu$m and 100$\mu$m 
-observations \citep{low84, wheelock94}. Beginning in 1989, DIRBE  mapped the 
-full sky at ten infrared wavelengths from 1.25$\mu$m to 240$\mu$m with a 
-reliable zero point, but inferior 0.7$^{\circ}$ angular resolution 
-\citep{boggess92}.mention FIRAS specifically, since it is important to FDS99.
+ the high-latitude ``infrared cirrus'' using 60$\mu$m and 100$\mu$m 
+observations \citep{low84, wheelock94}. Then, beginning in 1989, DIRBE provided
+complementary full-sky measurements at ten infrared wavelengths from 
+1.25$\mu$m to 240$\mu$m with inferior 0.7$^{\circ}$ angular resolution, but 
+with a reliable zero point \citep{boggess92}. COBE/\FIRAS~\citep{firas} also 
+provided full-sky infrared dust spectra at $7^{\circ}$ resolution in 213 
+narrow frequency bins between 200 GHz and 2100 GHz.
 
-
-FDS99 used FIRAS \citep{firas} to make a globally best-fit model of dust 
-emission appropriate over a very broad range of frequencies. They showed that 
-a model consisting of a single MBB with power law index $\beta$ 
-could not fit the IRAS/FIRAS/DIRBE spectrum at both the Wien and 
+\cite{FDS99} (hereafter FDS99) used \FIRAS~data to derive a globally best-fit 
+model of dust emission applicable over a very broad range of frequencies. 
+FDS99 showed that a model consisting of a single MBB with power law index 
+$\beta$ 
+could not accurately match the \IRAS/\FIRAS/DIRBE spectrum at both the Wien and 
 Rayleigh-Jeans extremes. To fit both ends of the spectrum, FDS99 proposed
-a spectrum consisting of two MBBs, each with a different
+a dust emission model consisting of two MBBs, each with a different
 temperature and power law index. Physically, these two components
 represent distinct dust grain species within the ISM, specifically 
-silicates and carbonaceous grains.
+amorphous silicates and carbonaceous grains.
 
 
 The \PLANCK~2013 data release \citep{planck2013} represents an important 
-opportunity to revisit foreground predictions in light of their superb, 
+opportunity to revisit foreground predictions in light of \PLANCK's superb, 
 relatively artifact-free broadband data covering the entire sky and a broad 
 range of frequencies. \cite{planckdust} has recently conducted a study modeling
 \PLANCK~353 GHz, 545 GHz, 857 GHz and IRAS 100$\mu$m emission with a single
 MBB spectrum. Here we investigate the FDS99 two-component dust emission model 
 as an alernative model for the dust SED composed of \PLANCK~and \IRAS~data. In
-doing so, we obtain $6.1'$ maps of dust temperature and optical depth. Because
+doing so, we obtain $6.1'$ resolution maps of dust temperature and optical 
+depth. Because
 we are using a model that has been validated using FIRAS data down to sub-mm
-wavelengths, this model should be useful in constructing predictions of dust
-emission over a very broad range of wavelengths. This includes low frequencies,
-which \cite{planckdust} admit their model does not adequately fit, and also
-data near the peak of the dust SED, for example \AKARI~140-160$\mu$m. We also 
-anticipate the optical depth map we derive will be useful as a comparison for 
-extinction estimates based directly upon optical/NIR observations of stars.
+wavelengths, e expect our best-fit parameters to be useful in constructing high-resolution
+ predictions of dust emission over a very broad range of wavelengths. This 
+includes low frequencies ($<$350 GHz), which \cite{planckdust} caution their 
+model may not adequately fit, and also data near the peak of the dust SED, for
+ example \AKARI~140-160$\mu$m. We also anticipate our derived optical depth map
+ will serve as a useful comparison for extinction estimates based 
+directly upon optical/NIR observations of stars.
 
 %would be nice if i had a citation here for Eddie/Greg pan-starrs dust stuff
 
-In $\S$\ref{sec:data} we discuss the data used in throughout this study. In 
+In $\S$\ref{sec:data} we discuss the data used throughout this study. In 
 $\S$\ref{sec:prepro} we describe our preprocessing of the data to isolate 
 thermal emission from Galactic dust. In $\S$\ref{sec:modeling} we describe the 
 dust emission model we fit to the \PLANCK and \IRAS~data. In 
 $S$\ref{sec:fitting} we provide details of the Markov Chain Monte Carlo method 
-we use to estimate the parameters of our model. In $\S$\ref{sec:results} we 
-present the full-sky maps of dust temperature and optical depth we have 
-obtained, and conclude and $\S$\ref{sec:conclusion}
+with which we have estimated the parameters of our model. In 
+$\S$\ref{sec:results} we present the full-sky maps of dust temperature and 
+optical depth thus obtained, and conclude and $\S$\ref{sec:conclusion}
 
 
 %how what we're doing fits in
@@ -233,19 +238,18 @@ interpolated over downstream.
 %maybe say that we're releasing a version of the map with point sources
 %interpolated over by us as well
 
-
-\section{Dust Emission Model}
-\label{sec:modeling}
-
 \begin{figure}
 \begin{center}
 \epsfig{file=sed.eps, width=3.3in}
 \caption{\label{fig:sed} Planck SED for a single nside=2048 pixel in the 
 Polaris region. Note that the two lowest-frequency data points (\PLANCK~100, 
-143 GHz) were not used in our fit, while the four lowest-frequency data
+143 GHz) were not used in our fit, while the three lowest-frequency data
 points were not used in the \cite{planckdust} fit.}
 \end{center}
 \end{figure}
+
+\section{Dust Emission Model}
+\label{sec:modeling}
 
 Our model is that of FDS99, which consists of two populations of dust 
 grains emitting as MBBs, but with different temperatures
@@ -335,7 +339,7 @@ always perform computations using the logarithm of relevant probabilities.
 \begin{center}
 \epsfig{file=tcomparison.eps, width=3.3in}
 \caption{\label{fig:comparison} Comparison of SFD temperature, two-component 
-model $T_2$, and \cite{planckdust} temperature. Note the differing colorscales.
+model $T_2$, and \cite{planckdust} temperature (labeled $T_{R1.20}$). Note the differing colorscales.
 Both models incorporating \PLANCK~data clearly show a major improvement in 
 resolution relative to SFD.}
 \end{center}
