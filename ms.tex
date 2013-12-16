@@ -84,9 +84,10 @@ represent distinct dust grain species within the ISM, specifically
 silicates and carbonaceous grains.
 
 
-With the advent of the Planck mission, we have an important opportunity to
-revisit foreground predictions in light of their superb data. Brief Planck
-background. \cite{planckdust} has recently conducted a study modeling
+The \PLANCK~2013 data release \citep{planck2013} represents an important 
+opportunity to revisit foreground predictions in light of their superb, 
+relatively artifact-free broadband data covering the entire sky and a broad 
+range of frequencies. \cite{planckdust} has recently conducted a study modeling
 \PLANCK~353 GHz, 545 GHz, 857 GHz and IRAS 100$\mu$m emission with a single
 MBB spectrum. Here we investigate the FDS99 two-component dust emission model 
 as an alernative model for the dust SED composed of \PLANCK~and \IRAS~data. In
@@ -95,9 +96,9 @@ we are using a model that has been validated using FIRAS data down to sub-mm
 wavelengths, this model should be useful in constructing predictions of dust
 emission over a very broad range of wavelengths. This includes low frequencies,
 which \cite{planckdust} admit their model does not adequately fit, and also
-data near the peak of the dust SED, for example \AKARI. We also anticipate 
-the optical depth map we derive will be useful as a comparison for extinction
-estimates based directly upon optical/NIR observations of stars.
+data near the peak of the dust SED, for example \AKARI~140-160$\mu$m. We also 
+anticipate the optical depth map we derive will be useful as a comparison for 
+extinction estimates based directly upon optical/NIR observations of stars.
 
 %would be nice if i had a citation here for Eddie/Greg pan-starrs dust stuff
 
@@ -235,6 +236,17 @@ interpolated over downstream.
 
 \section{Dust Emission Model}
 \label{sec:modeling}
+
+\begin{figure}
+\begin{center}
+\epsfig{file=sed.eps, width=3.3in}
+\caption{\label{fig:sed} Planck SED for a single nside=2048 pixel in the 
+Polaris region. Note that the two lowest-frequency data points (\PLANCK~100, 
+143 GHz) were not used in our fit, while the four lowest-frequency data
+points were not used in the \cite{planckdust} fit.}
+\end{center}
+\end{figure}
+
 Our model is that of FDS99, which consists of two populations of dust 
 grains emitting as MBBs, but with different temperatures
 and different emissivity power law indices $\beta$. The shape of this spectrum 
@@ -319,6 +331,16 @@ With $\bar{T}_2$ = 16.2 K and $\sigma_{\bar{T}_2}$ = 1.4 K. In practice we
 always perform computations using the logarithm of relevant probabilities.
 %mention something about the proposal distribution at some point?
 
+\begin{figure}
+\begin{center}
+\epsfig{file=tcomparison.eps, width=3.3in}
+\caption{\label{fig:comparison} Comparison of SFD temperature, two-component 
+model $T_2$, and \cite{planckdust} temperature. Note the differing colorscales.
+Both models incorporating \PLANCK~data clearly show a major improvement in 
+resolution relative to SFD.}
+\end{center}
+\end{figure}
+
 For each pixel, we initialize the Markov chain to have $T_2$ = $\bar{T}_2$ and
 . We run 500 steps of burn-in and then 2000 steps during which we keep track
 of the proposed $T_{2, j}$ and $I_{545, j}$ values. We use these 2000 values 
@@ -329,16 +351,6 @@ each parameter's variance, $\sigma^2_{T_2}$ = $\langle T^2_{2, j} \rangle-\langl
 
 \section{Results}
 \label{sec:results}
-
-\begin{figure}
-\begin{center}
-\epsfig{file=tcomparison.eps, width=3.3in}
-\caption{\label{fig:comparison} Comparison of SFD temperature, two-component 
-model $T_2$, and \cite{planckdust} temperature. Note the differing colorscales.
-Both models incorporating \PLANCK~data clearly show a major improvement in 
-resolution relative to SFD.}
-\end{center}
-\end{figure}
 
 \subsection{Calculating $\tau$}
 
@@ -366,7 +378,7 @@ use of SFD \verb|i100| instead of IRIS 100$\mu$m \citep{IRIS}. Residual
 \IRAS~striping at levels higher than that remaining in SFD \verb|i100| is 
 clearly visible in the \cite{planckdust} maps.
 
-%we actually have 6.1' arcminute smoothing
+%we actually have 6.1' arcminute resolution
 It is true that we have smoothed the input intensity maps for this study 
 to $6.1'$ FWHM, which is nominally lower resolution than the $5'$ 
 \cite{planckdust} maps. However, as is apparent from figure 
