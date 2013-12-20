@@ -253,13 +253,15 @@ points were not used in the \cite{planckdust} fit.}
 \begin{figure*}
 \begin{center}
 \epsfig{file=posteriors.eps, width=7.0in}
-\caption{Gridded osterior PDFs for three nside=2048 pixels. Red crosses mark 
+\caption{Gridded posterior PDFs for three nside=2048 pixels. Red crosses mark 
 the best-fit parameters based on our Markov Chain sampling of the posterior. 
 The posterior distributions are in general extremely well-behaved, showing
-no multimodality, and our MCMC parameter estimates coincide well with the
-peaks in the gridded posteriors. The colorscale is linear in log(P), with black representing the maximum of log(P) and white represent max(log(P))-5. Left: Low S/N pixel at high-latitude in 
-Galactic north. Center: High S/N pixel in the Polaris region. Right: Low S/N pixel at high-latitude in the Galactic 
-south. }
+no multimodality or other pathological qualities. Our MCMC parameter 
+estimates coincide well with the peaks in the gridded posteriors. The 
+colorscale is linear in $log(P)$, with black representing the maximum of 
+$log(P)$ and white representing $max(log(P))-5$. Left: Low S/N pixel at 
+high-latitude in Galactic north. Center: High S/N pixel in the Polaris region. 
+Right: Low S/N pixel at high-latitude in the Galactic south.}
 \end{center}
 \end{figure*}
 
@@ -267,9 +269,8 @@ south. }
 \label{sec:modeling}
 
 Our model is that of FDS99, which consists of two populations of dust 
-grains emitting as MBBs, but with different temperatures
-and different emissivity power law indices $\beta$. The shape of this spectrum 
-is given by:
+grains emitting as MBBs, but with different temperatures and different 
+emissivity power law indices $\beta$. The shape of this spectrum is given by:
 
 \begin{equation}
 M_{\nu} \propto f_{1}q_{1}(\frac{\nu}{\nu_{0}})^{\beta_1}B_{\nu}(T_1) + (1-f_{1})q_{2}(\frac{\nu}{\nu_0})^{\beta_2}B_{\nu}(T_2)
