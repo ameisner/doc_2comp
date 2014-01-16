@@ -186,7 +186,9 @@ The CMB is effectively imperceptible at 857 GHz, but can be noticed at a
 low level at 545 GHz, and is prominent at 217 GHz and 353 GHz relative 
 to the diffuse Galactic emission we wish to characterize, especially at high
 latitudes. To remove the CMB anisotropies, we have subtracted the SMICA model
-from each of the relevant \PLANCK~maps \citep{smica}, after appropriate unit conversions.
+from each of the relevant \PLANCK~maps \citep{smica}, after appropriate unit 
+conversions. Removal of the residual Solar dipole at low frequencies is 
+discussed in $\S$\ref{sec:zp}.
 
 \subsection{Finite Bandpass Correction}
 The thermal dust emission model of $\S$\ref{sec:modeling} predicts the 
@@ -205,18 +207,19 @@ this analysis (here SFD \verb|i100|) and that of \cite{planckdust}.
 % check that RIMO file i've used is actually the most up-to-date version
 
 \subsection{Zero-Point}
+\label{sec:zp}
 Although we wish to isolate and model thermal emission from Galactic dust, the
-\PLANCK~maps contain additional components. At each frequency, there can
-exist an overall, constant offset that must be subtracted to set the
-zero level of Galactic dust. Additionally, faint residuals 
-of the Solar dipole remain at low frequencies. At 353 GHz, 545 GHz, 857 GHz, 
-we have adopted the zero-point offsets of \cite{planckdust} Table 1, which 
-were derived by correlating \PLANCK~857 GHz versus HI at low column density, 
-and then by correlating the other Planck channels against the corrected 857 
-GHz map. We have not altered the \verb|i100| zero-point in any way. We have
-also removed the Solar dipole residual according to \cite{planckdust}, 
-by subtracting a dipole pattern oriented toward $(l, b) = ()$ and scaled
-according to their Table 1.
+\PLANCK~maps contain additional components on large angular scales. At each 
+frequency, there can exist an overall, constant offset that must be subtracted 
+to set the zero level of Galactic dust. Additionally, faint residuals of the 
+Solar dipole remain at low frequencies. At 353 GHz, 545 GHz, 857 GHz, we have 
+adopted the zero-point offsets of \cite{planckdust} Table 1, which were derived
+ by correlating \PLANCK~857 GHz versus HI at low column density, and then by 
+correlating the other Planck channels against the corrected 857 GHz map. We 
+have not altered the \verb|i100| zero-point in any way. We have also removed 
+the Solar dipole residual according to \cite{planckdust}, by subtracting a 
+dipole pattern oriented toward $(l, b) = ()$ and scaled according to their 
+Table 1.
 
 The offset and residual dipole parameters for \PLANCK~217 GHz were not 
 available from \cite{planckdust} Table 1. In order to set the zero-point of 
