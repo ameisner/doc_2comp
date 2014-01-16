@@ -215,11 +215,11 @@ to set the zero level of Galactic dust. Additionally, faint residuals of the
 Solar dipole remain at low frequencies. At 353 GHz, 545 GHz, 857 GHz, we have 
 adopted the zero-point offsets of \cite{planckdust} Table 1, which were derived
  by correlating \PLANCK~857 GHz versus HI at low column density, and then by 
-correlating the other Planck channels against the corrected 857 GHz map. We 
+correlating the other \PLANCK~channels against the corrected 857 GHz map. We 
 have not altered the \verb|i100| zero-point in any way. We have also removed 
 the Solar dipole residual according to \cite{planckdust}, by subtracting a 
-dipole pattern oriented toward $(l, b) = ()$ and scaled according to their 
-Table 1.
+dipole pattern oriented toward $(l, b) = (263.99^{\circ}, 48.26^{\circ})$ and 
+scaled according to their Table 1.
 
 The offset and residual dipole parameters for \PLANCK~217 GHz were not 
 available from \cite{planckdust} Table 1. In order to set the zero-point of 
@@ -233,14 +233,14 @@ density (HI $<$ 200 K km/s), we modeled the 217 GHz map as:
 
 With $i$ denoting a single nside=64 HEALPix pixel in the maps 
 $\mathcal{I}_{857}$, $\mathcal{I}_{217}$, and $\mathcal{D}$. Here 
-$\mathcal{I}_{857}$ is the Planck 857 GHz map with zodiacal emission, compact 
+$\mathcal{I}_{857}$ is the \PLANCK~857 GHz map with zodiacal emission, compact 
 sources, and constant offset removed, smoothed to $1^{\circ}$ resolution. 
-$\mathcal{I}_{217}$ is the corresponding $1^{\circ}$ resolution Planck 217 GHz 
-map with zodiacal emission and compact sources removed. $\mathcal{D}$ is a
+$\mathcal{I}_{217}$ is the corresponding $1^{\circ}$ resolution \PLANCK~217 
+GHz map with zodiacal emission and compact sources removed. $\mathcal{D}$ is a
 scaling of the Solar dipole with unit amplitude. Because $\sim$18,000 pixels
 satisfy the low HI cut, we have an overconstrained linear model with three
-parameters: a, b, and c. $a$ represents the slope of Planck 217 GHz 
-versus Planck 857 GHz assuming they are linearly correlated, and is not
+parameters: a, b, and c. $a$ represents the slope of \PLANCK~217 GHz 
+versus \PLANCK~857 GHz assuming they are linearly correlated, and is not
 of any importance to our downstream analysis. $b$ represents the scaling of 
 the Solar dipole that makes the 857 GHz vs. 217 GHz correlation tightest, and 
 $c$ represents the constant offset necessary to make the zero level of the 217 
@@ -248,11 +248,13 @@ GHz map consistent with that of the 857 GHz map. Performing a linear least
 squares fit with uniform weights and iterative outlier rejection, we find 
 $a=4.33\times10^{-5}\ K/(MJy/sr)$, $b=-1.40\times10^{-5}\ K$, and 
 $c=8.12\times10^{-5}\ K$. Note that $b$ represents 0.42\% of the Solar dipole 
-amplitude, which is within the calibration uncertainty of the 217 GHz band. 
-Figure 1 shows scatterplots of the 857 GHz versus 217 GHz correlation before 
-and after correcting for our best-fit offset and dipole residual. Not only is 
-the improvement striking in this scatterplot, but the residual dipole also 
-appears visually well-corrected in the 217 GHz map itself.
+amplitude, which is within the calibration uncertainty of the \PLANCK~217 GHz 
+band. Figure 1 shows scatterplots of the 857 GHz versus 217 GHz correlation 
+before and after correcting for our best-fit offset and dipole residual. Not 
+only is the improvement striking in this scatterplot, but the residual dipole 
+also appears visually well-corrected in the 217 GHz map itself. Before 
+performing thermal dust fits, we therefore subtract $c$ and $b\mathcal{D}$ from
+the 217 GHz map.
 
 
 \subsection{Molecular Emission}
