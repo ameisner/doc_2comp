@@ -86,12 +86,12 @@ temperature and power law index. Physically, these two components
 represent distinct dust grain species within the ISM, specifically 
 amorphous silicates and carbonaceous grains.
 
-
+re
 The \PLANCK~2013 data release \citep{planck2013} represents an important 
 opportunity to revisit foreground predictions in light of \PLANCK's superb, 
 relatively artifact-free broadband data covering the entire sky and a wide 
 range of frequencies. \cite{planckdust} has recently conducted a study modeling
-\PLANCK~353 GHz, 545 GHz, 857 GHz and IRAS 100$\mu$m emission with a single
+\PLANCK~353 GHz, 545 GHz, 857 GHz and \IRAS~100$\mu$m emission with a single
 MBB spectrum. Here we investigate the FDS99 two-component dust emission model 
 as an alernative model for the dust spectral energy distribution (SED) composed
  of \PLANCK~and \IRAS~data. In doing so, we obtain $6.1'$ resolution maps of 
@@ -111,51 +111,34 @@ In $\S$\ref{sec:data} we discuss the data used throughout this study. In
 $\S$\ref{sec:prepro} we describe our preprocessing of the data to isolate 
 thermal emission from Galactic dust. In $\S$\ref{sec:modeling} we describe the 
 dust emission model we fit to the \PLANCK~and \IRAS~data. In 
-$\S$\ref{sec:fitting} we provide details of the Markov Chain Monte Carlo method
+$\S$\ref{sec:fitting} we provide details of the Markov chain Monte Carlo method
 with which we have estimated the parameters of our model. In 
 $\S$\ref{sec:results} we present the full-sky maps of dust temperature and 
-optical depth thus obtained, and conclude and $\S$\ref{sec:conclusion}
+optical depth thus obtained, and conclude in $\S$\ref{sec:conclusion}.
 
-
-%how what we're doing fits in
-%     where FDS99 fit in
-%     Planck data qualities that improve on data used in FDS99
-%     benefits of using Planck + FDS99 model
-%utility/applications of what we're doing
-
-%list of figures : 
-% posterior surface for some pixel, with samples from markov chain overplotted
-%    --> also overplot output best-fit (T,I545) and unctertainty estimate
-% plot for some set of pixels of SED overlaid with best-fit two-component model
-%    --> done in Python instead of IDL
-%    --> overlay 
-% plot of resulting T2 and tau
-% plots of full-sky residuals relative to our model ?
-%  ---> and for lower-frequency bands to emphasize that FDS99 is better for
-%       extrapolating towards mm wavelengths
-% zoom-in of region with interesting dust showing :
-%  SFD T map, two-component T map, Planck team one-component T map
-%      good spot is in polaris, centered on (lgal,bgal) ~ (112, 20)
-
-\section{Data}
+ \section{Data}
 \label{sec:data}
 All \PLANCK~data products utilized throughout this work are drawn from the 
-\PLANCK~2013 data release \citep{planck2013}. Specifically, we have made use 
-of the the 217 GHz, 353 GHz, 545 GHz and 857 GHz intensity maps. We use the 
-versions of these maps which have been corrected for zodiacal light 
+\PLANCK~2013 release \citep{planck2013}. Specifically, we have made use 
+of the 217 GHz, 353 GHz, 545 GHz and 857 GHz intensity maps which have been 
+corrected for zodiacal light 
 \citep[\texttt{R1.10\_nominal\_ZodiCorrected},][]{planckzodi}.
 
-%TODO: actually smooth all of the maps to a common PSF of 6.1 arcmin.
-
-To incorporate information about the dust emission on the Wien side of its 
-spectrum, we make use of 100$\mu$m data. In particular, we use the SFD 
-reprocessing of IRAS 100$\mu$m, which we will refer to as \verb|i100|, and at 
+To incorporate measurements on the Wien side of the dust emission spectrum, 
+we include 100$\mu$m data in our SED fits. In particular, we use the SFD 
+reprocessing of \IRAS~100$\mu$m, which we will refer to as \verb|i100|, and at 
 times by frequency as 3000 GHz. The \verb|i100| map has angular resolution of 
-$6.1'$. 
+$6.1'$, and was constructed so as to contain only thermal 
+emission from Galactic dust, with compact sources and zodiacal light removed, 
+and its zero level tied to HI. We use the \verb|i100| map as-is, without any 
+custom modifications.
+%maybe clarify that throughout we use SFD i100 totally as-is, with no
+% customization
+
 %list other %important characteristics of i100 e.g. that it has been 
 %zodi-corrected and relies on dirbe on scales larger than ???
 
-\section{Pre-processing}
+\section{Preprocessing}
 \label{sec:prepro}
 
 \subsection{Smoothing}
@@ -170,41 +153,27 @@ $6.1'$. The FWHM we assign to the native \PLANCK~maps is taken from
 \cite{planckbeam}, specifically $5.01'$ for 217 GHz, $4.86'$ for 353 GHz, 
 $4.84'$ for 545 GHz, and $4.63'$ for 857 GHz.
 
-\subsection{Unit Conversions}
-
-Some of the maps in native format are provided in thermodynamic $\delta T$, 
-while others are provided in units of MJy/sr. Before performing any fits, 
-we convert all measurements to MJy/sr following the guidelines of \cite{planckresponse}.
-
-%i think it's table 5 that I specifically want to cite within the ``spectral
-%response'' paper, but i need to check that those values are consistent
-% with the ones i actually used from the other document ``HFI-unit conversion 
-%and colour correction instructions v1.2''
-
 \subsection{CMB Removal}
-The CMB is effectively imperceptible at 857 GHz, but can be noticed at a 
-low level at 545 GHz, and is prominent at 217 GHz and 353 GHz relative 
-to the diffuse Galactic emission we wish to characterize, especially at high
-latitudes. To remove the CMB anisotropies, we have subtracted the SMICA model
-from each of the relevant \PLANCK~maps \citep{smica}, after appropriate unit 
-conversions. Removal of the residual Solar dipole at low frequencies is 
-discussed in $\S$\ref{sec:zp}.
+The CMB is effectively imperceptible in \PLANCK~857 GHz, but can be noticed at 
+a low level in \PLANCK~545 GHz, and is prominent in \PLANCK~217 GHz and 353 
+GHz relative to the diffuse Galactic emission we wish to characterize, 
+especially at high latitudes. To remove the CMB anisotropies, we have 
+subtracted the SMICA model from each of the relevant \PLANCK~maps 
+\citep{smica}, after appropriate unit conversions. Removal of the residual 
+Solar dipole at low frequencies is discussed in $\S$\ref{sec:zp}.
 
-\subsection{Finite Bandpass Correction}
-The thermal dust emission model of $\S$\ref{sec:modeling} predicts the 
-intensity $M_{\nu}$ in MJy/sr for any single frequency $\nu$. But in reality
-we are comparing to broad bands typically hundreds of GHz wide. The shape of 
-model spectrum $M_{\nu}$ is only dependent upon one parameter: the hot
-dust temperature $T_2$. We have therefore computed bandpass correction factors
-$b_{\nu_i}$ such that $M_{\nu_i}b_{\nu_i}$ is the predicted observation for the
-\PLANCK~or \IRAS~band of interest. We have used the \PLANCK~transmission 
-curves provided in the file \verb|HFI_RIMO_R1.10.fits| \citep{planckresponse}. 
-For 3000 GHz, we have used the \IRAS~bandpass, following the treatment of
-\cite{planckdust}. We note that it is not clear which bandpass should
-properly be considered for the IRAS/DIRBE composite 100$\mu$m maps used in 
-this analysis (here SFD \verb|i100|) and that of \cite{planckdust}.
-
-% check that RIMO file i've used is actually the most up-to-date version
+\subsection{Compact Sources}
+To mask compact sources, we use the SFD compact source mask, which was 
+originally constructed to mask point sources and resolved compact objects
+that are not part of the Galactic cirrus at 3000 GHz. Given our pixelization 
+(see $\S$\ref{sec:pix}), 1.56\% of pixels are masked. We have inspected all of 
+the maps used in this analysis and do not see any evidence that this compact 
+source mask fails to adequately mask compact sources in the \PLANCK~data. In 
+practice, we perform our dust SED fits in all pixels, even those flagged by 
+the point source mask. Compact source affected pixels can be ignored or 
+interpolated over downstream.
+%maybe say that we're releasing a version of the map with point sources
+%interpolated over by us as well
 
 \subsection{Zero-Point}
 \label{sec:zp}
@@ -260,13 +229,23 @@ squares fit with uniform weights and iterative outlier rejection, we find
 $a=4.33\times10^{-5}\ K/(MJy/sr)$, $b=-1.40\times10^{-5}\ K$, and 
 $c=8.12\times10^{-5}\ K$. Note that $b$ represents 0.42\% of the Solar dipole 
 amplitude, which is within the calibration uncertainty of the \PLANCK~217 GHz 
-band. Figure 1 shows scatterplots of the 857 GHz versus 217 GHz correlation 
-before and after correcting for our best-fit offset and dipole residual. Not 
-only is the improvement striking in this scatterplot, but the residual dipole 
-also appears visually well-corrected in the 217 GHz map itself. Before 
-performing thermal dust fits, we therefore subtract $c$ and $b\mathcal{D}$ from
-the 217 GHz map.
+band. Figure \ref{fig:scatter} shows scatterplots of the 857 GHz versus 217 
+GHz correlation before and after correcting for our best-fit offset and dipole 
+residual. Not only is the improvement striking in this scatterplot, but the 
+residual dipole also appears visually well-corrected in the 217 GHz map 
+itself. Before performing thermal dust fits, we therefore subtract $c$ and 
+$b\mathcal{D}$ from the 217 GHz map.
 
+\subsection{Unit Conversions}
+
+Some of the maps in native format are provided in thermodynamic $\delta T$, 
+while others are provided in units of MJy/sr. Before performing any fits, 
+we convert all measurements to MJy/sr following the guidelines of \cite{planckresponse}.
+
+%i think it's table 5 that I specifically want to cite within the ``spectral
+%response'' paper, but i need to check that those values are consistent
+% with the ones i actually used from the other document ``HFI-unit conversion 
+%and colour correction instructions v1.2''
 
 \subsection{Molecular Emission}
 One advantage of the FIRAS data used by FDS99 was its many narrow bins in 
@@ -284,19 +263,6 @@ emission.
 
 % for CO line list see ~/wise/pro/planck_co_lines.pro
 
-\subsection{Compact Sources}
-To mask compact sources, we use the SFD compact source mask, which was 
-originally constructed to mask point sources and resolved compact objects
-that are not part of the Galactic cirrus at 3000 GHz. Given our pixelization 
-(see $\S$\ref{sec:pix}), 1.56\% of pixels are masked. We have inspected all of 
-the maps used in this analysis and do not see any evidence that this compact 
-source mask fails to adequately mask compact sources in the \PLANCK~data. In 
-practice, we perform our dust SED fits in all pixels, even those flagged by 
-the point source mask. Compact source affected pixels can be ignored or 
-interpolated over downstream.
-%maybe say that we're releasing a version of the map with point sources
-%interpolated over by us as well
-
 \begin{figure}
 \begin{center}
 \epsfig{file=sed.eps, width=3.3in}
@@ -311,7 +277,7 @@ points were not used in the \cite{planckdust} fit.}
 \begin{center}
 \epsfig{file=posteriors.eps, width=7.0in}
 \caption{Gridded posterior PDFs for three nside=2048 pixels. Red crosses mark 
-the best-fit parameters based on our Markov Chain sampling of the posterior. 
+the best-fit parameters based on our Markov chain sampling of the posterior. 
 The posterior distributions are in general extremely well-behaved, showing
 no multimodality or other pathological qualities. Our MCMC parameter 
 estimates coincide well with the peaks in the gridded posteriors. The 
@@ -343,6 +309,9 @@ T_1 = 0.352T_2^{1.18}
 
 At each sky location, we have five independent intensity measurements (four ) 
 FDS99 found typical values for $T_2$ and 
+%basically just finish clarifying here that we want to start simple by fitting
+%only two parameters for each pixel since we only have 5 intensity
+% measurements per pixel in our baseline fits at 6.1 arcmin resoluiton
 
 \section{Fitting Procedure}
 \label{sec:fitting}
@@ -355,6 +324,22 @@ angular size $\sim$1.72$'$, defined by the HEALPix pixelization with nside=2048
 this format and this pixelization adequately samples the $6.1'$ resolution maps
 under consideration. We reiterate that each pixel is fit independently of 
 neighboring pixels.
+
+\subsection{Finite Bandpass Correction}
+The thermal dust emission model of $\S$\ref{sec:modeling} predicts the 
+intensity $M_{\nu}$ in MJy/sr for any single frequency $\nu$. But in reality
+we are comparing to broad bands typically hundreds of GHz wide. The shape of 
+model spectrum $M_{\nu}$ is only dependent upon one parameter: the hot
+dust temperature $T_2$. We have therefore computed bandpass correction factors
+$b_{\nu_i}$ such that $M_{\nu_i}b_{\nu_i}$ is the predicted observation for the
+\PLANCK~or \IRAS~band of interest. We have used the \PLANCK~transmission 
+curves provided in the file \verb|HFI_RIMO_R1.10.fits| \citep{planckresponse}. 
+For 3000 GHz, we have used the \IRAS~bandpass, following the treatment of
+\cite{planckdust}. We note that it is not clear which bandpass should
+properly be considered for the \IRAS/DIRBE composite 100$\mu$m maps used in 
+this analysis (here SFD \verb|i100|) and that of \cite{planckdust}.
+
+% check that RIMO file i've used is actually the most up-to-date version
 
 \subsection{Markov Chains}
 As explained in $\S$\ref{sec:modeling}, the two free parameters in our 
