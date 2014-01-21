@@ -130,7 +130,7 @@ reprocessing of \IRAS~100$\mu$m, which we will refer to as \verb|i100|, and at
 times by frequency as 3000 GHz. The \verb|i100| map has angular resolution of 
 $6.1'$, and was constructed so as to contain only thermal 
 emission from Galactic dust, with compact sources and zodiacal light removed, 
-and its zero level tied to HI. We use the \verb|i100| map as-is, without any 
+and its zero level tied to H\,\textsc{i}. We use the \verb|i100| map as-is, without any 
 custom modifications.
 %maybe clarify that throughout we use SFD i100 totally as-is, with no
 % customization
@@ -141,22 +141,22 @@ custom modifications.
 \section{Preprocessing}
 \label{sec:prepro}
 
-%maybe one sentence here stating that the goal of next few subsections
-%is to isolate Galactic thermal dust emission
+The following subsections detail the processing steps we have applied to 
+isolate thermal emission from Galactic dust in the \PLANCK~maps and prepare
+these maps for our joint \IRAS/\PLANCK~SED fits.
 
 \subsection{CMB Anisotropy Removal}
 \label{sec:cmb}
-In preparing the \PLANCK~maps for thermal dust SED fitting, we first addressed
-the CMB anisotropies before performing any of the interpolation/smoothing 
-described in $\S$\ref{sec:ptsrc}/$\S$\ref{sec:smth}. The CMB anisotropies are 
-effectively imperceptible in \PLANCK~857 GHz, but can be perceived at a low 
-level in \PLANCK~545 GHz, and are prominent in \PLANCK~217 GHz and 353 GHz 
-relative to the Galactic emission we wish to characterize, especially at high 
-latitudes. To remove the CMB anisotropies, we have subtracted the Spectral 
-Matching Independent Component Analysis (\verb|SMICA|) model from each of the 
-\PLANCK~maps \citep{smica}, after applying appropriate unit conversions. 
-Removal of the residual Solar dipole at low frequencies is discussed in 
-$\S$\ref{sec:zp}.
+We first addressed the CMB anisotropies before performing any of the 
+interpolation/smoothing described in $\S$\ref{sec:ptsrc}/$\S$\ref{sec:smth}. 
+The CMB anisotropies are effectively imperceptible in \PLANCK~857 GHz, but can 
+be perceived at a low level in \PLANCK~545 GHz, and are prominent in 
+\PLANCK~217 GHz and 353 GHz relative to the Galactic emission we wish to 
+characterize, especially at high latitudes. To remove the CMB anisotropies, we 
+have subtracted the Spectral Matching Independent Component Analysis 
+(\verb|SMICA|) model from each of the \PLANCK~maps \citep{smica}, after 
+applying appropriate unit conversions. Removal of the residual Solar dipole at 
+low frequencies is discussed in $\S$\ref{sec:zp}.
 % SMICA is subtracted from ALL Planck maps being used, including 545, 857 GHz
 
 \subsection{Compact Sources}
@@ -194,12 +194,13 @@ frequency, there can exist an overall, constant offset that must be subtracted
 to set the zero level of Galactic dust. Additionally, faint residuals of the 
 Solar dipole remain at low frequencies. At 353 GHz, 545 GHz, 857 GHz, we have 
 adopted the zero-point offsets of \cite{planckdust} Table 1, which were derived
- by correlating \PLANCK~857 GHz versus HI at low column density, and then by 
-correlating the other \PLANCK~channels against the corrected 857 GHz map. We 
-have not altered the \verb|i100| zero-point in any way. We have also removed 
-the Solar dipole residual according to \cite{planckdust}, by subtracting a 
-dipole pattern oriented toward $(l, b) = (263.99^{\circ}, 48.26^{\circ})$ and 
-scaled according to their Table 1.
+ by correlating \PLANCK~857 GHz versus H\,\textsc{i} at low column density, and
+then by correlating the other \PLANCK~channels against the corrected 857 GHz 
+map. We have not altered the \verb|i100| zero-point in any way. We have also 
+removed the Solar dipole residual according to \cite{planckdust}, by 
+subtracting a dipole pattern oriented toward 
+$(l, b) = (263.99^{\circ}, 48.26^{\circ})$ and scaled according to their 
+Table 1.
 
 \begin{figure}
 \begin{center}
@@ -216,7 +217,9 @@ The offset and residual dipole parameters for \PLANCK~217 GHz were not
 available from \cite{planckdust} Table 1. In order to set the zero-point of 
 Galactic emission in the 217 GHz map, we simultaneously fit the constant 
 offset and residual dipole amplitude. Restricting to regions of low column 
-density (HI $<$ 200 K km/s), we modeled the 217 GHz map as:
+density (H\,\textsc{i} $<$ 200 K km/s), we modeled the 217 GHz map as:
+
+%in previous sentence, mention the specific cut on HI velocities considered
 
 \begin{equation}
 \mathcal{I}_{217, i} = a\mathcal{I}_{857, i} + b\mathcal{D}_{i} + c
@@ -229,8 +232,8 @@ sources, and constant offset removed, smoothed to $1^{\circ}$ resolution.
 $\mathcal{I}_{217}$ is the corresponding $1^{\circ}$ resolution \PLANCK~217 
 GHz map with zodiacal emission and compact sources removed. $\mathcal{D}$ is a
 scaling of the Solar dipole with unit amplitude. Because $\sim$18,000 pixels
-satisfy the low HI cut, we have an overconstrained linear model with three
-parameters: a, b, and c. $a$ represents the slope of \PLANCK~217 GHz 
+satisfy the low H\,\textsc{i} cut, we have an overconstrained linear model with
+three parameters: a, b, and c. $a$ represents the slope of \PLANCK~217 GHz 
 versus \PLANCK~857 GHz assuming they are linearly correlated, and is not
 of any importance to our downstream analysis. $b$ represents the scaling of 
 the Solar dipole that makes the 857 GHz vs. 217 GHz correlation tightest, and 
@@ -242,16 +245,17 @@ $c=8.12\times10^{-5}\ K$. Note that $b$ represents 0.42\% of the Solar dipole
 amplitude, which is within the calibration uncertainty of the \PLANCK~217 GHz 
 band. Figure \ref{fig:scatter} shows scatterplots of the 857 GHz versus 217 
 GHz correlation before and after correcting for our best-fit offset and dipole 
-residual. Not only is the improvement striking in this scatterplot, but the 
-residual dipole also appears visually well-corrected in the 217 GHz map 
-itself. Before performing thermal dust fits, we therefore subtract $c$ and 
+residual. Not only is the improved correlation striking in this scatterplot, 
+but the residual dipole also appears visually well-corrected in the 217 GHz 
+map itself. Before performing thermal dust fits, we therefore subtract $c$ and 
 $b\mathcal{D}$ from the 217 GHz map.
 
 \subsection{Unit Conversions}
 
 Some of the maps in native format are provided in thermodynamic $\delta T$, 
 while others are provided in units of MJy/sr. Before performing any fits, 
-we convert all measurements to MJy/sr following the guidelines of \cite{planckresponse}.
+we convert all measurements to MJy/sr following the guidelines of 
+\cite{planckresponse}.
 
 %i think it's table 5 that I specifically want to cite within the ``spectral
 %response'' paper, but i need to check that those values are consistent
@@ -347,8 +351,8 @@ $b_{\nu_i}$ such that $M_{\nu_i}b_{\nu_i}$ is the predicted observation for the
 curves provided in the file \verb|HFI_RIMO_R1.10.fits| \citep{planckresponse}. 
 For 3000 GHz, we have used the \IRAS~bandpass, following the treatment of
 \cite{planckdust}. We note that it is not clear which bandpass should
-properly be considered for the \IRAS/DIRBE composite 100$\mu$m maps used in 
-this analysis (here SFD \verb|i100|) and that of \cite{planckdust}.
+properly be ascribed to the \IRAS/DIRBE composite 100$\mu$m maps under
+consideration. % (here SFD \verb|i100|) and that of \cite{planckdust}).
 
 % check that RIMO file i've used is actually the most up-to-date version
 
