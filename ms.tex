@@ -141,28 +141,26 @@ custom modifications.
 \section{Preprocessing}
 \label{sec:prepro}
 
-\subsection{Smoothing}
-We wish to simultaneously fit \verb|i100| along with four \PLANCK~bands. To 
-properly combine these maps, they must have the same point spread function 
-(PSF). \verb|i100|, with its $6.1'$ symmetric Gaussian PSF, is the 
-lowest-resolution map we have included. To match PSFs, we have therefore 
-smoothed each of the \PLANCK~maps under consideration to $6.1'$ resolution by 
-considering each native map to have a symmetric Gaussian beam and smoothing by 
-the appropriate symmetric Gaussian such that the resulting map has a FWHM of 
-$6.1'$. The FWHM we assign to the native \PLANCK~maps is taken from 
-\cite{planckbeam}, specifically $5.01'$ for 217 GHz, $4.86'$ for 353 GHz, 
-$4.84'$ for 545 GHz, and $4.63'$ for 857 GHz.
+%maybe one sentence here stating that the goal of next few subsections
+%is to isolate Galactic thermal dust emission
 
-\subsection{CMB Removal}
-The CMB is effectively imperceptible in \PLANCK~857 GHz, but can be noticed at 
-a low level in \PLANCK~545 GHz, and is prominent in \PLANCK~217 GHz and 353 
-GHz relative to the diffuse Galactic emission we wish to characterize, 
-especially at high latitudes. To remove the CMB anisotropies, we have 
-subtracted the SMICA model from each of the relevant \PLANCK~maps 
-\citep{smica}, after appropriate unit conversions. Removal of the residual 
-Solar dipole at low frequencies is discussed in $\S$\ref{sec:zp}.
+\subsection{CMB Anisotropy Removal}
+\label{sec:cmb}
+In preparing the \PLANCK~maps for thermal dust SED fitting, we first addressed
+the CMB anisotropies before performing any of the interpolation/smoothing 
+described in $\S$\ref{sec:ptsrc}/$\S$\ref{sec:smth}. The CMB anisotropies are 
+effectively imperceptible in \PLANCK~857 GHz, but can be perceived at a low 
+level in \PLANCK~545 GHz, and are prominent in \PLANCK~217 GHz and 353 GHz 
+relative to the Galactic emission we wish to characterize, especially at high 
+latitudes. To remove the CMB anisotropies, we have subtracted the Spectral 
+Matching Independent Component Analysis (\verb|SMICA|) model from each of the 
+\PLANCK~maps \citep{smica}, after applying appropriate unit conversions. 
+Removal of the residual Solar dipole at low frequencies is discussed in 
+$\S$\ref{sec:zp}.
+% SMICA is subtracted from ALL Planck maps being used, including 545, 857 GHz
 
 \subsection{Compact Sources}
+\label{sec:ptsrc}
 To mask compact sources, we use the SFD compact source mask, which was 
 originally constructed to mask point sources and resolved compact objects
 that are not part of the Galactic cirrus at 3000 GHz. Given our pixelization 
@@ -174,6 +172,19 @@ the point source mask. Compact source affected pixels can be ignored or
 interpolated over downstream.
 %maybe say that we're releasing a version of the map with point sources
 %interpolated over by us as well
+
+\subsection{Smoothing}
+\label{sec:smth}
+We wish to simultaneously fit \verb|i100| along with the four 
+highest-frequency \PLANCK~bands. To properly combine these maps, they must have
+ the same point spread function (PSF). \verb|i100|, with its $6.1'$ symmetric 
+Gaussian PSF, is the lowest-resolution map we have included. To match PSFs, we 
+have therefore smoothed each of the \PLANCK~maps under consideration to $6.1'$ 
+resolution by considering each native map to have a symmetric Gaussian beam and
+ smoothing by the appropriate symmetric Gaussian such that the resulting map 
+has a FWHM of $6.1'$. The FWHM we assign to the native \PLANCK~maps is taken 
+from \cite{planckbeam}, specifically $5.01'$ for 217 GHz, $4.86'$ for 353 GHz, 
+$4.84'$ for 545 GHz, and $4.63'$ for 857 GHz.
 
 \subsection{Zero-Point}
 \label{sec:zp}
