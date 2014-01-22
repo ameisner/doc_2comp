@@ -251,12 +251,12 @@ $b\mathcal{D}$ from the 217 GHz map.
 
 \subsection{Unit Conversions}
 
-The \PLANCK~217 GHz and 353 GHz data are provided in thermodynamic $\delta T$, 
-while \verb|i100| and the higher frequency \PLANCK~maps are provided in units 
-of MJy/sr. Although the aforementioned preprocessing steps were conducted with 
-each map in its native units, we converted the 217 GHz and 353 GHz 
-measurements to MJy/sr according to \cite{planckresponse} prior to performing 
-SED fits.
+The \PLANCK~217 GHz and 353 GHz data are provided in units of thermodynamic 
+$\delta T$, while \verb|i100| and the higher frequency \PLANCK~maps are 
+provided in units of MJy/sr. Although the aforementioned preprocessing steps 
+were conducted with each map in its native units, we converted the 217 GHz and 
+353 GHz measurements to MJy/sr according to \cite{planckresponse} prior to 
+performing SED fits.
 
 %i think it's table 6 that I specifically want to cite within the ``spectral
 %response'' paper, but i need to check that those values are consistent
@@ -336,16 +336,18 @@ $T_2$ and
 \section{Fitting Procedure}
 \label{sec:fitting}
 
+% sentence here summarizing what the following subsections will describe ?
+
 \subsection{Pixelization}
 \label{sec:pix}
-For the purpose of fitting, we break the sky into independent pixels of 
-angular size $\sim$1.72$'$, defined by the HEALPix pixelization with nside=2048
-\citep{healpix}. This is convenient because the Planck maps are provided in 
-this format and this pixelization adequately samples the $6.1'$ resolution maps
-under consideration. We reiterate that each pixel is fit independently of 
-neighboring pixels.
-
-%mention that we're using healpix in Galactic coordinates !!!!!!
+For the purpose of fitting, we break the sky into $\sim$50 million 
+non-overlapping pixels of angular size $\sim$1.72$'$, defined by the HEALPix 
+pixelization in Galactic coordinates, with $N_{side}$=2048 \citep{healpix}. 
+This pixelization is convenient because it is the same format in which the 
+\PLANCK~HFI maps were released, and because it adequately samples the $6.1'$ 
+resolution maps under consideration. Our procedure will fit the intensity 
+measurements in each spatial pixel independently of those in neighboring 
+pixels.
 
 \subsection{Finite Bandpass Correction}
 The thermal dust emission model of $\S$\ref{sec:modeling} predicts the 
