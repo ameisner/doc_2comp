@@ -161,17 +161,24 @@ low frequencies is discussed in $\S$\ref{sec:zp}.
 
 \subsection{Compact Sources}
 \label{sec:ptsrc}
-To mask compact sources, we use the SFD compact source mask, which was 
-originally constructed to mask point sources and resolved compact objects
-that are not part of the Galactic cirrus at 3000 GHz. Given our pixelization 
-(see $\S$\ref{sec:pix}), 1.56\% of pixels are masked. We have inspected all of 
-the maps used in this analysis and do not see any evidence that this compact 
-source mask fails to adequately mask compact sources in the \PLANCK~data. In 
-practice, we perform our dust SED fits in all pixels, even those flagged by 
-the point source mask. Compact source affected pixels can be ignored or 
-interpolated over downstream.
-%maybe say that we're releasing a version of the map with point sources
-%interpolated over by us as well
+%start by mentioning that SFD removed compact sources (outside of b +/- 5)
+After subtracting the \verb|SMICA| CMB model, we next proceeded to interpolate 
+over compact sources, including both point sources and resolved galaxies. 
+Removing compact sources at this stage is important as it prevents 
+contamination of compact-source-free pixels in our downstream analyses which 
+require smoothing of the \PLANCK~maps. SFD carefully removed point sources and 
+galaxies from the \verb|i100| map everywhere outside of 
+$|b|$$<$$5^{\circ}$. We do not perform any further modifications of the 
+\verb|i100| map to account for compact sources. To mask compact sources in the 
+\PLANCK~maps, we use the SFD compact source mask, which was originally 
+constructed to mask point sources and resolved compact objects that are not 
+part of the Galactic cirrus at 3000 GHz. Given our pixelization (see 
+$\S$\ref{sec:pix}), 1.56\% of pixels are masked. 
+
+%this compact source section still needs a lot of work
+
+% probably best to refer to an appendix for details of the point source
+% masking
 
 \subsection{Smoothing}
 \label{sec:smth}
