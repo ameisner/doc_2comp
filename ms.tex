@@ -204,7 +204,7 @@ Table 1.
 
 \begin{figure}
 \begin{center}
-\epsfig{file=scatter_857_217.eps, width=3.3in}
+\epsfig{file=scatter_857_217.eps, width=3.4in}
 \caption{\label{fig:scatter} Scatter plot of \PLANCK~217 GHz versus \PLANCK~857
 GHz. Left: before correcting for offset and residual Solar dipole. Right: after
 correcting or the best-fit offset and dipole amplitude, as described in 
@@ -217,9 +217,8 @@ The offset and residual dipole parameters for \PLANCK~217 GHz were not
 available from \cite{planckdust} Table 1. In order to set the zero-point of 
 Galactic emission in the 217 GHz map, we simultaneously fit the constant 
 offset and residual dipole amplitude. Restricting to regions of low column 
-density (H\,\textsc{i} $<$ 200 K km/s), we modeled the 217 GHz map as:
-
-%in previous sentence, mention the specific cut on HI velocities considered
+density (H\,\textsc{i} $<$ 200 K km/s for $-72$$<$$v_{LSR}$$<$$+25$ km/s), we 
+modeled the 217 GHz map as:
 
 \begin{equation}
 \mathcal{I}_{217, i} = a\mathcal{I}_{857, i} + b\mathcal{D}_{i} + c
@@ -252,12 +251,14 @@ $b\mathcal{D}$ from the 217 GHz map.
 
 \subsection{Unit Conversions}
 
-Some of the maps in native format are provided in thermodynamic $\delta T$, 
-while others are provided in units of MJy/sr. Before performing any fits, 
-we convert all measurements to MJy/sr following the guidelines of 
-\cite{planckresponse}.
+The \PLANCK~217 GHz and 353 GHz data are provided in thermodynamic $\delta T$, 
+while \verb|i100| and the higher frequency \PLANCK~maps are provided in units 
+of MJy/sr. Although the aforementioned preprocessing steps were conducted with 
+each map in its native units, we converted the 217 GHz and 353 GHz 
+measurements to MJy/sr according to \cite{planckresponse} prior to performing 
+SED fits.
 
-%i think it's table 5 that I specifically want to cite within the ``spectral
+%i think it's table 6 that I specifically want to cite within the ``spectral
 %response'' paper, but i need to check that those values are consistent
 % with the ones i actually used from the other document ``HFI-unit conversion 
 %and colour correction instructions v1.2''
