@@ -19,7 +19,8 @@
 
 \begin{document}
 
-\title{Two-component thermal dust emission model: application to the {\it PLANCK} HFI maps}
+\title{Two-component thermal dust emission model: application to the 
+{\it PLANCK} HFI maps}
 \author{Aaron M. Meisner\altaffilmark{1,2}}
 \author{Douglas P. Finkbeiner\altaffilmark{1,2}}
 \altaffiltext{1}{Department of Physics, Harvard University, 17 Oxford Street, 
@@ -158,6 +159,8 @@ have subtracted the Spectral Matching Independent Component Analysis
 applying appropriate unit conversions. Removal of the residual Solar dipole at 
 low frequencies is discussed in $\S$\ref{sec:zp}.
 % SMICA is subtracted from ALL Planck maps being used, including 545, 857 GHz
+% WHAT IS THE ANGULAR RESOLUTION OF THE SMICA MAP, AND IS IT EVEN
+% WELL-DEFINED??
 
 \subsection{Compact Sources}
 \label{sec:ptsrc}
@@ -224,8 +227,8 @@ The offset and residual dipole parameters for \PLANCK~217 GHz were not
 available from \cite{planckdust} Table 1. In order to set the zero-point of 
 Galactic emission in the 217 GHz map, we simultaneously fit the constant 
 offset and residual dipole amplitude. Restricting to regions of low column 
-density (H\,\textsc{i} $<$ 200 K km/s for $-72$$<$$v_{LSR}$$<$$+25$ km/s), we 
-modeled the 217 GHz map as:
+density (H\,\textsc{i} $<$ 200 K\,km\,s$^{-1}$ for $-72$$<$$v_{LSR}$$<$$+25$ 
+km\,s$^{-1}$), we modeled the 217 GHz map as:
 
 \begin{equation}
 \mathcal{I}_{217, i} = a\mathcal{I}_{857, i} + b\mathcal{D}_{i} + c
@@ -364,14 +367,14 @@ however, we wish to constrain our model using measurements in the broad
 computed dimensionless bandpass correction factors $b_{\nu_i}$ such that 
 $M_{\nu_i}b_{\nu_i}$ is the predicted observation for the \PLANCK~or \IRAS~band
  of interest, in MJy/sr. Here $\nu_i$ represents the $i^{th}$ of the five 
-nominal band center frequencies for which we have measurements, $\nu_i \in$
-\{217, 353, 545, 857, 3000\} GHz. The shape of model spectrum $M_{\nu}$ is only
-dependent upon one parameter: the hot dust temperature $T_2$. We have used the 
-\PLANCK~transmission curves provided in the file 
-\verb|HFI_RIMO_R1.10.fits| \citep{planckresponse}. For 3000 GHz, we have 
-used the \IRAS~bandpass, following the treatment of \cite{planckdust}. We note 
-that it is not clear which bandpass should properly be ascribed to the 
-\IRAS/DIRBE composite 100$\mu$m maps under consideration. 
+nominal band center frequencies for which we have broadband measurements, 
+$\nu_i \in$ \{217, 353, 545, 857, 3000\} GHz. The shape of model spectrum 
+$M_{\nu}$ is only dependent upon one parameter: the hot dust temperature $T_2$.
+ We have used the \PLANCK~transmission curves provided in the file 
+\verb|HFI_RIMO_R1.10.fits| \citep{planckresponse}. For 3000 GHz, we have used 
+the \IRAS~bandpass, following the treatment of \cite{planckdust}. We note that 
+it is not clear which bandpass should properly be ascribed to the \IRAS/DIRBE 
+composite 100$\mu$m maps under consideration. 
 % (here SFD \verb|i100|) and that of \cite{planckdust}).
 
 % introduce nu_i notation in above paragraph with some mention of what it
@@ -388,6 +391,11 @@ model SED in MJy/sr at $\nu$ = 545 GHz. For each pixel, we run a
 Metropolis-Hastings Markov chain sampling the posterior probability as a 
 function of the two parameters $T_2$ and $\tilde{I}_{545}$. For each pixel, we 
 are sampling the posterior given by:
+
+% check whether I545 normalization parameter is the monochromatic
+% 545 GHz intensity, or if it is for the Planck bandpass
+% i think it should eventually be monochromatic, since that will be
+% more useful to people who want SED predictions
 
 \begin{equation}
 P(\tilde{I}_{545}, T_2|\{I\}) \propto \mathcal{L}(\{I\}|\tilde{I}_{545}, T_2)P(T_2)
@@ -407,6 +415,9 @@ given by:
 \begin{equation}
 \sigma_{\nu_i} = \sqrt{c^2_{\nu_i}I^2_{\nu_i} + c^2_{\nu_i}CMB^2_{\nu_i} + (\delta O_{\nu_i})^2 + n^2_{\nu_i}}
 \end{equation}
+
+% is I_nu on RHS inclusive of offsets or is it the ``pure'' thermal dust
+% intensity
 
 This error budget is the same as that of \cite{planckdust} Equation 7. 
 $c_{\nu_i}$ is the multiplicative calibration uncertainty for the intensity in 
@@ -455,6 +466,10 @@ each parameter's variance, $\sigma^2_{T_2}$ = $\langle T^2_{2, j} \rangle-\langl
 \label{sec:results}
 
 \subsection{Calculating $\tau$}
+
+%at some point in this should make statements re: the fact that in terms
+%of predicting *emission* the conversion to tau is unnecessary and
+%and actually the raw uncertainty on Ghz 545 amplitude is the relevant quantity
 
 \subsection{Data Release}
 We are releasing nside=2048 HEALPix maps in Galactic coordinates summarizing 
