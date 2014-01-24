@@ -10,6 +10,7 @@
 \newcommand{\PLANCK}{{\it Planck}}
 \newcommand{\AKARI}{{\it Akari}}
 \newcommand{\COBE}{{\it COBE}}
+\newcommand{\WISE}{{\it WISE}}
 
 \bibpunct{(}{)}{;}{a}{}{,} 
  
@@ -64,7 +65,6 @@ of the cosmic microwave background (CMB).
 %specify ``low frequency more precisely eventually
 % somewhere mention re-radiation
 
-%basic background about interstellar dust emission
 Over the past decades, satellite observations have dramatically enhanced our
 knowledge about infrared emission from the ISM. The \textit{Infrared Astronomy 
 Satellite} (\IRAS), with its $\sim$4$'$ resolution, revolutionized the study of
@@ -72,20 +72,28 @@ Satellite} (\IRAS), with its $\sim$4$'$ resolution, revolutionized the study of
 using 60$\mu$m and 100$\mu$m observations \citep{low84, wheelock94}. Later, the
 Diffuse Infrared Background Experiment (DIRBE) aboard the \COBE~satellite 
 provided complementary full-sky measurements at ten infrared wavelengths from 
-1.25$\mu$m to 240$\mu$m with inferior 0.7$^{\circ}$ angular resolution, but 
-with a reliable zero point \citep{boggess92}. \COBE/FIRAS \citep{firas} also 
-provided full-sky infrared dust spectra at $7^{\circ}$ resolution in 213 narrow
-frequency bins between 30 GHz and 2850 GHz.
+1.25$\mu$m to 240$\mu$m, boasting a reliable zero point despite inferior 
+$\sim$0.7$^{\circ}$ angular resolution \citep{boggess92}. \COBE/FIRAS 
+\citep{firas} also provided full-sky infrared dust spectra at $7^{\circ}$ 
+resolution in 213 narrow frequency bins between 30 GHz and 2850 GHz.
 
-\citet[hereafter FDS99]{FDS99} used FIRAS data to derive a globally best-fit 
-model of dust emission applicable over a very broad range of frequencies. 
-FDS99 showed that no model consisting of a single modified blackbody (MBB) 
-could accurately match the \IRAS/FIRAS/DIRBE spectrum at both the Wien and 
-Rayleigh-Jeans extremes. To fit both ends of the spectrum, FDS99 therefore 
-proposed a dust emission model consisting of two MBBs, each with a different 
-temperature and power law index. Physically, these two components might 
-represent distinct dust grain species within the ISM, namely amorphous 
-silicates and carbonaceous grains.
+% DIRBE beam solid angles:
+% http://lambda.gsfc.nasa.gov/product/cobe/dirbe_products.cfm
+
+\citet[hereafter FDS99]{FDS99} used these FIRAS data to derive a globally 
+best-fit model of dust emission applicable over a very broad range of 
+frequencies. FDS99 showed that no model consisting of a single modified 
+blackbody (MBB) could accurately match the FIRAS/DIRBE spectrum at both the 
+Wien and Rayleigh-Jeans extremes. To fit the thermal dust spectrum between 100 
+and 3000 GHz, FDS99 therefore proposed an emission model consisting of two 
+MBBs, each with a different temperature and emissivity power law index. 
+Physically, these two components might represent distinct dust grain species 
+within the ISM, namely amorphous silicates and carbonaceous grains.
+
+% ^^final sentence about what FDS99 meant for foreground predictions (and how
+% those predictions actually worked)
+
+%did FDS99 actually use DIRBE (pretty sure they did)
 
 % FDS used 100 GHz to 3000 GHz in their two-component fits
 %mention which grain species is large vs. small
@@ -108,10 +116,11 @@ predictions of dust emission over a very broad range of wavelengths. This
 includes low frequencies ($<$350 GHz), which \cite{planckdust} caution their 
 model may not adequately fit, and also measurements near the peak of the dust 
 SED, for example \AKARI~140-160$\mu$m \citep{akari}. We also anticipate our 
-derived optical depth map will serve as a useful comparison for extinction 
-estimates based directly upon optical/NIR observations of stars. % and as
-% a baseline or a next generation dust extinction map incorporating
-% high resolution, fulls-sky infrared data sets such as WISE and Akari.
+derived optical depth map will serve as a useful cross-check for extinction 
+estimates based directly upon optical observations of stars
+\citep[e.g.][]{green14} and as a baseline for next-generation dust extinction 
+maps incorporating high-resolution, full-sky infrared data sets such as 
+\WISE~\citep{wright10, meisner14} and \AKARI.
 
 %would be nice if i had a citation here for Eddie/Greg pan-starrs dust stuff
 
