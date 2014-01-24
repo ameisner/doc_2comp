@@ -359,10 +359,15 @@ T_1 = 0.352T_2^{1.18}
 %into pixels, each with 5 SED measurements, and that with this small
 %number of constraints per pixel, it makes sense to have a baseline
 % fit at full resolution that has only two free parameters
-At each sky location, our baseline fit at the full $6.1'$ resolution 
-incorporates only five independent intensity measurements (\verb|i100| along 
-with the four highest-frequency \PLANCK~bands). FDS99 found typical values for 
-$T_2$ and 
+FDS99 found $T_2 \approx 16.2$K, $T_1 \approx 9.4$K to be typical at 
+high-latitude. In the present formulation, there are only two free parameters 
+to describe an observed SED: the hot dust temperature $T_2$ and the 
+normalization of $M_{\nu}$. In principle, we could allow additional parameters,
+ such as $f_1$ and the ratio $q_1/q_2$, to vary. However the number of free 
+parameters in our baseline fit at the full $6.1'$ resolution is limited by the 
+fact that, for each sky location, the observed SED contains only five 
+independent intensity measurements (\verb|i100| along with the four 
+highest-frequency \PLANCK~bands).
 
 %basically just finish clarifying here that we want to start simple by fitting
 %only two parameters for each pixel since we only have 5 intensity
