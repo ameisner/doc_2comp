@@ -29,20 +29,21 @@ Cambridge, MA 02138, USA; ameisner@fas.harvard.edu}
 Cambridge, MA 02138, USA; dfinkbeiner@cfa.harvard.edu}
 
 \begin{abstract}
-We present full-sky maps of dust optical depth and temperature derived by 
-fitting the \cite{FDS99} two-component dust emission model to
-\PLANCK~217, 353, 545, 857 GHz and \cite{SFD} \IRAS~100$\mu$m data. Both the 
-optical depth and temperature maps have angular resolution of $6.1'$. Such maps
- serve as an important alternative to and comparison for other dust 
-emission models, especially the single modified blackbody (MBB) model in which 
-$\beta$ and $T$ both vary spatially. We also expect the derived optical 
-depth to provide valuable cross-checks for other dust-column related data 
-products, specifically the \cite{SFD} map, which assumed 
-$\beta = 2$ single-component dust emission and included a temperature map of 
-inferior $\sim$$1.3^{\circ}$ resolution. We briefly compare our 
-best-fit two-component spectral energy distributions to those of the 
-\cite{planckdust} single-component parametrization.
-%mention the enhanced temperature resolution relative to SFD
+We present full-sky, $6.1'$ resolution maps of dust optical depth and 
+temperature derived by fitting the \cite{FDS99} two-component dust emission 
+model to \PLANCK~217, 353, 545, and 857 GHz, along with \cite{SFD} 
+\IRAS~100$\mu$m data. These maps serve as an important alternative to and 
+point of comparison for other dust emission models, especially the single 
+modified blackbody model in which both the emissivity power law index and dust 
+temperature vary continuously. We also expect the derived optical depth to 
+provide valuable cross-checks for other dust-column related data products, 
+specifically the \cite{SFD} map, which assumed a single modified blackbody 
+with $\nu^2$ emissivity and included a temperature map of inferior 
+$\sim$$1.3^{\circ}$ resolution. We compare our best-fit two-component spectral 
+energy distributions to those of the \cite{planckdust} single-component 
+parametrization.
+%MENTION USE IN MAKING IR FOREGROUND PREDICTIONS
+%mention more explicitly the enhanced temperature resolution relative to SFD??
 %Our optical depth map will also provide a useful reference for dust maps 
 %based on stellar colors rather than infrared emission.
 \end{abstract}
@@ -75,45 +76,52 @@ provided complementary full-sky measurements at ten infrared wavelengths from
 1.25$\mu$m to 240$\mu$m with inferior 0.7$^{\circ}$ angular resolution, but 
 with a reliable zero point \citep{boggess92}. \COBE/FIRAS \citep{firas} also 
 provided full-sky infrared dust spectra at $7^{\circ}$ resolution in 213 narrow
-frequency bins between 200 GHz and 2100 GHz.
+frequency bins between 30 GHz and 2850 GHz.
 
-\cite{FDS99} (hereafter FDS99) used FIRAS data to derive a globally best-fit 
+\citet[hereafter FDS99]{FDS99} used FIRAS data to derive a globally best-fit 
 model of dust emission applicable over a very broad range of frequencies. 
-FDS99 showed that a model consisting of a single MBB with power law index 
-$\beta$ could not accurately match the \IRAS/FIRAS/DIRBE spectrum at both the 
-Wien and Rayleigh-Jeans extremes. To fit both ends of the spectrum, FDS99 
-proposed a dust emission model consisting of two MBBs, each with a different
-temperature and power law index. Physically, these two components
-represent distinct dust grain species within the ISM, specifically 
-amorphous silicates and carbonaceous grains.
+FDS99 showed that no model consisting of a single modified blackbody (MBB) 
+could accurately match the \IRAS/FIRAS/DIRBE spectrum at both the Wien and 
+Rayleigh-Jeans extremes. To fit both ends of the spectrum, FDS99 therefore 
+proposed a dust emission model consisting of two MBBs, each with a different 
+temperature and power law index. Physically, these two components might 
+represent distinct dust grain species within the ISM, namely amorphous 
+silicates and carbonaceous grains.
 
-re
+% FDS used 100 GHz to 3000 GHz in their two-component fits
+%mention which grain species is large vs. small
+
+% should mention somewhere (probably in above paragraph, the range of
+% frequencies over which FDS99 model was shown to be applicable
+
 The \PLANCK~2013 data release \citep{planck2013} represents an important 
 opportunity to revisit foreground predictions in light of \PLANCK's superb, 
 relatively artifact-free broadband data covering the entire sky and a wide 
 range of frequencies. \cite{planckdust} has recently conducted a study modeling
 \PLANCK~353 GHz, 545 GHz, 857 GHz and \IRAS~100$\mu$m emission with a single
 MBB spectrum. Here we investigate the FDS99 two-component dust emission model 
-as an alernative model for the dust spectral energy distribution (SED) composed
- of \PLANCK~and \IRAS~data. In doing so, we obtain $6.1'$ resolution maps of 
-dust temperature and optical depth. Because we employ a model that has been 
-validated with FIRAS data down to sub-mm wavelengths, we expect our best-fit 
-parameters to be useful in constructing high-resolution predictions of dust 
-emission over a very broad range of wavelengths. This includes low frequencies 
-($<$350 GHz), which \cite{planckdust} caution their model may not adequately 
-fit, and also measurements near the peak of the dust SED, for example 
-\AKARI~140-160$\mu$m \citep{akari}. We also anticipate our derived optical 
-depth map will serve as a useful comparison for extinction estimates based 
-directly upon optical/NIR observations of stars.
+as an alernative parametrization for the dust spectral energy distribution 
+(SED) composed  of \PLANCK~and \IRAS~data. In doing so, we obtain $6.1'$ 
+resolution maps of dust temperature and optical depth. Because we employ a 
+model that has been validated with FIRAS data down to sub-mm wavelengths, we 
+expect our best-fit parameters to be useful in constructing high-resolution 
+predictions of dust emission over a very broad range of wavelengths. This 
+includes low frequencies ($<$350 GHz), which \cite{planckdust} caution their 
+model may not adequately fit, and also measurements near the peak of the dust 
+SED, for example \AKARI~140-160$\mu$m \citep{akari}. We also anticipate our 
+derived optical depth map will serve as a useful comparison for extinction 
+estimates based directly upon optical/NIR observations of stars. % and as
+% a baseline or a next generation dust extinction map incorporating
+% high resolution, fulls-sky infrared data sets such as WISE and Akari.
 
 %would be nice if i had a citation here for Eddie/Greg pan-starrs dust stuff
 
-In $\S$\ref{sec:data} we discuss the data used throughout this study. In 
-$\S$\ref{sec:prepro} we describe our preprocessing of the data to isolate 
-thermal emission from Galactic dust. In $\S$\ref{sec:modeling} we describe the 
-dust emission model we fit to the \PLANCK~and \IRAS~data. In 
-$\S$\ref{sec:fitting} we provide details of the Markov chain Monte Carlo method
-with which we have estimated the parameters of our model. In 
+In $\S$\ref{sec:data} we introduce the data used throughout this study. In 
+$\S$\ref{sec:prepro} we describe our preprocessing of the \PLANCK~maps to 
+isolate thermal emission from Galactic dust. In $\S$\ref{sec:modeling} we 
+describe the dust emission model we fit to the \PLANCK~and \IRAS~data. In 
+$\S$\ref{sec:fitting} we provide details of the Markov chain Monte Carlo (MCMC)
+ method with which we have estimated the parameters of our model. In 
 $\S$\ref{sec:results} we present the full-sky maps of dust temperature and 
 optical depth thus obtained, and conclude in $\S$\ref{sec:conclusion}.
 
@@ -334,6 +342,11 @@ temperatures are further related by:
 T_1 = 0.352T_2^{1.18}
 \end{equation}
 
+%the below statements seem like they might best be moved to a generic
+%opening of the next section, stating our philosophy of breaking sky
+%into pixels, each with 5 SED measurements, and that with this small
+%number of constraints per pixel, it makes sense to have a baseline
+% fit at full resolution that has only two free parameters
 At each sky location, our baseline fit at the full $6.1'$ resolution 
 incorporates only five independent intensity measurements (\verb|i100| along 
 with the four highest-frequency \PLANCK~bands). FDS99 found typical values for 
@@ -437,6 +450,9 @@ data is noisy, we include a prior on $T_2$:
 \begin{equation}
 P(T_2) = \mathcal{N}(T_2|\bar{T}_2, \sigma_{\bar{T}_2})
 \end{equation}
+
+% maybe have a section justifying the T2 prior value of 16.2K, presumably using
+% FIRAS as a cross-check?
 
 With $\bar{T}_2$ = 16.2 K and $\sigma_{\bar{T}_2}$ = 1.4 K. In practice we 
 always perform computations using the logarithm of relevant probabilities.
