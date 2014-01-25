@@ -443,7 +443,7 @@ For each pixel, the errors on each intensity measurement $\sigma_{\nu_i}$ are
 given by:
 
 \begin{equation}
-\sigma_{\nu_i} = \sqrt{c^2_{\nu_i}I^2_{\nu_i} + c^2_{\nu_i}CMB^2_{\nu_i} + (\delta O_{\nu_i})^2 + n^2_{\nu_i}}
+\sigma_{\nu_i}(p) = \sqrt{c^2_{\nu_i}I_{\nu_i}(p)^2 + c^2_{\nu_i}CMB(p)^2 + (\delta O_{\nu_i})^2 + n_{\nu_i}(p)^2}
 \end{equation}
 
 % is I_nu on RHS inclusive of offsets or is it the ``pure'' thermal dust
@@ -495,10 +495,51 @@ $\langle T_{2, j} \rangle$, $I_{545}$ = $\langle I_{545, j} \rangle$, and of
 each parameter's variance, $\sigma^2_{T_2}$ = $\langle T^2_{2, j} \rangle-\langle T_{2, j} \rangle ^2$ and $\sigma^2_{I_{545}}$=$\langle I^2_{545, j} 
 \rangle-\langle I_{545, j} \rangle ^2$
 
+\subsection{Low Resolution Fits}
+%mention that the pixelization changes ---> to lower HEALpix nside
+%mention that over some region of the sky with high signal and high
+%S/N we try fitting t2, normalization and one of q1/q2, f_1
+%using more bands (including 143, and maybe 100 GHz)
+
+\section{Systematics}
+
+\subsection{CIBA}
+Perhaps the dominant limitation of our fits is the presence of cosmic
+infrared background anisotropies (CIBA) bleeding through into our maps of 
+Galactic dust temperature and optical depth in high-latitude regions 
+\citep{ciba}.
+\subsubsection{Simulations}
+
+\subsubsection{Optimizing Relative Weights}
+
+%not sure if below subsection is necessary, idea of giving zero weight to 217 
+%GHz may belong in above subsection
+
+%\subsubsection{Omitting 217 GHz}
+%The \cite{planckdust} result used only 353, 545, 857, and 3000 GHz. When we 
+%repeat our analysis ignoring 217 GHz, so that we are using the same
+%set of frequencies, we find that no major changes arise. This actually
+%should be done/investigated though.
+
+\subsection{Zero Point}
+Simulate the effect of getting zero points wrong to quantiy this
+systematic a bit.
+
+\subsection{$T_{2}$ Prior}
+Use FIRAS data to justify $T_2$ prior.
+
+\subsection{Other Limitations}
+\IRAS~is missing in some parts of sky which will therefore not truly have 6.1' 
+resolution.
+%any other miscellaneous issues?
+
 \section{Results}
 \label{sec:results}
 
 \subsection{Calculating $\tau$}
+
+% this subsection should probably be moved to the ``dust emission model'' 
+% section of the paper eventually
 
 %at some point in this should make statements re: the fact that in terms
 %of predicting *emission* the conversion to tau is unnecessary and
@@ -508,18 +549,12 @@ each parameter's variance, $\sigma^2_{T_2}$ = $\langle T^2_{2, j} \rangle-\langl
 We are releasing nside=2048 HEALPix maps in Galactic coordinates summarizing 
 the results of of our two-component dust fits.
 
+%software utilities
 %provide maps at multiple different nsides ?
 %   -> if so, actually smooth the maps before rebinning, or leave 
 %      undersampled?
 % provide uncertainty maps for tau and T2 ??
 
-\subsection{Limitations}
-Perhaps the dominant limitation of our fits is the presence of cosmic
-infrared background anisotropies (CIBA) bleeding through into our maps of 
-Galactic dust temperature and optical depth in high-latitude regions 
-\citep{ciba}.
-% CIBA !!!
-% IRAS missing so that parts of sky not truly 6.1' resolution map
 
 \subsection{Comparison to Planck Collaboration Dust Map}
 %striping in IRAS/IRIS versus in SFD IRAS ... planck dust map obvious striping
@@ -535,12 +570,7 @@ to $6.1'$ FWHM, which is nominally lower resolution than the $5'$
 \ref{fig:comparison}, the fact that \cite{planckdust} modeled $\beta$ at 
 $0.5^{\circ}$ resolution has effectively blurred their dust temperature map.
 
-
-\subsubsection{Omitting 217 GHz}
-The \cite{planckdust} result used only 353, 545, 857, and 3000 GHz. When we 
-repeat our analysis ignoring 217 GHz, so that we are using the same
-set of frequencies, we find that no major changes arise. This actually
-should be done/investigated though.
+\subsection{Validation with FIRAS}
 
 \section{Conclusion}
 \label{sec:conclusion}
