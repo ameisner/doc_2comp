@@ -495,11 +495,21 @@ $\langle T_{2, j} \rangle$, $I_{545}$ = $\langle I_{545, j} \rangle$, and of
 each parameter's variance, $\sigma^2_{T_2}$ = $\langle T^2_{2, j} \rangle-\langle T_{2, j} \rangle ^2$ and $\sigma^2_{I_{545}}$=$\langle I^2_{545, j} 
 \rangle-\langle I_{545, j} \rangle ^2$
 
-\subsection{Low Resolution Fits}
+\subsection{Low-resolution Fits}
 %mention that the pixelization changes ---> to lower HEALpix nside
 %mention that over some region of the sky with high signal and high
 %S/N we try fitting t2, normalization and one of q1/q2, f_1
 %using more bands (including 143, and maybe 100 GHz)
+
+As mentioned previously, our baseline fits fix several parameters which
+in principle could vary spatially. If we are willing to sacrifice angular
+resolution in order to incorporate lower-frequency \PLANCK~bands and
+enhance signal to noise, we can introduce additional free parameters
+and run the Markov chains in higher dimensions.
+
+We ran the Markov chains in three dimensions by allowing 
+$f_1$ to be a third free parameter. We added to our standard posterior a 
+term involving.
 
 \section{Systematics}
 
@@ -526,7 +536,8 @@ Simulate the effect of getting zero points wrong to quantiy this
 systematic a bit.
 
 \subsection{$T_{2}$ Prior}
-Use FIRAS data to justify $T_2$ prior.
+Use FIRAS data to justify $T_2$ prior. Could I use the DIRBE 100/240 micron
+ratio to get a $1.3^{\circ}$ resolution prior on $T_2$?
 
 \subsection{Other Limitations}
 \IRAS~is missing in some parts of sky which will therefore not truly have 6.1' 
@@ -569,6 +580,15 @@ to $6.1'$ FWHM, which is nominally lower resolution than the $5'$
 \cite{planckdust} maps. However, as is apparent from figure 
 \ref{fig:comparison}, the fact that \cite{planckdust} modeled $\beta$ at 
 $0.5^{\circ}$ resolution has effectively blurred their dust temperature map.
+
+\begin{figure}
+\begin{center}
+\epsfig{file=f1_1deg.eps, width=3.3in}
+\caption{\label{fig:f1} The results of our low-resolution fit with $f_1$
+allowed to vary, but with a strong prior 
+$P(f_1)=\mathcal{N}(f_1|0.0363, 0.003)$.}
+\end{center}
+\end{figure}
 
 \subsection{Validation with FIRAS}
 
