@@ -361,17 +361,26 @@ T_1 = 0.352T_2^{1.18}
 % fit at full resolution that has only two free parameters
 FDS99 found $T_2 \approx 16.2$K, $T_1 \approx 9.4$K to be typical at 
 high-latitude. In the present formulation, there are only two free parameters 
-to describe an observed SED: the hot dust temperature $T_2$ and the 
-normalization of $M_{\nu}$. In principle, we could allow additional parameters,
- such as $f_1$ and the ratio $q_1/q_2$, to vary. However the number of free 
-parameters in our baseline fit at the full $6.1'$ resolution is limited by the 
-fact that, for each sky location, the observed SED contains only five 
-independent intensity measurements (\verb|i100| along with the four 
-highest-frequency \PLANCK~bands).
+to describe an observed SED: the hot dust temperature $T_2$ determines the SED 
+shape and the normalization of $M_{\nu}$ determines the SED amplitude. In 
+principle, we could allow additional parameters, such as $f_1$ and the ratio 
+$q_1/q_2$, to vary. However the number of free parameters in our baseline fit 
+at the full $6.1'$ resolution is limited by the fact that, for each sky 
+location, the observed SED contains only five independent intensity 
+measurements (\verb|i100| along with the four highest-frequency \PLANCK~bands).
 
+To calculate the optical depth in the context of this model, we assume
+optically thin conditions, meaning that $\tau_{\nu}$ = $M_{\nu}/S_{\nu}$, where
+$M_{\nu}$ is the appropriately scaled two-component intensity and the source
+function is given by:
+
+\begin{equation}
+\label{eqn:source}
+S_{\nu} = \frac{f_1q_1(\nu/\nu_0)^{\beta_1}B_{\nu}(T_1) + f_2q_2(\nu/\nu_0)^{\beta_2}B_{\nu}(T_2)}{f_1q_1(\nu/\nu_0)^{\beta_1}+f_2q_2(\nu/\nu_0)^{\beta_2}}
+\end{equation}
 %basically just finish clarifying here that we want to start simple by fitting
 %only two parameters for each pixel since we only have 5 intensity
-% measurements per pixel in our baseline fits at 6.1 arcmin resoluiton
+% measurements per pixel in our baseline fits at 6.1 arcmin resolution
 
 \section{Fitting Procedure}
 \label{sec:fitting}
@@ -405,6 +414,24 @@ $M_{\nu}$ is only dependent upon one parameter: the hot dust temperature $T_2$.
 the \IRAS~bandpass, following the treatment of \cite{planckdust}. We note that 
 it is not clear which bandpass should properly be ascribed to the \IRAS/DIRBE 
 composite 100$\mu$m maps under consideration. 
+
+\subsection{Fitting Parameters}
+In order to fit the \PLANCK/\IRAS~dust SED, we must combine the underlying 
+two-component spectrum $M_{\nu}$ with the bandpass corrections $b_{\nu_i}$ to 
+yield predictions which can be compared against the observed broadband 
+intensities. The model-predicted broadband intensities $\tilde{I}_{\nu_i}$ are 
+given by:
+
+\begin{equation}
+\label{eqn:inten}
+\tilde{I}_{\nu_i} = \frac{b_{\nu_i}(T_2)M_{\nu_i}}{b_{545}(T_2)M_{545}}\tilde{I}_{545}
+\end{equation}
+
+We will treat the SED normalization $\tilde{I}_{545}$ as a free parameter in
+our fitting procedure. In our baseline fits, second free parameter is $T_2$, 
+which determines the shape of the SED through $M_{\nu}$ as well as 
+$b_{\nu_i}(T_2)$.
+
 % (here SFD \verb|i100|) and that of \cite{planckdust}).
 
 % introduce nu_i notation in above paragraph with some mention of what it
@@ -415,7 +442,7 @@ composite 100$\mu$m maps under consideration.
 \subsection{Markov Chains}
 As explained in $\S$\ref{sec:modeling}, the two free parameters in our 
 per-pixel dust emission SED are the hot dust temperature $T_2$, which 
-determinesthe shape of the SED, and the spectrum normalization. In practice,
+determines the shape of the SED, and the spectrum normalization. In practice,
 the normalization is controlled via $\tilde{I}_{545}$, the amplitude of the 
 model SED in MJy/sr at $\nu$ = 545 GHz. For each pixel, we run a 
 Metropolis-Hastings Markov chain sampling the posterior probability as a 
@@ -428,19 +455,23 @@ are sampling the posterior given by:
 % more useful to people who want SED predictions
 
 \begin{equation}
+\label{eqn:post}
 P(\tilde{I}_{545}, T_2|\{I\}) \propto \mathcal{L}(\{I\}|\tilde{I}_{545}, T_2)P(T_2)
 \end{equation}
 
-The likelihood function is given by:
+Here \{$I$\} denotes the set of observed broadband intensities, $I_{217}$, 
+$I_{353}$, etc. The likelihood function is given by:
+
 \begin{equation}
-\mathcal{L}(\{I\}|\tilde{I}_{545}, T_2) = \displaystyle\prod\limits_{i}\mathcal{N}(M_{\nu_{i}}(\tilde{I}_{545}, T_2)|I_{\nu_{i}}, \sigma_{\nu_i})
+\mathcal{L}(\{I\}|\tilde{I}_{545}, T_2) = \displaystyle\prod\limits_{i}\mathcal{N}(\tilde{I}_{\nu_{i}}|I_{\nu_{i}}, \sigma_{\nu_i})
 \end{equation}
 
 %be more careful about notation re: color corrections
 
-Where the product runs over $\nu_i$ in $\{217,\ 353,\ 545,\ 857,\ 3000\}$ GHz. 
-For each pixel, the errors on each intensity measurement $\sigma_{\nu_i}$ are 
-given by:
+Where the product runs over $\nu_i$ in $\{217,\ 353,\ 545,\ 857,\ 3000\}$ GHz
+and $\tilde{I}_{\nu_i}$ is a function of $\tilde{I}_{545}$ and $T_2$ as 
+specified by Equation \ref{eqn:inten}. For each pixel, the errors on each 
+intensity measurement $\sigma_{\nu_i}$ are given by:
 
 \begin{equation}
 \sigma_{\nu_i}(p) = \sqrt{c^2_{\nu_i}I_{\nu_i}(p)^2 + c^2_{\nu_i}CMB(p)^2 + (\delta O_{\nu_i})^2 + n_{\nu_i}(p)^2}
@@ -455,12 +486,12 @@ each band. We have adopted the $c_{\nu_i}$ values listed in \cite{planckdust}
 Table 1. For the 217 GHz band, we have assigned $c_{217 GHz}$ = 0.54, from 
 Table 11 of \cite{planckcalib}. $CMB$ represents the CMB intensity 
 subtracted at the relevant pixel. $\delta0_{\nu_i}$ represents the uncertainty
-in the offset used to tie \PLANCK~intensity to HI. We have adopted the 
- $\delta0_{\nu_i}$ values of \cite{planckdust} Table 1. $n_{\nu_i}$ represents 
-the instrumental noise in the pixel of interest, and is taken to be the square 
-root of the \verb|ii_cov| parameter that accompanies each \PLANCK~intensity 
-map. In order to obtain reasonable fitting results at high latitude where the 
-data is noisy, we include a prior on $T_2$:
+in the offset used to tie \PLANCK~intensity to H\,\textsc{i}. We have adopted 
+the  $\delta0_{\nu_i}$ values of \cite{planckdust} Table 1. $n_{\nu_i}$ 
+represents the instrumental noise in the pixel of interest, and is taken to be 
+the square root of the \verb|ii_cov| parameter that accompanies each 
+\PLANCK~intensity map. In order to obtain reasonable fitting results at high 
+latitude where the data is noisy, we include a prior on $T_2$:
 
 %what about the offset uncertainty for 217 GHz
 
@@ -472,7 +503,7 @@ P(T_2) = \mathcal{N}(T_2|\bar{T}_2, \sigma_{\bar{T}_2})
 % FIRAS as a cross-check?
 
 With $\bar{T}_2$ = 16.2 K and $\sigma_{\bar{T}_2}$ = 1.4 K. In practice we 
-always perform computations using the logarithm of relevant probabilities.
+always perform computations using logarithms of the relevant probabilities.
 %mention something about the proposal distribution at some point?
 
 \begin{figure}
@@ -481,19 +512,39 @@ always perform computations using the logarithm of relevant probabilities.
 \caption{\label{fig:comparison} Comparison of SFD temperature, two-component 
 model $T_2$, and \cite{planckdust} temperature (labeled $T_{R1.20}$) for a
  $10.5^{\circ}\times8.3^{\circ}$  region centered about 
-$(l,b) = (111.6^{\circ}, 20.3^{\circ})$. Note the 
-differing colorscales. Both models incorporating \PLANCK~data clearly show a 
-major improvement in angular resolution relative to SFD.}
+$(l,b) = (111.6^{\circ}, 20.3^{\circ})$. Note the differing colorscales. Both 
+models incorporating \PLANCK~data clearly show a major improvement in angular 
+resolution relative to SFD.}
 \end{center}
 \end{figure}
 
-For each pixel, we initialize the Markov chain to have $T_2$ = $\bar{T}_2$ and
-. We run 500 steps of burn-in and then 2000 steps during which we keep track
-of the proposed $T_{2, j}$ and $I_{545, j}$ values. We use these 2000 values 
-for each parameter to compute estimates of each parameter,  $T_2$ = 
-$\langle T_{2, j} \rangle$, $I_{545}$ = $\langle I_{545, j} \rangle$, and of 
-each parameter's variance, $\sigma^2_{T_2}$ = $\langle T^2_{2, j} \rangle-\langle T_{2, j} \rangle ^2$ and $\sigma^2_{I_{545}}$=$\langle I^2_{545, j} 
-\rangle-\langle I_{545, j} \rangle ^2$
+For each pixel, we initialize the Markov chain with parameters $T_2$ = 
+$\bar{T}_2$ and $\tilde{I}_{545}$ = $I_{545}$. We run 500 steps of burn-in and 
+then 2000 steps during which we keep track of the proposed $T_{2, j}$ and 
+$\tilde{I}_{545, j}$ values at the $j^{th}$ step since the end of burn-in. From
+these 2000 samples, we compute estimates of each parameter, 
+$T_2$ = $\langle T_{2, j} \rangle$, $\tilde{I}_{545}$ = 
+$\langle \tilde{I}_{545, j} \rangle$, and of each parameter's variance, 
+$\sigma^2_{T_2}$ = $\langle T^2_{2, j} \rangle-\langle T_{2, j} \rangle ^2$ and
+ $\sigma^2_{\tilde{I}_{545}}$=$\langle \tilde{I}^2_{545, j} 
+\rangle-\langle \tilde{I}_{545, j} \rangle ^2$. We also compute the
+ corresponding estimate of the monochromatic two-component intensity at 545 
+GHz, $M_{545}$ = $\langle M_{545, j} \rangle$ = 
+$\langle \tilde{I}_{545, j}/b_{545}(T_{2,j}) \rangle$  and its variance. 
+$M_{545}$ is of more general utility in making foreground predictions because 
+it provides the normalization for the two-component spectrum $M_{\nu}$, 
+independent of the \PLANCK~545 GHz bandpass. Lastly, we compute the 545 GHz
+optical depth as $\tau_{545}$ = $\langle \tau_{545, j} \rangle$ = 
+$\langle M_{545, j}/S_{545, j} \rangle$ and its variance, with the source 
+function $S_{545}$ calculated according to Equation \ref{eqn:source}.
+
+%in the above need to mention/introduce the use of ``j'' to denothe the j'th
+%step of the MH sampling **after** burn-in has finished
+
+% actually we I think we want to keep track of $\tilde{I}_{545}$/b_{545}
+% which is the monochromatic value, since that is most useful downstream
+% when making foreground predictions that typically won't have anything
+% to do with Planck bandpasses
 
 \subsection{Low-resolution Fits}
 %mention that the pixelization changes ---> to lower HEALpix nside
@@ -547,7 +598,7 @@ resolution.
 \section{Results}
 \label{sec:results}
 
-\subsection{Calculating $\tau$}
+%\subsection{Calculating $\tau$}
 
 % this subsection should probably be moved to the ``dust emission model'' 
 % section of the paper eventually
