@@ -3,6 +3,7 @@
 \usepackage[dvipdf]{epsfig} 
 \usepackage[dvips]{rotating}
 \usepackage{subfigure}
+\usepackage{mathrsfs}
 
 \newcommand{\IRAS}{{\it IRAS}}
 \newcommand{\HERSCHEL}{{\it Herschel}}
@@ -518,11 +519,12 @@ resolution relative to SFD.}
 \end{center}
 \end{figure}
 
-For each pixel, we initialize the Markov chain with parameters $T_2$ = 
-$\bar{T}_2$ and $\tilde{I}_{545}$ = $I_{545}$. We run 500 steps of burn-in and 
-then 2000 steps during which we keep track of the proposed $T_{2, j}$ and 
+For each pixel, we initialize the Markov chain with parameters 
+$\tilde{I}_{545}$ = $I_{545}$ and $T_2$ consistent with the FDS99 
+DIRBE 100$\mu$m/240$\mu$m ratio map $\mathscr{R}$. We run 500 steps of burn-in 
+and then 2000 steps during which we keep track of the proposed $T_{2, j}$ and 
 $\tilde{I}_{545, j}$ values at the $j^{th}$ step since the end of burn-in. From
-these 2000 samples, we compute estimates of each parameter, 
+ these 2000 samples, we compute estimates of each parameter, 
 $T_2$ = $\langle T_{2, j} \rangle$, $\tilde{I}_{545}$ = 
 $\langle \tilde{I}_{545, j} \rangle$, and of each parameter's variance, 
 $\sigma^2_{T_2}$ = $\langle T^2_{2, j} \rangle-\langle T_{2, j} \rangle ^2$ and
