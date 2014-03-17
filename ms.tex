@@ -158,9 +158,10 @@ optical depth thus obtained, and conclude in $\S$\ref{sec:conclusion}.
 \label{sec:data}
 All \PLANCK~data products utilized throughout this work are drawn from the 
 \PLANCK~2013 release \citep{planck2013}. Specifically, we have made use 
-of the 217 GHz, 353 GHz, 545 GHz and 857 GHz intensity maps which have been 
-corrected for zodiacal light 
-\citep[\texttt{R1.10\_nominal\_ZodiCorrected},][]{planckzodi}.
+of all six of the zodiacal light corrected HFI intensity maps
+\citep[\texttt{R1.10\_nominal\_ZodiCorrected},][]{planckzodi}. Our 
+full-resolution (6.1$'$ FWHM) SED fits neglect the two lowest HFI frequencies, 
+100 and 143 GHz, as these have FWHM of 9.66$'$ and 7.27$'$ respectively.
 
 To incorporate measurements on the Wien side of the dust emission spectrum, 
 we include 100$\mu$m data in our SED fits. In particular, we use the 
@@ -187,14 +188,15 @@ these maps for our joint \IRAS/\PLANCK~SED fits.
 \label{sec:cmb}
 We first addressed the CMB anisotropies before performing any of the 
 interpolation/smoothing described in $\S$\ref{sec:ptsrc}/$\S$\ref{sec:smth}. 
-The CMB anisotropies are effectively imperceptible in \PLANCK~857 GHz, but can 
-be perceived at a low level in \PLANCK~545 GHz, and are prominent in 
-\PLANCK~217 GHz and 353 GHz relative to the Galactic emission we wish to 
-characterize, especially at high latitudes. To remove the CMB anisotropies, we 
-have subtracted the Spectral Matching Independent Component Analysis 
-(\verb|SMICA|) model from each of the \PLANCK~maps \citep{smica}, after 
-applying appropriate unit conversions. Removal of the residual Solar dipole at 
-low frequencies is discussed in $\S$\ref{sec:zp}.
+The CMB anisotropies are effectively imperceptible upon visual inspection 
+in \PLANCK~857 GHz, but can be perceived at a low level in \PLANCK~545 GHz, and
+are prominent from 100 to 353 GHz relative to the Galactic emission
+we wish to characterize, especially at high latitudes. To remove the CMB 
+anisotropies, we have subtracted the Spectral Matching Independent Component 
+Analysis \citep[SMICA,][]{smica} model from each of the \PLANCK~maps, 
+after applying appropriate unit conversions for the 545 and 857 GHz maps 
+with native units of MJy/sr. Low-order corrections, particularly removal of the
+residual Solar dipole, are discussed in $\S$\ref{sec:zp}.
 % SMICA is subtracted from ALL Planck maps being used, including 545, 857 GHz
 % WHAT IS THE ANGULAR RESOLUTION OF THE SMICA MAP, AND IS IT EVEN
 % WELL-DEFINED??
@@ -202,7 +204,7 @@ low frequencies is discussed in $\S$\ref{sec:zp}.
 \subsection{Compact Sources}
 \label{sec:ptsrc}
 %start by mentioning that SFD removed compact sources (outside of b +/- 5)
-After subtracting the \verb|SMICA| CMB model, we next proceeded to interpolate 
+After subtracting the SMICA CMB model, we next proceeded to interpolate 
 over compact sources, including both point sources and resolved galaxies. 
 Removing compact sources at this stage is important as it prevents 
 contamination of compact-source-free pixels in our downstream analyses which 
@@ -222,16 +224,17 @@ $\S$\ref{sec:pix}), 1.56\% of pixels are masked.
 
 \subsection{Smoothing}
 \label{sec:smth}
-We wish to simultaneously fit \verb|i100| along with the four 
-highest-frequency \PLANCK~bands. To properly combine these maps, they must have
- the same point spread function (PSF). \verb|i100|, with its $6.1'$ symmetric 
-Gaussian PSF, is the lowest-resolution map we have included. To match PSFs, we 
-have therefore smoothed each of the \PLANCK~maps under consideration to $6.1'$ 
-resolution by considering each native map to have a symmetric Gaussian beam and
- smoothing by the appropriate symmetric Gaussian such that the resulting map 
-has a FWHM of $6.1'$. The FWHM we assign to the native \PLANCK~maps is taken 
-from \cite{planckbeam}, specifically $5.01'$ for 217 GHz, $4.86'$ for 353 GHz, 
-$4.84'$ for 545 GHz, and $4.63'$ for 857 GHz.
+For our full-resolution model,  wish to simultaneously fit \verb|i100| along 
+with the four highest-frequency \PLANCK~bands. To properly combine these maps, 
+they must have the same point spread function (PSF). \verb|i100|, with its 
+$6.1'$ symmetric Gaussian beam, has the lowest angular resolution of the 
+relevant maps. To match PSFs, we have therefore smoothed each of the 
+\PLANCK~maps under consideration to $6.1'$ resolution by considering each 
+native map to have a symmetric Gaussian beam and smoothing by the appropriate 
+symmetric Gaussian such that the resulting map has a FWHM of $6.1'$. The FWHM 
+we assign to the native \PLANCK~maps is taken from \cite{planckbeam}, 
+specifically $5.01'$ for 217 GHz, $4.86'$ for 353 GHz, $4.84'$ for 545 GHz, and
+$4.63'$ for 857 GHz.
 
 \subsection{Zero-Point}
 \label{sec:zp}
