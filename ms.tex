@@ -224,17 +224,42 @@ $\S$\ref{sec:pix}), 1.56\% of pixels are masked.
 
 \subsection{Smoothing}
 \label{sec:smth}
-For our full-resolution model,  wish to simultaneously fit \verb|i100| along 
+For our full-resolution model, we wish to simultaneously fit \verb|i100| along 
 with the four highest-frequency \PLANCK~bands. To properly combine these maps, 
 they must have the same point spread function (PSF). \verb|i100|, with its 
 $6.1'$ symmetric Gaussian beam, has the lowest angular resolution of the 
 relevant maps. To match PSFs, we have therefore smoothed each of the 
-\PLANCK~maps under consideration to $6.1'$ resolution by considering each 
-native map to have a symmetric Gaussian beam and smoothing by the appropriate 
-symmetric Gaussian such that the resulting map has a FWHM of $6.1'$. The FWHM 
-we assign to the native \PLANCK~maps is taken from \cite{planckbeam}, 
+\PLANCK~maps under consideration to \verb|i100| resolution by considering each 
+native \PLANCK~map to have a symmetric Gaussian beam and smoothing by the 
+appropriate symmetric Gaussian such that the resulting map has a  $6.1'$ FWHM. 
+The FWHM we assign to the native \PLANCK~maps is taken from \cite{planckbeam}, 
 specifically $5.01'$ for 217 GHz, $4.86'$ for 353 GHz, $4.84'$ for 545 GHz, and
-$4.63'$ for 857 GHz.
+ $4.63'$ for 857 GHz.
+
+\subsection{Molecular Emission}
+Because the FIRAS spectra consist of many narrow frequency bins, FDS99 were
+able to discard the relatively small number of frequency intervals contaminated
+by strong molecular line emission. Unfortunately, while the \PLANCK~data 
+considered in this study are of high angular resolution, their broad bandpasses
+do not offer the same luxury of spectral resolution in dealing with line 
+emission. Thereore, we must subtract estimates of the molecular line 
+contamination from each band in order to best isolate the thermal continuum we 
+wish to characterize. The most prominent molecular line emission in the
+\PLANCK~bands of interest arises from the three lowest CO rotational
+transitions: J=1$\rightarrow$0 at 115 GHz, J=2$\rightarrow$1 at 230 GHz and 
+J=3$\rightarrow$2 at 345 GHz, respectively affecting the \PLANCK~100, 217 and 
+353 GHz bands. 
+
+
+%We investigated the possibility of subtracting out CO emission 
+%based on the template of \cite{planckco}. However, we found that the CO 
+%emission rarely amounted to more than XX\% of the total intensity, and 
+%following the treatment of \cite{planckdust}, $\S$2.1, we do not attempt to 
+%remove CO emission.
+
+%We did not attempt to correct for higher J CO transitions beyond J=3->2
+
+% for CO line list see ~/wise/pro/planck_co_lines.pro
 
 \subsection{Zero-Point}
 \label{sec:zp}
@@ -299,36 +324,6 @@ but the residual dipole also appears visually well-corrected in the 217 GHz
 map itself. Before performing thermal dust fits, we therefore subtract $c$ and 
 $b\mathcal{D}$ from the 217 GHz map.
 
-\subsection{Unit Conversions}
-
-The \PLANCK~217 GHz and 353 GHz data are provided in units of thermodynamic 
-$\delta T$, while \verb|i100| and the higher frequency \PLANCK~maps are 
-provided in units of MJy/sr. Although the aforementioned preprocessing steps 
-were conducted with each map in its native units, we converted the 217 GHz and 
-353 GHz measurements to MJy/sr according to \cite{planckresponse} prior to 
-performing SED fits.
-
-%i think it's table 6 that I specifically want to cite within the ``spectral
-%response'' paper, but i need to check that those values are consistent
-% with the ones i actually used from the other document ``HFI-unit conversion 
-%and colour correction instructions v1.2''
-
-\subsection{Molecular Emission}
-One advantage of the FIRAS data used by FDS99 was its many narrow bins in 
-frequency, which allowed those frequency ranges contaminated by strong 
-molecular line emission to be discarded from the analysis. Unfortunately, with 
-the broad \PLANCK~and \IRAS~bandpasses we do not have such a luxury. This means
- that we cannot truly separate out the thermal continuum of dust emission we 
-wish to study from the molecular line emission. The most prominent molecular 
-line emission in the Planck bands of interest arises from CO lines in the XX, 
-YY bands. We investigated the possibility of subtracting out CO emission based 
-on the template of \cite{planckco}. However, we found that the CO emission
-rarely amounted to more than XX\% of the total intensity, and following
-the treatment of \cite{planckdust}, $\S$2.1, we do not attempt to remove CO
-emission.
-
-% for CO line list see ~/wise/pro/planck_co_lines.pro
-
 \begin{figure}
 \begin{center}
 \epsfig{file=sed.eps, width=3.3in}
@@ -338,6 +333,8 @@ Polaris region. Note that the two lowest-frequency data points (\PLANCK~100,
 points were not used in the \cite{planckdust} fit.}
 \end{center}
 \end{figure}
+
+% add error bars to this example SED plot
 
 \begin{figure*}
 \begin{center}
@@ -353,6 +350,8 @@ high-latitude in Galactic north. Center: High S/N pixel in the Polaris region.
 Right: Low S/N pixel at high-latitude in the Galactic south.}
 \end{center}
 \end{figure*}
+
+% overplot ellipses showing 1 sigma errors in posterior grayscales
 
 \section{Dust Emission Model}
 \label{sec:modeling}
@@ -434,6 +433,20 @@ $M_{\nu}$ is only dependent upon one parameter: the hot dust temperature $T_2$.
 the \IRAS~bandpass, following the treatment of \cite{planckdust}. We note that 
 it is not clear which bandpass should properly be ascribed to the \IRAS/DIRBE 
 composite 100$\mu$m maps under consideration. 
+
+\subsection{Unit Conversions}
+
+The \PLANCK~217 GHz and 353 GHz data are provided in units of thermodynamic 
+$\delta T$, while \verb|i100| and the higher frequency \PLANCK~maps are 
+provided in units of MJy/sr. Although the aforementioned preprocessing steps 
+were conducted with each map in its native units, we converted the 217 GHz and 
+353 GHz measurements to MJy/sr according to \cite{planckresponse} prior to 
+performing SED fits.
+
+%i think it's table 6 that I specifically want to cite within the ``spectral
+%response'' paper, but i need to check that those values are consistent
+% with the ones i actually used from the other document ``HFI-unit conversion 
+%and colour correction instructions v1.2''
 
 \subsection{Fitting Parameters}
 In order to fit the \PLANCK/\IRAS~dust SED, we must combine the underlying 
