@@ -242,14 +242,69 @@ able to discard the relatively small number of frequency intervals contaminated
 by strong molecular line emission. Unfortunately, while the \PLANCK~data 
 considered in this study are of high angular resolution, their broad bandpasses
 do not offer the same luxury of spectral resolution in dealing with line 
-emission. Thereore, we must subtract estimates of the molecular line 
+emission. Therefore, we must subtract estimates of the molecular line 
 contamination from each band in order to best isolate the thermal continuum we 
 wish to characterize. The most prominent molecular line emission in the
 \PLANCK~bands of interest arises from the three lowest CO rotational
 transitions: J=1$\rightarrow$0 at 115 GHz, J=2$\rightarrow$1 at 230 GHz and 
 J=3$\rightarrow$2 at 345 GHz, respectively affecting the \PLANCK~100, 217 and 
-353 GHz bands. 
+353 GHz bands. J=1$\rightarrow$0 does also impart some signal upon \PLANCK~143 
+GHz, but at a negligible level, $\sim$1000$\times$ fainter relative to the
+dust continuum signal than at 100 GHz
 
+%TODO : actually smooth the CO map to 6.1 arcmin
+To correct for molecular emission, we employed the \PLANCK~Type 3 CO 
+data product, which boasts the highest S/N 
+among the available full-sky CO maps based on \PLANCK~HFI/LFI 
+data \citep{planckco}. The native angular resolution of the Type 3 CO map is 
+5.5$'$. We therefore began by smoothing the raw Type 3 CO map to $6.1'$, to 
+match the PSF of the smoothed \PLANCK~intensity maps we wish to correct 
+for molecular emission (for our full-resolution two-parameter fits, these are 
+217 GHz and 353 GHz). 
+
+%take a few sentences to mention how exactly the CO was scaled, i.e. conversion
+% factors from K km/s and line ratio assumptions
+
+We must apply the appropriate unit conversions to the PSF-matched Type 3 CO
+map before we can subtract it from the \PLANCK~intensity maps, which at the
+frequencies of interest have native units of $K_{CMB}$. The Type 3 CO map
+is natively provided in units of K$_{RJ}$ km/s of J=1$\rightarrow$0 emission. 
+To convert this quantity to $K_{CMB}$, we assume that all of the CO emission 
+arises from the $^{12}$CO isotope, and use the $^{12}$CO conversion factors 
+from \cite{planckco} as follows:
+
+\begin{equation}
+I_{CO, \nu_i, N, N-1} = I_{3}F_{12CO, \nu_i, N, N-1} R_{N, N-1}
+\end{equation}
+
+% state what I_3 is 
+Where $I_{CO, \nu_i, N, N-1}$ is the intensity in $K_{CMB}$ due to 
+CO emission in \PLANCK~band $\nu_i$ due to the CO transition from J=$N$ to
+J=$(N$$-$1). The $F_{12CO, \nu_i, N, N-1}$ are taken to be PP, QQ, RR. 
+$R_{N, N-1}$ represents the line ratio of the transition from J=$N$ to 
+J=$(N$$-$1) relative to the J=1$\rightarrow$0. Thus, $R_{1,0}$=1, and we
+further adopt $R_{2,1}$=0.595 and $R_{3,2}$=0.297 based on \cite{planckco}.
+Formally, then, the CO contamination in band $\nu_i$ is given
+by:
+
+\begin{equation}
+I_{CO, \nu_i} = \sum\limits_{N} I_{CO, \nu_i, N, N-1}
+\end{equation}
+
+In fact, for each of the \PLANCK~bands in which molecular emission is 
+non-negligible (100, 217 and 353 GHz), only a single $N$ contributes ($N$=1, 
+$N$=2 and $N$=3, respectively). 
+
+Unfortunately, the CO maps at $6.1'$ are rather noisy,
+and the vast majority of the sky has completely neglibible CO emission. Thus,
+in order to avoid adding unnecessary noise outside of molecular cloud complexes
+and at high latitudes, we have zeroed out low-signal regions of the CO Type 3
+map. We identify  low-signal regions as those with $\mathcal{I}_3$$<$1 K km/s, 
+where $\mathcal{I}_3$ is the Type 3 CO map smoothed to 0.25$^{\circ}$ 
+resolution. This cut results in 90\% of the sky being unaffected by the CO 
+correction, particularly the vast majority of high Galactic latitude regions.
+
+%did i ever spell out the acronyms HFI, LFI ????
 
 %We investigated the possibility of subtracting out CO emission 
 %based on the template of \cite{planckco}. However, we found that the CO 
