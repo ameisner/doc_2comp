@@ -336,46 +336,60 @@ Although we wish to isolate and model thermal emission from Galactic dust, the
 frequency, there can exist an overall, constant offset that must be subtracted 
 to set the zero level of Galactic dust. Additionally, faint residuals of the 
 Solar dipole remain at low frequencies. We will address these issues by
-separately solving two sub-problems: the relative offsets and low order
-corrections derived by correlating the \PLANCK~bands against one another,
-and second the absolute zero-level offset.
+separately solving two sub-problems: first, fixing the absolute zero level 
+relative to external data, and second fitting per-band relative offsets 
+and low order corrections by correlating the \PLANCK~bands against one another.
 %this last sentence needs lots of work
 
 \subsubsection{Absolute Zero Level}
 In \cite{planckdust}, the absolute zero level of infrared thermal dust emission
-is set by requiring that \PLANCK~infrared emission tends to zero when 
+was set by requiring that \PLANCK~infrared emission tends to zero when 
 H\,\textsc{i} is zero, assuming a linear correlation between these two 
 measurements at low column density. However, this approach is somewhat
-unsatisfying in that there appear to be different slopes of 857 GHz versus
-H\,\textsc{i} for different ranges of H\,\textsc{i}. In particular, 
-\PLANCK~857 GHz appears to ``flatten out'' at very low H\,\textsc{i}. More 
-quantitavely, we have found using the LAB H\,\textsc{i} data \citep{lab} for
-$-72$$<$$v_{LSR}$$<$$+25$ that the best-fit slope for H\,\textsc{i}$<$70 K km/s
-is a factor of $\sim$1.9 lower than the best fit slope for 
-110 K km/s $<$H\,\textsc{i}$<$70 K km/s, and as a result the implied 
+unsatisfying in that there appear to be different slopes of \PLANCK~857 GHz 
+versus H\,\textsc{i} for different ranges of H\,\textsc{i} intensity. In 
+particular, \PLANCK~857 GHz appears to ``flatten out'' at very low 
+H\,\textsc{i}. More quantitavely, we have found using the LAB H\,\textsc{i} 
+data \citep{lab} for $-72$$<$$v_{LSR}$$<$$+25$ that the best-fit slope for 
+H\,\textsc{i}$<$70 K km/s is a factor of $\sim$1.9 lower than the best fit 
+slope for 110 K km/s $<$H\,\textsc{i}$<$200 K km/s, and as a result the implied
 zero-point offsets for \PLANCK~857 GHz differ by $\sim$0.37 MJy/sr.
 
 % CITE KALBERLA LAB PAPER !!!!!
 
-Because of these ambiguities in the relationship between 857 GHz emission
-and H\,\textsc{i}, we decided to instead constrain the 857 GHz zero level
-by comparison to the FDS99 857 GHz prediction. This renders the 857 GHz 
+Because of these ambiguities in the relationship between 857 GHz and 
+H\,\textsc{i} emission, we decided to instead constrain the 857 GHz zero level
+by comparison to the FDS99 857 GHz prediction. This renders the \PLANCK~857 GHz
 absolute zero level tied largely to the reliable FIRAS zero point, and to some 
 lesser extent to H\,\textsc{i} through the \verb|i100| zero point. 
-Specifically, we fit a linear model to the \PLANCK~857 GHz values as a function
-of FDS99 predicted 857 GHz. We used a version of the \PLANCK~857 GHz map with 
-zodiacal light and point sources removed and smoothed to 1 degree resolution, 
-which we will refer to as $\mathcal{I}_{857}$. For this analysis, we considered
-$\mathcal{I}_{857}$ to be the independent variable, as it has much higher S/N 
-than the FDS99 prediction, henceforward referred to as $\mathcal{F}_{857}$.
-We then rebin to $N_{side}$=64 and restrict to pixels with 
-$\mathcal{I}_{857}$$<$2.15 MJy/sr. Since \PLANCK~857 GHz smoothed to degree 
-resolution has such high S/N, we can safely perform such a cut on 
-$\mathcal{I}_{857}$. Figure XX shows the a scatterplot of $\mathcal{I}_{857}$
+Specifically, we fit a linear model to the FDS99 predicted 857 GHz values as a 
+function of \PLANCK~857 GHz. We used a version of the \PLANCK~857 GHz map with 
+zodiacal light and point sources removed and smoothed to 1$^{\circ}$ 
+resolution, which we will refer to as $\mathcal{I}_{857}$. For this analysis, 
+we considered $\mathcal{I}_{857}$ to be the independent variable, as it has 
+much higher S/N than the FDS99 prediction, henceforward referred to as 
+$\mathcal{F}_{857}$. Note that $\mathcal{F}_{857}$ is not a monochromatic 
+prediction, as we have incorporated the finite bandpass correction factors 
+described in $\S$\ref{sec:bpcorr}, using the FDS99 temperature map to determine
+the dust spectrum shape. We then rebin to $N_{side}$=64 and restrict to pixels 
+with $\mathcal{I}_{857}$$<$2.15 MJy/sr. Since \PLANCK~857 GHz smoothed to 
+degree resolution has very high S/N, we can safely perform such a cut on 
+$\mathcal{I}_{857}$. Figure XX shows a scatterplot of $\mathcal{I}_{857}$ 
 versus $\mathcal{F}_{857}$, with a moving median and linear fit overplotted.
+The linear fit was performed with uniform weights and iterative outlier
+rejection. It is encouraging that the slope is quite close to unity, and 
+the offset near zero.
 
-% mention uniform weights in linear fit, but don't think i want an equation
-% for linear fit since it's so simple to begin with
+The formal statistical errors on these parameters are small. Undoubtedly,
+just as in the case of performing the regression versus  H\,\textsc{i}, 
+systematic issues will dominate the uncertainty in the derived zero point
+offset. Specifically, the likely culprits are imperfect zodiacal light 
+corrections and the FDS99 temperature map. To quantify the level of systematic
+error
+
+% actually evaluate the statistical errors !!!!
+
+% in previous sentence fill in specifics of slope and offset
 
 % sentence saying slope is close to unity, and relationship indeed looks linear
 
@@ -543,6 +557,7 @@ measurements in each spatial pixel independently of those in neighboring
 pixels.
 
 \subsection{Finite Bandpass Correction}
+\label{sec:bpcorr}
 The thermal dust emission model of $\S$\ref{sec:modeling} predicts the 
 intensity $M_{\nu}$ in MJy/sr for any single frequency $\nu$. In practice, 
 however, we wish to constrain our model using measurements in the broad 
