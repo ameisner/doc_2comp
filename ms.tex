@@ -374,18 +374,38 @@ described in $\S$\ref{sec:bpcorr}, using the FDS99 temperature map to determine
 the dust spectrum shape. We then rebin to $N_{side}$=64 and restrict to pixels 
 with $\mathcal{I}_{857}$$<$2.15 MJy/sr. Since \PLANCK~857 GHz smoothed to 
 degree resolution has very high S/N, we can safely perform such a cut on 
-$\mathcal{I}_{857}$. Figure XX shows a scatterplot of $\mathcal{I}_{857}$ 
-versus $\mathcal{F}_{857}$, with a moving median and linear fit overplotted.
-The linear fit was performed with uniform weights and iterative outlier
-rejection. It is encouraging that the slope is quite close to unity, and 
-the offset near zero.
+$\mathcal{I}_{857}$. Figure XX shows a scatterplot of 
+$\mathcal{I}_{857}$ versus $\mathcal{F}_{857}$, with a moving median and linear
+fit overplotted. The linear fit was performed with uniform weights and 
+iterative outlier rejection. The best-fit linear model is given by 
+$\mathcal{F}_{857}$=0.994$\mathcal{I}_{857}$$-$0.018. It is encouraging that 
+the slope is quite close to unity, and the offset near zero.
 
-The formal statistical errors on these parameters are small. Undoubtedly,
-just as in the case of performing the regression versus  H\,\textsc{i}, 
+The formal statistical errors on these parameters are small. Just as in the 
+case of performing the regression versus  H\,\textsc{i}, 
 systematic issues will dominate the uncertainty in the derived zero point
-offset. Specifically, the likely culprits are imperfect zodiacal light 
+offset. The likely culprits in this case are imperfect zodiacal light 
 corrections and the FDS99 temperature map. To quantify the level of systematic
-error
+error, we split the sky into four quadrants, with the dividing boundaries
+being $b$=0$^{\circ}$ and $l$=0$^{\circ}$, $l$=180$^{\circ}$. We again
+restricted to $\mathcal{I}_{857}$$<$2.15 MJy/sr, and repeated the 
+regression in each quadrant. The slopes varied from 0.948 to 0.993, with an
+rms of 0.0188, while the offsets varied from $-$0.056 MJy/sr to $+$0.089 
+MJy/sr, with an rms of 0.0586 MJy/sr.
+
+% Maybe it's not necessary to mention the 545 GHz check ... although
+% i should do the check eventually as to whether choosing 545 GHz
+% for the absolute zero point is consistent with choosing 857 GHz
+% to within the errors that i'm quoting
+
+%We also repeated the full-sky FDS99 prediction versus \PLANCK~regression at 
+%545 GHz. After 
+
+%We also repeated the full-sky and quadrant regressions with the FDS99 
+%predictions at 545 GHz (see bottom panel of Figure XX). We find the 
+%slopes vary from XX to YY with an rms scatter of ZZ. The 545 GHz zero points
+%have an rms scatter of SS, which is consistent with the 545 GHz zero 
+%point rms implied by the scatter in 857 GHz zero point.
 
 % actually evaluate the statistical errors !!!!
 
@@ -400,9 +420,6 @@ error
 
 % what HI intensity does the 2.15 MJy/sr 857 GHz correspond to ?
 %  ---> pretty high actually
-
-% mention use of bandpass correction factors when doing Planck vs. prediction
-% regressions
 
 \subsubsection{Relative Zero Level}
 
@@ -818,6 +835,11 @@ $P(f_1)=\mathcal{N}(f_1|0.0363, 0.003)$.}
 \subsection{Validation with FIRAS}
 
 \section{Conclusion}
+
+% should mention that one definitive improvement of this work relative
+% to FDS99 is that there are uncertainty/covariances provided for
+% the derived parameters !!!!
+
 \label{sec:conclusion}
 
 \begin{figure*} [ht]
