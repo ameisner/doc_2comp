@@ -342,6 +342,7 @@ and low order corrections by correlating the \PLANCK~bands against one another.
 %this last sentence needs lots of work
 
 \subsubsection{Absolute Zero Level}
+\label{sec:zp_abs}
 In \cite{planckdust}, the absolute zero level of infrared thermal dust emission
 was set by requiring that \PLANCK~infrared emission tends to zero when 
 H\,\textsc{i} is zero, assuming a linear correlation between these two 
@@ -399,7 +400,7 @@ described in $\S$\ref{sec:bpcorr}, using the FDS99 temperature map to determine
 the dust spectrum shape. We then rebin to $N_{side}$=64 and restrict to pixels 
 with $\mathcal{I}_{857}$$<$2.15 MJy/sr. Since \PLANCK~857 GHz smoothed to 
 degree resolution has very high S/N, we can safely perform such a cut on 
-$\mathcal{I}_{857}$. Figure XX shows a scatterplot of 
+$\mathcal{I}_{857}$. Figure \ref{fig:fdsref} shows a scatterplot of 
 $\mathcal{I}_{857}$ versus $\mathcal{F}_{857}$, with a moving median and linear
 fit overplotted. The linear fit was performed with uniform weights and 
 iterative outlier rejection. The best-fit linear model is given by 
@@ -407,16 +408,16 @@ $\mathcal{F}_{857}$=0.994$\mathcal{I}_{857}$$-$0.018. It is encouraging that
 the slope is quite close to unity, and the offset near zero.
 
 The formal statistical errors on these parameters are small. Just as in the 
-case of performing the regression versus  H\,\textsc{i}, 
-systematic issues will dominate the uncertainty in the derived zero point
-offset. The likely culprits in this case are imperfect zodiacal light 
-corrections and the FDS99 temperature map. To quantify the level of systematic
-error, we split the sky into four quadrants, with the dividing boundaries
-being $b$=0$^{\circ}$ and $l$=0$^{\circ}$, $l$=180$^{\circ}$. We again
-restricted to $\mathcal{I}_{857}$$<$2.15 MJy/sr, and repeated the 
-regression in each quadrant. The slopes varied from 0.948 to 0.993, with an
-rms of 0.0188, while the offsets varied from $-$0.056 MJy/sr to $+$0.089 
-MJy/sr, with an rms of 0.0586 MJy/sr.
+case of performing the regression versus  H\,\textsc{i}, systematic problems 
+will dominate the uncertainty in the derived zero point offset. The systematics
+likely to dominate our FDS-based zero level are imperfect zodiacal light 
+corrections and the FDS99 temperature map. To quantify the level of systematic 
+error, we split the sky into four quadrants, with the dividing boundaries being
+ $b$=0$^{\circ}$ and $l$=0$^{\circ}$, $l$=180$^{\circ}$. We again restricted to
+ $\mathcal{I}_{857}$$<$2.15 MJy/sr, and repeated the regression in each 
+quadrant. The slopes varied from 0.948 to 0.993, with an rms of 0.0188, while 
+the offsets varied from $-$0.056 MJy/sr to $+$0.089 MJy/sr, with an rms of 
+0.0586 MJy/sr.
 
 %mention that all of this assumes that residual CMB dipole
 % and other low order-corrections are negligible at 857 GHz
@@ -437,15 +438,6 @@ MJy/sr, with an rms of 0.0586 MJy/sr.
 
 % actually evaluate the statistical errors !!!!
 
-% in previous sentence fill in specifics of slope and offset
-
-% sentence saying slope is close to unity, and relationship indeed looks linear
-
-% sentence or two explaining split into quadrants, differences in slope
-% and offset probably due to zodiacal light and/or issues with FDS T2 map
-% say how this quadrants exercise (via rms) allows us to define 857 GHz
-% uncertainty 
-
 % what HI intensity does the 2.15 MJy/sr 857 GHz correspond to ?
 %  ---> pretty high actually
 
@@ -453,7 +445,7 @@ MJy/sr, with an rms of 0.0586 MJy/sr.
 \tabletypesize{\scriptsize}
 \tablecolumns{6} 
 \tablewidth{0pc} 
-\tablecaption{\label{obs} Planck/IRAS Map Properties \& Pre-processing} 
+\tablecaption{\label{table:offs} Planck/IRAS Map Properties \& Pre-processing} 
 \tablehead{
 \colhead{$\nu$ (GHz)} &
 \colhead{Offset ($K_{CMB}$)} & 
@@ -474,42 +466,54 @@ MJy/sr, with an rms of 0.0586 MJy/sr.
 \enddata
 \end{deluxetable*}
 
-
 \subsubsection{Relative Zero Level}
 
-At 353 GHz, 545 GHz, 857 GHz, we have 
-adopted the zero-point offsets of \cite{planckdust} Table 1, which were derived
- by correlating \PLANCK~857 GHz versus H\,\textsc{i} at low column density, and
-then by correlating the other \PLANCK~channels against the corrected 857 GHz 
-map. We have not altered the \verb|i100| zero-point in any way. We have also 
-removed the Solar dipole residual according to \cite{planckdust}, by 
-subtracting a dipole pattern oriented toward 
-$(l, b) = (263.99^{\circ}, 48.26^{\circ})$ and scaled according to their 
-Table 1.
+In the course of this study we use not only \PLANCK~857 GHz, but also all of
+the remaining \PLANCK~HFI bands as well as \verb|i100|. To derive the 
+absolute zero level offsets that must be applied to each of the five
+lowest-frequency \PLANCK~bands, we perform a regression versus the 
+\PLANCK~857 GHz map corrected for the absolute zero level offset derived in
+ $\S$\ref{sec:zp_abs}. We assume no offset need be applied
+to \verb|i100|, which has a zero level tied to H\,\textsc{i} by SFD.
+% maybe need to restate the idea that we're deriving zero points by assuming
+% that the band of interest must approach zero linearly as the reference
+% (in this case 857 ghz) approaches zero.
 
-%\begin{figure}
-%\begin{center}
-%\epsfig{file=scatter_857_217.eps, width=3.4in}
-%\caption{\label{fig:scatter} Scatter plot of \PLANCK~217 GHz versus \PLANCK~857
-%GHz. Left: before correcting for offset and residual Solar dipole. Right: after
-%correcting or the best-fit offset and dipole amplitude, as described in 
-%$\S$\ref{sec:zp}. The dashed red line shows the best-fit linear relationship
-%between 857 GHz and 217 GHz.}
-%\end{center}
-%\end{figure}
+Inspecting the HFI maps at 100-545 GHz, the need for low-order corrections beyond
+a scalar offset were evident. In particular, we noticed the presence of a residual 
+Solar dipole. To best recover the amplitudes of the low-order corrections, it is
+necessary to have the highest-possible signal in the independent variable of our
+regression. For this reason we have used 857 GHz as a reference for the other HFI 
+bands, as opposed to the FDS99 predictions or H\,\textsc{i}. 
 
-The offset and residual dipole parameters for \PLANCK~217 GHz were not 
-available from \cite{planckdust} Table 1. In order to set the zero-point of 
-Galactic emission in the 217 GHz map, we simultaneously fit the constant 
-offset and residual dipole amplitude. Restricting to regions of low column 
-density (H\,\textsc{i} $<$ 200 K\,km\,s$^{-1}$ for $-72$$<$$v_{LSR}$$<$$+25$ 
-km\,s$^{-1}$), we modeled the 217 GHz map as:
+Importantly, we have performed one regression per HFI band to simultaneously fit for the 
+zero level offset, the slope relative to 857 GHz, and the residual dipole amplitude.
+For each 100-545 GHz HFI band, we restrict tor regions of low column density
+(H\,\textsc{i} $<$ 200 K\,km\,s$^{-1}$ for $-72$$<$$v_{LSR}$$<$$+25$ km\,s$^{-1}$)
+and fit the following model:
+
+%At 353 GHz, 545 GHz, 857 GHz, we have 
+%adopted the zero-point offsets of \cite{planckdust} Table 1, which were derived
+% by correlating \PLANCK~857 GHz versus H\,\textsc{i} at low column density, and
+%then by correlating the other \PLANCK~channels against the corrected 857 GHz 
+%map. We have not altered the \verb|i100| zero-point in any way. We have also 
+%removed the Solar dipole residual according to \cite{planckdust}, by 
+%subtracting a dipole pattern oriented toward 
+%$(l, b) = (263.99^{\circ}, 48.26^{\circ})$ and scaled according to their 
+%Table \ref{table:offs}.
+
+%The offset and residual dipole parameters for \PLANCK~217 GHz were not 
+%available from \cite{planckdust} Table 1. In order to set the zero-point of 
+%Galactic emission in the 217 GHz map, we simultaneously fit the constant 
+%offset and residual dipole amplitude. Restricting to regions of low column 
+%density (H\,\textsc{i} $<$ 200 K\,km\,s$^{-1}$ for $-72$$<$$v_{LSR}$$<$$+25$ 
+%km\,s$^{-1}$), we modeled the 217 GHz map as:
 
 \begin{equation}
-\mathcal{I}_{217, i} = a\mathcal{I}_{857, i} + b\mathcal{D}_{i} + c
+\mathcal{I}_{\nu_i, p} = a\mathcal{I}_{857, p} + b\mathcal{D}_{p} + c
 \end{equation}
 
-With $i$ denoting a single nside=64 HEALPix pixel in the maps 
+With $p$ denoting a single nside=64 HEALPix pixel in the maps 
 $\mathcal{I}_{857}$, $\mathcal{I}_{217}$, and $\mathcal{D}$. Here 
 $\mathcal{I}_{857}$ is the \PLANCK~857 GHz map with zodiacal emission, compact 
 sources, and constant offset removed, smoothed to $1^{\circ}$ resolution. 
@@ -533,6 +537,15 @@ residual. Not only is the improved correlation striking in this scatterplot,
 but the residual dipole also appears visually well-corrected in the 217 GHz 
 map itself. Before performing thermal dust fits, we therefore subtract $c$ and 
 $b\mathcal{D}$ from the 217 GHz map.
+
+%in above paragraph, clarify what dipole means i.e. in what direction
+% on sky it's oriented
+
+%mention the special case of 100 GHz w/ quadrupole term ... do i need
+% another equation ?
+
+% mention how offset/dipole values compare to those derived in the Planck
+% team paper ?
 
 \begin{figure}
 \begin{center}
