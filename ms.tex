@@ -376,6 +376,9 @@ relationship in each case.}
 \end{center}
 \end{figure}
 
+% should really change labels to have **script** I to be consistent with the
+% notation used in the text
+
 \begin{figure*}
 \begin{center}
 \epsfig{file=quad_100.eps, width=6.5in}
@@ -523,31 +526,30 @@ sources, and the constant offset of $\S$\ref{sec:zp_abs} removed, smoothed to
 $1^{\circ}$ resolution. $\mathcal{I}_{\nu_i}$ is the corresponding $1^{\circ}$ 
 resolution \PLANCK~HFI map with zodiacal emission and compact sources removed. 
 In the context of Equation \ref{equ:dip}, $\nu_i \in$  
-\{100, 143, 217, 353, 545\} GHz. $\mathcal{D}$ is a scaling of the Solar dipole
-pattern oriented toward $(l, b) = (263.99^{\circ}, 48.26^{\circ})$, with unit 
-amplitude. Because $\sim$18,000 pixels satisfy the low H\,\textsc{i} cut, we 
-have an overconstrained linear model with three parameters: a, b, and c. $a$ 
-represents the slope of \PLANCK~band $\nu_i$ GHz versus \PLANCK~857 GHz 
-assuming they are linearly correlated. $b$ represents the scaling of the Solar 
-dipole that makes the 857 GHz vs. \PLANCK~band $\nu_i$ correlation most tightly
-linear, and $c$ represents the constant offset necessary to make the zero level
- of the band $\nu_i$ map consistent with that of the 857 GHz map. Performing a 
-linear least squares fit with uniform weights and iterative outlier rejection, 
-we find $a=4.33\times10^{-5}\ K/(MJy/sr)$, $b=-1.40\times10^{-5}\ K$, and 
-$c=8.12\times10^{-5}\ K$. Note that $b$ represents 0.42\% of the Solar dipole 
-amplitude, which is within the calibration uncertainty of the \PLANCK~217 GHz 
-band. Figure \ref{fig:scatter} shows scatterplots of the 857 GHz versus 217 
-GHz correlation before and after correcting for our best-fit offset and dipole 
-residual. Not only is the improved correlation striking in this scatterplot, 
-but the residual dipole also appears visually well-corrected in the 217 GHz 
-map itself. Before performing thermal dust fits, we therefore subtract $c$ and 
-$b\mathcal{D}$ from the 217 GHz map.
+\{100, 143, 217, 353, 545\} GHz. Note that $\mathcal{I}_{\nu_i}$ is always in
+the native units of the relevant \PLANCK~band. $\mathcal{D}$ is a scaling of 
+the Solar dipole pattern oriented toward 
+$(l, b) = (263.99^{\circ}, 48.26^{\circ})$, with unit amplitude. Because 
+$\sim$18,000 pixels satisfy the low H\,\textsc{i} cut, we have an 
+overconstrained linear model with three parameters: a, b, and c. $a$ represents
+the best-fit slope of \PLANCK~band $\nu_i$ versus \PLANCK~857 GHz assuming 
+they are linearly related. $b$ represents the scaling of the Solar dipole that 
+makes the \PLANCK~band $\nu_i$ versus 857 GHz correlation most tightly linear. 
+$c$ represents the constant offset necessary to make the zero level of the 
+band $\nu_i$ map consistent with that of the 857 GHz map. For each band
+$\nu_i$, we obtain estimates of $a$, $b$, and $c$ by performing a linear least 
+squares fit with uniform weights and iterative outlier rejection. Figure 
+\ref{fig:dip} shows scatterplots of the band $\nu_i$ versus 857 GHz correlation
+before and after correcting for the best-fit offset and residual dipole, for
+each $\nu_i \in$ \{143, 217, 353, 545\} GHz. Not only are the tightened 
+correlations striking in these scatterplots, but the residual dipole 
+subtractions appear very successful in the two-dimensional band $\nu_i$ maps 
+themselves. Before performing thermal dust fits, we therefore subtract the 
+best-fit $c$ and $b\mathcal{D}$ from each band $\nu_i$ map. The best-fit
+offsets and residual dipole amplitudes are listed in Table \ref{table:offs}.
 
-%in above paragraph, clarify what dipole means i.e. in what direction
-% on sky it's oriented
-
-%mention the special case of 100 GHz w/ quadrupole term ... do i need
-% another equation ?
+% mention the special case of 100 GHz w/ quadrupole term !!!!!!
+% do i need another equation ?
 
 % mention how offset/dipole values compare to those derived in the Planck
 % team paper ?
