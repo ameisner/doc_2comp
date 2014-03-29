@@ -469,7 +469,7 @@ the offsets varied from $-$0.056 MJy/sr to $+$0.089 MJy/sr, with an rms of
 \subsubsection{Relative Zero Level}
 
 In the course of this study we use not only \PLANCK~857 GHz, but also all of
-the remaining \PLANCK~HFI bands as well as \verb|i100|. To derive the 
+the remaining \PLANCK~HFI bands, as well as \verb|i100|. To derive the 
 absolute zero level offsets that must be applied to each of the five
 lowest-frequency \PLANCK~bands, we perform a regression versus the 
 \PLANCK~857 GHz map corrected for the absolute zero level offset derived in
@@ -479,22 +479,25 @@ to \verb|i100|, which has a zero level tied to H\,\textsc{i} by SFD.
 % that the band of interest must approach zero linearly as the reference
 % (in this case 857 ghz) approaches zero.
 
-Inspecting the HFI maps at 100-545 GHz, the need for low-order corrections beyond
-a scalar offset were evident. In particular, we noticed the presence of a residual 
-Solar dipole. To best recover the amplitudes of the low-order corrections, it is
-necessary to have the highest-possible signal in the independent variable of our
-regression. For this reason we have used 857 GHz as a reference for the other HFI 
-bands, as opposed to the FDS99 predictions or H\,\textsc{i}. 
+The need for additional low-order corrections beyond a simple scalar offset 
+became evident upon inspecting the HFI maps at 100-545 GHz. In particular, we 
+noticed the presence of a residual dipole pattern, with an orientation 
+consistent with that of the Solar dipole. To most precisely recover the 
+amplitude of the residual dipole, it is necessary to have the 
+highest-possible S/N in the independent variable of our regression. For 
+this reason we have used 857 GHz as a reference for the 100-545 GHz bands, as 
+opposed to the FDS99 predictions or H\,\textsc{i}. 
 
-Importantly, we have performed one regression per HFI band to simultaneously fit for the 
-zero level offset, the slope relative to 857 GHz, and the residual dipole amplitude.
-For each 100-545 GHz HFI band, we restrict tor regions of low column density
-(H\,\textsc{i} $<$ 200 K\,km\,s$^{-1}$ for $-72$$<$$v_{LSR}$$<$$+25$ km\,s$^{-1}$)
-and fit the following model:
+We have performed one regression per HFI band to simultaneously 
+fit for the zero level offset, the slope relative to 857 GHz, and the residual 
+dipole amplitude. For each 100-545 GHz HFI band, we restrict tor regions of low
+column density (H\,\textsc{i} $<$ 200 K\,km\,s$^{-1}$ for 
+$-72$$<$$v_{LSR}$$<$$+25$ km\,s$^{-1}$) and fit the following model:
 
-%At 353 GHz, 545 GHz, 857 GHz, we have 
-%adopted the zero-point offsets of \cite{planckdust} Table 1, which were derived
-% by correlating \PLANCK~857 GHz versus H\,\textsc{i} at low column density, and
+% At 353 GHz, 545 GHz, 857 GHz, we have 
+% adopted the zero-point offsets of \cite{planckdust} Table 1, which were 
+% derived by correlating \PLANCK~857 GHz versus H\,\textsc{i} at low column 
+% density, and
 %then by correlating the other \PLANCK~channels against the corrected 857 GHz 
 %map. We have not altered the \verb|i100| zero-point in any way. We have also 
 %removed the Solar dipole residual according to \cite{planckdust}, by 
@@ -509,26 +512,28 @@ and fit the following model:
 %density (H\,\textsc{i} $<$ 200 K\,km\,s$^{-1}$ for $-72$$<$$v_{LSR}$$<$$+25$ 
 %km\,s$^{-1}$), we modeled the 217 GHz map as:
 
-\begin{equation}
+\begin{equation} \label{equ:dip}
 \mathcal{I}_{\nu_i, p} = a\mathcal{I}_{857, p} + b\mathcal{D}_{p} + c
 \end{equation}
 
 With $p$ denoting a single nside=64 HEALPix pixel in the maps 
-$\mathcal{I}_{857}$, $\mathcal{I}_{217}$, and $\mathcal{D}$. Here 
+$\mathcal{I}_{857}$, $\mathcal{I}_{\nu_i}$, and $\mathcal{D}$. Here 
 $\mathcal{I}_{857}$ is the \PLANCK~857 GHz map with zodiacal emission, compact 
-sources, and constant offset removed, smoothed to $1^{\circ}$ resolution. 
-$\mathcal{I}_{217}$ is the corresponding $1^{\circ}$ resolution \PLANCK~217 
-GHz map with zodiacal emission and compact sources removed. $\mathcal{D}$ is a
-scaling of the Solar dipole with unit amplitude. Because $\sim$18,000 pixels
-satisfy the low H\,\textsc{i} cut, we have an overconstrained linear model with
-three parameters: a, b, and c. $a$ represents the slope of \PLANCK~217 GHz 
-versus \PLANCK~857 GHz assuming they are linearly correlated, and is not
-of any importance to our downstream analysis. $b$ represents the scaling of 
-the Solar dipole that makes the 857 GHz vs. 217 GHz correlation tightest, and 
-$c$ represents the constant offset necessary to make the zero level of the 217 
-GHz map consistent with that of the 857 GHz map. Performing a linear least
-squares fit with uniform weights and iterative outlier rejection, we find 
-$a=4.33\times10^{-5}\ K/(MJy/sr)$, $b=-1.40\times10^{-5}\ K$, and 
+sources, and the constant offset of $\S$\ref{sec:zp_abs} removed, smoothed to 
+$1^{\circ}$ resolution. $\mathcal{I}_{\nu_i}$ is the corresponding $1^{\circ}$ 
+resolution \PLANCK~HFI map with zodiacal emission and compact sources removed. 
+In the context of Equation \ref{equ:dip}, $\nu_i \in$  
+\{100, 143, 217, 353, 545\} GHz. $\mathcal{D}$ is a scaling of the Solar dipole
+pattern oriented toward $(l, b) = (263.99^{\circ}, 48.26^{\circ})$, with unit 
+amplitude. Because $\sim$18,000 pixels satisfy the low H\,\textsc{i} cut, we 
+have an overconstrained linear model with three parameters: a, b, and c. $a$ 
+represents the slope of \PLANCK~band $\nu_i$ GHz versus \PLANCK~857 GHz 
+assuming they are linearly correlated. $b$ represents the scaling of the Solar 
+dipole that makes the 857 GHz vs. \PLANCK~band $\nu_i$ correlation most tightly
+linear, and $c$ represents the constant offset necessary to make the zero level
+ of the band $\nu_i$ map consistent with that of the 857 GHz map. Performing a 
+linear least squares fit with uniform weights and iterative outlier rejection, 
+we find $a=4.33\times10^{-5}\ K/(MJy/sr)$, $b=-1.40\times10^{-5}\ K$, and 
 $c=8.12\times10^{-5}\ K$. Note that $b$ represents 0.42\% of the Solar dipole 
 amplitude, which is within the calibration uncertainty of the \PLANCK~217 GHz 
 band. Figure \ref{fig:scatter} shows scatterplots of the 857 GHz versus 217 
