@@ -532,15 +532,32 @@ best-fit $b$ and $d\mathcal{D}$ from each band $\nu_i$ map. The best-fit
 offsets and residual dipole amplitudes are listed in Table \ref{table:offs}.
 
 For \PLANCK~100 GHz, we found an additional low-order correction to be
-necessary. Therefore, for 100 GHz, we performed a modified version of the 
-Eqation \ref{equ:dip} fit, using the following model:
+necessary (see Figure \ref{fig:quad}). Therefore, for 100 GHz, we performed a 
+modified version of the Equation \ref{equ:dip} fit, using the following model:
 
 \begin{equation} \label{equ:quad}
-\mathcal{I}_{100, p} = a\mathcal{I}_{857, p} + b\mathcal{D}_p + c + qQ_p
+\mathcal{I}_{100, p} = m\mathcal{I}_{857, p} + d\mathcal{D}_p + b + qQ_p
 \end{equation}
 
-% mention the special case of 100 GHz w/ quadrupole term !!!!!!
-% do i need another equation ?
+We will refer to the additional term $qQ_p$ as the ``quadrupole correction''. 
+The shape of the quadrupole template is given by:
+
+\begin{equation}
+Q_p = cos^2(\theta_p)
+\end{equation}
+
+Where $\theta_p$ is the angle of pixel $p$ relative to the Solar velocity 
+vector. It is not clear physically why such a term should improve the 
+correlation between $\mathcal{I}_{100}$ and $\mathcal{I}_{857}$. However, the 
+scatter plots shown in Figure \ref{fig:quad} make it clear that such a term, 
+with best-fit amplitude $q$=$-7.17$$\times$10$^{-6}$, dramatically improves the
+quality of the linear correlation between the 100 GHz and 857 GHz channels. We 
+tried re-running the fits at 143-545 GHz including the $Q_p$ quadrupole term, 
+but in all cases found the best-fit quadrupole to be negligible, and yield no 
+substantial tightening of the correlation versus 857 GHz.
+
+% worth clarifying that, for quadrupole fit at 100 GHz, we still do the
+% fit with uniform weights and iterative outlier rejection ?
 
 % mention how offset/dipole values compare to those derived in the Planck
 % team paper ?
