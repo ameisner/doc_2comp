@@ -376,9 +376,6 @@ relationship in each case.}
 \end{center}
 \end{figure}
 
-% should really change labels to have **script** I to be consistent with the
-% notation used in the text
-
 \begin{figure*}
 \begin{center}
 \epsfig{file=quad_100.eps, width=6.5in}
@@ -595,21 +592,26 @@ Right: Low S/N pixel at high-latitude in the Galactic south.}
 \label{sec:modeling}
 
 We adopt the thermal dust emission model of FDS99, which consists of two 
-populations of dust grains emitting as MBBs, but with different temperatures 
-and different emissivity power law indices $\beta$. The shape of this spectrum 
-is given by:
+populations of dust grains emitting as MBBs, each with distinct 
+emission/absorption characteristics. Importantly, the emissivity power 
+law indices $\beta$ of the two species differ. The shape of this spectrum is 
+given by:
 
 \begin{equation}
 M_{\nu} \propto f_{1}q_{1}(\frac{\nu}{\nu_{0}})^{\beta_1}B_{\nu}(T_1) + (1-f_{1})q_{2}(\frac{\nu}{\nu_0})^{\beta_2}B_{\nu}(T_2)
 \end{equation}
 
-With $\nu_0$ = 3000 GHz, $f_{1}$ = 0.0363, $\beta_1$ = 1.67, $\beta_2$ = 2.70, 
-and $q_1/q_2$ = 13.0. For the parameters thus far specified, the two dust 
-temperatures are further related by:
+With $f_{1}$ = 0.0363, $\beta_1$ = 1.67, $\beta_2$ = 2.70, and $q_1/q_2$ = 
+13.0. $\nu_0$ is chosen to be 3000 GHz. For the parameters thus far specified, 
+the two dust temperatures are further related by:
 
 \begin{equation}
 T_1 = 0.352T_2^{1.18}
 \end{equation}
+
+% more important than the details of the above equation is the notion
+% that, for any set of f1, q1/q2, beta1, beta2, the relationship between
+% T1 and T2 is a simple power law
 
 %the below statements seem like they might best be moved to a generic
 %opening of the next section, stating our philosophy of breaking sky
@@ -941,6 +943,15 @@ $0.5^{\circ}$ resolution has effectively blurred their dust temperature map.
 \caption{\label{fig:f1} The results of our low-resolution fit with $f_1$
 allowed to vary, but with a strong prior 
 $P(f_1)=\mathcal{N}(f_1|0.0363, 0.003)$.}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\epsfig{file=f1_lambert.eps, width=3.3in}
+\caption{\label{fig:f1lambert} The results of our low-resolution fit with $f_1$
+allowed to vary, shown in Lambert projection to highlight the salient features 
+near the north Galactic pole.}
 \end{center}
 \end{figure}
 
