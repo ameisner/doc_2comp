@@ -763,6 +763,13 @@ value of $q_1/q_2$ is favored by the \PLANCK~data than by the FIRAS data (2)
 \section{Fitting Procedure}
 \label{sec:fitting}
 
+The following subsections detail our procedure for constraining the 
+two-component dust emission model parameters which are permitted to vary
+spatially. In the case of our full-resolution $6.1'$fits, these parameters
+are the SED normalization and the hot dust temperature $T_2$. The same 
+formalism will apply to our lower-resolution fits in which $f_1$ is also 
+allowed to vary from one line of sight to another.
+
 % sentence here summarizing what the following subsections will describe ?
 
 \subsection{Pixelization}
@@ -772,9 +779,9 @@ non-overlapping pixels of angular size $\sim$1.72$'$, defined by the HEALPix
 pixelization in Galactic coordinates, with $N_{side}$=2048 \citep{healpix}. 
 This pixelization is convenient because it is the same format in which the 
 \PLANCK~HFI maps were released, and because it adequately samples the $6.1'$ 
-resolution maps under consideration. Our procedure will fit the intensity 
-measurements in each spatial pixel independently of those in neighboring 
-pixels.
+FWHM maps under consideration in our full-resolution fits. Our procedure will 
+fit the intensity measurements in each spatial pixel independently of those in 
+neighboring pixels.
 
 \subsection{Finite Bandpass Correction}
 \label{sec:bpcorr}
