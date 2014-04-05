@@ -716,11 +716,48 @@ FIRAS+\IRAS & 0.0363 & 13.0 & 1.67 & 2.70 \\
 
 %%%%
 
-\subsection{Correlation Slopes}
+In light of the \PLANCK~HFI data, it is possible to revisit the best-fit global
+parameters of the two-component emission model. To derive the 
+\{$\beta_1$, $\beta_2$, $f_1$, $q_1/q_2$\} that best represent the \PLANCK~HFI
+maps, we employed a correlation slope analysis (see Figure XX). Specifically,
+we correlated the observed \PLANCK~data against the appropriate FDS99 
+prediction for each HFI band from 143-857 GHz. We omitted 100 GHz from 
+consideration due to the sensitivity of the 100 GHz trend to our ad hoc
+low order corrections (see Figure \ref{fig:quad}). All comparisons between
+\PLANCK~and the FDS99 predictions were made after smoothing both to 
+$1^{\circ}$, subtracting the SMICA CMB model, and ignoring SMICA inpainted 
+pixels. For 100-857 GHz, the linearity between the FDS and \PLANCK~is
+excellent.
+
+%also emphasize that FDS99 predictions are broadband, not monochromatic
+% (i think i can borrow a sentence about this from the absolute zero point 
+% section above)
+
+However, the slopes at low frequencies are not precisely unity, as would
+be expected if the global two-component parameters derived from FIRAS by
+FDS99 were also the best-fitting global parameters with respect to the 
+\PLANCK~data set.
+
+% maybe a table listing the correlation slopes and their uncertainties
+% would be useful here
+
+We then derive \{$\beta_1$, $\beta_2$, $f_1$, $q_1/q_2$\} as constrained by 
+the correlation slopes and their uncertainties given in Table QQ by 
+taking $T_2$=$16.2$K and running Markov chains to sample the posterior:
+
+Figure ZZ shows a corner plot of the 150,000 samples. Clearly, there are
+strong covariances, but even so several conclusions are clear: (1) a lower 
+value of $q_1/q_2$ is favored by the \PLANCK~data than by the FIRAS data (2) 
+(3). Because
 
 % multi-panel figure showing more scatterplots of Planck vs. FDS predictions
 
-\subsection{Hierarchical Approach?}
+% at the end of this section state that we do all of our fits etc. with
+% both models (call one of them model 1, and the other model 2, similar
+% to what FDS99 did
+
+
+%\subsection{Hierarchical Approach?}
 
 \section{Fitting Procedure}
 \label{sec:fitting}
