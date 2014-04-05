@@ -711,9 +711,12 @@ S_{\nu} = \frac{f_1q_1(\nu/\nu_0)^{\beta_1}B_{\nu}(T_1) + f_2q_2(\nu/\nu_0)^{\be
 }
 \startdata
  1 & FIRAS+\IRAS & 0.0363 & 13.0 & 1.67 & 2.70 \\
- 2 & \PLANCK+\IRAS & 0.0267 & 3.68 & 1.19 & 2.61
+ 2 & \PLANCK+\IRAS & 0.0267 & 3.68 & 1.19 & 2.61 \\ [-2ex]
 \enddata
 \end{deluxetable}
+
+% would be great to have uncertainties on each parameter as well (in the
+% Planck case at least...) !!!!!!!!!!!!!!!
 
 %%%%
 
@@ -749,12 +752,19 @@ taking $T_2$=$16.2$K and running Markov chains to sample the posterior:
 Figure ZZ shows a corner plot of the 150,000 samples. Clearly, there are
 strong covariances, but even so several conclusions are clear: (1) a lower 
 value of $q_1/q_2$ is favored by the \PLANCK~data than by the FIRAS data (2) 
-(3). Because $f_1$ is so strongly covariant with $\beta_1$, the difference of 
-$f_1$ between
+the best-fit emissivity power law index of the hot dust component ($\beta_2$) 
+is effectively identical to that found by FDS99 to within uncertainties and (3)
+a somewhat lower $\beta_1$ is favored by \PLANCK~than by FIRAS, meaning the
+\PLANCK-based SED is shallower toward the millimeter. Because $f_1$ is so 
+strongly covariant with $\beta_1$, the difference of $f_1$ between the 
+\PLANCK~and FIRAS best fits is not particularly significant.
 
-The MCMC fitting procedure described in the following sections is performed
-separately for both model 1 (FIRAS+\IRAS) and model 2 (\PLANCK+\IRAS), as 
-defined by the global parameters in Table \ref{tab:global}.
+% actually quantitatively assess, for a typical temperature (and frequency?)
+% how the new f_1 value basically balances out the change in beta_1 ???
+
+The MCMC fitting procedure described in $\S$\ref{sec:fitting} is performed
+separately for both model 1 (FIRAS+\IRAS) and model 2 (\PLANCK+\IRAS), each
+defined by their respective global parameters listed in Table \ref{tab:global}.
 
 % multi-panel figure showing more scatterplots of Planck vs. FDS predictions
 
