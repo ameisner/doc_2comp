@@ -766,12 +766,11 @@ The MCMC fitting procedure described in $\S$\ref{sec:fitting} is performed
 separately for both model 1 (FIRAS+\IRAS) and model 2 (\PLANCK+\IRAS), each
 defined by their respective global parameters listed in Table \ref{tab:global}.
 
+% does this statement accidentally give the impression that I do separate 
+% MCMC fits, one in which i fit Planck/IRAS **data** and one in which
+% i fit FIRAS/IRAS data ????
+
 % multi-panel figure showing more scatterplots of Planck vs. FDS predictions
-
-% at the end of this section state that we do all of our fits etc. with
-% both models (call one of them model 1, and the other model 2, similar
-% to what FDS99 did
-
 
 %\subsection{Hierarchical Approach?}
 
@@ -801,45 +800,53 @@ neighboring pixels.
 \subsection{Finite Bandpass Correction}
 \label{sec:bpcorr}
 The thermal dust emission model of $\S$\ref{sec:modeling} predicts the 
-intensity $M_{\nu}$ in MJy/sr for any single frequency $\nu$. In practice, 
-however, we wish to constrain our model using measurements in the broad 
-\IRAS/\PLANCK~bandpasses, typically hundreds of GHz wide. We have therefore 
-computed dimensionless bandpass correction factors:$b_{\nu_i}(T, \alpha)$ 
+flux density $M_{\nu}$ in e.g. MJy/sr for any single frequency $\nu$. In 
+practice, however, we wish to constrain our model using measurements in the 
+broad \IRAS/\PLANCK~bandpasses, typically hundreds of GHz wide. We have 
+therefore computed dimensionless bandpass correction factors:
 
 \begin{equation}
-b_{\nu_i}(T, \alpha) = 
+b_{\nu_i}(T, \beta) = \frac{\int \mathcal{T}(\nu)\nu^{\beta}B_{\nu}(T) d\nu \bigg[\int \mathcal{T}(\nu) d\nu\bigg]^{-1}}{\nu_{i,c}^{\beta}B_{\nu_{i,c}}(T)}
 \end{equation}
+
+% now i need to define what \nu_{i,c} is (it's the nominal central 
+% frequency of band \nu_i) e.g. 857 GHz for Planck 857, etc..
+
+% also need to define what \mathcal{T} is (planck transmission, 
+% dimensionless)
 
 The two-component model prediction in band $\nu_i$ is then constructed
-as a linear combination of color-corrected MBB terms as:
+as a linear combination of color-corrected MBB terms:
 
 \begin{equation}
-M_{\nu_i}b_{\nu_i}
+\tilde{I}_{\nu_i} \propto \sum_{k=1}^{2} b_{\nu_i}(T_k, \beta_k) f_k q_k (\nu_{i,c}/\nu_0)^{\beta_k} B_{\nu_{i,c}}(T_k)
 \end{equation}
+
+Note that by convention $f_2$=(1$-$$f_1$)
 
 %pre-computing lookup tables of b_{\nu_i} allows us to evaluate the 
 % relevant modified blackbodies at the nominal  band center frequency 
 % and then obtain the broadband measurement by virtue of multiplying by
 % by the relevant b_{\nu_i}
 
-Is the predicted observation for the \PLANCK~or \IRAS~band of interest, in 
-MJy/sr. Here $\nu_i$ represents the $i^{th}$ of the 
-five nominal band center frequencies for which we have broadband measurements, 
-$\nu_i \in$ \{217, 353, 545, 857, 3000\} GHz. We have used the 
-\PLANCK~transmission curves provided in the file \verb|HFI_RIMO_R1.10.fits| 
-\citep{planckresponse}. For 3000 GHz, we have used the DIRBE bandpass. 
+Is the predicted observation for the \PLANCK~or \IRAS~band of interest. Here 
+$\nu_i$ represents the $i^{th}$ of the five nominal band center frequencies for
+which we have broadband measurements, $\nu_i \in$ \{217, 353, 545, 857, 3000\} 
+GHz. We have used the \PLANCK~transmission curves provided in the file 
+\verb|HFI_RIMO_R1.10.fits| \citep{planckresponse}. For 3000 GHz, we have used 
+the DIRBE bandpass. 
 
 % We note that it is not clear which bandpass should properly be ascribed to 
 % the \IRAS/DIRBE composite 100$\mu$m maps under consideration.
 
 \subsection{Unit Conversions}
 
-The \PLANCK~217 GHz and 353 GHz data are provided in units of thermodynamic 
-$\delta T$, while \verb|i100| and the higher frequency \PLANCK~maps are 
-provided in units of MJy/sr. Although the aforementioned preprocessing steps 
-were conducted with each map in its native units, we converted the 217 GHz and 
-353 GHz measurements to MJy/sr according to \cite{planckresponse} prior to 
-performing SED fits.
+The \PLANCK~100-353 GHz data are provided in units of thermodynamic 
+$\delta T$, while \verb|i100| and the higher frequency HFI maps are provided in
+units of MJy/sr. Although the aforementioned preprocessing steps were conducted
+with each map in its native units, we converted the 217 GHz and 353 GHz 
+measurements to MJy/sr according to \cite{planckresponse} prior to performing 
+SED fits.
 
 %i think it's table 6 that I specifically want to cite within the ``spectral
 %response'' paper, but i need to check that those values are consistent
