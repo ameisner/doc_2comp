@@ -789,17 +789,33 @@ The thermal dust emission model of $\S$\ref{sec:modeling} predicts the
 intensity $M_{\nu}$ in MJy/sr for any single frequency $\nu$. In practice, 
 however, we wish to constrain our model using measurements in the broad 
 \IRAS/\PLANCK~bandpasses, typically hundreds of GHz wide. We have therefore 
-computed dimensionless bandpass correction factors $b_{\nu_i}$ such that 
-$M_{\nu_i}b_{\nu_i}$ is the predicted observation for the \PLANCK~or \IRAS~band
- of interest, in MJy/sr. Here $\nu_i$ represents the $i^{th}$ of the five 
-nominal band center frequencies for which we have broadband measurements, 
-$\nu_i \in$ \{217, 353, 545, 857, 3000\} GHz. The shape of model spectrum 
-$M_{\nu}$ is only dependent upon one parameter: the hot dust temperature $T_2$.
- We have used the \PLANCK~transmission curves provided in the file 
-\verb|HFI_RIMO_R1.10.fits| \citep{planckresponse}. For 3000 GHz, we have used 
-the \IRAS~bandpass, following the treatment of \cite{planckdust}. We note that 
-it is not clear which bandpass should properly be ascribed to the \IRAS/DIRBE 
-composite 100$\mu$m maps under consideration. 
+computed dimensionless bandpass correction factors:$b_{\nu_i}(T, \alpha)$ 
+
+\begin{equation}
+b_{\nu_i}(T, \alpha) = 
+\end{equation}
+
+The two-component model prediction in band $\nu_i$ is then constructed
+as a linear combination of color-corrected MBB terms as:
+
+\begin{equation}
+M_{\nu_i}b_{\nu_i}
+\end{equation}
+
+%pre-computing lookup tables of b_{\nu_i} allows us to evaluate the 
+% relevant modified blackbodies at the nominal  band center frequency 
+% and then obtain the broadband measurement by virtue of multiplying by
+% by the relevant b_{\nu_i}
+
+Is the predicted observation for the \PLANCK~or \IRAS~band of interest, in 
+MJy/sr. Here $\nu_i$ represents the $i^{th}$ of the 
+five nominal band center frequencies for which we have broadband measurements, 
+$\nu_i \in$ \{217, 353, 545, 857, 3000\} GHz. We have used the 
+\PLANCK~transmission curves provided in the file \verb|HFI_RIMO_R1.10.fits| 
+\citep{planckresponse}. For 3000 GHz, we have used the DIRBE bandpass. 
+
+% We note that it is not clear which bandpass should properly be ascribed to 
+% the \IRAS/DIRBE composite 100$\mu$m maps under consideration.
 
 \subsection{Unit Conversions}
 
