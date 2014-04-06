@@ -871,17 +871,22 @@ MCMC sampling to predict the observed SED, which we will denote by
 \end{equation}
 
 This equation is quite similar to Equation \ref{equ:broadband}, but with two 
-important differences. The first is that the normalization of 
-$\tilde{I}_{\nu_i}$ is now specified by $\tilde{I}_{545}$, which represents the
- broadband intensity measured in \PLANCK~545 GHz. Also, each term in the 
-numerator is multiplied by a conversion factor $u_{\nu_i}^{-1}(T_k, \beta_k)$. 
-This factor is necessary because some of the \PLANCK~maps of interest have 
-units of $K_{CMB}$ (100-353 GHz), while others (545-3000 GHz) have units of 
-MJy/sr. Therefore, we wish to predict the low frequency bands in $K_{CMB}$, and
-the high frequency bands in MJy/sr. For this reason, we evaluate $B_{\nu_i}$ in
-Equation \ref{eqn:inten} in MJy/sr and let $u_{\nu_i}$=1 for all 
-$\nu_i$$\ge$545 GHz. For $\nu_i$$\le$353 GHz, $u_{\nu_i}(T_k, \beta_k)$ 
-represents the conversion factor from $K_{CMB}$ to MJy/sr
+important differences. First, the normalization of $\tilde{I}_{\nu_i}$ is now 
+specified by $\tilde{I}_{545}$, which represents the broadband intensity 
+measured in the \PLANCK~545 GHz band. The denominator serves to ensure that,
+for the case of $\nu_i$=545 GHz, $\tilde{I}_{545}$ is self-consistent. Second, 
+each term in the numerator is multiplied by a conversion factor 
+$u_{\nu_i}^{-1}(T_k, \beta_k)$. This factor is necessary because some of the 
+\PLANCK~maps of interest have units of $K_{CMB}$ (100-353 GHz), while the
+remaining maps (545-3000 GHz) have units of MJy/sr. Complicating matters, the 
+conversion from $K_{CMB}$ to MJy/sr depends on the spectrum under 
+consideration; attempting to apply conversion factors to put all of the 
+observed maps themselves into common units is not a particularly attractive 
+option. Therefore, we adopt the strategy of predicting each band in its native 
+units, whether MJy/sr or $K_{CMB}$. For this reason, we always evaluate 
+$B_{\nu_{i,c}}$ in Equation \ref{eqn:inten} in MJy/sr and let $u_{\nu_i}$=1 for
+all $\nu_i$$\ge$545 GHz. For $\nu_i$$\le$353 GHz, $u_{\nu_i}(T_k, \beta_k)$ 
+represents the appropriate conversion factor from $K_{CMB}$ to MJy/sr.
 
 % equation for u goes here
 
@@ -890,16 +895,15 @@ therefore $I_{\nu_{i}}$ will have different units depending on the band
 $\nu_i$, though $I_{\nu_{i}}$ always has the same units as the native 
 \PLANCK~HFI band $\nu_i$ map.
 
-The denominator serves to ensure that,
-for the case of $\nu_i$=545 GHz, $\tilde{I}_{545}$ is self-consistent.
-
 % add a sentence in the middle of the previous paragraph explaining why
 % it doesn't make sense to just multiply the Kcmb maps by some factor
 % and pretend they're in MJy/sr for the sake of making predictions
 
-The \PLANCK~100-353 GHz data are provided in units of $K_{CMB}$, while 
-\verb|i100| and the higher frequency HFI maps are provided in units of 
-MJy/sr. We will treat the SED normalization $\tilde{I}_{545}$ as a free 
+%The \PLANCK~100-353 GHz data are provided in units of $K_{CMB}$, while 
+%\verb|i100| and the higher frequency HFI maps are provided in units of 
+%MJy/sr. 
+
+We will treat the SED normalization $\tilde{I}_{545}$ as a free 
 parameter in our fitting procedure. In our baseline fits, second free parameter
  is $T_2$, which determines the shape of the SED through $M_{\nu}$ as well as 
 $b_{\nu_i}(T_2)$.
