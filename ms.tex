@@ -884,16 +884,26 @@ consideration; attempting to apply conversion factors to put all of the
 observed maps themselves into common units is not a particularly attractive 
 option. Therefore, we adopt the strategy of predicting each band in its native 
 units, whether MJy/sr or $K_{CMB}$. For this reason, we always evaluate 
-$B_{\nu_{i,c}}$ in Equation \ref{eqn:inten} in MJy/sr and let $u_{\nu_i}$=1 for
+$B_{\nu_{i,c}}$ in Equation \ref{eqn:inten} in MJy/sr and let $u_{\nu_i}$=1 (dimensionless) for
 all $\nu_i$$\ge$545 GHz. For $\nu_i$$\le$353 GHz, $u_{\nu_i}(T_k, \beta_k)$ 
-represents the appropriate conversion factor from $K_{CMB}$ to MJy/sr.
+represents the appropriate conversion factor from $K_{CMB}$ to MJy/sr:
 
 % equation for u goes here
 
-To reiterate, $u_{\nu_i}(T_k, \beta_k)$ has units of (MJy/sr)/$K_{CMB}$, and
-therefore $I_{\nu_{i}}$ will have different units depending on the band 
-$\nu_i$, though $I_{\nu_{i}}$ always has the same units as the native 
-\PLANCK~HFI band $\nu_i$ map.
+\begin{equation}
+u_{\nu_i}(T, \beta) = u_{\nu_i, IRAS} \times u_{\nu_i, IRAS \ to \ (T, \beta)}
+\end{equation}
+
+Here $u_{\nu_i, IRAS}$ gives the conversion factor from $K_{CMB}$ to MJy/sr
+for band $\nu_i$ under the `\IRAS~convention', which corresponds to
+a spectral index $\alpha$=$-1$ spectrum. The values of $u_{\nu_i, IRAS}$
+are listed in the second column of \cite{planckresponse} Table 6. 
+$u_{\nu_i, IRAS \ to \ (T, \beta)}$ is a color correction factor relative to
+the \IRAS~convention for band $\nu_i$ and a MBB($T$, $\beta$) spectrum.
+To reiterate, for $\nu_i$$\le$353 GHz $u_{\nu_i}(T_k, \beta_k)$ has units 
+of (MJy/sr)/$K_{CMB}$, and therefore $I_{\nu_{i}}$ will have different 
+units depending on the band $\nu_i$, though $I_{\nu_{i}}$ always has 
+the same units as the native band $\nu_i$ map.
 
 % add a sentence in the middle of the previous paragraph explaining why
 % it doesn't make sense to just multiply the Kcmb maps by some factor
