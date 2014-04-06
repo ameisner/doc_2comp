@@ -804,10 +804,10 @@ flux density $M_{\nu}$ in e.g. MJy/sr for any single frequency $\nu$. In
 practice, however, we wish to constrain our model using measurements in the 
 broad \verb|i100|/\PLANCK~bandpasses, typically hundreds of GHz wide. We have 
 therefore computed dimensionless finite bandpass correction factors to 
-account for the MBB($\beta$, $T$) spectral shape and the transmission as a 
+account for the MBB($T$, $\beta$) spectral shape and the transmission as a 
 function of frequency:
 
-\begin{equation}
+\begin{equation} \label{equ:bpcorr}
 b_{\nu_i}(T, \beta) = \frac{\int \mathcal{T}_{\nu_i}(\nu)\nu^{\beta}B_{\nu}(T) d\nu \bigg[\int \mathcal{T}_{\nu_i}(\nu) d\nu\bigg]^{-1}}{\nu_{i,c}^{\beta}B_{\nu_{i,c}}(T)}
 \end{equation}
 
@@ -825,10 +825,10 @@ $\mathcal{T}_{\nu_i}(\nu)$ represents the relative transmission as a function
 of frequency for band $\nu_i$. For the HFI maps, $\mathcal{T}_{\nu_i}(\nu)$ is 
 given by the \PLANCK~transmission curves provided in the file 
 \verb|HFI_RIMO_R1.10.fits| \citep{planckresponse}. For 3000 GHz, we have 
-adopted the DIRBE bandpass.
+adopted the DIRBE transmission curve.
 
 The broadband, two-component model prediction in band $\nu_i$, termed 
-$\tilde{I}_{\nu_i}$,is then constructed as a linear combination of 
+$\tilde{I}_{\nu_i}$, is then constructed as a linear combination of 
 color-corrected MBB terms:
 
 \begin{equation}
@@ -840,18 +840,20 @@ correction approach allows us to predict the \textit{broadband} measurement
 $\tilde{I}_{\nu_i}$ by computing monochromatic flux densities at the central 
 frequency $\nu_{i,c}$ and then multiplying by factors $b_{\nu_i}(T, \beta)$ 
 which are interpolated off of a set of precomputed, one-dimensional lookup 
-tables. Here the single dimension is $T_k$, as we avoid the necessity of a 
-two-dimensional interpolation in both $\beta$ and $T$ by computing a small set 
-of one dimensional correction factors for the particular set of $\beta$ values
-of interest ($\beta$$\in$\{1.67, 2.7, 1.19, 2.61\}, see Table \ref{tab:global}.
+tables each listing $b_{\nu_i}(T, \beta)$ as a function of $T$. We avoided the 
+need to interpolate in both $\beta$ and $T$ by computing only a small set of 
+one dimensional correction factors for the particular set of $\beta$ values of 
+interest ($\beta \in$ \{1.67, 2.7, 1.19, 2.61\}, see Table \ref{tab:global}).
 
-% maybe a final sentence to emphasize explicitly that this approach
-% is much more computationally feasible than computing integrals
-% on-the-fly every time a putative model is proposed (during sampling)
-
-% maybe mention the motivation for computing b_{\nu_i} on a **per MBB**
-% basis, the fact that this is more versatile, especially when 
-% the ``global parameters'' like f_1 or others are being changed
+This finite bandpass correction approach makes the MCMC sampling described in 
+$\S$\ref{sec:mcmc} much more computationally efficient by circumventing the 
+need to perform the integral in the numerator of Equation \ref{equ:bpcorr} 
+on-the-fly for each proposed dust temperature. We have chosen to compute the 
+bandpass corrections on a per-MBB basis because this approach is very 
+versatile; all possible two-component models are linear combinations of MBBs, 
+so we can apply all of our finite bandpass machinery even when we allow 
+parameters other than temperature (e.g. $f_1$) to vary and thereby change the 
+dust spectrum shape.
 
 % We note that it is not clear which bandpass should properly be ascribed to 
 % the \IRAS/DIRBE composite 100$\mu$m maps under consideration.
@@ -895,6 +897,7 @@ $b_{\nu_i}(T_2)$.
 % check that RIMO file i've used is actually the most up-to-date version
 
 \subsection{Markov Chains}
+\label{sec:mcmc}
 As explained in $\S$\ref{sec:modeling}, the two free parameters in our 
 per-pixel dust emission SED are the hot dust temperature $T_2$, which 
 determines the shape of the SED, and the spectrum normalization. In practice,
