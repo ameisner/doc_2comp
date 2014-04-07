@@ -944,14 +944,11 @@ in three parameters: $\tilde{I}_{545}$, $T_2$, and $f_1$.
 \subsection{Markov Chains}
 \label{sec:mcmc}
 
-As explained in $\S$\ref{sec:modeling}, the two free parameters in our 
-per-pixel dust emission SED are the hot dust temperature $T_2$, which 
-determines the shape of the SED, and the spectrum normalization. In practice,
-the normalization is controlled via $\tilde{I}_{545}$, the amplitude of the 
-model SED in MJy/sr at $\nu$ = 545 GHz. For each pixel, we run a 
+In our full-resolution fits, we use a MCMC approach to constrain the 
+parameters $\tilde{I}_{545}$ and $T_2$. For each pixel, we run a 
 Metropolis-Hastings Markov chain sampling the posterior probability as a 
-function of the two parameters $\tilde{I}_{545}$ and $T_2$. For each pixel, we 
-are sampling the posterior given by:
+function of the two parameters $\tilde{I}_{545}$ and $T_2$. More specifically, 
+we are sampling the posterior given by:
 
 % check whether I545 normalization parameter is the monochromatic
 % 545 GHz intensity, or if it is for the Planck bandpass
@@ -962,6 +959,8 @@ are sampling the posterior given by:
 \label{eqn:post}
 P(\tilde{I}_{545}, T_2|\{I\}) \propto \mathcal{L}(\{I\}|\tilde{I}_{545}, T_2)P(T_2)
 \end{equation}
+
+% be careful about notational consistency with e.g. tildes, etc.. in this sect
 
 Here \{$I$\} denotes the set of observed broadband intensities, $I_{217}$, 
 $I_{353}$, etc. The likelihood function is given by:
