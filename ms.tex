@@ -901,43 +901,56 @@ a power law specrum with spectral index $\alpha$=$-1$. The values of
 $u_{\nu_i, IRAS}$ are listed in the second column of \cite{planckresponse} 
 Table 6. $u_{\nu_i, IRAS \ to \ (T, \beta)}$ is a color correction factor 
 relative to the \IRAS~convention for band $\nu_i$, assuming a MBB($T$, $\beta$)
-spectrum. In practice, we retrieve $u_{\nu_i}(T, \beta)$ in a fashion similar 
-to that used for the $b_{\nu_i}(T, \beta)$ color corrections, using a set of 
-precomputed one-dimensional look-up tables. To reiterate, for $\nu_i$$\le$353 
-GHz $u_{\nu_i}(T_k, \beta_k)$ has units of (MJy/sr)/$K_{CMB}$, and therefore 
-$\tilde{I}_{\nu_{i}}$ will have different units depending on the band $\nu_i$, 
-though $\tilde{I}_{\nu_{i}}$ always has the same units as the native band 
-$\nu_i$ map.
+spectrum. In practice, we retrieve $u_{\nu_i}(T, \beta)$ values in a fashion 
+similar to that used for the $b_{\nu_i}(T, \beta)$ color corrections, using a 
+set of precomputed one-dimensional look-up tables. To reiterate, for 
+$\nu_i$$\le$353 GHz, $u_{\nu_i}(T_k, \beta_k)$ has units of (MJy/sr)/$K_{CMB}$,
+and therefore $\tilde{I}_{\nu_{i}}$ will have different units depending on the 
+band $\nu_i$, though $\tilde{I}_{\nu_{i}}$ always has the same units as the 
+native band $\nu_i$ map.
 
-% add a sentence in the middle of the previous paragraph explaining why
-% it doesn't make sense to just multiply the Kcmb maps by some factor
-% and pretend they're in MJy/sr for the sake of making predictions
-
-%The \PLANCK~100-353 GHz data are provided in units of $K_{CMB}$, while 
-%\verb|i100| and the higher frequency HFI maps are provided in units of 
-%MJy/sr. 
-
-We will treat the SED normalization $\tilde{I}_{545}$ as a free 
-parameter in our fitting procedure. In our baseline fits, second free parameter
- is $T_2$, which determines the shape of the SED through $M_{\nu}$ as well as 
-$b_{\nu_i}(T_2)$.
-
-% (here SFD \verb|i100|) and that of \cite{planckdust}).
+%We will treat the SED normalization $\tilde{I}_{545}$ as a free 
+%parameter in our fitting procedure. In our baseline fits, second free 
+%parameter is $T_2$, which determines the shape of the SED through $M_{\nu}$ as
+% well as $b_{\nu_i}(T_2)$.
 
 % introduce nu_i notation in above paragraph with some mention of what it
 % means
 
 % check that RIMO file i've used is actually the most up-to-date version
 
+\subsection{Sampling Parameters}
+As discussed in $\S$\ref{sec:modeling}, our full-resolution fits
+consider the ``global'' parameters $f_1$, $q_1/q_2$, $\beta_1$, $\beta_2$ to be
+ fixed, while the dust spectrum normalization and dust temperature vary for
+each line-of-sight. In order to predict the dust SED for a given pixel, we are 
+therefore left with two remaining degrees of freedom, and must choose an 
+appropriate set of two parameters to sample and thereby constrain via MCMC. To 
+determine the SED normalization in each pixel, we draw samples in 
+$\tilde{I}_{545}$, the broadband intensity in the 545 GHz bandpass, as defined 
+in Equation \ref{eqn:inten}. With the four aforementioned global parameters 
+fixed, the dust spectrum shape is determined entirely by the two dust 
+temperatures, which are coupled. To constrain the dust temperatures,
+ we sample in $T_2$, the hot dust temperature. For each sample in $T_2$, we 
+compute the corresponding value of $T_1$, thereby specifying ($\beta$, $T$) for
+both MBB components and thus fully specifying the SED shape.
+
+For the lower resolution fits described in $\S$\ref{sec:lores}, we sample
+in three parameters: $\tilde{I}_{545}$, $T_2$, and $f_1$.
+
+% sentence or two mentioning reduced resolution fits where we sample in
+% three dimensions (f_1, T_2, tilde{I}_{545})
+
 \subsection{Markov Chains}
 \label{sec:mcmc}
+
 As explained in $\S$\ref{sec:modeling}, the two free parameters in our 
 per-pixel dust emission SED are the hot dust temperature $T_2$, which 
 determines the shape of the SED, and the spectrum normalization. In practice,
 the normalization is controlled via $\tilde{I}_{545}$, the amplitude of the 
 model SED in MJy/sr at $\nu$ = 545 GHz. For each pixel, we run a 
 Metropolis-Hastings Markov chain sampling the posterior probability as a 
-function of the two parameters $T_2$ and $\tilde{I}_{545}$. For each pixel, we 
+function of the two parameters $\tilde{I}_{545}$ and $T_2$. For each pixel, we 
 are sampling the posterior given by:
 
 % check whether I545 normalization parameter is the monochromatic
