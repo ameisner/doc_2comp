@@ -1070,7 +1070,30 @@ term involving.
 \section{Calibrating to Optical Reddening}
 \label{sec:ebv}
 
-%FILL THIS SECTION IN !!!!!
+While the dust temperature and optical depth maps thus far derived are
+useful for making predictions of thermal dust foreground emission, 
+estimating optical reddening/extinction is another important application of the
+optical depth map. We choose to calibrate to empirically to reddening,
+rather than make additional assumptions about the dust grain size distribution
+and physics that would be necessary to perform an analytic calculation.
+
+To achieve this empirical calibration, we must adopt a set of ``calibrators''
+for which true reddening is known. There are various possibilities
+at our disposal. SFD used XX. \cite{planckdust} used quasars. Here we use
+the SSPP stars with SDSS spectra and photometry studied by \cite{schlafly10}.
+
+Information from the spectral lines of these SSPP stars can be used, along with
+ a library of synthetic stellar spectra, to predict the true optical broadband 
+colors. The `true' reddening then is simply the difference in the observed
+$g-r$ color and the $g-r$ color predicted from the spectral lines. This
+gives us $E(B-V)$ estimates for $\sim$250,000 lines of sight, mostly at
+high Galactic latitude. The calibration of two-component optical depth
+to $E(B-V)$ is then performed as a linear regression of $E(B-V)_{SSPP}$ versus
+$\tau_{545}$. The results of this regression are shown in Figure 
+\ref{fig:calib}. Indeed there appears to be a strong linear relation
+between $E(B-V)_{SSPP}$ and $\tau_{545}$ The conversion factor from 
+$\tau_{545}$ to $E(B-V)$ is $\sim$2400.
+
 
 % scatterplot figure showing linear regression of EBV vs. tau
 \begin{figure}
