@@ -1086,6 +1086,17 @@ individual pixel when predicting \{$\tilde{I}_{\nu_i}$\} with Equation
 \ref{eqn:inten}. The prior $P(T_2)$ from Equation \ref{equ:t2prior} remains 
 unchanged. The prior on $f_1$ is:
 
+\begin{equation} \label{equ:f1prior}
+P(f_1) = \mathcal{N}(f_1|\bar{f}_1, \sigma_{\bar{f}_1})
+\end{equation}
+
+With $\bar{f}_1$=0.0363 and $\sigma_{\bar{f}_1}$=0.003. This is a fairly
+stringent prior, but we must restrict the fit from wandering with too much
+freedom, as we are attempting to constrain three parameters using an SED
+with only seven intensity measurements.
+
+% add comment about high f_1 regions near NGP
+
 \section{Calibrating to Optical Reddening}
 \label{sec:ebv}
 
