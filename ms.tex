@@ -296,7 +296,7 @@ then, the CO contamination in band $\nu_i$ is given by:
 I_{CO, \nu_i} = \sum\limits_{N} I_{CO, \nu_i, N, N-1}
 \end{equation}
 
-It turns out that, for each of the \PLANCK~bands in which CO emission is
+It happens that, for each of the \PLANCK~bands in which CO emission is
 non-negligible (100, 217 and 353 GHz), only a single $N$ contributes ($N$=1, 
 $N$=2 and $N$=3, respectively). 
 
@@ -920,6 +920,7 @@ native band $\nu_i$ map.
 % check that RIMO file i've used is actually the most up-to-date version
 
 \subsection{Sampling Parameters}
+\label{sec:samp}
 As discussed in $\S$\ref{sec:modeling}, our full-resolution fits
 consider the ``global'' parameters $f_1$, $q_1/q_2$, $\beta_1$, $\beta_2$ to be
  fixed, while the dust spectrum normalization and dust temperature vary for
@@ -1057,15 +1058,27 @@ function $S_{545}$ calculated according to Equation \ref{eqn:source}.
 %S/N we try fitting t2, normalization and one of q1/q2, f_1
 %using more bands (including 143, and maybe 100 GHz)
 
-As mentioned previously, our baseline fits fix several parameters which
-in principle could vary spatially. If we are willing to sacrifice angular
-resolution in order to incorporate lower-frequency \PLANCK~bands and
-enhance signal to noise, we can introduce additional free parameters
-and run the Markov chains in higher dimensions.
+As explained in $\S$\ref{sec:modeling} and $\S$\ref{sec:samp}, our 
+full-resolution fits fix the parameters $f_1$, $q_1/q_2$, $\beta_1$, $\beta_2$ 
+globally so that only the dust temperatures and SED normalization vary on a 
+per-pixel basis. The reason for fixing so many parameters is that, at $6.1'$
+FWHM, only five SED measurements are available per pixel.
+
+% need some sort of add on to last sentence or another sentence entirely
+% to the effect of ``staying in overconstrained regime''
+
+However, sacrificing angular resolution in order to incorporate 
+the \PLANCK~100, 143 GHz bands can allow us to introduce an additional free 
+parameter and run our Markov chains in three-dimensional parameter space.
 
 We ran the Markov chains in three dimensions by allowing 
-$f_1$ to be a third free parameter. We added to our standard posterior a 
-term involving.
+$f_1$ to be a third free parameter. In these chains, we sampled the posterior
+given by:
+
+\begin{equation}
+\label{eqn:post}
+P(\tilde{I}_{545}, T_2, f_1|\{I\}) \propto \mathcal{L}(\{I\}|\tilde{I}_{545}, T_2, f_1)P(T_2)P(f_1)
+\end{equation}
 
 \section{Calibrating to Optical Reddening}
 \label{sec:ebv}
