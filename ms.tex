@@ -966,7 +966,7 @@ P(\tilde{I}_{545}, T_2|\{I\}) \propto \mathcal{L}(\{I\}|\tilde{I}_{545}, T_2)P(T
 Here \{$I$\} denotes the set of observed broadband intensities, $I_{217}$, 
 $I_{353}$, etc. The likelihood function is given by:
 
-\begin{equation}
+\begin{equation} \label{equ:like}
 \mathcal{L}(\{I\}|\tilde{I}_{545}, T_2) = \displaystyle\prod\limits_{i}\mathcal{N}(\tilde{I}_{\nu_{i}}|I_{\nu_{i}}, \sigma_{\nu_i})
 \end{equation}
 
@@ -999,7 +999,7 @@ latitude where the data is noisy, we include a prior on $T_2$:
 
 %what about the offset uncertainty for 217 GHz
 
-\begin{equation}
+\begin{equation} \label{equ:t2prior}
 P(T_2) = \mathcal{N}(T_2|\bar{T}_2, \sigma_{\bar{T}_2})
 \end{equation}
 
@@ -1079,6 +1079,12 @@ given by:
 \label{eqn:post}
 P(\tilde{I}_{545}, T_2, f_1|\{I\}) \propto \mathcal{L}(\{I\}|\tilde{I}_{545}, T_2, f_1)P(T_2)P(f_1)
 \end{equation}
+
+We still employ the likelihood function of Equation \ref{equ:like}, the only
+difference being that $f_1$ can vary from proposal to proposal within each 
+individual pixel when predicting \{$\tilde{I}_{\nu_i}$\} with Equation 
+\ref{eqn:inten}. The prior $P(T_2)$ from Equation \ref{equ:t2prior} remains 
+unchanged. The prior on $f_1$ is:
 
 \section{Calibrating to Optical Reddening}
 \label{sec:ebv}
