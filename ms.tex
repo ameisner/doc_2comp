@@ -1093,9 +1093,30 @@ P(f_1) = \mathcal{N}(f_1|\bar{f}_1, \sigma_{\bar{f}_1})
 With $\bar{f}_1$=0.0363 and $\sigma_{\bar{f}_1}$=0.003. This is a fairly
 stringent prior, but we must restrict the fit from wandering with too much
 freedom, as we are attempting to constrain three parameters using an SED
-with only seven intensity measurements.
+with only seven intensity measurements. To boost S/N, we have performed
+the fits using maps smoothed to $1^{\circ}$ resolution.
 
+\begin{figure}
+\begin{center}
+\epsfig{file=f1_1deg.eps, width=3.3in}
+\caption{\label{fig:f1} The results of our low-resolution fit with $f_1$
+allowed to vary.}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\epsfig{file=f1_lambert.eps, width=3.3in}
+\caption{\label{fig:f1lambert} The results of our low-resolution fit with $f_1$
+allowed to vary, shown in Lambert projection to highlight the salient features 
+near the north Galactic pole.}
+\end{center}
+\end{figure}
+
+The resulting full-sky map of $f_1$ is shown in Figure \ref{}. Some of the most
+ 
 % add comment about high f_1 regions near NGP
+% also add sentences referring reader to the two f_1 figures
 
 \section{Calibrating to Optical Reddening}
 \label{sec:ebv}
@@ -1226,24 +1247,6 @@ to $6.1'$ FWHM, which is nominally lower resolution than the $5'$
 \cite{planckdust} maps. However, as is apparent from figure 
 \ref{fig:comparison}, the fact that \cite{planckdust} modeled $\beta$ at 
 $0.5^{\circ}$ resolution has effectively blurred their dust temperature map.
-
-\begin{figure}
-\begin{center}
-\epsfig{file=f1_1deg.eps, width=3.3in}
-\caption{\label{fig:f1} The results of our low-resolution fit with $f_1$
-allowed to vary, but with a strong prior 
-$P(f_1)=\mathcal{N}(f_1|0.0363, 0.003)$.}
-\end{center}
-\end{figure}
-
-\begin{figure}
-\begin{center}
-\epsfig{file=f1_lambert.eps, width=3.3in}
-\caption{\label{fig:f1lambert} The results of our low-resolution fit with $f_1$
-allowed to vary, shown in Lambert projection to highlight the salient features 
-near the north Galactic pole.}
-\end{center}
-\end{figure}
 
 %\subsection{Validation with FIRAS}
 
