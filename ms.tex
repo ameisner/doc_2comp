@@ -1070,12 +1070,21 @@ term involving.
 \section{Calibrating to Optical Reddening}
 \label{sec:ebv}
 
-While the dust temperature and optical depth maps thus far derived are
-useful for making predictions of thermal dust foreground emission, 
-estimating optical reddening/extinction is another important application of the
-optical depth map. We choose to calibrate to empirically to reddening,
-rather than make additional assumptions about the dust grain size distribution
-and physics that would be necessary to perform an analytic calculation.
+While the temperature and optical depth maps thus far derived are
+useful for making thermal dust emission foreground predictions, estimating 
+optical reddening/extinction is another important application of the 
+$\tau_{545}$ map. We calibrate to reddening empirically rather than derive
+a relationshp between $\tau_{545}$ and reddening by introducing additional 
+assumptions about the dust grain physics and size distribution.
+
+% scatterplot figure showing linear regression of EBV vs. tau
+\begin{figure}
+\begin{center}
+\epsfig{file=calib_ebv.eps, width=3.3in}
+\caption{\label{fig:calib} Linear fit of $E(B-V)_{SSPP}$ as function of
+$\tau_{545}$.}
+\end{center}
+\end{figure}
 
 To achieve this empirical calibration, we must adopt a set of ``calibrators''
 for which true reddening is known. There are various possibilities
@@ -1094,16 +1103,6 @@ $\tau_{545}$. The results of this regression are shown in Figure
 between $E(B-V)_{SSPP}$ and $\tau_{545}$ The conversion factor from 
 $\tau_{545}$ to $E(B-V)$ is $\sim$2400.
 
-
-% scatterplot figure showing linear regression of EBV vs. tau
-\begin{figure}
-\begin{center}
-\epsfig{file=calib_ebv.eps, width=3.3in}
-\caption{\label{fig:calib} Linear fit of $E(B-V)_{SSPP}$ as function of
-$\tau_{545}$.}
-\end{center}
-\end{figure}
-
 \begin{figure}
 \begin{center}
 \epsfig{file=ebv_2comp.eps, width=2.5in, angle=90}
@@ -1112,9 +1111,7 @@ function of SFD $E(B-V)$.}
 \end{center}
 \end{figure}
 
-% need 2d histogram figure that is as closely analogous as possible to
-% Figure 2 of Eddie's draft at : 
-% http://faun.rc.fas.harvard.edu/eschlafly/2dmap/2dmap.pdf
+% should eventually try re-making 2d scatterplot figure in python..
 
 \section{Systematics}
 
