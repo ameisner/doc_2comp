@@ -203,18 +203,17 @@ residual Solar dipole, are discussed in $\S$\ref{sec:zp}.
 \subsection{Compact Sources}
 \label{sec:ptsrc}
 %start by mentioning that SFD removed compact sources (outside of b +/- 5)
-After subtracting the SMICA CMB model, we next proceeded to interpolate 
-over compact sources, including both point sources and resolved galaxies. 
-Removing compact sources at this stage is important as it prevents 
-contamination of compact-source-free pixels in our downstream analyses which 
-require smoothing of the \PLANCK~maps. SFD carefully removed point sources and 
-galaxies from the \verb|i100| map everywhere outside of 
-$|b|$$<$$5^{\circ}$. We do not perform any further modifications of the 
-\verb|i100| map to account for compact sources. To mask compact sources in the 
-\PLANCK~maps, we use the SFD compact source mask, which was originally 
-constructed to mask point sources and resolved compact objects that are not 
-part of the Galactic cirrus at 3000 GHz. Given our pixelization (see 
-$\S$\ref{sec:pix}), 1.56\% of pixels are masked. 
+After subtracting the SMICA CMB model, we interpolate over compact sources, 
+including both point sources and resolved galaxies. Removing compact sources at
+this stage is important as it prevents contamination of compact-source-free 
+pixels in our downstream analyses which require smoothing of the \PLANCK~maps. 
+SFD carefully removed point sources and galaxies from the \verb|i100| map 
+everywhere outside of $|b|$$<$$5^{\circ}$. We do not perform any further 
+modifications of the \verb|i100| map to account for compact sources. To mask 
+compact sources in the \PLANCK~maps, we use the SFD compact source mask, which 
+was originally constructed to mask point sources and resolved compact objects 
+that are not part of the Galactic cirrus at 3000 GHz. Given our pixelization 
+(see $\S$\ref{sec:pix}), 1.56\% of pixels are masked. 
 
 %this compact source section still needs a lot of work
 
@@ -333,11 +332,12 @@ correction, particularly the vast majority of the high Galactic latitude sky.
 Although we wish to isolate and model thermal emission from Galactic dust, the
 \PLANCK~maps contain additional components on large angular scales. At each 
 frequency, there can exist an overall, constant offset that must be subtracted 
-to set the zero level of Galactic dust. Additionally, faint residuals of the 
-Solar dipole remain at low frequencies. We will address these issues by
+to set the zero level of Galactic dust by removing the mean cosmic IR 
+background, as well as any instrumental offset. Additionally, faint residuals 
+of the Solar dipole remain at low frequencies. We will address these issues by 
 separately solving two sub-problems: first, fixing the absolute zero level 
-relative to external data, and second fitting per-band relative offsets 
-and low order corrections by correlating the \PLANCK~bands against one another.
+relative to external data, and second fitting per-band relative offsets and low
+order corrections by correlating the \PLANCK~bands against one another.
 %this last sentence needs lots of work
 
 \subsubsection{Absolute Zero Level}
@@ -354,6 +354,10 @@ data \citep{lab} for $-72$$<$$v_{LSR}$$<$$+25$ that the best-fit slope for
 H\,\textsc{i}$<$70 K km/s is a factor of $\sim$1.9 lower than the best fit 
 slope for 110 K km/s $<$H\,\textsc{i}$<$200 K km/s, and as a result the implied
 zero-point offsets for \PLANCK~857 GHz differ by $\sim$0.37 MJy/sr.
+
+% maybe state approximately what 0.37 MJy/sr at 857 GHz equates to in EBV
+% --> did a quick calculation and it's only ~0.0118 mags ... thought it
+%     would be more ??
 
 \begin{figure}
 \begin{center}
