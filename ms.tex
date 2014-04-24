@@ -500,7 +500,7 @@ column density (H\,\textsc{i} $<$ 200 K\,km\,s$^{-1}$ for
 $-72$$<$$v_{LSR}$$<$$+25$ km\,s$^{-1}$) and fit the following model:
 
 \begin{equation} \label{equ:dip}
-\mathcal{I}_{\nu_i, p} = m\mathcal{I}_{857, p} + d\mathcal{D}_{p} + b
+\mathcal{I}_{\nu_i, p} = m\mathcal{I}_{857, p} + b + d\mathcal{D}_{p}
 \end{equation}
 
 With $p$ denoting a single nside=64 HEALPix pixel in the maps 
@@ -538,7 +538,7 @@ necessary (see Figure \ref{fig:quad}). Therefore, for 100 GHz, we performed a
 modified version of the Equation \ref{equ:dip} fit, using the following model:
 
 \begin{equation} \label{equ:quad}
-\mathcal{I}_{100, p} = m\mathcal{I}_{857, p} + d\mathcal{D}_p + b + qQ_p
+\mathcal{I}_{100, p} = m\mathcal{I}_{857, p} + b + d\mathcal{D}_p + qQ_p
 \end{equation}
 
 We will refer to the additional term $qQ_p$ as the ``quadrupole correction''. 
