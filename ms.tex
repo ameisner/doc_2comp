@@ -800,7 +800,7 @@ coordinates, with $N_{side}$=2048. This pixelization is convenient because it
 is the same format in which the \PLANCK~HFI maps were released, and because it 
 adequately samples the $6.1'$ FWHM maps under consideration in our 
 full-resolution fits. Our procedure will fit the intensity measurements in each
-spatial pixel independently of those in neighboring pixels.
+spatial pixel independently.
 
 \subsection{Finite Bandpass Correction}
 \label{sec:bpcorr}
@@ -1120,7 +1120,7 @@ near the north Galactic pole.}
 \end{figure}
 
 The resulting full-sky map of $f_1$ is shown in Figure \ref{fig:f1}. Some of 
-the most striking features occurr near the north Galactic pole, and to 
+the most striking features occur near the north Galactic pole, and to 
 highlight these regions of unusually high $f_1$, we display the northern
 Galactic hemisphere in Lambert projection in Figure \ref{fig:f1lambert}.
  
@@ -1134,7 +1134,7 @@ While the temperature and optical depth maps thus far derived are
 useful for making thermal dust emission foreground predictions, estimating 
 optical reddening/extinction is another important application of the 
 $\tau_{545}$ map. We calibrate to reddening empirically rather than derive
-a relationshp between $\tau_{545}$ and reddening by introducing additional 
+a relationship between $\tau_{545}$ and reddening by introducing additional 
 assumptions about the dust grain physics and size distribution.
 
 % scatterplot figure showing linear regression of EBV vs. tau
@@ -1162,17 +1162,16 @@ reddening, we make use of the same set of stars studied by \cite{schlafly11}.
 % map type data product rather than directly to a set of individual 
 % stars/galaxies 
 
-Along with a library of stellar atmosphere models, the spectral lines of these
-stars can be used to predict their intrinsic optical broadband colors. The 
-`true' reddening is then simply the difference in the observed $g-r$ color and
-the $g-r$ color predicted from the spectral lines. Applying a 
-color transformation then yields `true' $E(B-V)$ values for $\sim$250,000 lines
-of sight, mostly at high Galactic latitude. The calibration of two-component 
-optical depth to $E(B-V)$ is then performed as a linear regression of 
-$E(B-V)_{SSPP}$ versus $\tau_{545}$. $\tau_{545}$ is considered to the 
-independent variable in this regression, as we ultimately wish to predict 
-$E(B-V)$ as a function of optical depth, and $\tau_{545}$ has much higher S/N 
-than the SSPP $E(B-V)$ estimates. 
+Given a library of stellar atmosphere models, the spectral lines of these stars
+can be used to predict their intrinsic optical broadband colors. The `true' 
+reddening is then simply the difference in the observed $g-r$ color and the 
+$g-r$ color predicted from the spectral lines. Applying a color transformation 
+then yields `true' $E(B-V)$ values for $\sim$250,000 lines of sight, mostly at 
+high Galactic latitude. The calibration of two-component optical depth to 
+$E(B-V)$ is then performed as a linear regression of $E(B-V)_{SSPP}$ versus 
+$\tau_{545}$. $\tau_{545}$ is considered to be the independent variable in this
+regression, as we ultimately wish to predict $E(B-V)$ as a function of optical 
+depth, and $\tau_{545}$ has much higher S/N than the SSPP $E(B-V)$ estimates. 
 
 The result of this regression is shown in Figure \ref{fig:calib}. Indeed there 
 appears to be a strong linear correlation between $E(B-V)_{SSPP}$ 
