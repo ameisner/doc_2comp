@@ -307,7 +307,7 @@ in order to avoid adding unnecessary noise outside of molecular cloud complexes
 and at high latitudes, we have zeroed out low-signal regions of the CO Type 3
 map. We identify  low-signal regions as those with $\mathcal{I}_3$$<$1 K$_{RJ}$
  km/s, where $\mathcal{I}_3$ is the Type 3 CO map smoothed to 0.25$^{\circ}$ 
-resolution. This cut results in 90\% of the sky being unaffected by the CO 
+FWHM. This cut results in 90\% of the sky being unaffected by the CO 
 correction, particularly the vast majority of the high Galactic latitude sky.
 
 %did i ever spell out the acronyms HFI, LFI ????
@@ -396,16 +396,16 @@ absolute zero level tied largely to the reliable FIRAS zero point, and to some
 lesser extent to H\,\textsc{i} through the \verb|i100| zero point. 
 Specifically, we fit a linear model to the FDS99 predicted 857 GHz values as a 
 function of \PLANCK~857 GHz. We used a version of the \PLANCK~857 GHz map with 
-zodiacal light and point sources removed and smoothed to 1$^{\circ}$ 
-resolution, which we will refer to as $\mathcal{I}_{857}$. For this analysis, 
-we considered $\mathcal{I}_{857}$ to be the independent variable, as it has 
-much higher S/N than the FDS99 prediction, henceforward referred to as 
-$\mathcal{F}_{857}$. Note that $\mathcal{F}_{857}$ is not a monochromatic 
-prediction, as we have incorporated the finite bandpass correction factors 
-described in $\S$\ref{sec:bpcorr}, using the FDS99 temperature map to determine
-the dust spectrum shape. We then rebin to $N_{side}$=64 and restrict to pixels 
-with $\mathcal{I}_{857}$$<$2.15 MJy/sr. Since \PLANCK~857 GHz smoothed to 
-degree resolution has very high S/N, we can safely perform such a cut on 
+zodiacal light and point sources removed and smoothed to 1$^{\circ}$ FWHM, 
+which we will refer to as $\mathcal{I}_{857}$. For this analysis, we considered
+$\mathcal{I}_{857}$ to be the independent variable, as it has much higher S/N 
+than the FDS99 prediction, henceforward referred to as $\mathcal{F}_{857}$. 
+Note that $\mathcal{F}_{857}$ is not a monochromatic prediction, as we have 
+incorporated the finite bandpass correction factors described in 
+$\S$\ref{sec:bpcorr}, using the FDS99 temperature map to determine the dust 
+spectrum shape. We then rebin to $N_{side}$=64 and restrict to pixels with 
+$\mathcal{I}_{857}$$<$2.15 MJy/sr. Since \PLANCK~857 GHz smoothed to degree 
+resolution has very high S/N, we can safely perform such a cut on 
 $\mathcal{I}_{857}$. Figure \ref{fig:fdsref} shows a scatterplot of 
 $\mathcal{I}_{857}$ versus $\mathcal{F}_{857}$, with a moving median and linear
 fit overplotted. The linear fit was performed with uniform weights and 
