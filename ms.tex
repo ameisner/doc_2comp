@@ -807,10 +807,12 @@ spatial pixel independently of those in neighboring pixels.
 The thermal dust emission model of $\S$\ref{sec:modeling} predicts the 
 flux density $M_{\nu}$ in e.g. MJy/sr for any single frequency $\nu$. In 
 practice, however, we wish to constrain our model using measurements in the 
-broad \verb|i100|/\PLANCK~bandpasses, typically hundreds of GHz wide. We have 
-therefore computed dimensionless finite bandpass correction factors to 
+broad \verb|i100|/\PLANCK~bandpasses, each with $\Delta\nu/\nu\sim0.3$. We 
+have therefore computed dimensionless finite bandpass correction factors to 
 account for the MBB($T$, $\beta$) spectral shape and the transmission as a 
 function of frequency:
+
+% is delta(nu)/nu conventionally (nu_off-nu_on)/nu_c or 1/2 of that ?
 
 \begin{equation} \label{equ:bpcorr}
 b_{\nu_i}(T, \beta) = \frac{\int \mathcal{T}_{\nu_i}(\nu)\nu^{\beta}B_{\nu}(T) d\nu \bigg[\int \mathcal{T}_{\nu_i}(\nu) d\nu\bigg]^{-1}}{\nu_{i,c}^{\beta}B_{\nu_{i,c}}(T)}
