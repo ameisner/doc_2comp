@@ -503,7 +503,7 @@ km\,s$^{-1}$) and fit the following model:
 \mathcal{I}_{\nu_i, p} = m\mathcal{I}_{857, p} + b + d\mathcal{D}_{p}
 \end{equation}
 
-With $p$ denoting a single nside=64 HEALPix pixel in the maps 
+With $p$ denoting a single nside=64 HEALPix pixel \citep{healpix} in the maps 
 $\mathcal{I}_{857}$, $\mathcal{I}_{\nu_i}$, and $\mathcal{D}$. Here 
 $\mathcal{I}_{857}$ is the \PLANCK~857 GHz map with zodiacal emission, compact 
 sources, and the constant offset of $\S$\ref{sec:zp_abs} removed, smoothed to 
@@ -787,23 +787,20 @@ listed in Table \ref{tab:global}.
 
 The following subsections detail our procedure for constraining the 
 two-component dust emission model parameters which are permitted to vary
-spatially. In the case of our full-resolution $6.1'$fits, these parameters
+spatially. In the case of our full-resolution $6.1'$ fits, these parameters
 are the SED normalization and the hot dust temperature $T_2$. The same 
 formalism will apply to our lower-resolution fits in which $f_1$ is also 
 allowed to vary from one line of sight to another.
 
-% sentence here summarizing what the following subsections will describe ?
-
 \subsection{Pixelization}
 \label{sec:pix}
-For the purpose of fitting, we break the sky into $\sim$50 million 
-non-overlapping pixels of angular size $\sim$1.72$'$, defined by the HEALPix 
-pixelization in Galactic coordinates, with $N_{side}$=2048 \citep{healpix}. 
-This pixelization is convenient because it is the same format in which the 
-\PLANCK~HFI maps were released, and because it adequately samples the $6.1'$ 
-FWHM maps under consideration in our full-resolution fits. Our procedure will 
-fit the intensity measurements in each spatial pixel independently of those in 
-neighboring pixels.
+For the purpose of fitting, we break the sky into $\sim$50 million pixels of 
+angular size $\sim$1.72$'$, defined by the HEALPix pixelization in Galactic 
+coordinates, with $N_{side}$=2048. This pixelization is convenient because it 
+is the same format in which the \PLANCK~HFI maps were released, and because it 
+adequately samples the $6.1'$ FWHM maps under consideration in our 
+full-resolution fits. Our procedure will fit the intensity measurements in each
+spatial pixel independently of those in neighboring pixels.
 
 \subsection{Finite Bandpass Correction}
 \label{sec:bpcorr}
