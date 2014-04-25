@@ -968,7 +968,7 @@ we are sampling the posterior given by:
 
 \begin{equation}
 \label{eqn:post}
-P(\tilde{I}_{545}, T_2|\{I\}) \propto \mathcal{L}(\{I\}|\tilde{I}_{545}, T_2)P(T_2)
+P(\tilde{I}_{545}, T_2|\{I\}) \propto \mathcal{L}(\{I\}|\tilde{I}_{545}, T_2)P(T_2)P(\tilde{I}_{545})
 \end{equation}
 
 % be careful about notational consistency with e.g. tildes, etc.. in this sect
@@ -1004,8 +1004,10 @@ in the offset used to tie \PLANCK~intensity to H\,\textsc{i}. We have adopted
 the  $\delta O_{\nu_i}$ values of \cite{planckdust} Table 1. $n_{\nu_i}$ 
 represents the instrumental noise in the pixel of interest, and is taken to be 
 the square root of the \verb|ii_cov| parameter that accompanies each 
-\PLANCK~intensity map. In order to obtain reasonable fitting results at high 
-latitude where the data is noisy, we include a prior on $T_2$:
+\PLANCK~intensity map.
+
+In order to obtain reasonable fitting results at high latitude where the data 
+is noisy, we include the prior on $T_2$:
 
 %what about the offset uncertainty for 217 GHz
 
@@ -1016,8 +1018,11 @@ P(T_2) = \mathcal{N}(T_2|\bar{T}_2, \sigma_{\bar{T}_2})
 % maybe have a section justifying the T2 prior value of 16.2K, presumably using
 % FIRAS as a cross-check?
 
-With $\bar{T}_2$ = 16.2 K and $\sigma_{\bar{T}_2}$ = 1.4 K. In practice we 
-always perform computations using logarithms of the relevant probabilities.
+With $\bar{T}_2$ = 16.2 K and $\sigma_{\bar{T}_2}$ = 1.4 K. In principle, there
+can also be an informative prior on $\tilde{I}_{545}$. However, we have chosen 
+to assume a uniform prior on the SED normalization and, as a matter of 
+notation, will omit $P(\tilde{I}_{545})$ henceforward. In practice we always 
+perform computations using logarithms of the relevant probabilities.
 %mention something about the proposal distribution at some point?
 
 \begin{figure}
