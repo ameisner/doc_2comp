@@ -803,15 +803,20 @@ adequately samples the $6.1'$ FWHM maps under consideration in our
 full-resolution fits. Our procedure will fit the intensity measurements in each
 spatial pixel independently.
 
-\subsection{Finite Bandpass Correction}
+\subsection{Color Correction}
 \label{sec:bpcorr}
 The thermal dust emission model of $\S$\ref{sec:modeling} predicts the 
-flux density $M_{\nu}$ in e.g. MJy/sr for any single frequency $\nu$. In 
-practice, however, we wish to constrain our model using measurements in the 
-broad \verb|i100|/\PLANCK~bandpasses, each with $\Delta\nu/\nu\sim0.3$. We 
-have therefore computed dimensionless finite bandpass correction factors to 
-account for the MBB($T$, $\beta$) spectral shape and the transmission as a 
-function of frequency:
+flux density per solid angle $M_{\nu}$ in e.g. MJy/sr for any single frequency 
+$\nu$. In practice, however, we wish to constrain our model using measurements 
+in the broad \verb|i100|/\PLANCK~bandpasses, each with $\Delta\nu/\nu\sim0.3$. 
+The \PLANCK~data products quote flux density per solid angle in MJy/sr under 
+the `IRAS convention'. More precisely, each value reported in the \PLANCK~maps 
+gives the amplitude of a power-law spectrum with $\alpha$=$-1$, evaluated at 
+the nominal band center frequency, such that this spectrum integrated against 
+the transmission reproduces the bolometer-measured power. Because our model 
+spectra do not conform to the $\alpha$=$-1$ convention, we have computed color 
+correction factors to account for the MBB($T$, $\beta$) spectral shape and the 
+transmission as a function of frequency:
 
 % is delta(nu)/nu conventionally (nu_off-nu_on)/nu_c or 1/2 of that ?
 
@@ -833,7 +838,9 @@ $\mathcal{T}_{\nu_i}(\nu)$ represents the relative transmission as a function
 of frequency for band $\nu_i$. For the HFI maps, $\mathcal{T}_{\nu_i}(\nu)$ is 
 given by the \PLANCK~transmission curves provided in the file 
 \verb|HFI_RIMO_R1.10.fits| \citep{planckresponse}. For 3000 GHz, we have 
-adopted the DIRBE transmission curve.
+adopted the DIRBE transmission curve. These bandpass correction factors 
+are applied in the sense that $b_{\nu_i}(T ,\beta)\times M_{\nu_{i,c}}$ 
+is a prediction suitable for comparison to the \PLANCK~data products.
 
 The broadband, two-component model prediction in band $\nu_i$, termed 
 $\tilde{I}_{\nu_i}$, is then constructed as a linear combination of 
