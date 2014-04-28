@@ -837,10 +837,13 @@ $\nu_{i,c} \in$ \{100, 143, 217, 353, 545, 857, 3000\} GHz.
 $\mathcal{T}_{\nu_i}(\nu)$ represents the relative transmission as a function 
 of frequency for band $\nu_i$. For the HFI maps, $\mathcal{T}_{\nu_i}(\nu)$ is 
 given by the \PLANCK~transmission curves provided in the file 
-\verb|HFI_RIMO_R1.10.fits| \citep{planckresponse}. For 3000 GHz, we have 
-adopted the DIRBE transmission curve. These bandpass correction factors 
-are applied in the sense that $b_{\nu_i}(T ,\beta)\times M_{\nu_{i,c}}$ 
+\verb|HFI_RIMO_R1.10.fits| \citep{planckresponse}. These bandpass correction 
+factors are applied in the sense that $b_{\nu_i}(T ,\beta)\times M_{\nu_{i,c}}$
 is a prediction suitable for comparison to the \PLANCK~data products.
+
+For 3000 GHz, we have adopted the DIRBE transmission curve. Since DIRBE-quoted
+fluxes also follow the $\alpha$=$-1$ convention, Equation \ref{equ:bpcorr}
+remains applicable.
 
 The broadband, two-component model prediction in band $\nu_i$, termed 
 $\tilde{I}_{\nu_i}$, is then constructed as a linear combination of 
