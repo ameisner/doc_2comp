@@ -880,7 +880,7 @@ dust spectrum shape.
 With the formalism established in $\S$\ref{sec:modeling} and 
 $\S$\ref{sec:bpcorr}, we can mathematically state the model we will use during 
 MCMC sampling to predict the observed SED, which we will denote by 
-\{$\tilde{I}_{\nu_i}$\}. The predicted broadband intensities are given by:
+\{$\tilde{I}_{\nu_i}$\}. The predicted observations are given by:
 
 \begin{equation}
 \label{eqn:inten}
@@ -889,10 +889,10 @@ MCMC sampling to predict the observed SED, which we will denote by
 
 This equation is quite similar to Equation \ref{equ:iras}, but with two 
 important differences. First, the normalization of $\tilde{I}_{\nu_i}$ is now 
-specified by $\tilde{I}_{545}$, which represents the broadband intensity 
-measured in the \PLANCK~545 GHz band. The denominator serves to ensure that,
-for the case of $\nu_i$=545 GHz, $\tilde{I}_{545}$ is self-consistent. Second, 
-each term in the numerator is multiplied by a conversion factor 
+specified by $\tilde{I}_{545}$, which represents the flux density per solid
+angle measured in the \PLANCK~545 GHz band. The denominator serves to ensure 
+that, for the case of $\nu_i$=545 GHz, $\tilde{I}_{545}$ is self-consistent. 
+Second, each term in the numerator is multiplied by a conversion factor 
 $u_{\nu_i}^{-1}(T_k, \beta_k)$. This factor is necessary because some of the 
 \PLANCK~maps of interest have units of $K_{CMB}$ (100-353 GHz), while the
 remaining maps (545-3000 GHz) have units of MJy/sr. Complicating matters, the 
