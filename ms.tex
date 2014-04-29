@@ -825,21 +825,17 @@ b_{\nu_i}(T, \beta) = \frac{\int \nu^{\beta}B_{\nu}(T)\mathcal{T}_{\nu_i}(\nu) d
 \end{equation}
 
 % integral limits ??? check planck paper to see what they did
-
-% now i need to define what \nu_{i,c} is (it's the nominal central 
-% frequency of band \nu_i) e.g. 857 GHz for Planck 857, etc..
-
-% also need to define what \mathcal{T} is (relative transmission, 
-% dimensionless)
+% -> planck spectral response paper just leaves the integrals indefinite
 
 Here $\nu_{i,c}$ is the nominal band center frequency of band $\nu_i$,  with 
-$\nu_{i,c} \in$ \{100, 143, 217, 353, 545, 857, 3000\} GHz. 
+$\nu_{i,c} \in$ \{100, 143, 217, 353, 545, 857, 2997.92\} GHz. 
 $\mathcal{T}_{\nu_i}(\nu)$ represents the relative transmission as a function 
 of frequency for band $\nu_i$. For the HFI maps, $\mathcal{T}_{\nu_i}(\nu)$ is 
 given by the \PLANCK~transmission curves provided in the file 
-\verb|HFI_RIMO_R1.10.fits| \citep{planckresponse}. These bandpass correction 
-factors are applied in the sense that $b_{\nu_i}(T ,\beta)\times M_{\nu_{i,c}}$
-is a prediction suitable for comparison to the \PLANCK~data products.
+\verb|HFI_RIMO_R1.10.fits| \citep{planckresponse}. The color correction factors
+of Equation \ref{equ:bpcorr} are applied in the sense that 
+$b_{\nu_i}(T ,\beta)\times M_{\nu_{i,c}}$ is a prediction suitable for 
+direct comparison to the \PLANCK~data products.
 
 For 3000 GHz, we have adopted the DIRBE transmission curve. Since DIRBE-quoted
 fluxes also follow the $\alpha$=$-1$ convention, Equation \ref{equ:bpcorr}
