@@ -828,7 +828,7 @@ b_{\nu_i}(T, \beta) = \frac{\int \nu^{\beta}B_{\nu}(T)\mathcal{T}_{\nu_i}(\nu) d
 % -> planck spectral response paper just leaves the integrals indefinite
 
 Here $\nu_{i,c}$ is the nominal band center frequency of band $\nu_i$,  with 
-$\nu_{i,c} \in$ \{100, 143, 217, 353, 545, 857, 2997.92\} GHz. 
+$\nu_{i,c} \in$ \{100, 143, 217, 353, 545, 857, 2997.92458\} GHz. 
 $\mathcal{T}_{\nu_i}(\nu)$ represents the relative transmission as a function 
 of frequency for band $\nu_i$. For the HFI maps, $\mathcal{T}_{\nu_i}(\nu)$ is 
 given by the \PLANCK~transmission curves provided in the file 
@@ -1168,6 +1168,8 @@ $E(B-V)$ is then performed as a linear regression of $E(B-V)_{SSPP}$ versus
 $\tau_{545}$. $\tau_{545}$ is considered to be the independent variable in this
 regression, as we ultimately wish to predict $E(B-V)$ as a function of optical 
 depth, and $\tau_{545}$ has much higher S/N than the SSPP $E(B-V)$ estimates. 
+
+% cite Green appendix for details of deriving EBV_SSPP from Schlafly 11 data ?
 
 The result of this regression is shown in Figure \ref{fig:calib}. Indeed there 
 appears to be a strong linear correlation between $E(B-V)_{SSPP}$ 
