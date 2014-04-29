@@ -845,31 +845,35 @@ For 3000 GHz, we have adopted the DIRBE transmission curve. Since DIRBE-quoted
 fluxes also follow the $\alpha$=$-1$ convention, Equation \ref{equ:bpcorr}
 remains applicable.
 
-The broadband, two-component model prediction in band $\nu_i$, termed 
-$\tilde{I}_{\nu_i}$, is then constructed as a linear combination of 
+The two-component model prediction in band $\nu_i$ under the IRAS convention, 
+termed $\tilde{I}_{\nu_i}$, is then constructed as a linear combination of 
 color-corrected MBB terms:
 
-\begin{equation} \label{equ:broadband}
+\begin{equation} \label{equ:iras}
 \tilde{I}_{\nu_i} \propto \sum_{k=1}^{2} b_{\nu_i}(T_k, \beta_k) f_k q_k (\nu_{i,c}/\nu_0)^{\beta_k} B_{\nu_{i,c}}(T_k)
 \end{equation}
 
-Note that, as in FDS99, $f_2$=(1$-$$f_1$) by convention. This finite bandpass 
-correction approach allows us to predict the \textit{broadband} measurement 
-$\tilde{I}_{\nu_i}$ by computing monochromatic flux densities at the central 
-frequency $\nu_{i,c}$ and then multiplying by factors $b_{\nu_i}(T, \beta)$ 
-which are interpolated off of a set of precomputed, one-dimensional lookup 
-tables each listing $b_{\nu_i}(T, \beta)$ as a function of $T$. We avoided the 
-need to interpolate in both $\beta$ and $T$ by computing only a small set of 
-one dimensional correction factors for the particular set of $\beta$ values of 
-interest ($\beta \in$ \{1.67, 2.7, 1.19, 2.61\}, see Table \ref{tab:global}).
+Note that, as in FDS99, $f_2$=(1$-$$f_1$) by convention. Our color correction 
+approach allows us to predict $\tilde{I}_{\nu_i}$ by computing monochromatic 
+flux densities at the central frequency $\nu_{i,c}$ and then multiplying by 
+factors $b_{\nu_i}(T, \beta)$ which are interpolated off of a set of 
+precomputed, one-dimensional lookup tables each listing $b_{\nu_i}(T, \beta)$ 
+as a function of $T$. We avoided the need to interpolate in both $\beta$ and 
+$T$ by computing only a small set of one dimensional correction factors for the
+particular set of $\beta$ values of interest 
+($\beta \in$ \{1.67, 2.7, 1.19, 2.61\}, see Table \ref{tab:global}).
 
-This finite bandpass correction approach makes the MCMC sampling described in 
+% need some sort of clarification about the fact that, in the parts of the 
+% analysis where beta floats, this precomputation/interpolation is NOT 
+% what we do
+
+This color correction approach makes the MCMC sampling described in 
 $\S$\ref{sec:mcmc} much more computationally efficient by circumventing the 
 need to perform the integral in the numerator of Equation \ref{equ:bpcorr} 
 on-the-fly for each proposed dust temperature. We have chosen to compute the 
-bandpass corrections on a per-MBB basis because this approach is very 
+color corrections on a per-MBB basis because this approach is very 
 versatile; all possible two-component models are linear combinations of MBBs, 
-so we can apply all of our finite bandpass machinery even when we allow 
+so we can apply all of our color correction machinery even when we allow 
 parameters other than temperature (e.g. $f_1$) to vary and thereby change the 
 dust spectrum shape.
 
@@ -887,7 +891,7 @@ MCMC sampling to predict the observed SED, which we will denote by
 \tilde{I}_{\nu_i} = \frac{\sum\limits_{k=1}^{2} b_{\nu_i}(T_k, \beta_k) f_k q_k (\nu_{i,c}/\nu_0)^{\beta_k} B_{\nu_{i,c}}(T_k) u_{\nu_i}^{-1}(T_k, \beta_k)}{\sum\limits_{k=1}^{2} b_{545}(T_k, \beta_k) f_k q_k (545 \textrm{GHz}/\nu_0)^{\beta_k} B_{545}(T_k)}\tilde{I}_{545}
 \end{equation}
 
-This equation is quite similar to Equation \ref{equ:broadband}, but with two 
+This equation is quite similar to Equation \ref{equ:iras}, but with two 
 important differences. First, the normalization of $\tilde{I}_{\nu_i}$ is now 
 specified by $\tilde{I}_{545}$, which represents the broadband intensity 
 measured in the \PLANCK~545 GHz band. The denominator serves to ensure that,
