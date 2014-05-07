@@ -607,6 +607,16 @@ Right: Low S/N pixel at high-latitude in the Galactic south.}
 % mention that the two different emissivity power laws allow 
 % the model to simultaneously explain narrow SED peak, and flattening
 % of SED toward the millimeter
+At sufficiently high frequencies, Galactic thermal dust emission can be 
+adequately modeled as a single MBB with power-law emissivity 
+\citep[e.g. SFD;][]{planckdust}. However, it has long been recognized, 
+particularly in view of the FIRAS spectra, that the dust SED flattens toward 
+the millimeter in a manner which is not consistent with a simple extrapolation 
+of the single-MBB model to low frequencies. In the diffuse ISM, \cite{reach95} 
+found an improved fit to the FIRAS data using a superposition of two $\beta$=2 
+MBBs, one representing a `hot' grain population ($T$$\approx$), the other a 
+`cold' grain population ($T$$\approx$).
+
 We adopt the thermal dust emission model of FDS99, which consists of two 
 populations of dust grains emitting as MBBs, each with distinct 
 emission/absorption characteristics. Importantly, the emissivity power law 
@@ -898,7 +908,7 @@ $u_{\nu_i}^{-1}(T_k, \beta_k)$. This factor is necessary because some of the
 remaining maps (545-3000 GHz) have units of MJy/sr. We have adopted the 
 strategy of predicting each band in its native units, whether MJy/sr or 
 $K_{CMB}$. For this reason, we always evaluate $B_{\nu_{i,c}}$ in Equation 
-\ref{eqn:inten} in MJy/sr and let $u_{\nu_i}$=1 (dimensionless) for all 
+\ref{eqn:inten} in MJy/sr and let $u_{\nu_i}$=1 (dimensionless) for 
 $\nu_i$$\ge$545 GHz. For $\nu_i$$\le$353 GHz, $u_{\nu_i}(T_k, \beta_k)$ 
 represents the conversion factor from $K_{CMB}$ to MJy/sr, given by 
 \cite{planckresponse} Equation 32.
@@ -1157,6 +1167,9 @@ reddening, we make use of the same set of stars studied by \cite{schlafly11}.
 % maybe note the possibility in the future of calibrating to a 3D dust
 % map type data product rather than directly to a set of individual 
 % stars/galaxies 
+
+% make argument that, in models with f1 and the beta's constant, the choice
+% of frequency at which tau is evaluated does not matter
 
 Given a library of stellar atmosphere models, the spectral lines of these stars
 can be used to predict their intrinsic optical broadband colors. The `true' 
