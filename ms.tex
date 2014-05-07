@@ -613,15 +613,38 @@ adequately modeled as a single MBB with power-law emissivity
 particularly in view of the FIRAS spectra, that the dust SED flattens toward 
 the millimeter in a manner which is not consistent with a simple extrapolation 
 of the single-MBB model to low frequencies. In the diffuse ISM, \cite{reach95} 
-found an improved fit to the FIRAS data using a superposition of two $\beta$=2 
-MBBs, one representing a `hot' grain population ($T$$\approx$16$-$21K), the 
-other a `cold' grain population ($T$$\approx$4$-$7K).
+found an improved fit to the FIRAS data using an empirically motivated 
+superposition of two $\beta$=2 MBBs, one representing a `hot' grain population 
+($T$$\approx$16$-$21 K), the other a `cold' grain population 
+($T$$\approx$4$-$7 K). FDS99 built a more physically motivated two-MBB model, 
+in which different grain emission/absorption properties account for the 
+differing temperatures of each population, and these temperatures are coupled 
+by assuming thermal equilibrium with the same interstellar radiation field 
+(ISRF).
 
-We adopt the thermal dust emission model of FDS99, which consists of two 
-populations of dust grains emitting as MBBs, each with distinct 
-emission/absorption characteristics. Importantly, the emissivity power law 
-indices $\beta$ of the two species differ. The shape of this spectrum is given 
-by:
+The primary FDS99 analysis considered the grain properties, for example the
+emissivity power law indices $\beta$, to be constant over the sky, and 
+performed a correlation slope analysis to constrain these parameters with
+FIRAS and DIRBE observations. A DIRBE 240$\mu$m/100$\mu$m ratio was used
+to account for temperature variation at $\sim$1.3$^{\circ}$ resolution. In this
+work we seek to apply FDS99-like emission models to the \PLANCK~data set, which
+offers a dramatic enhancement in angular resolution relative to the FIRAS 
+spectra. The \PLANCK~data allow us to derive a temperature correction at 
+near-\IRAS~resolution, re-evaluate the best-fit global dust properties, and
+fit addition parameters of the two-component model as a function of position
+on the sky.
+
+% could add a last sentence 'ultimately this allows us to make high-resolution
+% foreground and extinction predictions' and/or even find a way to mention
+% other predictions, such as polarization/R_v
+
+% in the above paragraph, should I mention the Planck collaboration result
+% of beta_mm vs. beta_fir being different, with (beta_fir-beta_mm) > 0
+
+% should i also try to justify why it's worth doing this fit even
+% if it's possible to just claim different beta's at different frequencies?
+
+The shape of the two-component spectrum we will consider is given by:
 
 \begin{equation}
 M_{\nu} \propto f_{1}q_{1}(\frac{\nu}{\nu_{0}})^{\beta_1}B_{\nu}(T_1) + (1-f_{1})q_{2}(\frac{\nu}{\nu_0})^{\beta_2}B_{\nu}(T_2)
@@ -630,18 +653,19 @@ M_{\nu} \propto f_{1}q_{1}(\frac{\nu}{\nu_{0}})^{\beta_1}B_{\nu}(T_1) + (1-f_{1}
 % With $f_{1}$ = 0.0363, $\beta_1$ = 1.67, $\beta_2$ = 2.70, and $q_1/q_2$ = 
 % 13.0.
  
-In accordance with the conventions of FDS99, $\nu_0$ is chosen to be 3000 GHz.
-In principle, one could imagine this two MBB model to be specified by seven 
-free parameters for every line of sight: $T_1$, $T_2$, $\beta_1$, $\beta_2$, 
-$f_1$, and $q_1$/$q_2$ and the normalization of $M_{\nu}$. However, as 
-discussed in FDS99, $T_1$=$T_1$($T_2$, $\beta_1$, $\beta_2$, $q_1/q_2$) is 
+Importantly, the emissivity power law indices $\beta$ of the two species 
+differ.In accordance with the conventions of FDS99, $\nu_0$ is chosen to be 
+3000 GHz. In principle, one could imagine this two MBB model to be specified by
+seven free parameters for every line of sight: $T_1$, $T_2$, $\beta_1$, 
+$\beta_2$, $f_1$, and $q_1$/$q_2$ and the normalization of $M_{\nu}$. However, 
+as discussed in FDS99, $T_1$=$T_1$($T_2$, $\beta_1$, $\beta_2$, $q_1/q_2$) is 
 fully specified by these other parameters under the assumption that the 
 temperature of each species is determined by maintaining thermal equilibrium 
-with the same interstellar radiation field (ISRF). $T_1$ is always related to 
-$T_2$ via a simple power law, although the prefactor and exponent depend on the
- parameters $q_1/q_2$, $\beta_1$ and $\beta_2$. $q_1/q_2$ encodes the
-relative emission/absorption cross-sections of the two dust species, while
-$f_1$ dictates the relative amounts of each species present.
+with the same ISRF. $T_1$ is always related to $T_2$ via a simple power law, 
+although the prefactor and exponent depend on the parameters $q_1/q_2$, 
+$\beta_1$ and $\beta_2$. $q_1/q_2$ encodes the relative emission/absorption 
+cross-sections of the two dust species, while $f_1$ dictates the relative 
+amounts of each species present.
 
 These considerations still leave us with six potentially free parameters per 
 line of sight. Unfortunately, fitting this many parameters per spatial pixel is
