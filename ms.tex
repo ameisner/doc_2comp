@@ -622,17 +622,19 @@ differing temperatures of each population, and these temperatures are coupled
 by assuming thermal equilibrium with the same interstellar radiation field 
 (ISRF).
 
-The primary FDS99 analysis considered the grain properties, for example the
-emissivity power law indices $\beta$, to be constant over the sky, and 
-performed a correlation slope analysis to constrain these parameters with
-FIRAS and DIRBE observations. A DIRBE 240$\mu$m/100$\mu$m ratio was constructed
-to account for temperature variation at $\sim$1.3$^{\circ}$ resolution. In this
-work we seek to apply FDS99-like emission models to the \PLANCK~data set, which
-offers a dramatic enhancement in angular resolution relative to the FIRAS 
-spectra. The \PLANCK~data allow us to derive a temperature correction at 
-near-\IRAS~resolution, re-evaluate the best-fit global dust properties, and
-fit additional parameters of the two-component model as a function of position
-on the sky.
+The primary FDS99 analysis considered the intrinsic grain properties, for 
+example the emissivity power law indices, to be constant over the sky, and 
+performed a correlation slope analysis to constrain these parameters with FIRAS
+and DIRBE observations. FDS99 also constructed a DIRBE 240$\mu$m/100$\mu$m 
+ratio to account for temperature variation at $\sim$1.3$^{\circ}$ resolution. 
+In this work we seek to apply FDS99-like emission models to the \PLANCK~data 
+set, which offers a dramatic enhancement in angular resolution relative to the 
+FIRAS spectra. The \PLANCK~data thereby allow us to derive an improved 
+temperature correction at near-\IRAS~resolution, re-evaluate the best-fit 
+global dust properties, and fit additional parameters of the two-component 
+model as a function of position on the sky.
+
+% kind of feel like i'm re-writing the introduction here ??
 
 % could add a last sentence 'ultimately this allows us to make high-resolution
 % foreground and extinction predictions' and/or even find a way to mention
@@ -653,19 +655,25 @@ M_{\nu} \propto f_{1}q_{1}\Big(\frac{\nu}{\nu_{0}}\Big)^{\beta_1}B_{\nu}(T_1) + 
 % With $f_{1}$ = 0.0363, $\beta_1$ = 1.67, $\beta_2$ = 2.70, and $q_1/q_2$ = 
 % 13.0.
  
-Importantly, the emissivity power law indices $\beta$ of the two species 
-differ.In accordance with the conventions of FDS99, $\nu_0$ is chosen to be 
-3000 GHz. In principle, one could imagine this two MBB model to be specified by
-seven free parameters for every line of sight: $T_1$, $T_2$, $\beta_1$, 
-$\beta_2$, $f_1$, and $q_1$/$q_2$ and the normalization of $M_{\nu}$. However, 
-as discussed in FDS99, $T_1$=$T_1$($T_2$, $\beta_1$, $\beta_2$, $q_1/q_2$) is 
-fully specified by these other parameters under the assumption that the 
-temperature of each species is determined by maintaining thermal equilibrium 
-with the same ISRF. $T_1$ is always related to $T_2$ via a simple power law, 
-although the prefactor and exponent depend on the parameters $q_1/q_2$, 
-$\beta_1$ and $\beta_2$. $q_1/q_2$ encodes the relative emission/absorption 
-cross-sections of the two dust species, while $f_1$ dictates the relative 
-amounts of each species present.
+% re: following sentence --- in the code nu_0 is actually 2997.92458
+% because this is the frequency with respect to which DIRBE color correction
+% K_100 (and my color correction as well) is referenced
+
+Following the convention of FDS99, $\nu_0$ is chosen to be 3000 GHz. In 
+principle, one could imagine this two MBB model to be specified by seven free 
+parameters for every line of sight: $T_1$, $T_2$, $\beta_1$, $\beta_2$, $f_1$, 
+and $q_1$/$q_2$ and the normalization of $M_{\nu}$. However, as discussed in 
+FDS99, $T_1$=$T_1$($T_2$, $\beta_1$, $\beta_2$, $q_1/q_2$) is fully specified 
+by these other parameters under the assumption that the temperature of each 
+species is determined by maintaining thermal equilibrium with the same ISRF. 
+$T_1$ is always related to $T_2$ via a simple power law, although the prefactor
+and exponent depend on the parameters $q_1/q_2$, $\beta_1$ and $\beta_2$. 
+$q_1/q_2$ encodes the relative emission/absorption cross-sections of the two 
+dust species, while $f_1$ dictates the relative amounts of each species 
+present.
+
+% Importantly, the emissivity power law indices $\beta$ of the two species 
+% differ.
 
 These considerations still leave us with six potentially free parameters per 
 line of sight. Unfortunately, fitting this many parameters per spatial pixel is
