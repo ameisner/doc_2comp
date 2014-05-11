@@ -233,21 +233,19 @@ GHz and J=3$\rightarrow$2 at 345 GHz, respectively affecting the \PLANCK~100,
 \PLANCK~143 GHz, but at a negligible level, $\sim$1000$\times$ fainter relative
 to the dust continuum than J=1$\rightarrow$0 at 100 GHz.
 
-To correct for molecular emission, we employed the \PLANCK~Type 3 CO data 
-product, which boasts the highest S/N among the available full-sky CO 
-maps based on the \PLANCK~HFI and Low Frequency Instrument (LFI) data 
+To correct for molecular emission, we employ the \PLANCK~Type 3 CO data 
+product, which boasts the highest S/N among the available full-sky CO maps 
+based on the \PLANCK~HFI and Low Frequency Instrument (LFI) data 
 \citep{planckco}. The native angular resolution of the Type 3 CO map is 5.5$'$.
-We therefore began by smoothing the raw Type 3 CO map to $6.1'$, to match the 
-PSF of the smoothed \PLANCK~intensity maps we wish to correct for molecular 
-emission (for our full-resolution two-parameter fits, these are 217 GHz and 353
-GHz). 
+We therefore begin by smoothing the raw Type 3 CO map to match the PSF of the 
+smoothed \PLANCK~intensity maps we wish to correct for molecular emission.
 
-We must apply the appropriate unit conversions to the $6.1'$ Type 3 CO map 
-before subtracting it from the \PLANCK~intensity maps, which have native units 
-of $K_{CMB}$ at the frequencies of interest. The Type 3 CO map is provided in 
+We must apply the appropriate unit conversions to the Type 3 CO map before 
+subtracting it from the \PLANCK~intensity maps, which have native units of 
+$K_{CMB}$ at the frequencies of interest. The Type 3 CO map is provided in 
 units of K$_{RJ}$ km/s of J=1$\rightarrow$0 emission. To convert this quantity 
 to $K_{CMB}$, we assume that all of the CO emission arises from the $^{12}$CO 
-isotope, and derived the \PLANCK-observed CO intensity in units of $K_{CMB}$ as
+isotope, and derive the \PLANCK-observed CO intensity in units of $K_{CMB}$ as
 follows:
 
 \begin{equation}
@@ -289,8 +287,6 @@ particularly the vast majority of the high Galactic latitude sky.
 % CO line ratios vary over the sky and/or other molecules make a substantial
 % contribution to the observed Planck intensities, our molecular emission
 % correction will be insufficient
-
-% We did not attempt to correct for higher J CO transitions beyond J=3->2
 
 % for CO line list see ~/wise/pro/planck_co_lines.pro
 
