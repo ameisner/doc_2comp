@@ -256,15 +256,27 @@ Where $I_{CO, \nu_i, N, N-1}$ is the intensity in $K_{CMB}$ in \PLANCK~band
 $\nu_i$ due to the CO transition from J=$N$ to J=$(N$$-$1). $I_3$ represents 
 the Type 3 CO amplitude in  K$_{RJ}$ km/s of J=1$\rightarrow$0 emission. The 
 $F_{12CO, \nu_i, N, N-1}$ are conversion factors between K$_{RJ}$ km/s and 
-$K_{CMB}$ for particular band/transition pairs. The relevant values adopted are
-$F_{12CO, 100, 1, 0}$=1.478$\times$10$^{-5}$, 
-$F_{12CO, 217, 2, 1}$=4.585$\times$$10^{-5}$, and 
-$F_{12CO, 353, 3, 2}$=1.751$\times$$10^{-4}$.
+$K_{CMB}$ for particular band/transition pairs. The relevant values adopted 
+are:
+
+\noindent
+$F_{12CO, 100, 1, 0}$=1.478$\times$10$^{-5}$$K_{CMB}/K_{RJ}$,
+
+\noindent
+$F_{12CO, 217, 2, 1}$=4.585$\times$$10^{-5}$$K_{CMB}/K_{RJ}$, and 
+
+\noindent
+$F_{12CO, 353, 3, 2}$=1.751$\times$$10^{-4}$$K_{CMB}/K_{RJ}$.
+
+\noindent
 $R_{N, N-1}$ represents the line ratio of the transition from J=$N$ to 
 J=$(N$$-$1) relative to the J=1$\rightarrow$0. Thus, $R_{1,0}$=1, and we 
 further adopt $R_{2,1}$=0.595 and $R_{3,2}$=0.297 based on \cite{planckco}. 
-These line ratios are assumed to be constant over the entire sky. Formally, 
-then, the CO contamination in band $\nu_i$ is given by:
+These line ratios are assumed to be constant over the entire sky. 
+
+Formally, then, the CO contamination in band $\nu_i$ is given by:
+
+% need to cite reference for K_rj -> K_cmb conversion factors
 
 \begin{equation}
 I_{CO, \nu_i} = \sum\limits_{N} I_{CO, \nu_i, N, N-1}
