@@ -137,11 +137,11 @@ $\S$\ref{sec:prepro} we describe our preprocessing of the \PLANCK~maps to
 isolate thermal emission from Galactic dust. In $\S$\ref{sec:modeling} we 
 explain the dust emission model we fit to the \PLANCK~and \IRAS~data. In 
 $\S$\ref{sec:global} we describe our constraints on this model's global 
-parameters derived from the \PLANCK~HFI maps. In $\S$\ref{sec:fitting} we 
-detail the Markov chain Monte Carlo (MCMC) method with which we have estimated 
-the spatially varying parameters of our model. In $\S$\ref{sec:ebv} we 
-calibrate our derived optical depth to optical reddening. In 
-$\S$\ref{sec:results} we present the full-sky maps of dust temperature and 
+parameters derived from the \PLANCK~High Frequency Instrument (HFI) maps. In 
+$\S$\ref{sec:fitting} we detail the Markov chain Monte Carlo (MCMC) method with
+which we have estimated the spatially varying parameters of our model. In 
+$\S$\ref{sec:ebv} we calibrate our derived optical depth to optical reddening. 
+In $\S$\ref{sec:results} we present the full-sky maps of dust temperature and 
 optical depth we have obtained, and conclude in $\S$\ref{sec:conclusion}.
 
 \section{Data}
@@ -195,12 +195,12 @@ pixels in our downstream analyses which require smoothing of the \PLANCK~maps.
 SFD carefully removed point sources and galaxies from the \verb|i100| map 
 everywhere outside of $|b|$$<$$5^{\circ}$. We do not perform any further 
 modifications of the \verb|i100| map to account for compact sources. To mask 
-compact sources in the \PLANCK~maps, we use the SFD compact source mask, which 
-was originally constructed to mask point sources and resolved compact objects 
-that are not part of the Galactic cirrus at 3000 GHz. Given our pixelization 
-(see $\S$\ref{sec:pix}), 1.56\% of pixels are masked. 
+compact sources in the \PLANCK~217-857 GHz maps, we use the SFD compact source 
+mask. At 100, 143 GHz we use the compact source masks provided by the 
+\PLANCK~collaboration in the file \verb|HFI_Mask_PointSrc_2048_R1.10.fits|. 
+Given our pixelization (see $\S$\ref{sec:pix}), 1.56\% of pixels are masked 
+at 217-857 GHz (1.05\%, 1.02\% at 100, 143 GHz) 
 
-% clarify that SFD left point sources in the map for |b| < 5 ?
 % best to refer to an appendix for details of the point source masking ?
 
 \subsection{Smoothing}
@@ -233,31 +233,27 @@ GHz and J=3$\rightarrow$2 at 345 GHz, respectively affecting the \PLANCK~100,
 \PLANCK~143 GHz, but at a negligible level, $\sim$1000$\times$ fainter relative
 to the dust continuum than J=1$\rightarrow$0 at 100 GHz.
 
-To correct for molecular emission, we employed the \PLANCK~Type 3 CO 
-data product, which boasts the highest S/N 
-among the available full-sky CO maps based on \PLANCK~HFI/LFI 
-data \citep{planckco}. The native angular resolution of the Type 3 CO map is 
-5.5$'$. We therefore began by smoothing the raw Type 3 CO map to $6.1'$, to 
-match the PSF of the smoothed \PLANCK~intensity maps we wish to correct 
-for molecular emission (for our full-resolution two-parameter fits, these are 
-217 GHz and 353 GHz). 
+To correct for molecular emission, we employed the \PLANCK~Type 3 CO data 
+product, which boasts the highest S/N among the available full-sky CO 
+maps based on the \PLANCK~HFI and Low Frequency Instrument (LFI) data 
+\citep{planckco}. The native angular resolution of the Type 3 CO map is 5.5$'$.
+We therefore began by smoothing the raw Type 3 CO map to $6.1'$, to match the 
+PSF of the smoothed \PLANCK~intensity maps we wish to correct for molecular 
+emission (for our full-resolution two-parameter fits, these are 217 GHz and 353
+GHz). 
 
-%take a few sentences to mention how exactly the CO was scaled, i.e. conversion
-% factors from K km/s and line ratio assumptions
-
-We must apply the appropriate unit conversions to the $6.1'$ Type 3 CO
-map before subtracting it from the \PLANCK~intensity maps, which have native 
-units of $K_{CMB}$ at the frequencies of interest. The Type 3 CO map is 
-provided in units of K$_{RJ}$ km/s of J=1$\rightarrow$0 emission. To convert 
-this quantity to $K_{CMB}$, we assume that all of the CO emission arises from 
-the $^{12}$CO isotope, and derived the \PLANCK-observed CO intensity in units 
-of $K_{CMB}$ as follows:
+We must apply the appropriate unit conversions to the $6.1'$ Type 3 CO map 
+before subtracting it from the \PLANCK~intensity maps, which have native units 
+of $K_{CMB}$ at the frequencies of interest. The Type 3 CO map is provided in 
+units of K$_{RJ}$ km/s of J=1$\rightarrow$0 emission. To convert this quantity 
+to $K_{CMB}$, we assume that all of the CO emission arises from the $^{12}$CO 
+isotope, and derived the \PLANCK-observed CO intensity in units of $K_{CMB}$ as
+follows:
 
 \begin{equation}
 I_{CO, \nu_i, N, N-1} = I_{3}F_{12CO, \nu_i, N, N-1} R_{N, N-1}
 \end{equation}
 
-% state what I_3 is 
 Where $I_{CO, \nu_i, N, N-1}$ is the intensity in $K_{CMB}$ in \PLANCK~band 
 $\nu_i$ due to the CO transition from J=$N$ to J=$(N$$-$1). $I_3$ represents 
 the Type 3 CO amplitude in  K$_{RJ}$ km/s of J=1$\rightarrow$0 emission. The 
@@ -281,22 +277,20 @@ non-negligible (100, 217 and 353 GHz), only a single $N$ contributes ($N$=1,
 $N$=2 and $N$=3, respectively). 
 
 Unfortunately, the Type 3 CO map at $6.1'$ FWHM is rather noisy, and the vast
- majority of the sky has completely negligible CO emission. Thus, in order to 
+majority of the sky has completely negligible CO emission. Thus, in order to 
 avoid adding unnecessary noise outside of molecular cloud complexes and at high
- latitudes, we have zeroed out low-signal regions of the Type 3 CO map. We 
+latitudes, we have zeroed out low-signal regions of the Type 3 CO map. We 
 identify  low-signal regions as those with $\mathcal{I}_3$$<$1 K$_{RJ}$ km/s, 
 where $\mathcal{I}_3$ is the Type 3 CO map smoothed to 0.25$^{\circ}$ FWHM. As 
 a result of this cut, 90\% of the sky remains unaffected by our CO correction, 
 particularly the vast majority of the high Galactic latitude sky.
 
-% did i ever spell out the acronyms HFI, LFI ????
-
-% maybe a final sentence or two explaining that, to whatever extent
+% maybe a final sentence or two warning that, to whatever extent
 % CO line ratios vary over the sky and/or other molecules make a substantial
 % contribution to the observed Planck intensities, our molecular emission
 % correction will be insufficient
 
-%We did not attempt to correct for higher J CO transitions beyond J=3->2
+% We did not attempt to correct for higher J CO transitions beyond J=3->2
 
 % for CO line list see ~/wise/pro/planck_co_lines.pro
 
