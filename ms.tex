@@ -152,6 +152,7 @@ of all six of the zodiacal light corrected HFI intensity maps
 \citep[\texttt{R1.10\_nominal\_ZodiCorrected},][]{planckzodi}. Our 
 full-resolution (6.1$'$ FWHM) SED fits neglect the two lowest HFI frequencies, 
 100 and 143 GHz, as these have FWHM of 9.66$'$ and 7.27$'$ respectively.
+% in last sentence, reference Table 1 ?
 
 To incorporate measurements on the Wien side of the dust emission spectrum, 
 we include 100$\mu$m data in our SED fits. In particular, we use the 
@@ -166,8 +167,8 @@ map as is, without any custom modifications.
 \label{sec:prepro}
 
 The following subsections detail the processing steps we have applied to 
-isolate thermal emission from Galactic dust in the \PLANCK~maps and prepare
-these maps for our joint \IRAS/\PLANCK~SED fits.
+isolate Galactic dust emission in the \PLANCK~maps in preparation for our joint
+\PLANCK/\IRAS~SED fits. % reference fitting section at end of this sentence ?
 
 \subsection{CMB Anisotropy Removal}
 \label{sec:cmb}
@@ -175,7 +176,7 @@ We first addressed the CMB anisotropies before performing any of the
 interpolation/smoothing described in $\S$\ref{sec:ptsrc}/$\S$\ref{sec:smth}. 
 The CMB anisotropies are effectively imperceptible upon visual inspection 
 in \PLANCK~857 GHz, but can be perceived at a low level in \PLANCK~545 GHz, and
-are prominent from 100 to 353 GHz relative to the Galactic emission
+are prominent at 100-353 GHz relative to the Galactic emission
 we wish to characterize, especially at high latitudes. To remove the CMB 
 anisotropies, we have subtracted the Spectral Matching Independent Component 
 Analysis \citep[SMICA,][]{smica} model from each of the \PLANCK~maps, 
@@ -253,11 +254,11 @@ I_{CO, \nu_i, N, N-1} = I_{3}F_{12CO, \nu_i, N, N-1} R_{N, N-1}
 
 Where $I_{CO, \nu_i, N, N-1}$ is the intensity in $K_{CMB}$ in \PLANCK~band 
 $\nu_i$ due to the CO transition from J=$N$ to J=$(N$$-$1). $I_3$ represents 
-the Type 3 CO amplitude in  K$_{RJ}$ km/s of J=1$\rightarrow$0 emission. The 
-$F_{12CO, \nu_i, N, N-1}$ are conversion factors between K$_{RJ}$ km/s and 
-$K_{CMB}$ for particular band/transition pairs. The relevant values, 
-calculated with the \textit{Unit Conversion and Colour Correction} software 
-utilities (\verb|v1.2|), are:
+the appropriately smoothed Type 3 CO amplitude in  K$_{RJ}$ km/s of 
+J=1$\rightarrow$0 emission. The $F_{12CO, \nu_i, N, N-1}$ are conversion 
+factors between K$_{RJ}$ km/s and $K_{CMB}$ for particular band/transition 
+pairs. The relevant values, calculated with the \textit{Unit Conversion and 
+Colour Correction} software utilities (\verb|v1.2|), are:
 
 \noindent
 $F_{12CO, 100, 1, 0}$=1.478$\times$10$^{-5}$$K_{CMB}/(K_{RJ} \ km/s)$,
@@ -383,12 +384,12 @@ a function of \PLANCK~857 GHz. For this purpose, we employ a version of the
 to 1$^{\circ}$ FWHM, which we will refer to as $\mathcal{I}_{857}$. We 
 consider $\mathcal{I}_{857}$ to be the independent variable, as it has much 
 higher S/N than the FDS99 prediction, henceforward referred to as 
-$\mathcal{F}_{857}$. Note that $\mathcal{F}_{857}$ is not a monochromatic 
-prediction, as we have incorporated the finite bandpass correction factors 
-described in $\S$\ref{sec:bpcorr}, using the FDS99 temperature map to determine
-the dust spectrum shape. We then rebin to $N_{side}$=64 and restrict to pixels 
-with $\mathcal{I}_{857}$$<$2.15 MJy/sr. Since \PLANCK~857 GHz smoothed to 
-degree resolution has very high S/N, we can safely perform such a cut on 
+$\mathcal{F}_{857}$. Note that $\mathcal{F}_{857}$ is not simply the FDS99
+model evaluated at 857 GHz, but also incorporates the color correction factor 
+of $\S$\ref{sec:bpcorr}, using the FDS99 temperature map to determine the dust 
+spectrum shape. We then rebin to $N_{side}$=64 and restrict to pixels with 
+$\mathcal{I}_{857}$$<$2.15 MJy/sr. Since \PLANCK~857 GHz smoothed to degree 
+resolution has very high S/N, we can safely perform such a cut on 
 $\mathcal{I}_{857}$. Figure \ref{fig:fdsref} shows a scatterplot of 
 $\mathcal{I}_{857}$ versus $\mathcal{F}_{857}$, with a moving median and linear
 fit overplotted. The linear fit was performed with uniform weights and 
@@ -396,22 +397,25 @@ iterative outlier rejection. The best-fit linear model is given by
 $\mathcal{F}_{857}$=0.994$\mathcal{I}_{857}$$-$0.018. It is encouraging that 
 the slope is quite close to unity, and the offset near zero.
 
-The formal statistical errors on these parameters are small. Just as in the 
-case of performing the regression versus  H\,\textsc{i}, systematic problems 
-dominate the uncertainty in the derived zero point offset. The systematics
-likely to dominate our FDS-based zero level are imperfect zodiacal light 
-corrections and the FDS99 temperature map. To quantify the level of systematic 
-error, we split the sky into four quadrants, with the dividing boundaries being
-$b$=0$^{\circ}$ and $l$=0$^{\circ}$, $l$=180$^{\circ}$. We again restricted to
-$\mathcal{I}_{857}$$<$2.15 MJy/sr, and repeated the regression in each 
-quadrant. The slopes varied from 0.948 to 0.993, with an rms of 0.0188, while 
-the offsets varied from $-$0.056 MJy/sr to $+$0.089 MJy/sr, with an rms of 
-0.0586 MJy/sr.
+% i evaluated the `formal statistical error' using the covar keyword in
+% hogg_iter_linfit
+
+The formal statistical error on the best-fit 857 GHz offset is quite small, 
+$\sim$0.002 MJy/sr. The systematics likely to dominate the actual uncertainty 
+on our FDS-based zero level are imperfections in the \PLANCK/\verb|i100| 
+zodiacal light models and the FDS99 temperature map. To quantify these 
+systematic uncertainties, we split the sky into four quadrants, with the 
+dividing boundaries being $b$=0$^{\circ}$ and $l$=0$^{\circ}$, 
+$l$=180$^{\circ}$. We again restricted to $\mathcal{I}_{857}$$<$2.15 MJy/sr, 
+and repeated the regression in each quadrant. The slopes varied from 0.948 to 
+0.993, with an rms of 0.0188, while the offsets varied from $-$0.056 MJy/sr to
+$+$0.089 MJy/sr, with an rms of 0.0586 MJy/sr.
+
+% in previous sentence, think it might be better to only quote rms, and
+% omit the ranges of values for each parameter ?
 
 % mention that all of this assumes that residual CMB dipole
 % and other low order-corrections are negligible at 857 GHz
-
-% actually evaluate the statistical errors !!!!
 
 % what HI intensity does the 2.15 MJy/sr 857 GHz correspond to ?
 %  ---> pretty high actually
