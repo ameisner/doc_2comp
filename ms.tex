@@ -1160,13 +1160,14 @@ $\tau_{545}$.}
 
 To achieve this empirical calibration, we must adopt a set of calibrator
 objects for which true optical reddening is known. There are various 
-possibilities at our disposal. \cite{planckdust} calibrated their $\tau_{353}$ 
-to $E(B-V)$ using broadband Sloan Digital Sky Survey \citep[SDSS;][]{sdss} 
-photometry for a set of $\sim$10$^5$ quasars. The SFD calibration was 
-originally tied to a sample of 384 elliptical galaxies, but was later revised 
-by \cite{schlafly11} using $\sim$250,000 stars with both spectroscopy and 
-broadband photometry available from SDSS. To calibrate our $\tau_{545}$ to 
-reddening, we make use of the same set of stars studied by \cite{schlafly11}.
+possibilities at our disposal. \cite{planckdust} calibrated their radiance 
+and $\tau_{353}$ maps to $E(B-V)$ using broadband Sloan Digital Sky Survey 
+\citep[SDSS;][]{sdss} photometry for a set of $\sim$10$^5$ quasars. The SFD 
+calibration was originally tied to a sample of 384 elliptical galaxies, but was
+later revised by \cite{schlafly11} using $\sim$250,000 stars with both 
+spectroscopy and broadband photometry available from SDSS. To calibrate our 
+$\tau_{545}$ to reddening, we make use of the same set of stars studied by 
+\cite{schlafly11}.
 
 % do I need to cite a reference the first time that i mention SDSS ?
 
@@ -1181,20 +1182,22 @@ Given a library of stellar atmosphere models, the spectral lines of these stars
 can be used to predict their intrinsic optical broadband colors. The `true' 
 reddening is then simply the difference in the observed $g-r$ color and the 
 $g-r$ color predicted from the spectral lines. Applying a color transformation 
-then yields `true' $E(B-V)$ values for $\sim$250,000 lines of sight, mostly at 
-high Galactic latitude. The calibration of two-component optical depth to 
-$E(B-V)$ is then performed as a linear regression of $E(B-V)_{SSPP}$ versus 
-$\tau_{545}$. $\tau_{545}$ is considered to be the independent variable in this
-regression, as we ultimately wish to predict $E(B-V)$ as a function of optical 
-depth, and $\tau_{545}$ has much higher S/N than the SSPP $E(B-V)$ estimates. 
+then yields `true' $E(B-V)$ values for $\sim$260,000 lines of sight. Throughout
+our SSPP calibration analysis, we restrict to the $\sim$230,000 lines of sight 
+with $|b|$$>$20$^{\circ}$ in order to avoid stars which may not lie behind the 
+full dust column. The calibration of two-component optical depth to $E(B-V)$ is
+performed as a linear regression of $E(B-V)_{SSPP}$ versus $\tau_{545}$. 
+$\tau_{545}$ is considered to be the independent variable in this regression, 
+as we ultimately wish to predict $E(B-V)$ as a function of optical depth, and 
+$\tau_{545}$ has much higher S/N than the SSPP $E(B-V)$ estimates.
 
 % cite Green appendix for details of deriving EBV_SSPP from Schlafly 11 data ?
 
 The result of this regression is shown in Figure \ref{fig:calib}. Indeed there 
 appears to be a strong linear correlation between $E(B-V)_{SSPP}$ 
 and $\tau_{545}$. The conversion factor from $\tau_{545}$ to $E(B-V)$ is 
-2.41$\times$10$^{3}$. Reassuringly, the best-fit offset is quite close to 
-zero, $\sim$3 mmag.
+2.46$\times$10$^{3}$. Reassuringly, the best-fit offset is quite close to 
+zero, $\sim$0.6 mmag.
 
 Figure \ref{fig:resid} shows a two-dimensional histogram of the residuals of
 the $\tau_{545}$-based $E(B-V)$ predictions relative to the corresponding
@@ -1206,7 +1209,7 @@ residual median is always within 30 mmag of zero.
 
 \begin{figure}
 \begin{center}
-\epsfig{file=ebv_resid.eps, width=2.5in, angle=90}
+\epsfig{file=ebv_resid.eps, width=3.3in}
 \caption{\label{fig:resid} $E(B-V)_{2comp}$ residuals as a function of
 SFD $E(B-V)$. The grayscale represents the conditional probability within each
 bin in SFD $E(B-V)$. The central black line shows the moving median. The upper
