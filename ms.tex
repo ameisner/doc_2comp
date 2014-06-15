@@ -140,9 +140,10 @@ $\S$\ref{sec:global} we describe our constraints on this model's global
 parameters derived from the \PLANCK~High Frequency Instrument (HFI) maps. In 
 $\S$\ref{sec:fitting} we detail the Markov chain Monte Carlo (MCMC) method with
 which we have estimated the spatially varying parameters of our model. In 
-$\S$\ref{sec:ebv} we calibrate our derived optical depth to optical reddening. 
-In $\S$\ref{sec:results} we present the full-sky maps of dust temperature and 
-optical depth we have obtained, and conclude in $\S$\ref{sec:conclusion}.
+$\S$\ref{sec:ebv} we calibrate our derived optical depth to reddening at 
+optical wavelengths. In $\S$\ref{sec:results} we present the full-sky maps of 
+dust temperature and optical depth we have obtained, and conclude in 
+$\S$\ref{sec:conclusion}.
 
 \section{Data}
 \label{sec:data}
@@ -175,14 +176,14 @@ isolate Galactic dust emission in the \PLANCK~maps in preparation for our joint
 We first addressed the CMB anisotropies before performing any of the 
 interpolation/smoothing described in $\S$\ref{sec:ptsrc}/$\S$\ref{sec:smth}. 
 The CMB anisotropies are effectively imperceptible upon visual inspection 
-in \PLANCK~857 GHz, but can be perceived at a low level in \PLANCK~545 GHz, and
+of \PLANCK~857 GHz, but can be perceived at a low level in \PLANCK~545 GHz, and
 are prominent at 100-353 GHz relative to the Galactic emission
 we wish to characterize, especially at high latitudes. To remove the CMB 
 anisotropies, we have subtracted the Spectral Matching Independent Component 
 Analysis \citep[SMICA,][]{smica} model from each of the \PLANCK~maps, 
-after applying appropriate unit conversions for the 545 and 857 GHz maps 
-with native units of MJy/sr. Low-order corrections, particularly removal of the
-residual Solar dipole, are discussed in $\S$\ref{sec:zp}.
+applying appropriate unit conversions for the 545 and 857 GHz maps with native 
+units of MJy/sr. Low-order corrections, particularly removal of the residual 
+Solar dipole, are discussed in $\S$\ref{sec:zp}.
 
 % NEED TO MENTION SMOOTHING OF THE SMICA MAP TO 6.1 ARMCIN !!!!!!
 
@@ -378,7 +379,7 @@ by comparison to the FDS99 857 GHz prediction. This renders the \PLANCK~857 GHz
 absolute zero level tied indirectly to H\,\textsc{i} through the FDS99 
 100$\mu$m and 240$\mu$m zero points. 
 
-Specifically, we perform a linear fit to the FDS99-predicted 857 GHz values as 
+We perform a linear fit to the FDS99-predicted 857 GHz values as 
 a function of \PLANCK~857 GHz. For this purpose, we employ a version of the 
 \PLANCK~857 GHz map with zodiacal light and point sources removed and smoothed 
 to 1$^{\circ}$ FWHM, which we will refer to as $\mathcal{I}_{857}$. We 
@@ -404,12 +405,11 @@ The formal statistical error on the best-fit 857 GHz offset is quite small,
 $\sim$0.002 MJy/sr. The systematics likely to dominate the actual uncertainty 
 on our FDS-based zero level are imperfections in the \PLANCK/\verb|i100| 
 zodiacal light models and the FDS99 temperature map. To quantify these 
-systematic uncertainties, we split the sky into four quadrants, with the 
-dividing boundaries being $b$=0$^{\circ}$ and $l$=0$^{\circ}$, 
-$l$=180$^{\circ}$. We again restricted to $\mathcal{I}_{857}$$<$2.15 MJy/sr, 
-and repeated the regression in each quadrant. The rms of the per-quadrant 
-slopes was found to be 0.0188, while the rms of the per-quadrant offsets was 
-0.0586 MJy/sr.
+systematic uncertainties, we split the sky into four quadrants, with boundaries
+at $b$=0$^{\circ}$ and $l$=0$^{\circ}$, $l$=180$^{\circ}$. We again restricted 
+to $\mathcal{I}_{857}$$<$2.15 MJy/sr, and repeated the regression in each 
+quadrant. The rms of the per-quadrant slopes was found to be 0.0188, while the 
+rms of the per-quadrant offsets was 0.0586 MJy/sr.
 
 % in previous sentence, think it might be better to only quote rms, and
 % omit the ranges of values for each parameter ?
@@ -451,9 +451,9 @@ In the course of this study we use not only \PLANCK~857 GHz, but also all of
 the remaining \PLANCK~HFI bands, as well as \verb|i100|. To derive the 
 zero level offsets that must be applied to each of the five lowest-frequency 
 \PLANCK~bands, we perform a regression versus the \PLANCK~857 GHz map corrected
-for the absolute zero level offset derived in $\S$\ref{sec:zp_abs}. We assume 
-no offset need be applied to \verb|i100|, which already has its zero level 
-tied to H\,\textsc{i}.
+for the best-fit absolute zero level offset from $\S$\ref{sec:zp_abs}. We 
+assume no offset need be applied to \verb|i100|, which already has its zero 
+level tied to H\,\textsc{i}.
 
 The need for additional low-order corrections beyond simple scalar offsets 
 became evident upon inspecting the HFI maps at 100-545 GHz. In particular, we 
@@ -462,14 +462,16 @@ consistent with that of the Solar dipole. Our strategy will be to
 simultaneously fit both the residual dipole and zero-level offset amplitudes. 
 To most precisely recover these amplitudes, it is necessary to have the highest
 available S/N in the independent variable of our regression. For this reason we
-have used 857 GHz as a reference for the 100-545 GHz bands, as opposed to the 
-FDS99 predictions or H\,\textsc{i} data. 
+have used \PLANCK~857 GHz as a reference for the 100-545 GHz bands, as opposed 
+to the FDS99 predictions or H\,\textsc{i} data. In doing so, we assume
+\PLANCK~857 GHz contains no appreciable Solar dipole residual or other 
+low-order problems. % grammar?
 
-Thus, we perform one regression per HFI band to simultaneously fit for the 
-zero level offset, the slope relative to 857 GHz, and the residual dipole 
-amplitude. For each 100-545 GHz HFI band, we restrict to regions of low column 
-density (H\,\textsc{i} $<$ 200 K\,km\,s$^{-1}$ for $-72$$<$$v_{LSR}$$<$$+25$ 
-km\,s$^{-1}$) and fit the following model:
+We perform one regression per HFI band (other than 857 GHz) to simultaneously 
+fit for the zero level offset, the slope relative to 857 GHz, and the residual 
+dipole amplitude. For each 100-545 GHz HFI band, we restrict to regions of low 
+column density (H\,\textsc{i} $<$ 200 K\,km\,s$^{-1}$ for 
+$-72$$<$$v_{LSR}$$<$$+25$ km\,s$^{-1}$) and fit the following model:
 
 \begin{equation} \label{equ:dip}
 \mathcal{I}_{\nu_i, p} = m\mathcal{I}_{857, p} + b + d\mathcal{D}_{p}
@@ -480,8 +482,8 @@ $\mathcal{I}_{857}$, $\mathcal{I}_{\nu_i}$, and $\mathcal{D}$. Here
 $\mathcal{I}_{857}$ is the \PLANCK~857 GHz map with zodiacal emission, compact 
 sources, and the constant offset of $\S$\ref{sec:zp_abs} removed, smoothed to 
 $1^{\circ}$ resolution. $\mathcal{I}_{\nu_i}$ is the corresponding $1^{\circ}$ 
-resolution \PLANCK~HFI map with zodiacal emission and compact sources removed. 
-In the context of Equation \ref{equ:dip}, $\nu_i \in$  
+resolution \PLANCK~HFI map with zodiacal emission, CMB anisotropies, and
+compact sources removed. In the context of Equation \ref{equ:dip}, $\nu_i \in$ 
 \{100, 143, 217, 353, 545\} GHz. Note that $\mathcal{I}_{\nu_i}$ is always in
 the native units of the relevant \PLANCK~band. $\mathcal{D}$ is a scaling of 
 the Solar dipole pattern oriented toward 
