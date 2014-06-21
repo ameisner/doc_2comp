@@ -459,13 +459,13 @@ The need for additional low-order corrections beyond simple scalar offsets
 became evident upon inspecting the HFI maps at 100-545 GHz. In particular, we 
 noticed the presence of a low-level dipole pattern, with an orientation 
 consistent with that of the Solar dipole. Our strategy will be to 
-simultaneously fit both the residual dipole and zero-level offset amplitudes. 
-To most precisely recover these amplitudes, it is necessary to have the highest
-available S/N in the independent variable of our regression. For this reason we
-have used \PLANCK~857 GHz as a reference for the 100-545 GHz bands, as opposed 
-to the FDS99 predictions or H\,\textsc{i} data. In doing so, we assume
-\PLANCK~857 GHz contains no appreciable Solar dipole residual or other 
-low-order problems. % grammar?
+simultaneously fit both this residual dipole and the zero-level offset 
+amplitude for each band. To most precisely recover these amplitudes, it is 
+necessary to have the highest available S/N in the independent variable of our 
+regression. For this reason we have used \PLANCK~857 GHz as a reference for the
+100-545 GHz bands, as opposed to the FDS99 predictions or H\,\textsc{i} data. 
+In doing so, we assume \PLANCK~857 GHz contains no appreciable Solar dipole 
+residual or other low-order problems. % grammar?
 
 We perform one regression per HFI band (other than 857 GHz) to simultaneously 
 fit for the zero level offset, the slope relative to 857 GHz, and the residual 
@@ -509,33 +509,26 @@ offsets and residual dipole amplitudes are listed in Table \ref{table:offs},
 along with other important per-band parameters, such as the fractional 
 multiplicative calibration uncertainty $c_{\nu}$.
 
-For \PLANCK~100 GHz, we found an additional low-order correction to be
-necessary (see Figure \ref{fig:quad}). Therefore, for 100 GHz, we performed a 
-modified version of the Equation \ref{equ:dip} fit, using the following model:
+We found that a dipole correction alone could not sufficiently rectify the 
+\PLANCK~100 GHz map (see Figure \ref{fig:quad}). Therefore, for 100 GHz, we 
+performed a modified version of the Equation \ref{equ:dip} fit, using the 
+following model:
 
-\begin{equation} \label{equ:quad}
-\mathcal{I}_{100, p} = m\mathcal{I}_{857, p} + b + d\mathcal{D}_p + qQ_p
+\begin{equation} \label{equ:harm}
+\mathcal{I}_{100, p} = m\mathcal{I}_{857, p} + b + \sum_{l=1}^{4} \sum_{m=-l}^{l} a_{lm}Y_{l}^{m}(\theta_p, \phi_p)
 \end{equation}
 
-We will refer to the additional term $qQ_p$ as the ``quadrupole correction''. 
-The shape of the quadrupole template is given by:
-
-\begin{equation}
-Q_p = cos^2(\theta_p)
-\end{equation}
-
-Where $\theta_p$ is the angle of pixel $p$ relative to the Solar velocity 
-vector. It is not clear physically why such a term should improve the 
-correlation between $\mathcal{I}_{100}$ and $\mathcal{I}_{857}$. However, the 
-scatter plots shown in Figure \ref{fig:quad} make it clear that such a term 
-dramatically improves the quality of the linear correlation between the 100 GHz
-and 857 GHz channels. We tried re-running the fits at 143-545 GHz including the
-$Q_p$ quadrupole term, but in all cases found the best-fit quadrupole to be 
-negligible, and yield no substantial tightening of the correlation versus 857 
-GHz.
-
-% worth clarifying that, for quadrupole fit at 100 GHz, we still do the
-% fit with uniform weights and iterative outlier rejection ?
+Where $Y_{l}^{m}$ are the real spherical harmonics, and the $a_{lm}$ are their 
+corresponding real coefficients. The angle $\phi_p$ is taken simply to be 
+$l_{gal, p}$ and $\theta_p$=$(90^{\circ}-b_{gal, p})$. Thus, we have replaced 
+the Solar dipole term with a sum of 24 spherical harmonic templates, which, 
+when multiplied by the best-fit $a_{lm}$ coefficients and subtracted from 
+\PLANCK~100 GHz make the relation between 100 GHz and 857 GHz most tightly 
+linear. Figure \ref{fig:quad} illustrates the improved correlation of 100 GHz 
+vs. 857 GHz when including the spherical harmonic corrections relative to the 
+dipole-only correction. The spherical harmonic decomposition of Equation 
+\ref{equ:harm} did not improve the correlations at higher frequencies 
+sufficiently to warrant replacing the dipole-only correction in those cases.
 
 % mention how offset/dipole values compare to those derived in the Planck
 % team paper ?
