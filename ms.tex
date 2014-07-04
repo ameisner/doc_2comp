@@ -455,6 +455,7 @@ rms of the per-quadrant offsets was 0.0586 MJy/sr.
 \end{deluxetable*}
 
 \subsubsection{Relative Zero Level}
+\label{sec:relzero}
 
 In the course of this study we use not only \PLANCK~857 GHz, but also all of
 the remaining \PLANCK~HFI bands, as well as \verb|i100|. To derive the 
@@ -724,76 +725,125 @@ S_{\nu} = \frac{f_1q_1(\nu/\nu_0)^{\beta_1}B_{\nu}(T_1) + f_2q_2(\nu/\nu_0)^{\be
 \label{sec:global}
 %%%%
 
-\begin{deluxetable}{rrrrrr} 
+\begin{deluxetable*}{llrrrrrrrrrr} 
 \tabletypesize{\scriptsize}
-\tablecolumns{6} 
+\tablecolumns{11} 
 \tablewidth{0pc} 
 \tablecaption{\label{tab:global} Global Model Parameters} 
 \tablehead{
+\colhead{Number} &
 \colhead{Model} &
-\colhead{Data} &
 \colhead{$f_1$} &
 \colhead{$q_1/q_2$} & 
 \colhead{$\beta_1$} & 
-\colhead{$\beta_2$}
+\colhead{$\beta_2$} &
+\colhead{$T_2$} &
+\colhead{$T_1$} &
+\colhead{$n$} &
+\colhead{D.O.F.} &
+\colhead{$\chi^2$} &
+\colhead{$\chi^2_{\nu}$}
 }
 \startdata
- 1 & FIRAS+DIRBE & 0.0363 & 13.0 & 1.67 & 2.70 \\
- 2 & \PLANCK+DIRBE & 0.0485 & 8.22 & 1.63 & 2.82 \\ [-2ex]
+ 1 & FDS99 best-fit  & 0.0363 & 13.0  & 1.67 & 2.70 & 15.72 &  9.15 & 1.018 & 7 & 23.9 & 3.41 \\
+ 2 & FDS99 general   & 0.0485 & 8.22  & 1.63 & 2.82 & 15.70 &  9.75 & 0.980 & 3 & 3.99 & 1.33 \\
+ 3 & single MBB      &  1.0   &  ...  & 1.59 &  ... &  ...  & 19.63 & 0.999 & 6 & 33.9 & 5.65 \\ [-2ex]
 \enddata
-\end{deluxetable}
+\end{deluxetable*}
 
 % would be great to have uncertainties on each parameter as well (in the
 % Planck case at least...) !!!!!!!!!!!!!!!
 
 %%%%
 
-In light of the \PLANCK~HFI data, it is possible to revisit the best-fit global
-parameters of the two-component emission model. To derive the 
-\{$\beta_1$, $\beta_2$, $f_1$, $q_1/q_2$\} that best represent the \PLANCK~HFI
-maps, we employed a correlation slope analysis (see Figure XX). Specifically,
-we correlated the observed \PLANCK~data against the appropriate FDS99 
-prediction for each HFI band from 143-857 GHz. We omitted 100 GHz from 
-consideration due to the sensitivity of the 100 GHz trend to our ad hoc
-low order corrections (see Figure \ref{fig:harm}). All comparisons between
-\PLANCK~and the FDS99 predictions were made after smoothing both to 
-$1^{\circ}$, subtracting the SMICA CMB model, and ignoring SMICA inpainted 
-pixels. For 100-857 GHz, the linearity between the FDS and \PLANCK~is
-excellent.
+FDS99 determined the best-fit values of the two-component model global 
+parameters $\beta_1$, $\beta_2$, $q_1/q_2$ and $f_1$ via a correlation slope
+analysis incorporating DIRBE and FIRAS data. In this section, we seek to 
+perform a correlation slope determination of these same global parameters, but
+swapping the \PLANCK~HFI maps for FIRAS at low frequencies, while still 
+relying on DIRBE at higher frequencies. We also seek to determine via this
+correlation slope analysis whether or not the combination of \PLANCK+DIRBE data
+favors two-component models over single-MBB models in the same way that the
+FIRAS+DIRBE data did in the FDS99 analysis.
+
+In the two-component model case, we wish to obtain estimates for six 
+free parameters: $\beta_1$, $\beta_2$, $q_1/q_2$, $f_1$, $T_2$ and the overall 
+spectrum normalization $n$. The constraints employ are the correlation
+slopes of each of the \PLANCK~HFI bands, as well as DIRBE 100$\mu$m (3000 GHz),
+140$\mu$m (2141 GHz) and 240$\mu$m (1250 GHz) against \PLANCK~857 GHz. We will 
+refer to the slope for band $\nu_i$ as $s_{i,857}$. All of the correlations are
+performed using $1^{\circ}$ smoothed maps. The slopes for \PLANCK~100-545 GHz 
+are taken to be those from the relative zero level fits of 
+\ref{sec:relzero}, and are illustrated by the dashed red lines in plots of 
+Figure \ref{fig:dip}, right column. The 857 GHz slope is taken to be unity by 
+definition. We use the SFD98 reprocessings of the DIRBE bands. Including 857 
+GHz, we thus have 9 correlation slope constraints for six free parameters. 
+Including DIRBE 140$\mu$m and 240$\mu$m is critical in making this problem 
+sufficiently constrained, and also in providing information near the peak of 
+the dust SED at $\sim$140$\mu$m, which is particularly sensitive to the 
+presence of a single versus multiple MBB components. % last sentence mentioning
+% that the large number of frequency channels and good coverage of the 
+% dust SED peak were what made FIRAS so appropriate for FDS99 analysis ??
+
+We assume an uncertainty of 2\% on each of the 9 correlation slopes and
+minimize the $\chi^2$ given by:
+
+% hmm it's really seeming like I need to move the color correction section
+% to be before this, because I need the \tilde{I} things in this equation
+
+\begin{equation}
+\chi^2 = \sum_{i=0}^{8}\frac{(s_{i, 857}-n\tilde{I}_{\nu_i}/\tilde{I}_{857})^2}{\sigma_{s}^2}
+\end{equation}
+
+
+
+%In light of the \PLANCK~HFI data, it is possible to revisit the best-fit 
+%global parameters of the two-component emission model. To derive the 
+%\{$\beta_1$, $\beta_2$, $f_1$, $q_1/q_2$\} that best represent the \PLANCK~HFI
+%maps, we employed a correlation slope analysis (see Figure XX). Specifically,
+%we correlated the observed \PLANCK~data against the appropriate FDS99 
+%prediction for each HFI band from 143-857 GHz. We omitted 100 GHz from 
+%consideration due to the sensitivity of the 100 GHz trend to our ad hoc
+%low order corrections (see Figure \ref{fig:harm}). All comparisons between
+%\PLANCK~and the FDS99 predictions were made after smoothing both to 
+%$1^{\circ}$, subtracting the SMICA CMB model, and ignoring SMICA inpainted 
+%pixels. For 100-857 GHz, the linearity between the FDS and \PLANCK~is
+%excellent.
 
 %also emphasize that FDS99 predictions are broadband, not monochromatic
 % (i think i can borrow a sentence about this from the absolute zero point 
 % section above)
 
-However, the slopes at low frequencies are not precisely unity, as would
-be expected if the global two-component parameters derived from FIRAS by
-FDS99 were also the best-fitting global parameters with respect to the 
-\PLANCK~data set.
+%However, the slopes at low frequencies are not precisely unity, as would
+%be expected if the global two-component parameters derived from FIRAS by
+%FDS99 were also the best-fitting global parameters with respect to the 
+%\PLANCK~data set.
 
 % maybe a table listing the correlation slopes and their uncertainties
 % would be useful here
 
-We then derive \{$\beta_1$, $\beta_2$, $f_1$, $q_1/q_2$\} as constrained by 
-the correlation slopes and their uncertainties given in Table QQ by 
-taking $T_2$=$16.2$K and running Markov chains to sample the posterior:
+%We then derive \{$\beta_1$, $\beta_2$, $f_1$, $q_1/q_2$\} as constrained by 
+%the correlation slopes and their uncertainties given in Table QQ by 
+%taking $T_2$=$16.2$K and running Markov chains to sample the posterior:
 
-Figure ZZ shows a corner plot of the 150,000 samples. Clearly, there are
-strong covariances, but even so several conclusions are clear: (1) a lower 
-value of $q_1/q_2$ is favored by the \PLANCK~data than by the FIRAS data (2) 
-the best-fit emissivity power law index of the hot dust component ($\beta_2$) 
-is effectively identical to that found by FDS99 to within uncertainties and (3)
-a somewhat lower $\beta_1$ is favored by \PLANCK~than by FIRAS, meaning the
-\PLANCK-based SED is shallower toward the millimeter. Because $f_1$ is so 
-strongly covariant with $\beta_1$, the difference of $f_1$ between the 
-\PLANCK~and FIRAS best fits is not particularly significant.
+%Figure ZZ shows a corner plot of the 150,000 samples. Clearly, there are
+%strong covariances, but even so several conclusions are clear: (1) a lower 
+%value of $q_1/q_2$ is favored by the \PLANCK~data than by the FIRAS data (2) 
+%the best-fit emissivity power law index of the hot dust component ($\beta_2$) 
+%is effectively identical to that found by FDS99 to within uncertainties and 
+%(3)
+%a somewhat lower $\beta_1$ is favored by \PLANCK~than by FIRAS, meaning the
+%\PLANCK-based SED is shallower toward the millimeter. Because $f_1$ is so 
+%strongly covariant with $\beta_1$, the difference of $f_1$ between the 
+%\PLANCK~and FIRAS best fits is not particularly significant.
 
 % actually quantitatively assess, for a typical temperature (and frequency?)
 % how the new f_1 value basically balances out the change in beta_1 ???
 
-The MCMC fitting procedure described in $\S$\ref{sec:fitting} is performed
-separately for both model 1 (FIRAS+\verb|i100|) and model 2 
-(\PLANCK+\verb|i100|), each defined by their respective global parameters 
-listed in Table \ref{tab:global}.
+%The MCMC fitting procedure described in $\S$\ref{sec:fitting} is performed
+%separately for both model 1 (FIRAS+\verb|i100|) and model 2 
+%(\PLANCK+\verb|i100|), each defined by their respective global parameters 
+%listed in Table \ref{tab:global}.
 
 % does this statement accidentally give the impression that I do separate 
 % MCMC fits, one in which i fit Planck/IRAS **data** and one in which
