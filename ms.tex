@@ -141,7 +141,7 @@ parameters derived from the \PLANCK~High Frequency Instrument (HFI) maps. In
 $\S$\ref{sec:fitting} we detail the Markov chain Monte Carlo (MCMC) method with
 which we have estimated the spatially varying parameters of our model. In 
 $\S$\ref{sec:ebv} we calibrate our derived optical depth to reddening at 
-optical wavelengths. In $\S$\ref{sec:results} we present the full-sky maps of 
+optical wavelengths. In $\S$\ref{sec:release} we present the full-sky maps of 
 dust temperature and optical depth we have obtained, and conclude in 
 $\S$\ref{sec:conclusion}.
 
@@ -1150,17 +1150,12 @@ Galactic hemisphere in Lambert projection in Figure \ref{fig:f1lambert}.
 \section{Optical Reddening}
 \label{sec:ebv}
 
-
 While the temperature and optical depth maps thus far derived are
 useful for making thermal dust emission foreground predictions, estimating 
 optical reddening/extinction is another important application of the 
 $\tau_{545}$ map. 
 
 \subsection{Reddening Calibration Procedure}
-
-We calibrate to reddening empirically rather than derive
-a relationship between $\tau_{545}$ and reddening by introducing additional 
-assumptions about the dust grain physics and size distribution.
 
 % scatterplot figure showing linear regression of EBV vs. tau
 \begin{figure}
@@ -1171,16 +1166,18 @@ $\tau_{545}$.}
 \end{center}
 \end{figure}
 
-To achieve this empirical calibration, we must adopt a set of calibrator
-objects for which true optical reddening is known. There are various 
-possibilities at our disposal. \cite{planckdust} calibrated their radiance 
-and $\tau_{353}$ maps to $E(B-V)$ using broadband Sloan Digital Sky Survey 
-\citep[SDSS;][]{sdss} photometry for a set of $\sim$10$^5$ quasars. The SFD 
-calibration was originally tied to a sample of 384 elliptical galaxies, but was
-later revised by \cite{schlafly11} using $\sim$250,000 stars with both 
-spectroscopy and broadband photometry available from SDSS. To calibrate our 
-$\tau_{545}$ to reddening, we make use of the same set of stars studied by 
-\cite{schlafly11}.
+We calibrate to reddening empirically rather than derive
+a relationship between $\tau_{545}$ and reddening by introducing additional 
+assumptions about the dust grain physics and size distribution. To achieve this
+empirical calibration, we must adopt a set of calibrator objects for which true
+optical reddening is known. There are various possibilities at our disposal. 
+\cite{planckdust} calibrated their radiance and $\tau_{353}$ maps to $E(B-V)$ 
+using broadband Sloan Digital Sky Survey \citep[SDSS;][]{sdss} photometry for a
+set of $\sim$10$^5$ quasars. The SFD calibration was originally tied to a 
+sample of 384 elliptical galaxies, but was later revised by \cite{schlafly11} 
+using $\sim$250,000 stars with both spectroscopy and broadband photometry 
+available from SDSS. To calibrate our $\tau_{545}$ to reddening, we make use of
+the same set of stars studied by \cite{schlafly11}.
 
 % do I need to cite a reference the first time that i mention SDSS ?
 
@@ -1231,6 +1228,9 @@ respectively.}
 \end{center}
 \end{figure}
 
+\subsection{Rectifying Reddening Residuals}
+% discuss changing global params and offsets, and ecl plane cut
+
 % should eventually try re-making 2d scatterplot figure in python..
 
 %%\section{Systematics}
@@ -1257,25 +1257,12 @@ respectively.}
 %%6.1' resolution.
 %%any other miscellaneous issues?
 
-\section{Results}
-\label{sec:results}
+\section{Low-frequency Emission Predictions}
+% compare 100-217 GHz predictions using my model versus Planck Collaboration
+% single-MBB model
 
-\subsection{Data Release}
-We are releasing $N_{side}$=2048 HEALPix maps in Galactic coordinates 
-summarizing the results of of our two-component dust fits.
+% is this the section where, potentially, plots of the residuals might go?
 
-%at some point in this should make statements re: the fact that in terms
-%of predicting *emission* the conversion to tau is unnecessary and
-%and actually the raw uncertainty on Ghz 545 amplitude is the relevant quantity
-
-%software utilities
-%provide maps at multiple different nsides ?
-%   -> if so, actually smooth the maps before rebinning, or leave 
-%      undersampled?
-% provide uncertainty maps for tau and T2 ??
-
-
-\subsection{Comparison to Planck Collaboration Dust Map}
 %striping in IRAS/IRIS versus in SFD IRAS ... planck dust map obvious striping
 An important difference between our maps and those of \cite{planckdust} is our 
 use of SFD \verb|i100| instead of IRIS 100$\mu$m \citep{IRIS}. Residual 
@@ -1291,13 +1278,20 @@ $0.5^{\circ}$ resolution has effectively blurred their dust temperature map.
 
 %\subsection{Validation with FIRAS}
 
-\section{Conclusion}
+\section{Data Release}
+\label{sec:release}
+We are releasing $N_{side}$=2048 HEALPix maps in Galactic coordinates 
+summarizing the results of of our two-component dust fits.
 
-% should mention that one definitive improvement of this work relative
-% to FDS99 is that there are uncertainty/covariances provided for
-% the derived parameters !!!!
+%at some point in this should make statements re: the fact that in terms
+%of predicting *emission* the conversion to tau is unnecessary and
+%and actually the raw uncertainty on Ghz 545 amplitude is the relevant quantity
 
-\label{sec:conclusion}
+%software utilities
+%provide maps at multiple different nsides ?
+%   -> if so, actually smooth the maps before rebinning, or leave 
+%      undersampled?
+% provide uncertainty maps for tau and T2 ??
 
 \begin{figure*} [ht]
 \begin{center}
@@ -1305,6 +1299,13 @@ $0.5^{\circ}$ resolution has effectively blurred their dust temperature map.
 \caption{Our best-fit $T_2$, binned to 27.5$'$ resolution}
 \end{center}
 \end{figure*}
+
+\section{Conclusions}
+\label{sec:conclusion}
+% should mention that one definitive improvement of this work relative
+% to FDS99 is that there are uncertainty/covariances provided for
+% the derived parameters !!!!
+
 
 This material is based upon work supported by the National Science Foundation 
 Graduate Research Fellowship under Grant No. We acknowledge support of NASA 
