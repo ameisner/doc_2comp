@@ -748,7 +748,7 @@ S_{\nu} = \frac{f_1q_1(\nu/\nu_0)^{\beta_1}B_{\nu}(T_1) + f_2q_2(\nu/\nu_0)^{\be
 \startdata
  1 & FDS99 best-fit  & 0.0363 & 13.0  & 1.67 & 2.70 & 15.72 &  9.15 & 1.018 & 7 & 23.9 & 3.41 \\
  2 & FDS99 general   & 0.0485 & 8.22  & 1.63 & 2.82 & 15.70 &  9.75 & 0.980 & 3 & 3.99 & 1.33 \\
- 3 & single MBB      &  1.0   &  ...  & 1.59 &  ... &  ...  & 19.63 & 0.999 & 6 & 33.9 & 5.65 \\ [-2ex]
+ 3 & single MBB      &  0.0   &  ...  &  ... & 1.59 & 19.63 &   ... & 0.999 & 6 & 33.9 & 5.65 \\ [-2ex]
 \enddata
 \end{deluxetable*}
 
@@ -794,11 +794,14 @@ chi-squared given by:
 % hmm it's really seeming like I need to move the color correction section
 % to be before this, because I need the \tilde{I} things in this equation
 
-\begin{equation}
+\begin{equation} \label{equ:chi2corr}
 \chi^2 = \sum_{i=0}^{8}\frac{\big[s_{i, 857}-n\frac{\tilde{I}_{\nu_i}(\beta_1, \beta_2, f_1, q_1/q_2, T_2)}{\tilde{I}_{857}(\beta_1, \beta_2, f_1, q_1/q_2, T_2)}\big]^2}{\sigma_{s}^2}
 \end{equation}
 
-
+Where $\nu_i$$\in$\{100, 143, 217, 353, 545, 857, 1250, 2141, 3000\} GHz. Note 
+that this formula encompasses the general two-component case. In the single-MBB
+case, we take $f_1$=0 and hence $q_1/q_2$, $\beta_1$ and $T_1$ are immaterial, 
+but Equation \ref{equ:chi2corr} still applies.
 
 %In light of the \PLANCK~HFI data, it is possible to revisit the best-fit 
 %global parameters of the two-component emission model. To derive the 
