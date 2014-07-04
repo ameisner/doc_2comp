@@ -788,14 +788,14 @@ versus multiple MBB components. % last sentence mentioning
 % that the large number of frequency channels and good coverage of the 
 % dust SED peak were what made FIRAS so appropriate for FDS99 analysis ??
 
-We assume an uncertainty of 2\% on each of the 9 correlation slopes and
-minimize the $\chi^2$ given by:
+We assume an uncertainty of 2\% on each of the $s_{i, 857}$ and minimize the 
+chi-squared given by:
 
 % hmm it's really seeming like I need to move the color correction section
 % to be before this, because I need the \tilde{I} things in this equation
 
 \begin{equation}
-\chi^2 = \sum_{i=0}^{8}\frac{(s_{i, 857}-n\tilde{I}_{\nu_i}/\tilde{I}_{857})^2}{\sigma_{s}^2}
+\chi^2 = \sum_{i=0}^{8}\frac{\big[s_{i, 857}-n\frac{\tilde{I}_{\nu_i}(\beta_1, \beta_2, f_1, q_1/q_2, T_2)}{\tilde{I}_{857}(\beta_1, \beta_2, f_1, q_1/q_2, T_2)}\big]^2}{\sigma_{s}^2}
 \end{equation}
 
 
