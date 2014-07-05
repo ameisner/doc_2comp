@@ -940,19 +940,17 @@ Lastly, we calculate the optimal single-MBB fit to the \PLANCK+DIRBE
 correlation slope spectrum. The best-fit single MBB has $\beta$=1.59, 
 $T$=19.63, and $\chi^2_{\nu}$=5.65, indicating a significantly worse fit to the
 data than our best-fit two-component model (model 2). Thus, our \PLANCK+DIRBE 
-correlation slope analysis has confirmed the basic conclusion of FDS99 and 
+correlation slope analysis has confirmed the main conclusion of FDS99 and 
 others e.g. \cite{reach95}, that the FIR/submm dust SED prefers two MBBs to 
-just one, but, for the first time, independent of FIRAS. However, it is also
-apparent that the improvement in $\chi^2_{\nu}$ for single-MBB versus double
-MBB models found here is substantially less dramatic 
-($\Delta\chi^2_{\nu}$=4.32) than that found in FDS99 
-($\Delta\chi^2_{\nu}$=29.2). This is likely attributable to the exquisite 
-narrow-band frequency coverage of FIRAS, especially near the dust SED peak, 
-which makes FIRAS a better suited data set than \PLANCK~for a detailed 
-analysis of the globally best-fit dust SED model.
-
-% acknowledge that the preference for two MBBs is relatively weak when swapping
-% in Planck for FIRAS, probably due to the 
+just one, but, for the first time, independent of FIRAS. Still, it is apparent 
+that the improvement in $\chi^2_{\nu}$ for single-MBB versus double MBB models 
+found here is substantially less dramatic ($\Delta\chi^2_{\nu}$=4.32) than that
+found in FDS99 ($\Delta\chi^2_{\nu}$=29.2). This is likely attributable to the 
+exquisite narrow-band frequency coverage of FIRAS, especially near the dust SED
+peak, which makes FIRAS a better suited data set than \PLANCK~for a detailed 
+analysis of the globally best-fit dust SED model. In $\S$\ref{sec:hier}, we
+confirm the basic conclusions of this section via an MCMC-based approach in
+which the dust temperature is allowed to vary spatially.
 
 % maybe a table listing the correlation slopes and their uncertainties
 % would be useful here
@@ -1217,6 +1215,7 @@ Galactic hemisphere in Lambert projection in Figure \ref{fig:f1lambert}.
 % also add sentences referring reader to the two f_1 figures
 
 \subsection{Global Parameters Revisited}
+\label{sec:hier}
 % discuss goodness of fit tests based on running Markov chains with different
 % sets of global parameters
 
