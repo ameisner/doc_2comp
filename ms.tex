@@ -728,8 +728,8 @@ S_{\nu} = \frac{f_1q_1(\nu/\nu_0)^{\beta_1}B_{\nu}(T_1) + f_2q_2(\nu/\nu_0)^{\be
 The thermal dust emission model of $\S$\ref{sec:modeling} predicts the 
 flux density per solid angle $M_{\nu}$ in e.g. MJy/sr for any single frequency 
 $\nu$. In practice, however, we wish to constrain our model using measurements 
-in the broad \verb|i100|/\PLANCK~bandpasses, each with $\Delta\nu/\nu\sim0.3$. 
-Both the \PLANCK~data and DIRBE data products quote flux density per solid 
+in the broad DIRBE/\PLANCK~bandpasses, each with $\Delta\nu/\nu\sim0.3$. 
+Both the \PLANCK~and DIRBE data products quote flux density per solid 
 angle in MJy/sr under the `IRAS convention'. More precisely, each value 
 reported in the \PLANCK~maps gives the amplitude of a power-law spectrum 
 with $\alpha$=$-1$, evaluated at the nominal band center frequency, such that 
@@ -749,18 +749,21 @@ b_{\nu_i}(T, \beta) = \frac{\int \nu^{\beta}B_{\nu}(T)\mathcal{T}_{\nu_i}(\nu) d
 % -> planck spectral response paper just leaves the integrals indefinite
 
 Here $\nu_{i,c}$ is the nominal band center frequency of band $\nu_i$,  with 
-$\nu_{i,c} \in$ \{100, 143, 217, 353, 545, 857, 2997.92458\} GHz. 
-$\mathcal{T}_{\nu_i}(\nu)$ represents the relative transmission as a function 
-of frequency for band $\nu_i$. For the HFI maps, $\mathcal{T}_{\nu_i}(\nu)$ is 
-given by the \PLANCK~transmission curves provided in the file 
-\verb|HFI_RIMO_R1.10.fits| \citep{planckresponse}. The color correction factors
-of Equation \ref{equ:bpcorr} are applied in the sense that 
-$b_{\nu_i}(T ,\beta)\times M_{\nu_{i,c}}$ is a prediction suitable for 
-direct comparison to the \PLANCK~data products.
+$\nu_{i,c} \in$ \{100, 143, 217, 353, 545, 857, 1249.1352, 2141.3747, 
+2997.92458\} GHz. $\mathcal{T}_{\nu_i}(\nu)$ represents the relative 
+transmission as a function of frequency for band $\nu_i$. For the HFI maps, 
+$\mathcal{T}_{\nu_i}(\nu)$ is given by the \PLANCK~transmission curves provided
+in the file \verb|HFI_RIMO_R1.10.fits| \citep{planckresponse}. For 3000 GHz and
+DIRBE 140$\mu$m, 240$\mu$m, we have adopted the corresponding DIRBE 
+transmission curves. Again, since DIRBE-quoted fluxes also follow the 
+$\alpha$=$-1$ convention, Equation \ref{equ:bpcorr} remains applicable.
 
-For 3000 GHz, we have adopted the DIRBE transmission curve. Since DIRBE-quoted
-fluxes also follow the $\alpha$=$-1$ convention, Equation \ref{equ:bpcorr}
-remains applicable.
+% what is the reference for the dirbe
+
+%The color correction factors
+%of Equation \ref{equ:bpcorr} are applied in the sense that 
+%$b_{\nu_i}(T ,\beta)\times M_{\nu_{i,c}}$ is a prediction suitable for 
+%direct comparison to the \PLANCK~data products.
 
 The two-component model prediction in band $\nu_i$ under the IRAS convention, 
 termed $\tilde{I}_{\nu_i}$, is then constructed as a linear combination of 
@@ -777,22 +780,22 @@ factors $b_{\nu_i}(T, \beta)$ which are interpolated off of a set of
 precomputed, one-dimensional lookup tables each listing $b_{\nu_i}(T, \beta)$ 
 as a function of $T$. We avoided the need to interpolate in both $\beta$ and 
 $T$ by computing only a small set of one dimensional correction factors for the
-particular set of $\beta$ values of interest 
-($\beta \in$ \{1.67, 2.7, 1.19, 2.61\}, see Table \ref{tab:global}).
+particular set of $\beta$ values of interest (e.g. $\beta$=1.67, 2.7, 
+1.63, 2.82 ..., see Table \ref{tab:global}).
 
 % need some sort of clarification about the fact that, in the parts of the 
-% analysis where beta floats, this precomputation/interpolation is NOT 
-% what we do
+% analysis where beta floats, i actually do interpolate color corrections 
+% off of a 2d grid in (T, beta)
 
 This color correction approach makes the MCMC sampling described in 
 $\S$\ref{sec:mcmc} much more computationally efficient by circumventing the 
 need to perform the integral in the numerator of Equation \ref{equ:bpcorr} 
 on-the-fly for each proposed dust temperature. We have chosen to compute the 
 color corrections on a per-MBB basis because this approach is very 
-versatile; all possible two-component models are linear combinations of MBBs, 
-so we can apply all of our color correction machinery even when we allow 
-parameters other than temperature (e.g. $f_1$) to vary and thereby change the 
-dust spectrum shape.
+versatile; all possible two-component (and single-MBB) models are linear 
+combinations of MBBs, so we can apply all of our color correction machinery 
+even when we allow parameters other than temperature (e.g. $f_1$) to vary and 
+thereby modify the dust spectrum shape.
 
 % We note that it is not clear which bandpass should properly be ascribed to 
 % the \IRAS/DIRBE composite 100$\mu$m maps under consideration.
@@ -833,6 +836,8 @@ represents the conversion factor from $K_{CMB}$ to MJy/sr, given by
 
 % check that RIMO file i've used is actually the most up-to-date version
 
+
+% extremely abrupt transition here...
 \section{Global Model Parameters}
 \label{sec:global}
 %%%%
