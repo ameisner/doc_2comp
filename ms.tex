@@ -722,6 +722,117 @@ function is given by:
 S_{\nu} = \frac{f_1q_1(\nu/\nu_0)^{\beta_1}B_{\nu}(T_1) + f_2q_2(\nu/\nu_0)^{\beta_2}B_{\nu}(T_2)}{f_1q_1(\nu/\nu_0)^{\beta_1}+f_2q_2(\nu/\nu_0)^{\beta_2}}
 \end{equation}
 
+\section{Predicting the Observed SED}
+\label{sec:bpcorr}
+
+The thermal dust emission model of $\S$\ref{sec:modeling} predicts the 
+flux density per solid angle $M_{\nu}$ in e.g. MJy/sr for any single frequency 
+$\nu$. In practice, however, we wish to constrain our model using measurements 
+in the broad \verb|i100|/\PLANCK~bandpasses, each with $\Delta\nu/\nu\sim0.3$. 
+Both the \PLANCK~data and DIRBE data products quote flux density per solid 
+angle in MJy/sr under the `IRAS convention'. More precisely, each value 
+reported in the \PLANCK~maps gives the amplitude of a power-law spectrum 
+with $\alpha$=$-1$, evaluated at the nominal band center frequency, such that 
+this spectrum integrated against the transmission reproduces the 
+bolometer-measured power. Because our model spectra do not conform to the 
+$\alpha$=$-1$ convention, we have computed color correction factors to account 
+for the MBB($T$, $\beta$) spectral shape and the transmission as a function of 
+frequency:
+
+% is delta(nu)/nu conventionally (nu_off-nu_on)/nu_c or 1/2 of that ?
+
+\begin{equation} \label{equ:bpcorr}
+b_{\nu_i}(T, \beta) = \frac{\int \nu^{\beta}B_{\nu}(T)\mathcal{T}_{\nu_i}(\nu) d\nu \bigg[\int (\nu_{i,c}/\nu)\mathcal{T}_{\nu_i}(\nu) d\nu\bigg]^{-1}}{\nu_{i,c}^{\beta}B_{\nu_{i,c}}(T)}
+\end{equation}
+
+% integral limits ??? check planck paper to see what they did
+% -> planck spectral response paper just leaves the integrals indefinite
+
+Here $\nu_{i,c}$ is the nominal band center frequency of band $\nu_i$,  with 
+$\nu_{i,c} \in$ \{100, 143, 217, 353, 545, 857, 2997.92458\} GHz. 
+$\mathcal{T}_{\nu_i}(\nu)$ represents the relative transmission as a function 
+of frequency for band $\nu_i$. For the HFI maps, $\mathcal{T}_{\nu_i}(\nu)$ is 
+given by the \PLANCK~transmission curves provided in the file 
+\verb|HFI_RIMO_R1.10.fits| \citep{planckresponse}. The color correction factors
+of Equation \ref{equ:bpcorr} are applied in the sense that 
+$b_{\nu_i}(T ,\beta)\times M_{\nu_{i,c}}$ is a prediction suitable for 
+direct comparison to the \PLANCK~data products.
+
+For 3000 GHz, we have adopted the DIRBE transmission curve. Since DIRBE-quoted
+fluxes also follow the $\alpha$=$-1$ convention, Equation \ref{equ:bpcorr}
+remains applicable.
+
+The two-component model prediction in band $\nu_i$ under the IRAS convention, 
+termed $\tilde{I}_{\nu_i}$, is then constructed as a linear combination of 
+color-corrected MBB terms:
+
+\begin{equation} \label{equ:iras}
+\tilde{I}_{\nu_i} \propto \sum_{k=1}^{2} b_{\nu_i}(T_k, \beta_k) f_k q_k (\nu_{i,c}/\nu_0)^{\beta_k} B_{\nu_{i,c}}(T_k)
+\end{equation}
+
+Note that, as in FDS99, $f_2$=(1$-$$f_1$) by convention. Our color correction 
+approach allows us to predict $\tilde{I}_{\nu_i}$ by computing monochromatic 
+flux densities at the central frequency $\nu_{i,c}$ and then multiplying by 
+factors $b_{\nu_i}(T, \beta)$ which are interpolated off of a set of 
+precomputed, one-dimensional lookup tables each listing $b_{\nu_i}(T, \beta)$ 
+as a function of $T$. We avoided the need to interpolate in both $\beta$ and 
+$T$ by computing only a small set of one dimensional correction factors for the
+particular set of $\beta$ values of interest 
+($\beta \in$ \{1.67, 2.7, 1.19, 2.61\}, see Table \ref{tab:global}).
+
+% need some sort of clarification about the fact that, in the parts of the 
+% analysis where beta floats, this precomputation/interpolation is NOT 
+% what we do
+
+This color correction approach makes the MCMC sampling described in 
+$\S$\ref{sec:mcmc} much more computationally efficient by circumventing the 
+need to perform the integral in the numerator of Equation \ref{equ:bpcorr} 
+on-the-fly for each proposed dust temperature. We have chosen to compute the 
+color corrections on a per-MBB basis because this approach is very 
+versatile; all possible two-component models are linear combinations of MBBs, 
+so we can apply all of our color correction machinery even when we allow 
+parameters other than temperature (e.g. $f_1$) to vary and thereby change the 
+dust spectrum shape.
+
+% We note that it is not clear which bandpass should properly be ascribed to 
+% the \IRAS/DIRBE composite 100$\mu$m maps under consideration.
+
+With these color corrections and the  formalism established in 
+$\S$\ref{sec:modeling} in hand, we can mathematically state the model we will 
+use e.g. during MCMC sampling to predict the observed SED, which we will 
+denote by \{$\tilde{I}_{\nu_i}$\}. The predicted observations are given by:
+
+\begin{equation}
+\label{eqn:inten}
+\tilde{I}_{\nu_i} = \frac{\sum\limits_{k=1}^{2} b_{\nu_i}(T_k, \beta_k) f_k q_k (\nu_{i,c}/\nu_0)^{\beta_k} B_{\nu_{i,c}}(T_k) u_{\nu_i}^{-1}(T_k, \beta_k)}{\sum\limits_{k=1}^{2} b_{545}(T_k, \beta_k) f_k q_k (545 \textrm{GHz}/\nu_0)^{\beta_k} B_{545}(T_k)}\tilde{I}_{545}
+\end{equation}
+
+This equation is quite similar to Equation \ref{equ:iras}, but with two 
+important differences. First, the normalization of $\tilde{I}_{\nu_i}$ is now 
+specified by $\tilde{I}_{545}$, which represents the flux density per solid
+angle measured in the \PLANCK~545 GHz band. The denominator serves to ensure 
+that, for the case of $\nu_i$=545 GHz, $\tilde{I}_{545}$ is self-consistent. 
+Second, each term in the numerator is multiplied by a conversion factor 
+$u_{\nu_i}^{-1}(T_k, \beta_k)$. This factor is necessary because some of the 
+\PLANCK~maps of interest have units of $K_{CMB}$ (100-353 GHz), while the
+remaining maps (545-3000 GHz) have units of MJy/sr. We have adopted the 
+strategy of predicting each band in its native units, whether MJy/sr or 
+$K_{CMB}$. For this reason, we always evaluate $B_{\nu_{i,c}}$ in Equation 
+\ref{eqn:inten} in MJy/sr and let $u_{\nu_i}$=1 (dimensionless) for 
+$\nu_i$$\ge$545 GHz. For $\nu_i$$\le$353 GHz, $u_{\nu_i}(T_k, \beta_k)$ 
+represents the conversion factor from $K_{CMB}$ to MJy/sr, given by 
+\cite{planckresponse} Equation 32.
+
+%is the old sentence below worth reinstating ?
+
+%To reiterate, for 
+%$\nu_i$$\le$353 GHz, $u_{\nu_i}(T_k, \beta_k)$ has units of 
+%(MJy/sr)/$K_{CMB}$,and therefore $\tilde{I}_{\nu_{i}}$ will have different 
+%units depending on the band $\nu_i$, though $\tilde{I}_{\nu_{i}}$ always has 
+%the same units as the native band $\nu_i$ map.
+
+% check that RIMO file i've used is actually the most up-to-date version
+
 \section{Global Model Parameters}
 \label{sec:global}
 %%%%
@@ -830,116 +941,6 @@ is the same format in which the \PLANCK~HFI maps were released, and because it
 adequately samples the $6.1'$ FWHM maps under consideration in our 
 full-resolution fits. Our procedure will fit the intensity measurements in each
 spatial pixel independently.
-
-\subsection{Color Correction}
-\label{sec:bpcorr}
-The thermal dust emission model of $\S$\ref{sec:modeling} predicts the 
-flux density per solid angle $M_{\nu}$ in e.g. MJy/sr for any single frequency 
-$\nu$. In practice, however, we wish to constrain our model using measurements 
-in the broad \verb|i100|/\PLANCK~bandpasses, each with $\Delta\nu/\nu\sim0.3$. 
-The \PLANCK~data products quote flux density per solid angle in MJy/sr under 
-the `IRAS convention'. More precisely, each value reported in the \PLANCK~maps 
-gives the amplitude of a power-law spectrum with $\alpha$=$-1$, evaluated at 
-the nominal band center frequency, such that this spectrum integrated against 
-the transmission reproduces the bolometer-measured power. Because our model 
-spectra do not conform to the $\alpha$=$-1$ convention, we have computed color 
-correction factors to account for the MBB($T$, $\beta$) spectral shape and the 
-transmission as a function of frequency:
-
-% is delta(nu)/nu conventionally (nu_off-nu_on)/nu_c or 1/2 of that ?
-
-\begin{equation} \label{equ:bpcorr}
-b_{\nu_i}(T, \beta) = \frac{\int \nu^{\beta}B_{\nu}(T)\mathcal{T}_{\nu_i}(\nu) d\nu \bigg[\int (\nu_{i,c}/\nu)\mathcal{T}_{\nu_i}(\nu) d\nu\bigg]^{-1}}{\nu_{i,c}^{\beta}B_{\nu_{i,c}}(T)}
-\end{equation}
-
-% integral limits ??? check planck paper to see what they did
-% -> planck spectral response paper just leaves the integrals indefinite
-
-Here $\nu_{i,c}$ is the nominal band center frequency of band $\nu_i$,  with 
-$\nu_{i,c} \in$ \{100, 143, 217, 353, 545, 857, 2997.92458\} GHz. 
-$\mathcal{T}_{\nu_i}(\nu)$ represents the relative transmission as a function 
-of frequency for band $\nu_i$. For the HFI maps, $\mathcal{T}_{\nu_i}(\nu)$ is 
-given by the \PLANCK~transmission curves provided in the file 
-\verb|HFI_RIMO_R1.10.fits| \citep{planckresponse}. The color correction factors
-of Equation \ref{equ:bpcorr} are applied in the sense that 
-$b_{\nu_i}(T ,\beta)\times M_{\nu_{i,c}}$ is a prediction suitable for 
-direct comparison to the \PLANCK~data products.
-
-For 3000 GHz, we have adopted the DIRBE transmission curve. Since DIRBE-quoted
-fluxes also follow the $\alpha$=$-1$ convention, Equation \ref{equ:bpcorr}
-remains applicable.
-
-The two-component model prediction in band $\nu_i$ under the IRAS convention, 
-termed $\tilde{I}_{\nu_i}$, is then constructed as a linear combination of 
-color-corrected MBB terms:
-
-\begin{equation} \label{equ:iras}
-\tilde{I}_{\nu_i} \propto \sum_{k=1}^{2} b_{\nu_i}(T_k, \beta_k) f_k q_k (\nu_{i,c}/\nu_0)^{\beta_k} B_{\nu_{i,c}}(T_k)
-\end{equation}
-
-Note that, as in FDS99, $f_2$=(1$-$$f_1$) by convention. Our color correction 
-approach allows us to predict $\tilde{I}_{\nu_i}$ by computing monochromatic 
-flux densities at the central frequency $\nu_{i,c}$ and then multiplying by 
-factors $b_{\nu_i}(T, \beta)$ which are interpolated off of a set of 
-precomputed, one-dimensional lookup tables each listing $b_{\nu_i}(T, \beta)$ 
-as a function of $T$. We avoided the need to interpolate in both $\beta$ and 
-$T$ by computing only a small set of one dimensional correction factors for the
-particular set of $\beta$ values of interest 
-($\beta \in$ \{1.67, 2.7, 1.19, 2.61\}, see Table \ref{tab:global}).
-
-% need some sort of clarification about the fact that, in the parts of the 
-% analysis where beta floats, this precomputation/interpolation is NOT 
-% what we do
-
-This color correction approach makes the MCMC sampling described in 
-$\S$\ref{sec:mcmc} much more computationally efficient by circumventing the 
-need to perform the integral in the numerator of Equation \ref{equ:bpcorr} 
-on-the-fly for each proposed dust temperature. We have chosen to compute the 
-color corrections on a per-MBB basis because this approach is very 
-versatile; all possible two-component models are linear combinations of MBBs, 
-so we can apply all of our color correction machinery even when we allow 
-parameters other than temperature (e.g. $f_1$) to vary and thereby change the 
-dust spectrum shape.
-
-% We note that it is not clear which bandpass should properly be ascribed to 
-% the \IRAS/DIRBE composite 100$\mu$m maps under consideration.
-
-\subsection{Predicting the Observed SED}
-With the formalism established in $\S$\ref{sec:modeling} and 
-$\S$\ref{sec:bpcorr}, we can mathematically state the model we will use during 
-MCMC sampling to predict the observed SED, which we will denote by 
-\{$\tilde{I}_{\nu_i}$\}. The predicted observations are given by:
-
-\begin{equation}
-\label{eqn:inten}
-\tilde{I}_{\nu_i} = \frac{\sum\limits_{k=1}^{2} b_{\nu_i}(T_k, \beta_k) f_k q_k (\nu_{i,c}/\nu_0)^{\beta_k} B_{\nu_{i,c}}(T_k) u_{\nu_i}^{-1}(T_k, \beta_k)}{\sum\limits_{k=1}^{2} b_{545}(T_k, \beta_k) f_k q_k (545 \textrm{GHz}/\nu_0)^{\beta_k} B_{545}(T_k)}\tilde{I}_{545}
-\end{equation}
-
-This equation is quite similar to Equation \ref{equ:iras}, but with two 
-important differences. First, the normalization of $\tilde{I}_{\nu_i}$ is now 
-specified by $\tilde{I}_{545}$, which represents the flux density per solid
-angle measured in the \PLANCK~545 GHz band. The denominator serves to ensure 
-that, for the case of $\nu_i$=545 GHz, $\tilde{I}_{545}$ is self-consistent. 
-Second, each term in the numerator is multiplied by a conversion factor 
-$u_{\nu_i}^{-1}(T_k, \beta_k)$. This factor is necessary because some of the 
-\PLANCK~maps of interest have units of $K_{CMB}$ (100-353 GHz), while the
-remaining maps (545-3000 GHz) have units of MJy/sr. We have adopted the 
-strategy of predicting each band in its native units, whether MJy/sr or 
-$K_{CMB}$. For this reason, we always evaluate $B_{\nu_{i,c}}$ in Equation 
-\ref{eqn:inten} in MJy/sr and let $u_{\nu_i}$=1 (dimensionless) for 
-$\nu_i$$\ge$545 GHz. For $\nu_i$$\le$353 GHz, $u_{\nu_i}(T_k, \beta_k)$ 
-represents the conversion factor from $K_{CMB}$ to MJy/sr, given by 
-\cite{planckresponse} Equation 32.
-
-%is the old sentence below worth reinstating ?
-
-%To reiterate, for 
-%$\nu_i$$\le$353 GHz, $u_{\nu_i}(T_k, \beta_k)$ has units of 
-%(MJy/sr)/$K_{CMB}$,and therefore $\tilde{I}_{\nu_{i}}$ will have different 
-%units depending on the band $\nu_i$, though $\tilde{I}_{\nu_{i}}$ always has 
-%the same units as the native band $\nu_i$ map.
-
-% check that RIMO file i've used is actually the most up-to-date version
 
 \subsection{Sampling Parameters}
 \label{sec:samp}
