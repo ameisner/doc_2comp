@@ -876,8 +876,8 @@ of the \PLANCK~HFI bands, as well as DIRBE 100$\mu$m (3000 GHz), 140$\mu$m
 $dI_{\nu_i}/dI_{857}$. We will refer to the slope for band $\nu_i$ relative to 
 \PLANCK~857 GHz as $s_{i,857}$. The slopes for \PLANCK~100-545 GHz are taken 
 to be those derived from the relative zero level fits of $\S$\ref{sec:relzero},
-and are illustrated by the dashed red lines in plots of Figure \ref{fig:dip}, 
-right column. The 857 GHz slope is by definition unity.
+and are illustrated by the dashed red lines in the right-hand column plots of 
+Figure \ref{fig:dip}. The 857 GHz slope is by definition unity.
 
 At 1250, 2141 and 3000 GHz, we use the SFD98-reprocessed DIRBE maps. For each
 DIRBE band, we determine $s_{i, 857}$ by performing a linear fit to DIRBE as a 
@@ -890,9 +890,10 @@ $\S$\ref{sec:relzero} (see Figure \ref{fig:dirbe_slopes}).
 
 Including 857 GHz, we thus have nine correlation slope constraints for six 
 free parameters. Including DIRBE 140$\mu$m and 240$\mu$m is critical in making 
-this problem sufficiently constrained, and also in providing information near 
-the peak of the dust SED at $\sim$140$\mu$m, which is particularly sensitive to
- the presence of a single versus multiple MBB components. % last sentence mentioning
+this problem sufficiently overconstrained, and also in providing information 
+near the peak of the dust SED at $\sim$140$\mu$m, which is particularly 
+sensitive to the presence of a single versus multiple MBB components. 
+% last sentence mentioning
 % that the large number of frequency channels and good coverage of the 
 % dust SED peak were what made FIRAS so appropriate for FDS99 analysis ??
 
@@ -905,22 +906,53 @@ the peak of the dust SED at $\sim$140$\mu$m, which is particularly sensitive to
 We assume an uncertainty of 2\% on each of the $s_{i, 857}$ and minimize the 
 chi-squared given by:
 
-% hmm it's really seeming like I need to move the color correction section
-% to be before this, because I need the \tilde{I} things in this equation
-
 \begin{equation} \label{equ:chi2corr}
-\chi^2 = \sum_{i=0}^{8}\frac{\big[s_{i, 857}-n\frac{\tilde{I}_{\nu_i}(\beta_1, \beta_2, f_1, q_1/q_2, T_2)}{\tilde{I}_{857}(\beta_1, \beta_2, f_1, q_1/q_2, T_2)}\big]^2}{\sigma_{s}^2}
+\chi^2 = \sum_{i=0}^{8}\frac{\big[s_{i, 857}-n\frac{\tilde{I}_{\nu_i}(\beta_1, \beta_2, f_1, q_1/q_2, T_2)}{\tilde{I}_{857}(\beta_1, \beta_2, f_1, q_1/q_2, T_2)}\big]^2}{\sigma_{i}^2}
 \end{equation}
 
 Where $\nu_i$$\in$\{100, 143, 217, 353, 545, 857, 1250, 2141, 3000\} GHz. Note 
 that this formula encompasses the general two-component case. In the single-MBB
 case, we take $f_1$=0 and hence $q_1/q_2$, $\beta_1$ and $T_1$ are immaterial, 
-but Equation \ref{equ:chi2corr} still applies.
+but Equation \ref{equ:chi2corr} still applies. Note also that no `priors' have
+been included to preferentially drag our results towards agreement with those 
+of FDS99.
 
-%All comparisons between %\PLANCK~and the FDS99 predictions were made after 
-%smoothing both to $1^{\circ}$, subtracting the SMICA CMB model, and ignoring 
-%SMICA inpainted pixels. For 100-857 GHz, the linearity between the FDS and 
-%\PLANCK~is excellent.
+The results of our chi-squared minimization are listed in Table 
+\ref{tab:global}. First (model 1), we fix $\beta_1$, $\beta_2$ ,$q_1/q_2$ and
+$f_1$ to the best-fit values from the FDS99 analysis based on DIRBE+FIRAS. We
+then allow $n$ and $T_2$ to vary so as to best match our 
+DIRBE+\PLANCK~spectrum. This results in a reduced chi-squared of 
+$\chi^2_{\nu}$=3.41. Reassuringly, $n$ is quite close to unity. It should be 
+noted though that our best-fit $T_2$ is $\sim$0.5 K lower than that found by 
+FDS99 for the same values of $\beta_1$, $\beta_2$ ,$q_1/q_2$ and $f_1$.
+
+Next (model 2), we consider the fully-general two-component model, allowing all
+ six model parameters to vary. In this case, the reduced chi-squared of the 
+best fit is $\chi^2_{\nu}=$1.33, signifying that our introduction of four 
+additional free parameters is justified. The best-fit $\beta_1$ and $\beta_2$ 
+are both consistent with the corresponding FDS99 values to within 5\%. 
+$q_1/q_2$=8.22 represents a $\sim$40\% lower value than found by FDS99, while
+$f_1$=0.0458 represents a $\sim$25\% increase relative to FDS99. Again, our
+best-fit high-latitude $T_2$ is $\sim$0.5 K lower than the typical value of 
+$\langle T_2 \rangle$=16.2 K from FDS99.
+
+Lastly, we calculate the optimal single-MBB fit to the \PLANCK+DIRBE 
+correlation slope spectrum. The best-fit single MBB has $\beta$=1.59, 
+$T$=19.63, and $\chi^2_{\nu}$=5.65, indicating a significantly worse fit to the
+data than our best-fit two-component model (model 2). Thus, our \PLANCK+DIRBE 
+correlation slope analysis has confirmed the basic conclusion of FDS99 and 
+others e.g. \cite{reach95}, that the FIR/submm dust SED prefers two MBBs to 
+just one, but, for the first time, independent of FIRAS. However, it is also
+apparent that the improvement in $\chi^2_{\nu}$ for single-MBB versus double
+MBB models found here is substantially less dramatic 
+($\Delta\chi^2_{\nu}$=4.32) than that found in FDS99 
+($\Delta\chi^2_{\nu}$=29.2). This is likely attributable to the exquisite 
+narrow-band frequency coverage of FIRAS, especially near the dust SED peak, 
+which makes FIRAS a better suited data set than \PLANCK~for a detailed 
+analysis of the globally best-fit dust SED model.
+
+% acknowledge that the preference for two MBBs is relatively weak when swapping
+% in Planck for FIRAS, probably due to the 
 
 % maybe a table listing the correlation slopes and their uncertainties
 % would be useful here
