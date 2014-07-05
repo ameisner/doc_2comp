@@ -543,35 +543,6 @@ sufficiently to warrant replacing the dipole-only correction in those cases.
 % mention how offset/dipole values compare to those derived in the Planck
 % team paper ?
 
-\begin{figure}
-\begin{center}
-\epsfig{file=sed.eps, width=3.3in}
-\caption{\label{fig:sed} Planck SED for a single nside=2048 pixel in the 
-Polaris region. Note that the two lowest-frequency data points (\PLANCK~100, 
-143 GHz) were not used in our fit, while the three lowest-frequency data
-points were not used in the \cite{planckdust} fit.}
-\end{center}
-\end{figure}
-
-% add error bars to this example SED plot
-
-\begin{figure*}
-\begin{center}
-\epsfig{file=posteriors.eps, width=7.0in}
-\caption{Gridded posterior PDFs for three nside=2048 pixels. Red crosses mark 
-the best-fit parameters based on our Markov chain sampling of the posterior. 
-The posterior distributions are in general extremely well-behaved, showing
-no multimodality or other pathological qualities. Our MCMC parameter 
-estimates coincide well with the peaks in the gridded posteriors. The 
-colorscale is linear in $log(P)$, with black representing the maximum of 
-$log(P)$ and white representing $max(log(P))-5$. Left: Low S/N pixel at 
-high-latitude in Galactic north. Center: High S/N pixel in the Polaris region. 
-Right: Low S/N pixel at high-latitude in the Galactic south.}
-\end{center}
-\end{figure*}
-
-% overplot ellipses showing 1 sigma errors in posterior grayscales
-
 \section{Dust Emission Model}
 \label{sec:modeling}
 
@@ -873,6 +844,14 @@ represents the conversion factor from $K_{CMB}$ to MJy/sr, given by
 
 %%%%
 
+\begin{figure*}
+\begin{center}
+\epsfig{file=dirbe_slopes.eps, width=6.5in}
+\caption{\label{fig:dirbe_slopes} DIRBE linear fits for correlation slope 
+analysis.}
+\end{center}
+\end{figure*}
+
 While we ultimately aim to obtain \PLANCK-resolution maps of the spatially 
 varying dust temperature and optical depth, we start by applying the 
 machinery/formalism thus far developed to reassess the best-fit global 
@@ -908,15 +887,6 @@ $\S$\ref{sec:relzero} (see Figure \ref{fig:dirbe_slopes}).
 % re-mention nside=64 or just bag it?
 % restricted to same low HI mask as in Sect. 3.5.2 analysis
 % sentence pointing to figure showing the regressions
-
-\begin{figure*}
-\begin{center}
-\epsfig{file=dirbe_slopes.eps, width=6.5in}
-\caption{\label{fig:dirbe_slopes} DIRBE linear fits for correlation slope 
-analysis.}
-\end{center}
-\end{figure*}
-
 
 Including 857 GHz, we thus have nine correlation slope constraints for six 
 free parameters. Including DIRBE 140$\mu$m and 240$\mu$m is critical in making 
@@ -955,7 +925,7 @@ but Equation \ref{equ:chi2corr} still applies.
 % maybe a table listing the correlation slopes and their uncertainties
 % would be useful here
 
-\section{Fitting Procedure}
+\section{MCMC Fitting Procedure}
 \label{sec:fitting}
 
 The following subsections detail our procedure for constraining the 
@@ -964,6 +934,35 @@ spatially. We perform two types of fits: (1) full-resolution
 $6.1'$ fits, in which just two parameters, the SED normalization and the hot 
 dust temperature $T_2$, vary spatially and (2) lower-resolution fits in which 
 $f_1$ is also allowed to vary from one line of sight to another.
+
+\begin{figure}
+\begin{center}
+\epsfig{file=sed.eps, width=3.3in}
+\caption{\label{fig:sed} Planck SED for a single nside=2048 pixel in the 
+Polaris region. Note that the two lowest-frequency data points (\PLANCK~100, 
+143 GHz) were not used in our fit, while the three lowest-frequency data
+points were not used in the \cite{planckdust} fit.}
+\end{center}
+\end{figure}
+
+% add error bars to this example SED plot
+
+\begin{figure*}
+\begin{center}
+\epsfig{file=posteriors.eps, width=7.0in}
+\caption{Gridded posterior PDFs for three nside=2048 pixels. Red crosses mark 
+the best-fit parameters based on our Markov chain sampling of the posterior. 
+The posterior distributions are in general extremely well-behaved, showing
+no multimodality or other pathological qualities. Our MCMC parameter 
+estimates coincide well with the peaks in the gridded posteriors. The 
+colorscale is linear in $log(P)$, with black representing the maximum of 
+$log(P)$ and white representing $max(log(P))-5$. Left: Low S/N pixel at 
+high-latitude in Galactic north. Center: High S/N pixel in the Polaris region. 
+Right: Low S/N pixel at high-latitude in the Galactic south.}
+\end{center}
+\end{figure*}
+
+% overplot ellipses showing 1 sigma errors in posterior grayscales
 
 \subsection{Pixelization}
 \label{sec:pix}
