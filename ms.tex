@@ -895,15 +895,6 @@ free parameters. Including DIRBE 140$\mu$m and 240$\mu$m is critical in making
 this problem sufficiently overconstrained, and also in providing information 
 near the peak of the dust SED at $\sim$140$\mu$m, which is particularly 
 sensitive to the presence of a single versus multiple MBB components. 
-% last sentence mentioning
-% that the large number of frequency channels and good coverage of the 
-% dust SED peak were what made FIRAS so appropriate for FDS99 analysis ??
-
-%All of the correlations are performed using 
-%$1^{\circ}$ smoothed maps
-
-% need to mention that this is all for the low HI mask !!!!
-% should have a three panel figure illustrating linear fits of 
 
 We assume an uncertainty of 2\% on each of the $s_{i, 857}$ and minimize the 
 chi-squared given by:
@@ -953,6 +944,10 @@ peak, which makes FIRAS a better suited data set than \PLANCK~for a detailed
 analysis of the globally best-fit dust SED model. In $\S$\ref{sec:hier}, we
 confirm the basic conclusions of this section via an MCMC-based approach in
 which the dust temperature is allowed to vary spatially.
+
+% also might be worth mentioning that the MCMC analysis involves constraints
+% where the zero level matters, whereas the correlation slope analysis here
+% renders the zero levels irrelevant
 
 % maybe a table listing the correlation slopes and their uncertainties
 % would be useful here
@@ -1220,6 +1215,9 @@ Galactic hemisphere in Lambert projection in Figure \ref{fig:f1lambert}.
 \label{sec:hier}
 % discuss goodness of fit tests based on running Markov chains with different
 % sets of global parameters
+
+% also should emphasize that an important difference here relative to the
+% correlation slope analysis is that here, the zero levels actually do matter
 
 \section{Optical Reddening}
 \label{sec:ebv}
