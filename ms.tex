@@ -904,10 +904,19 @@ At 1250, 2141 and 3000 GHz, we use the SFD98-reprocessed DIRBE maps. For each
 DIRBE band, we determine $s_{i, 857}$ by performing a linear fit to DIRBE as a 
 function of \PLANCK~857 GHz, after both have been zodiacal light subtracted and
 smoothed to $1^{\circ}$ FWHM, also restricting to the low HI mask of 
-$\S$\ref{sec:relzero} (see Figure XX).
-% smoothed to 1 degree resolution
+$\S$\ref{sec:relzero} (see Figure \ref{fig:dirbe_slopes}).
+% re-mention nside=64 or just bag it?
 % restricted to same low HI mask as in Sect. 3.5.2 analysis
 % sentence pointing to figure showing the regressions
+
+\begin{figure*}
+\begin{center}
+\epsfig{file=dirbe_slopes.eps, width=6.5in}
+\caption{\label{fig:dirbe_slopes} DIRBE linear fits for correlation slope 
+analysis.}
+\end{center}
+\end{figure*}
+
 
 Including 857 GHz, we thus have nine correlation slope constraints for six 
 free parameters. Including DIRBE 140$\mu$m and 240$\mu$m is critical in making 
