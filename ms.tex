@@ -1213,6 +1213,58 @@ Galactic hemisphere in Lambert projection in Figure \ref{fig:f1lambert}.
 
 \subsection{Global Parameters Revisited}
 \label{sec:hier}
+
+The posterior sampling framework thus far described also affords us an 
+opportunity to cross-check the conclusions of the correlation slope analysis in
+$\S$\ref{sec:global}. The basic idea will be to continue sampling the posterior
+of Equation \ref{eqn:post}, but at low resolution ($N_{side}$=64), including 
+all HFI bands as well as DIRBE 100$\mu$m, 140$\mu$m and 240$\mu$m, and 
+switching to a uniform prior on $T_2$. Under these circumstances, the 
+chi-squared corresponding to the best-fit parameters for each pixel, termed 
+$\chi^2_p$, is simply $-2 \times log(P_{max})$. 
+% maybe invent a term chi^2_p or something to 
+% reduce potential confusion caused by notation
+
+\begin{figure}
+\begin{center}
+\epsfig{file=chi2_dirbe.eps, width=3.3in}
+\caption{\label{fig:chi2_dirbe} Testing }
+\end{center}
+\end{figure}
+
+Because we seek to compare the goodness-of-fit for various dust SED models in 
+the diffuse ISM, we restrict to a set of $\sim$10,800 pixels ($\sim$22\% of the
+sky), with $|b|>30^{\circ}$ and $|\beta|>10^{\circ}$. We also avoid the SMICA 
+inpainting mask, pixels with appreciable CO contamination, and compact sources.
+The goodness-of-fit `objective function' we employ to judge the quality of 
+a particular dust SED model is $\langle \chi^2_p \rangle$, where the average 
+is taken over the aforementioned set of $\sim$10,800 pixels. 
+$\langle \chi_{p}^2 \rangle$ is also equivalent to the reduced chi-squared, 
+$\chi^2_{\nu}$, when considering the total number of free parameters to be the 
+number of pixels multiplied by the number of free parameters per pixel, and 
+similarly for the total number of constraints.
+
+We calculate $\chi^2_{\nu}$ for various dust SED models, independently 
+minimizing each $\chi^2_p$ by finding pixel $p$'s best-fitting dust 
+temperature and normalization, then evaluating $\langle \chi_{p}^2 \rangle$. 
+First, we considered single-MBB models with $\beta$ spatially constant (see the
+black line in Figure \ref{fig:chi2_dirbe}). $\beta$=1.57 yields the best fit, with 
+$\chi^2_{\nu}$=2.51. This result is in excellent agreement with that of 
+$\S$\ref{sec:global}, where we found the best-fit single-MBB model to have 
+$\beta$=1.59.
+
+% mention other single MBB variants
+
+Next, we calculate $\chi^2_{\nu}$ for the two-component model with global 
+parameters from FDS99 (Table \ref{tab:global}, model 2). We find 
+$\chi^2_{\nu}$=2.33, a slight improvement relative to the $\beta$=1.59 
+single-MBB model. Finally, calculate $\chi^2_{\nu}$ for Table \ref{tab:global} 
+model 3, the two-component model favored by our \PLANCK+DIRBE correlation 
+slopes. In this case, we achieve the best goodness-of-fit out of the all the 
+models tested, with $\chi^2_{\nu}$=2.11.
+
+% could compare temperatures, but masks are different
+
 % discuss goodness of fit tests based on running Markov chains with different
 % sets of global parameters
 
