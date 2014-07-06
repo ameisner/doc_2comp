@@ -1214,14 +1214,16 @@ Galactic hemisphere in Lambert projection in Figure \ref{fig:f1lambert}.
 \subsection{Global Parameters Revisited}
 \label{sec:hier}
 
-The posterior sampling framework thus far described also affords us an 
-opportunity to cross-check the conclusions of the correlation slope analysis in
+The posterior sampling framework thus far described also affords us an
+opportunity to evaluate the goodness-of-fit for competing dust SED models, and 
+thereby cross-check the conclusions of our correlation slope analysis in
 $\S$\ref{sec:global}. The basic idea will be to continue sampling the posterior
 of Equation \ref{eqn:post}, but at low resolution ($N_{side}$=64), including 
 all HFI bands as well as DIRBE 100$\mu$m, 140$\mu$m and 240$\mu$m, and 
 switching to a uniform prior on $T_2$. Under these circumstances, the 
 chi-squared corresponding to the best-fit parameters for each pixel, termed 
-$\chi^2_p$, is simply $-2 \times log(P_{max})$. 
+$\chi^2_p$, is simply $-2 \times log(P_{max})$. We will refer to the
+per-pixel chi-squared per degree of freedom as $\chi^2_{p, \nu}$
 % maybe invent a term chi^2_p or something to 
 % reduce potential confusion caused by notation
 
@@ -1238,12 +1240,13 @@ the diffuse ISM, we restrict to a set of $\sim$10,800 pixels ($\sim$22\% of the
 sky), with $|b|>30^{\circ}$ and $|\beta|>10^{\circ}$. We also avoid the SMICA 
 inpainting mask, pixels with appreciable CO contamination, and compact sources.
 The goodness-of-fit `objective function' we employ to judge the quality of 
-a particular dust SED model is $\langle \chi^2_p \rangle$, where the average 
-is taken over the aforementioned set of $\sim$10,800 pixels. 
-$\langle \chi_{p}^2 \rangle$ is also equivalent to the reduced chi-squared, 
-$\chi^2_{\nu}$, when considering the total number of free parameters to be the 
-number of pixels multiplied by the number of free parameters per pixel, and 
-similarly for the total number of constraints.
+a particular dust SED model is $\langle \chi^2_{p, \nu} \rangle$, where the 
+average is taken over the aforementioned set of $\sim$10,800 pixels. 
+$\langle \chi_{p, \nu}^2 \rangle$ is also equivalent to the reduced 
+chi-squared, $\chi^2_{\nu}$, when considering the total number of free 
+parameters to be the number of pixels multiplied by the number of free 
+parameters per pixel (and similarly for the total number of constraints), and
+taking $\chi^2$=$\sum\chi^2_{p}$.
 
 We calculate $\chi^2_{\nu}$ for various dust SED models, independently 
 minimizing each $\chi^2_p$ by finding pixel $p$'s best-fitting dust 
@@ -1252,15 +1255,28 @@ First, we consider single-MBB models with $\beta$ spatially constant (see the
 black line in Figure \ref{fig:chi2_dirbe}). $\beta$=1.57 yields the best fit, 
 with $\chi^2_{\nu}$=2.51. This result is in excellent agreement with that of 
 $\S$\ref{sec:global}, where we found the best-fit single-MBB model to have 
-$\beta$=1.59. We also evaluated $chi^2_{\nu}$ for single-MBB models in which
-$\beta$ varies spatially. In these cases, we used the $\beta$ map from 
-\cite{planckdust}. We started by calculating $\chi^2_{\nu}$ using the 
-\cite{planckdust} temperature map, finding $chi^2_{\nu}$=4.68. Note that
-in this case no per-pixel chi-squared minimization was involved, as we simply 
-evaluated $\chi^2_{p}$ for each pixel based on the fully-specified 
-\cite{planckdust} model. % mention beta template but floating t, normalization
+$\beta$=1.59. 
 
-% mention other single MBB variants
+We also evaluated $\chi^2_{\nu}$ for single-MBB models in which
+$\beta$ varies spatially. In these cases, we adopted the 0.5$^{\circ}$ 
+resolution $\beta$ map from \cite{planckdust}. We started by calculating 
+$\chi^2_{\nu}$ using the \cite{planckdust} temperature map, finding 
+$\chi^2_{\nu}$=4.68. Note that in this case no per-pixel chi-squared 
+minimization was involved, as we simply evaluated $\chi^2_{p}$ for each pixel 
+based on the fully-specified \cite{planckdust} emission model. Next, we tested 
+a single-MBB model for which we adopted the \cite{planckdust} $\beta$ map, but 
+allowed the per-pixel temperature and normalization to vary so as to minimize 
+$\chi^2_p$. In this case, we found $\chi^2_{\nu}$=2.51, effectively identical 
+to the value found for the spatially constant $\beta$=1.57 single-MBB model. 
+This is perhaps unsurprising, as the average $\beta$ value from 
+\cite{planckdust} over the mask in question is $\langle\beta\rangle$=1.58. 
+This result does suggest, however, that the half-degree variations in $\beta$ 
+are not materially improving the goodness-of-fit over the full frequency range 
+100-3000 GHz relative to a model with appropriately chosen spatially constant 
+$\beta$.
+
+% mention that when t floats, we find a lower T than the Planck team?
+% mention beta template but floating t, normalization
 
 Next, we calculate $\chi^2_{\nu}$ for the two-component model with global 
 parameters from FDS99 (Table \ref{tab:global}, model 2). We find 
