@@ -1228,7 +1228,8 @@ $\chi^2_p$, is simply $-2 \times log(P_{max})$.
 \begin{figure}
 \begin{center}
 \epsfig{file=chi2_dirbe.eps, width=3.3in}
-\caption{\label{fig:chi2_dirbe} Testing }
+\caption{\label{fig:chi2_dirbe} Comparison of goodness-of-fit, 
+$\chi^2_{\nu}$=$\langle \chi^2_p \rangle$ for various dust SED models.}
 \end{center}
 \end{figure}
 
@@ -1247,11 +1248,17 @@ similarly for the total number of constraints.
 We calculate $\chi^2_{\nu}$ for various dust SED models, independently 
 minimizing each $\chi^2_p$ by finding pixel $p$'s best-fitting dust 
 temperature and normalization, then evaluating $\langle \chi_{p}^2 \rangle$. 
-First, we considered single-MBB models with $\beta$ spatially constant (see the
-black line in Figure \ref{fig:chi2_dirbe}). $\beta$=1.57 yields the best fit, with 
-$\chi^2_{\nu}$=2.51. This result is in excellent agreement with that of 
+First, we consider single-MBB models with $\beta$ spatially constant (see the
+black line in Figure \ref{fig:chi2_dirbe}). $\beta$=1.57 yields the best fit, 
+with $\chi^2_{\nu}$=2.51. This result is in excellent agreement with that of 
 $\S$\ref{sec:global}, where we found the best-fit single-MBB model to have 
-$\beta$=1.59.
+$\beta$=1.59. We also evaluated $chi^2_{\nu}$ for single-MBB models in which
+$\beta$ varies spatially. In these cases, we used the $\beta$ map from 
+\cite{planckdust}. We started by calculating $\chi^2_{\nu}$ using the 
+\cite{planckdust} temperature map, finding $chi^2_{\nu}$=4.68. Note that
+in this case no per-pixel chi-squared minimization was involved, as we simply 
+evaluated $\chi^2_{p}$ for each pixel based on the fully-specified 
+\cite{planckdust} model. % mention beta template but floating t, normalization
 
 % mention other single MBB variants
 
@@ -1263,10 +1270,10 @@ model 3, the two-component model favored by our \PLANCK+DIRBE correlation
 slopes. In this case, we achieve the best goodness-of-fit out of the all the 
 models tested, with $\chi^2_{\nu}$=2.11.
 
-% could compare temperatures, but masks are different
+% end with a few sentences summarizing overall takeaway(s) from this 
+% goodness-of-fit analysis
 
-% discuss goodness of fit tests based on running Markov chains with different
-% sets of global parameters
+% could compare temperatures, but masks are different
 
 % also should emphasize that an important difference here relative to the
 % correlation slope analysis is that here, the zero levels actually do matter
