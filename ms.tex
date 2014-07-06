@@ -1223,7 +1223,7 @@ all HFI bands as well as DIRBE 100$\mu$m, 140$\mu$m and 240$\mu$m, and
 switching to a uniform prior on $T_2$. Under these circumstances, the 
 chi-squared corresponding to the best-fit parameters for each pixel, termed 
 $\chi^2_p$, is simply $-2 \times log(P_{max})$. We will refer to the
-per-pixel chi-squared per degree of freedom as $\chi^2_{p, \nu}$
+per-pixel chi-squared per degree of freedom as $\chi^2_{p, \nu}$.
 % maybe invent a term chi^2_p or something to 
 % reduce potential confusion caused by notation
 
@@ -1275,21 +1275,35 @@ are not materially improving the goodness-of-fit over the full frequency range
 100-3000 GHz relative to a model with appropriately chosen spatially constant 
 $\beta$.
 
-% mention that when t floats, we find a lower T than the Planck team?
-% mention beta template but floating t, normalization
+% mention that when t floats, we find a lower T by ~ 1 degree than the Planck 
+%team?
 
-Next, we calculate $\chi^2_{\nu}$ for the two-component model with global 
-parameters from FDS99 (Table \ref{tab:global}, model 2). We find 
-$\chi^2_{\nu}$=2.33, a slight improvement relative to the $\beta$=1.59 
-single-MBB model. Finally, calculate $\chi^2_{\nu}$ for Table \ref{tab:global} 
-model 3, the two-component model favored by our \PLANCK+DIRBE correlation 
-slopes. In this case, we achieve the best goodness-of-fit out of the all the 
-models tested, with $\chi^2_{\nu}$=2.11.
+We move on to evaluate two-component models, first calculating $\chi^2_{\nu}$ 
+with the FDS99 global parameters (Table \ref{tab:global}, model 2). We find
+$\chi^2_{\nu}$=2.33, a slight improvement relative to the best-fitting
+single-MBB models. Finally, calculate $\chi^2_{\nu}$ for Table 
+\ref{tab:global} model 3, the two-component model favored by our \PLANCK+DIRBE 
+correlation slopes. In this case, we achieve the best goodness-of-fit out of 
+all the models we have tested, with $\chi^2_{\nu}$=2.11.
+
+Thus, our degree-resolution goodness-of-fit analysis has generally confirmed
+the conclusions of $\S$\ref{sec:global}. We find the single-MBB $\beta$ value 
+favored by the combination of \PLANCK~and DIRBE to be nearly identical here 
+($\beta$=1.57) versus in $\S$\ref{sec:global}. As in $\S$\ref{sec:global}, we 
+also find that the \PLANCK+FIRAS and\PLANCK+DIRBE best-fit two-component models
+from Table \ref{tab:global} outperform single-MBB alternatives, though only by 
+a relatively small margin. The agreement between our correlation slope analysis
+and the present goodness-of-fit analysis is especially encouraging for two main
+reasons: (1) in the present analysis, dust temperature was allowed to vary on 
+degree scales, whereas in $\S$\ref{sec:global} we assumed a single global dust 
+temperature (2)
+
 
 % end with a few sentences summarizing overall takeaway(s) from this 
 % goodness-of-fit analysis
 
-% could compare temperatures, but masks are different
+% could compare temperatures from correlation slope analysis versus here, but 
+% masks are different, so i guess it's just not worth it
 
 % also should emphasize that an important difference here relative to the
 % correlation slope analysis is that here, the zero levels actually do matter
