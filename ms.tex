@@ -1224,14 +1224,20 @@ switching to a uniform prior on $T_2$. Under these circumstances, the
 chi-squared corresponding to the best-fit parameters for each pixel, termed 
 $\chi^2_p$, is simply $-2 \times log(P_{max})$. We will refer to the
 per-pixel chi-squared per degree of freedom as $\chi^2_{p, \nu}$.
-% maybe invent a term chi^2_p or something to 
-% reduce potential confusion caused by notation
 
 \begin{figure}
 \begin{center}
 \epsfig{file=chi2_dirbe.eps, width=3.3in}
 \caption{\label{fig:chi2_dirbe} Comparison of goodness-of-fit, 
-$\chi^2_{\nu}$=$\langle \chi^2_p \rangle$ for various dust SED models.}
+$\chi^2_{\nu}$=$\langle \chi^2_{p, \nu} \rangle$ for various dust SED models. 
+For single-MBB models with spatially constant $\beta$, we varied $\beta$ 
+between 1 and 2 (x axis), achieving reduced chi-squared $\chi^2_{\nu}$ shown by
+the black line, with $\beta$=1.57 providing the best fit. Horizontal lines 
+indicate $\chi^2_{\nu}$ for other dust SED models considered, including the 
+FDS99 best-fit model and our best-fit \PLANCK+DIRBE model from 
+$\S$\ref{sec:global}. The minimum $\chi^2_{\nu}$ was achieved with
+two-componenent `model 2' from Table \ref{tab:global} (horizontal magenta 
+line).}
 \end{center}
 \end{figure}
 
@@ -1301,6 +1307,10 @@ present analysis, our zero-level offsets factor into the dust temperature,
 whereas in $\S$6 this was not the case, meaning the former and latter analyses 
 agree in spite of their potential to be affected by rather different 
 systematics.
+
+% say that, becuase such little improvement for two-component versus
+% single MBB in this analysis, we include a single-MBB beta = 1.57 fit in
+% our data release ???
 
 % could compare temperatures from correlation slope analysis versus here, but 
 % masks are different, so i guess it's just not worth it
