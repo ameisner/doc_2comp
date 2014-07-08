@@ -1347,14 +1347,23 @@ using $\sim$250,000 stars with both spectroscopy and broadband photometry
 available from SDSS. To calibrate our $\tau_{545}$ to reddening, we make use of
 the same set of stars studied by \cite{schlafly11}.
 
-% do I need to cite a reference the first time that i mention SDSS ?
-
 % maybe note the possibility in the future of calibrating to a 3D dust
 % map type data product rather than directly to a set of individual 
 % stars/galaxies 
 
 % make argument that, in models with f1 and the beta's constant, the choice
 % of frequency at which tau is evaluated does not matter
+
+\begin{figure*}
+\begin{center}
+\epsfig{file=ebv_resid.eps, width=6.6in}
+\caption{\label{fig:resid} $E(B-V)_{2comp}$ residuals as a function of
+SFD $E(B-V)$. The grayscale represents the conditional probability within each
+bin in SFD $E(B-V)$. The central black line shows the moving median. The upper
+and lower black lines represent the moving 75th and 25th percentiles 
+respectively.}
+\end{center}
+\end{figure*}
 
 Given a library of stellar atmosphere models, the spectral lines of these stars
 can be used to predict their intrinsic optical broadband colors. The `true' 
@@ -1369,32 +1378,48 @@ $\tau_{545}$ is considered to be the independent variable in this regression,
 as we ultimately wish to predict $E(B-V)$ as a function of optical depth, and 
 $\tau_{545}$ has much higher S/N than the SSPP $E(B-V)$ estimates.
 
+% need to explain SSPP acronym somewhere ?
 % cite Green appendix for details of deriving EBV_SSPP from Schlafly 11 data ?
 
-The result of this regression is shown in Figure \ref{fig:calib}. Indeed there 
-appears to be a strong linear correlation between $E(B-V)_{SSPP}$ 
-and $\tau_{545}$. The conversion factor from $\tau_{545}$ to $E(B-V)$ is 
-2.46$\times$10$^{3}$. Reassuringly, the best-fit offset is quite close to 
-zero, $\sim$0.6 mmag.
+This regression is illustrated in Figure \ref{fig:calib}. As expected, there 
+appears to be a strong linear correlation between $E(B-V)_{SSPP}$ and 
+$\tau_{545}$. The conversion factor from $\tau_{545}$ to $E(B-V)$ is 
+2.46$\times$10$^{3}$. Reassuringly, the best-fit offset is quite close to zero,
+$\sim$0.6 mmag.
 
-Figure \ref{fig:resid} shows a two-dimensional histogram of the residuals of
-the $\tau_{545}$-based $E(B-V)$ predictions relative to the corresponding
-spectrum-based $E(B-V)$ predictions, as a function of SFD $E(B-V)$. Clearly 
-there are some systematic trends in the residuals. Still, for 
-$E(B-V)_{SFD}$$<$0.28 ($\sim$80\% of the sky), the residual median is always 
-within 10 mmag of zero. Over the entire range $E(B-V)_{SFD}$$<$0.7, the 
-residual median is always within 30 mmag of zero.
+Figure \ref{fig:resid} shows the residuals of our $\tau_{545}$-based reddening 
+predictions, $E(B-V)_{2comp}$, relative to the corresponding SF11 reddening 
+measurements, $E(B-V)_{SSPP}$, as a function of SFD reddening, $E(B-V)_{SFD}$, 
+(top left panel) and as a function of hot dust temperature (bottom left panel).
+For comparison, the right panels show analogous residual plots, but with 
+respect to reddening predictions based on our calibration of the 
+\cite{planckdust} 353 GHz optical depth to $E(B-V)_{SSPP}$ , using the same 
+regression procedure employed to calibrate $E(B-V)_{2comp}$. We refer to these 
+reddening predictions based on the \cite{planckdust} single-MBB model and 
+calibrated to the SF11 measurements as $E(B-V)_{mbb}$.
 
-\begin{figure}
-\begin{center}
-\epsfig{file=ebv_resid.eps, width=3.3in}
-\caption{\label{fig:resid} $E(B-V)_{2comp}$ residuals as a function of
-SFD $E(B-V)$. The grayscale represents the conditional probability within each
-bin in SFD $E(B-V)$. The central black line shows the moving median. The upper
-and lower black lines represent the moving 75th and 25th percentiles 
-respectively.}
-\end{center}
-\end{figure}
+All four residual plots in Figure 12 show systematic problems at some level. 
+The most striking systematic trend is the `bending' behavior of the reddening
+residuals versus $E(B-V)_{SFD}$ (top panels), with the median residual 
+bottoming out near $-10$ mmag around $E(B-V)_{SFD}$=0.15 mag. This behavior is 
+common to both $E(B-V)_{2comp}$ and $E(B-V)_{mbb}$, and in fact was first noted
+in the residuals of $E(B-V)_{SFD}$ itself relative to $E(B-V)_{SSPP}$ by SF11 
+(see their Figure 6). Such a bending behavior is troubling because it could 
+indicate a nonlinearity common to many FIR reddening predictions based on
+column densities inferred from dust emission. Alternatively, because the SF11 
+stars are distributed over the sky in a highly non-uniform manner, the bend 
+could arise from aliasing of discrepancies particular to certain sky regions 
+(e.g. inner vs. outer Galaxy) on to the $E(B-V)_{SFD}$ axis.
+
+The obvious culprit for any potential nonlinearity in FIR-based reddening
+estimates is a faulty temperature correction. For this reason, we have included
+the bottom panels of Figure \ref{fig:resid}, to check for the presence of
+a dependence of the reddening residuals on dust temperature.
+
+%Clearly there are some systematic trends in the residuals.
+%Still, for $E(B-V)_{SFD}$$<$0.28 ($\sim$80\% of the sky), the residual median 
+%is always within 10 mmag of zero. Over the entire range $E(B-V)_{SFD}$$<$0.7, 
+%the residual median is always within 30 mmag of zero.
 
 \subsection{Rectifying Reddening Residuals}
 % discuss changing global params and offsets, and ecl plane cut
