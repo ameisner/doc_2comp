@@ -1493,8 +1493,8 @@ dependence, but cannot completely resolve the systematic trends in reddening
 residuals.
 % last few words here are kind of bad, need better terminology
 
-The ony solution we were able to identify that both removed the `bend' vs.
-$E(B-V)_{SFD}$ and the temperature dependence of the residual was cutting 
+The ony solution we have been able to identify that both removes the `bend' vs.
+$E(B-V)_{SFD}$ and the temperature dependence of the residual is cutting 
 out the ecliptic plane, restricting to $|\beta|>20^{\circ}$ . In this case, we 
 completely eliminated the bending behavior of the residual versus 
 $E(B-V)_{SFD}$, and significantly reduced the $T_2$ dependence (see Figure
@@ -1505,9 +1505,8 @@ for the single-MBB model. However, the single-MBB residuals still differ
 systematically from zero for $T$$\lesssim$$19$ K. Perhaps these improvements in
 the two-component reddening residuals after restricting to high ecliptic 
 latitude should come as no surprise, given that the ecliptic plane is the most 
-obvious systematic problem with the temperature correction upon inspecting the 
-full-sky temperature map in Figure \ref{fig:results}.
-
+obvious systematic problem with our temperature map upon inspecting the 
+full-sky results shown in Figure \ref{fig:results}.
 
 \begin{figure*}
 \begin{center}
@@ -1520,7 +1519,25 @@ black lines represent the moving 75th and 25th percentiles respectively.}
 \end{center}
 \end{figure*}
 
+After cutting the ecliptic plane, we found that only small zero level
+perturbations were required to fully flatten the temperature residuals,
+while still maintaining flat residuals versus $E(B-V)_{SFD}$. The optimal
+offsets we found were $\pm$0.08 MJy/sr to \verb|i100| and 857 GHz respectively
+(see Figure \ref{fig:resid_offs}). These offsets are well within reason, 
+given the nominal zero level uncertainties quoted in Table QQ.
 
+\begin{figure}
+\begin{center}
+\epsfig{file=resid_offs.eps, width=3.3in}
+\caption{\label{fig:resid_offs} $E(B-V)_{2comp}$ residuals as a function of
+SFD $E(B-V)$, including a cut on ecliptic latitude, $|\beta|>20^{\circ}$, 
+and zero level perturbations of $\pm$0.08 MJy/sr to i100 and 
+857 GHz respectively. The grayscale represents the conditional probability 
+within each bin in SFD $E(B-V)$. The central black line shows the moving 
+median. The upper and lower black lines represent the moving 75th and 25th 
+percentiles respectively.}
+\end{center}
+\end{figure}
 
 % but then we tried ECL cuts, and in combination with modest offsets, that 
 % worked
