@@ -1457,9 +1457,49 @@ goodness-of-fit analyses described in $\S$\ref{sec:global} and
 $\S$\ref{sec:hier}.
 \end{itemize}
 
-We additionally investigated spatial cuts which did not resolve the 
-dominant problems noted in the reddening residuals:
+We additionally investigated the following spatial cuts which did not resolve 
+the dominant problems noted in the reddening residuals:
+\begin{itemize}
+\item Separating Celestial north and south.
+\vspace{-3mm}
+\item Separating Galactic north and south.
+\vspace{-3mm}
+\item Separating inner and outer Galaxy.
+\vspace{-3mm}
+\item Combining the above two sets of cuts i.e. separating the Galaxy into
+quadrants. 
+\vspace{-3mm}
+\item Combining these spatial cuts with the dust model changes of the previous
+list.
+\end{itemize}
 
+However, we did find that changing the zero level offsets of the input maps 
+had a significant effect on the strength of the anticorrelation between
+reddening residual and $T_2$. In particular, we experimented with perturbing 
+the zero level offset of \PLANCK~857 GHz while correspondingly changing the 
+zero levels of the remaining \PLANCK~maps based on the prescription of 
+$\S$\ref{sec:relzero}. We also experimented with changing the zero level of SFD
+\verb|i100|, independent of the other zero levels. Unfortunately, completely
+flattening the reddening residual dependence on $T_2$ required unreasonably 
+large zero level changes. For example, flattening the $T_2$ residual required
+adding $\gtrsim$0.6 MJy/sr to the \verb|i100| map. Furthermore, we note that 
+even relatively large zero level modifications had virtually no effect in 
+eliminating the `bend' versus $E(B-V)_{SFD}$. Thus, simply changing the
+zero level offsets showed a bit of promise in rectifying the residual 
+temperature dependence, but of itself was not a sufficient solution.
+
+The ony solution we were able to identify that both removed the `bend' vs.
+$E(B-V)_{SFD}$ and the temperature dependence of the residual was cutting 
+out the ecliptic plane, restricting to $|\beta|>20^{\circ}$ . In this case, we 
+completely eliminated the bending behavior of the residual versus 
+$E(B-V)_{SFD}$, and significantly reduced the $T_2$ dependence (see Figure
+QQ)
+
+% but required offsets too big
+
+
+% but then we tried ECL cuts, and in combination with modest offsets, that 
+% worked
 
 % discuss changing global params and offsets, and ecl plane cut
 
