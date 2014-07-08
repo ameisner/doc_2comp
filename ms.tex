@@ -1433,15 +1433,15 @@ of $T_2$ shown, with a peak-to-peak amplitude of $\sim$20 mmag.
 \subsection{Rectifying Reddening Residuals}
 In this section we describe our attempts to eliminate the systematic
 problems in the two-component reddening residuals shown in the left column
-of Figure \ref{fig:resid}. We employed two main strategies: (1) recompute
+of Figure \ref{fig:resid}. We employed two main strategies: (1) recomputing
 the two-component $\tau_{545}$ by re-running our Markov chains after modifying 
 the input maps and/or changing the particular two-component model adopted and
 (2) making spatial cuts to isolate sky regions in which the 
 residuals are especially pristine (or especially problematic).
 
 The following is a list of dust model modifications we tested, but 
-proved to have little impact on the shape of the reddening residuals versus
-$E(B-V)_{SFD}$ and $T_2$:
+proved to have little impact on the reddening residual trends versus either 
+$E(B-V)_{SFD}$ or $T_2$:
 
 \begin{itemize}
 \item Varying each of the global two-component model parameters $\beta_1$, 
@@ -1473,8 +1473,8 @@ quadrants.
 list.
 \end{itemize}
 
-However, we did find that changing the zero level offsets of the input maps 
-had a significant effect on the strength of the anticorrelation between
+However, we found that changing the zero level offsets of the input maps 
+had a significant effect on the strength of the anticorrelation between median 
 reddening residual and $T_2$. In particular, we experimented with perturbing 
 the zero level offset of \PLANCK~857 GHz while correspondingly changing the 
 zero levels of the remaining \PLANCK~maps based on the prescription of 
@@ -1482,28 +1482,49 @@ $\S$\ref{sec:relzero}. We also experimented with changing the zero level of SFD
 \verb|i100|, independent of the other zero levels. Unfortunately, completely
 flattening the reddening residual dependence on $T_2$ required unreasonably 
 large zero level changes. For example, flattening the $T_2$ residual required
-adding $\gtrsim$0.6 MJy/sr to the \verb|i100| map. Furthermore, we note that 
-even relatively large zero level modifications had virtually no effect in 
-eliminating the `bend' versus $E(B-V)_{SFD}$. Thus, simply changing the
-zero level offsets showed a bit of promise in rectifying the residual 
-temperature dependence, but of itself was not a sufficient solution.
+adding $\gtrsim$0.6 MJy/sr to the \verb|i100| map. Such an offset is 
+implausible, being an order of magnitude larger than the nominal \verb|i100| 
+zero level uncertainty quoted by SFD98, and comparable to the entire 3000 GHz 
+CIB monopole signal. Furthermore, we note that even these large zero 
+level modifications had virtually no effect in eliminating the reddening 
+residual `bend' versus $E(B-V)_{SFD}$. Thus, changing the zero level 
+offsets showed hints of promise in rectifying the residual temperature 
+dependence, but cannot completely resolve the systematic trends in reddening 
+residuals.
+% last few words here are kind of bad, need better terminology
 
 The ony solution we were able to identify that both removed the `bend' vs.
 $E(B-V)_{SFD}$ and the temperature dependence of the residual was cutting 
 out the ecliptic plane, restricting to $|\beta|>20^{\circ}$ . In this case, we 
 completely eliminated the bending behavior of the residual versus 
 $E(B-V)_{SFD}$, and significantly reduced the $T_2$ dependence (see Figure
-QQ)
+\ref{fig:resid_ecl}), to a peak-to-peak amplitude of only $\sim$10 mmag. We
+still included the single-MBB plots (right column), to show that 
+the bend versus $E(B-V)_{SFD}$ is eliminated by the $|\beta|$ cut, even
+for the single-MBB model. However, the single-MBB residuals still differ
+systematically from zero for $T$$\lesssim$$19$ K. Perhaps these improvements in
+the two-component reddening residuals after restricting to high ecliptic 
+latitude should come as no surprise, given that the ecliptic plane is the most 
+obvious systematic problem with the temperature correction upon inspecting the 
+full-sky temperature map in Figure \ref{fig:results}.
 
-% but required offsets too big
+
+\begin{figure*}
+\begin{center}
+\epsfig{file=ebv_resid_ecl.eps, width=6.6in}
+\caption{\label{fig:resid_ecl} $E(B-V)_{2comp}$ residuals as a function of
+SFD $E(B-V)$, including a cut on ecliptic latitude, $|\beta|>20^{\circ}$. The 
+grayscale represents the conditional probability within each bin in SFD 
+$E(B-V)$. The central black line shows the moving median. The upper and lower 
+black lines represent the moving 75th and 25th percentiles respectively.}
+\end{center}
+\end{figure*}
+
 
 
 % but then we tried ECL cuts, and in combination with modest offsets, that 
 % worked
 
-% discuss changing global params and offsets, and ecl plane cut
-
-% should eventually try re-making 2d scatterplot figure in python..
 
 %%\section{Systematics}
 %%
@@ -1572,7 +1593,7 @@ summarizing the results of of our two-component dust fits.
 \begin{figure*} [ht]
 \begin{center}
 \epsfig{file=results.eps, width=7.0in}
-\caption{Our best-fit $T_2$, binned to 27.5$'$ resolution}
+\caption{\label{fig:results} Our best-fit $T_2$, binned to 27.5$'$ resolution}
 \end{center}
 \end{figure*}
 
