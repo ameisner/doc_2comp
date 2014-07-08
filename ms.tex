@@ -1378,6 +1378,9 @@ $\tau_{545}$ is considered to be the independent variable in this regression,
 as we ultimately wish to predict $E(B-V)$ as a function of optical depth, and 
 $\tau_{545}$ has much higher S/N than the SSPP $E(B-V)$ estimates.
 
+% MENTION THAT THE TAU TEMPLATE IS INDEPENDENT OF FREQUENCY FOR 
+% TWO-COMPONENT MODELS WITH SPATIALLY CONSTANT BETAS, Q1/Q2 AND F1
+
 % need to explain SSPP acronym somewhere ?
 % cite Green appendix for details of deriving EBV_SSPP from Schlafly 11 data ?
 
@@ -1411,17 +1414,53 @@ stars are distributed over the sky in a highly non-uniform manner, the bend
 could arise from aliasing of discrepancies particular to certain sky regions 
 (e.g. inner vs. outer Galaxy) on to the $E(B-V)_{SFD}$ axis.
 
+% could add a sentence praising the two-component reddening prediction for
+% only having issues at the ~<10 mmag level for EBV_SFD ~< 0.4 mag, since
+% it could be a lot worse ...
+
 The obvious culprit for any potential nonlinearity in FIR-based reddening
 estimates is a faulty temperature correction. For this reason, we have included
 the bottom panels of Figure \ref{fig:resid}, to check for the presence of
-a dependence of the reddening residuals on dust temperature.
-
-%Clearly there are some systematic trends in the residuals.
-%Still, for $E(B-V)_{SFD}$$<$0.28 ($\sim$80\% of the sky), the residual median 
-%is always within 10 mmag of zero. Over the entire range $E(B-V)_{SFD}$$<$0.7, 
-%the residual median is always within 30 mmag of zero.
+a temperature dependence of the reddening residuals. Indeed, in both the
+two-component and single-MBB cases there exists some systematic dependence of
+the reddening residuals on temperature. For $T_{mbb}$$\gtrsim$19 K, the 
+median residual is reasonably flat, but at lower temperatures (the lowest 
+temperature $\sim$20\% of the sky), the median shows trends at the $\sim$10 
+mmag level. On the other hand, the median residual in the two-component case 
+shows a clear trend of decreasing with increasing $T_2$ over the entire range
+of $T_2$ shown, with a peak-to-peak amplitude of $\sim$20 mmag.
 
 \subsection{Rectifying Reddening Residuals}
+In this section we describe our attempts to eliminate the systematic
+problems in the two-component reddening residuals shown in the left column
+of Figure \ref{fig:resid}. We employed two main strategies: (1) recompute
+the two-component $\tau_{545}$ by re-running our Markov chains after modifying 
+the input maps and/or changing the particular two-component model adopted and
+(2) making spatial cuts to isolate sky regions in which the 
+residuals are especially pristine (or especially problematic).
+
+The following is a list of dust model modifications we tested, but 
+proved to have little impact on the shape of the reddening residuals versus
+$E(B-V)_{SFD}$ and $T_2$:
+
+\begin{itemize}
+\item Varying each of the global two-component model parameters $\beta_1$, 
+$\beta_2$, $q_1/q_2$ and $f_1$ individually while holding the others fixed.
+\vspace{-3mm}
+\item Allowing $f_1$ to vary spatially as in the fits of $\S$\ref{sec:lores}.
+\vspace{-2mm}
+\item Changing the mean and/or variance of the $T_2$ prior.
+\vspace{-6mm}
+\item Varying multiple global parameters at a time e.g. both $f_1$ and 
+$q_1/q_2$, restricting to regions of parameter space favored by our 
+goodness-of-fit analyses described in $\S$\ref{sec:global} and 
+$\S$\ref{sec:hier}.
+\end{itemize}
+
+We additionally investigated spatial cuts which did not resolve the 
+dominant problems noted in the reddening residuals:
+
+
 % discuss changing global params and offsets, and ecl plane cut
 
 % should eventually try re-making 2d scatterplot figure in python..
