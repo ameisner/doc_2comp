@@ -1323,6 +1323,10 @@ useful for making thermal dust emission foreground predictions, estimating
 optical reddening/extinction is another important application of the 
 $\tau_{545}$ map. 
 
+% mention that this is especially true because Planck gives such a huge
+% increase in temperature resolution relative to SFD (and possibly reference
+% temperature comparison figure as well)
+
 \subsection{Reddening Calibration Procedure}
 
 % scatterplot figure showing linear regression of EBV vs. tau
@@ -1342,10 +1346,9 @@ optical reddening is known. There are various possibilities at our disposal.
 \cite{planckdust} calibrated their radiance and $\tau_{353}$ maps to $E(B-V)$ 
 using broadband Sloan Digital Sky Survey \citep[SDSS;][]{sdss} photometry for a
 set of $\sim$10$^5$ quasars. The SFD calibration was originally tied to a 
-sample of 384 elliptical galaxies, but was later revised by \cite{schlafly11} 
-using $\sim$250,000 stars with both spectroscopy and broadband photometry 
-available from SDSS. To calibrate our $\tau_{545}$ to reddening, we make use of
-the same set of stars studied by \cite{schlafly11}.
+sample of 384 elliptical galaxies, but was later revised by 
+\citet[hereafter SF11]{schlafly11} based on $\sim$260,000 stars with both 
+spectroscopy and broadband photometry available from SDSS.
 
 % maybe note the possibility in the future of calibrating to a 3D dust
 % map type data product rather than directly to a set of individual 
@@ -1365,18 +1368,20 @@ respectively.}
 \end{center}
 \end{figure*}
 
-Given a library of stellar atmosphere models, the spectral lines of these stars
-can be used to predict their intrinsic optical broadband colors. The `true' 
-reddening is then simply the difference in the observed $g-r$ color and the 
-$g-r$ color predicted from the spectral lines. Applying a color transformation 
-then yields `true' $E(B-V)$ values for $\sim$260,000 lines of sight. Throughout
-our SSPP calibration analysis, we restrict to the $\sim$230,000 lines of sight 
-with $|b|$$>$20$^{\circ}$ in order to avoid stars which may not lie behind the 
-full dust column. The calibration of two-component optical depth to $E(B-V)$ is
-performed as a linear regression of $E(B-V)_{SSPP}$ versus $\tau_{545}$. 
-$\tau_{545}$ is considered to be the independent variable in this regression, 
-as we ultimately wish to predict $E(B-V)$ as a function of optical depth, and 
-$\tau_{545}$ has much higher S/N than the SSPP $E(B-V)$ estimates.
+To calibrate our two-component optical depth to reddening, we make use of the 
+stellar sample from SF11. Given a library of model stellar atmospheres, the 
+spectral lines of these stars can be used to predict their intrinsic optical 
+broadband colors. The `true' reddening is then simply the difference between 
+the observed $g-r$ color and the $g-r$ color predicted from the spectral lines.
+Applying a color transformation then yields `true' $E(B-V)$ values for 
+$\sim$260,000 lines of sight. Throughout our SSPP calibration analysis, we 
+restrict to the $\sim$230,000 lines of sight with $|b|$$>$20$^{\circ}$ in order
+to avoid stars which may not lie behind the full dust column. The calibration 
+of two-component optical depth to $E(B-V)$ is performed as a linear regression 
+of $E(B-V)_{SSPP}$ versus $\tau_{545}$. $\tau_{545}$ is considered to be the 
+independent variable in this regression, as we ultimately wish to predict 
+$E(B-V)$ as a function of optical depth, and $\tau_{545}$ has much higher S/N 
+than the SSPP $E(B-V)$ estimates.
 
 % MENTION THAT THE TAU TEMPLATE IS INDEPENDENT OF FREQUENCY FOR 
 % TWO-COMPONENT MODELS WITH SPATIALLY CONSTANT BETAS, Q1/Q2 AND F1
@@ -1385,10 +1390,9 @@ $\tau_{545}$ has much higher S/N than the SSPP $E(B-V)$ estimates.
 % cite Green appendix for details of deriving EBV_SSPP from Schlafly 11 data ?
 
 This regression is illustrated in Figure \ref{fig:calib}. As expected, there 
-appears to be a strong linear correlation between $E(B-V)_{SSPP}$ and 
-$\tau_{545}$. The conversion factor from $\tau_{545}$ to $E(B-V)$ is 
-2.46$\times$10$^{3}$. Reassuringly, the best-fit offset is quite close to zero,
-$\sim$0.6 mmag.
+is a strong linear correlation between $E(B-V)_{SSPP}$ and $\tau_{545}$. The 
+conversion factor from $\tau_{545}$ to $E(B-V)$ is 2.46$\times$10$^{3}$. 
+Reassuringly, the best-fit offset is quite close to zero, $\sim$0.6 mmag.
 
 Figure \ref{fig:resid} shows the residuals of our $\tau_{545}$-based reddening 
 predictions, $E(B-V)_{2comp}$, relative to the corresponding SF11 reddening 
@@ -1404,11 +1408,11 @@ calibrated to the SF11 measurements as $E(B-V)_{mbb}$.
 All four residual plots in Figure 12 show systematic problems at some level. 
 The most striking systematic trend is the `bending' behavior of the reddening
 residuals versus $E(B-V)_{SFD}$ (top panels), with the median residual 
-bottoming out near $-10$ mmag around $E(B-V)_{SFD}$=0.15 mag. This behavior is 
-common to both $E(B-V)_{2comp}$ and $E(B-V)_{mbb}$, and in fact was first noted
-in the residuals of $E(B-V)_{SFD}$ itself relative to $E(B-V)_{SSPP}$ by SF11 
-(see their Figure 6). Such a bending behavior is troubling because it could 
-indicate a nonlinearity common to many FIR reddening predictions based on
+bottoming out near $-10$ mmag at $E(B-V)_{SFD}$$\approx$0.15 mag. This behavior
+is common to both $E(B-V)_{2comp}$ and $E(B-V)_{mbb}$, and in fact was first 
+noted in the residuals of $E(B-V)_{SFD}$ itself relative to $E(B-V)_{SSPP}$ by 
+SF11 (see their Figure 6). Such a bending behavior is troubling because it 
+could indicate a nonlinearity common to many FIR reddening predictions based on
 column densities inferred from dust emission. Alternatively, because the SF11 
 stars are distributed over the sky in a highly non-uniform manner, the bend 
 could arise from aliasing of discrepancies particular to certain sky regions 
@@ -1427,8 +1431,8 @@ the reddening residuals on temperature. For $T_{mbb}$$\gtrsim$19 K, the
 median residual is reasonably flat, but at lower temperatures (the lowest 
 temperature $\sim$20\% of the sky), the median shows trends at the $\sim$10 
 mmag level. On the other hand, the median residual in the two-component case 
-shows a clear trend of decreasing with increasing $T_2$ over the entire range
-of $T_2$ shown, with a peak-to-peak amplitude of $\sim$20 mmag.
+trends downward with increasing $T_2$ over the entire $T_2$ range shown, with a
+peak-to-peak amplitude of $\sim$20 mmag.
 
 \subsection{Rectifying Reddening Residuals}
 In this section we describe our attempts to eliminate the systematic
@@ -1439,9 +1443,9 @@ the input maps and/or changing the particular two-component model adopted and
 (2) making spatial cuts to isolate sky regions in which the 
 residuals are especially pristine (or especially problematic).
 
-The following is a list of dust model modifications we tested, but 
-proved to have little impact on the reddening residual trends versus either 
-$E(B-V)_{SFD}$ or $T_2$:
+The following is a list of dust model modifications we tested, but which
+proved to have little impact on the reddening residual trends as a function 
+of either $E(B-V)_{SFD}$ or $T_2$:
 
 \begin{itemize}
 \item Varying each of the global two-component model parameters $\beta_1$, 
@@ -1481,32 +1485,32 @@ zero levels of the remaining \PLANCK~maps based on the prescription of
 $\S$\ref{sec:relzero}. We also experimented with changing the zero level of SFD
 \verb|i100|, independent of the other zero levels. Unfortunately, completely
 flattening the reddening residual dependence on $T_2$ required unreasonably 
-large zero level changes. For example, flattening the $T_2$ residual required
-adding $\gtrsim$0.6 MJy/sr to the \verb|i100| map. Such an offset is 
+large zero level modifications. For example, flattening the $T_2$ residual 
+required adding $\gtrsim$0.6 MJy/sr to the \verb|i100| map. Such an offset is 
 implausible, being an order of magnitude larger than the nominal \verb|i100| 
 zero level uncertainty quoted by SFD98, and comparable to the entire 3000 GHz 
 CIB monopole signal. Furthermore, we note that even these large zero 
 level modifications had virtually no effect in eliminating the reddening 
 residual `bend' versus $E(B-V)_{SFD}$. Thus, changing the zero level 
-offsets showed hints of promise in rectifying the residual temperature 
-dependence, but cannot completely resolve the systematic trends in reddening 
-residuals.
+offsets showed hints of promise in rectifying the reddening residual 
+temperature dependence, but cannot completely resolve the systematic trends in 
+reddening residuals.
 % last few words here are kind of bad, need better terminology
 
-The ony solution we have been able to identify that both removes the `bend' vs.
-$E(B-V)_{SFD}$ and the temperature dependence of the residual is cutting 
-out the ecliptic plane, restricting to $|\beta|>20^{\circ}$ . In this case, we 
-completely eliminated the bending behavior of the residual versus 
-$E(B-V)_{SFD}$, and significantly reduced the $T_2$ dependence (see Figure
-\ref{fig:resid_ecl}), to a peak-to-peak amplitude of only $\sim$10 mmag. We
-still included the single-MBB plots (right column), to show that 
-the bend versus $E(B-V)_{SFD}$ is eliminated by the $|\beta|$ cut, even
-for the single-MBB model. However, the single-MBB residuals still differ
-systematically from zero for $T$$\lesssim$$19$ K. Perhaps these improvements in
-the two-component reddening residuals after restricting to high ecliptic 
-latitude should come as no surprise, given that the ecliptic plane is the most 
-obvious systematic problem with our temperature map upon inspecting the 
-full-sky results shown in Figure \ref{fig:results}.
+The only solution we have been able to identify that both removes the `bend' 
+vs. $E(B-V)_{SFD}$ and simultaneously reduces the temperature dependence of the
+reddening residuals is cutting out the ecliptic plane by restricting to 
+$|\beta|>20^{\circ}$. In this case, we completely eliminated the bending 
+behavior of the residual versus $E(B-V)_{SFD}$, and significantly reduced the 
+$T_2$ dependence to a peak-to-peak amplitude of only $\sim$10 mmag (see Figure 
+\ref{fig:resid_ecl}). Figure \ref{fig:resid_ecl} still includes the single-MBB 
+plots (right column), to show that the bend versus $E(B-V)_{SFD}$ is eliminated
+by the $|\beta|$ cut, even for the single-MBB model. However, the single-MBB 
+residuals still differ systematically from zero for $T$$\lesssim$$19$ K. 
+Perhaps the improvements in the two-component reddening residuals after 
+restricting to high ecliptic latitude should come as no surprise, given that 
+the ecliptic plane is the most obvious systematic problem with our temperature 
+map (see the full-sky results shown in Figure \ref{fig:results}).
 
 \begin{figure*}
 \begin{center}
@@ -1524,7 +1528,7 @@ perturbations were required to fully flatten the temperature residuals,
 while still maintaining flat residuals versus $E(B-V)_{SFD}$. The optimal
 offsets we found were $\pm$0.08 MJy/sr to \verb|i100| and 857 GHz respectively
 (see Figure \ref{fig:resid_offs}). These offsets are well within reason, 
-given the nominal zero level uncertainties quoted in Table QQ.
+given the nominal zero level uncertainties quoted in Table \ref{table:offs}.
 
 \begin{figure}
 \begin{center}
