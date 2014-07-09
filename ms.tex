@@ -337,8 +337,8 @@ appear to be different slopes of \PLANCK~857 GHz versus H\,\textsc{i} for
 different ranges of H\,\textsc{i} intensity. In particular, \PLANCK~857 GHz 
 appears to ``flatten out'' at very low H\,\textsc{i}. More quantitavely, we 
 have found using the LAB H\,\textsc{i} data \citep{lab} for 
-$-72$$<$$v_{LSR}$$<$$+25$ that the best-fit slope for H\,\textsc{i}$<$70 K km/s
-is a factor of $\sim$1.9 lower than the best fit slope for 110 K km/s 
+$-72$$<$$v_{LSR}$$<$$+25$ km/s that the best-fit slope for H\,\textsc{i}$<$70 K
+km/s is a factor of $\sim$1.9 lower than the best fit slope for 110 K km/s 
 $<$H\,\textsc{i}$<$200 K km/s, and as a result the implied zero-point offsets 
 for \PLANCK~857 GHz differ by $\sim$0.37 MJy/sr.
 
@@ -1360,11 +1360,17 @@ spectroscopy and broadband photometry available from SDSS.
 \begin{figure*}
 \begin{center}
 \epsfig{file=ebv_resid.eps, width=6.6in}
-\caption{\label{fig:resid} $E(B-V)_{2comp}$ residuals as a function of
-SFD $E(B-V)$. The grayscale represents the conditional probability within each
-bin in SFD $E(B-V)$. The central black line shows the moving median. The upper
-and lower black lines represent the moving 75th and 25th percentiles 
-respectively.}
+\caption{\label{fig:resid} (top left) Residuals of $E(B-V)_{2comp}$ relative to
+$E(B-V)_{SSPP}$ as a function of $E(B-V)_{SFD}$. The grayscale represents the 
+conditional probability within each $E(B-V)_{SFD}$ bin. The central black line 
+shows the moving median. The upper and lower black lines represent the moving 
+75th and 25th percentiles respectively. (bottom left) Residuals of 
+$E(B-V)_{2comp}$ relative to $E(B-V)_{SSPP}$ as a function of hot dust 
+temperature $T_2$. (top right) Same as top left, but illustrating the residuals
+of $E(B-V)_{mbb}$, our calibration of the \cite{planckdust} $\tau_{353}$ to 
+$E(B-V)_{SSPP}$. (bottom right)  Same as bottom left, but showing the 
+$E(B-V)_{mbb}$ residuals as a function of the single-MBB dust temperature from 
+\cite{planckdust}.}
 \end{center}
 \end{figure*}
 
@@ -1515,11 +1521,13 @@ map (see the full-sky results shown in Figure \ref{fig:results}).
 \begin{figure*}
 \begin{center}
 \epsfig{file=ebv_resid_ecl.eps, width=6.6in}
-\caption{\label{fig:resid_ecl} $E(B-V)_{2comp}$ residuals as a function of
-SFD $E(B-V)$, including a cut on ecliptic latitude, $|\beta|>20^{\circ}$. The 
-grayscale represents the conditional probability within each bin in SFD 
-$E(B-V)$. The central black line shows the moving median. The upper and lower 
-black lines represent the moving 75th and 25th percentiles respectively.}
+\caption{\label{fig:resid_ecl} Same as Figure \ref{fig:resid}, but 
+restricting to high ecliptic latitude, $|\beta|>20^{\circ}$. The top left and 
+top right plots both show that the bending of the reddening residuals as a 
+function of $E(B-V)_{SFD}$ as seen in Figure \ref{fig:resid} has been 
+eliminated. Further, the two-component reddening residual temperature 
+dependence (bottom left) has been significantly reduced relative to the
+corresponding trend shown in Figure \ref{fig:resid}, bottom left panel.}
 \end{center}
 \end{figure*}
 
