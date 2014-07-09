@@ -1321,7 +1321,14 @@ systematics.
 While the temperature and optical depth maps thus far derived are
 useful for making thermal dust emission foreground predictions, estimating 
 optical reddening/extinction is another important application of the 
-$\tau_{545}$ map. 
+$\tau_{545}$ map. Translating our two-component optical depth to reddening
+is especially valuable because our $T_2$ map has $\sim$13$\times$ better
+angular resolution than the SFD temperature correction, and thus there is 
+reason to believe our two-component reddening estimates may be superior to
+those of SFD. However, as discussed in $\S$\ref{sec:replace}, we do not yet 
+advocate for the wholesale replacement of SFD, and more detailed work is still 
+necessary to determine/quantify the extent to which \PLANCK-based dust maps
+might improve reddening estimates relative to SFD.
 
 % mention that this is especially true because Planck gives such a huge
 % increase in temperature resolution relative to SFD (and possibly reference
@@ -1338,8 +1345,8 @@ $\tau_{545}$.}
 \end{center}
 \end{figure}
 
-We calibrate to reddening empirically rather than derive
-a relationship between $\tau_{545}$ and reddening by introducing additional 
+We calibrate optical depth to reddening empirically rather than derive a 
+relationship between $\tau_{545}$ and reddening by introducing additional 
 assumptions about the dust grain physics and size distribution. To achieve this
 empirical calibration, we must adopt a set of calibrator objects for which true
 optical reddening is known. There are various possibilities at our disposal. 
@@ -1349,10 +1356,6 @@ set of $\sim$10$^5$ quasars. The SFD calibration was originally tied to a
 sample of 384 elliptical galaxies, but was later revised by 
 \citet[hereafter SF11]{schlafly11} based on $\sim$260,000 stars with both 
 spectroscopy and broadband photometry available from SDSS.
-
-% maybe note the possibility in the future of calibrating to a 3D dust
-% map type data product rather than directly to a set of individual 
-% stars/galaxies 
 
 % make argument that, in models with f1 and the beta's constant, the choice
 % of frequency at which tau is evaluated does not matter
@@ -1648,6 +1651,7 @@ by FDS99 using FIRAS+DIRBE. We found $\Delta \chi^2_{nu}$= and $\Delta$
 % predictions ?
 
 \subsection{Towards a Replacement for SFD}
+\label{sec:replace}
 %  ---> CIBA
 %   ---> do i want a figure illustrating the CIBA problem at high latitude ?
 %  ---> zodi
