@@ -1579,25 +1579,33 @@ eliminated, and virtually no temperature dependence remains.}
 %%any other miscellaneous issues?
 
 \section{Low-frequency Emission Predictions}
+FDS99 originally performed their two-component versus single-MBB dust SED 
+analysis for the sake of accurately forecasting low-frequency CMB foregrounds.
+The need for accurate CMB foreground predictions, especially in the 100-150 GHz
+frequency range, has been highlighted of late by the \cite{bicep2} $B$-mode 
+polarization results. In this section we show that our two-component foreground
+predictions are more accurate than those based on the single-MBB model of 
+\cite{planckdust} over the 100-217 GHz frequency range.
+
+
 % compare 100-217 GHz predictions using my model versus Planck Collaboration
 % single-MBB model
 
 % is this the section where, potentially, plots of the residuals might go?
 
 %striping in IRAS/IRIS versus in SFD IRAS ... planck dust map obvious striping
-An important difference between our maps and those of \cite{planckdust} is our 
-use of SFD \verb|i100| instead of IRIS 100$\mu$m \citep{IRIS}. Residual 
-\IRAS~striping at levels higher than that remaining in SFD \verb|i100| is 
-clearly visible in the \cite{planckdust} maps.
+%%%An important difference between our maps and those of \cite{planckdust} is 
+%%%our 
+%%%use of SFD \verb|i100| instead of IRIS 100$\mu$m \citep{IRIS}. Residual 
+%%%\IRAS~striping at levels higher than that remaining in SFD \verb|i100| is 
+%%%clearly visible in the \cite{planckdust} maps.
 
 %we actually have 6.1' arcminute resolution
-It is true that we have smoothed the input intensity maps for this study 
-to $6.1'$ FWHM, which is nominally lower resolution than the $5'$ 
-\cite{planckdust} maps. However, as is apparent from figure 
-\ref{fig:comparison}, the fact that \cite{planckdust} modeled $\beta$ at 
-$0.5^{\circ}$ resolution has effectively blurred their dust temperature map.
-
-%\subsection{Validation with FIRAS}
+%%%It is true that we have smoothed the input intensity maps for this study 
+%%%to $6.1'$ FWHM, which is nominally lower resolution than the $5'$ 
+%%%\cite{planckdust} maps. However, as is apparent from figure 
+%%%\ref{fig:comparison}, the fact that \cite{planckdust} modeled $\beta$ at 
+%%%$0.5^{\circ}$ resolution has effectively blurred their dust temperature map.
 
 \section{Data Release}
 \label{sec:release}
@@ -1627,6 +1635,25 @@ summarizing the results of of our two-component dust fits.
 
 \section{Conclusions}
 \label{sec:conclusion}
+
+\subsection{Single-MBB versus Two-component emission}
+In both the correlation slope analysis of $\S$\ref{sec:global} and the 
+goodness-of-fit analysis of $\S$\ref{sec:hier} we found that the 
+best-fit \PLANCK+DIRBE two-component model (Table \ref{tab:global}, model 2) 
+outperformed the best-fit single-MBB model, but by a lesser margin than found 
+by FDS99 using FIRAS+DIRBE. We found $\Delta \chi^2_{nu}$= and $\Delta$
+
+% sentence criticizing the half-degree beta single MBB model of Planck team
+% in terms of the imprint that leaves on low-frequency emission 
+% predictions ?
+
+\subsection{Towards a Replacement for SFD}
+%  ---> CIBA
+%   ---> do i want a figure illustrating the CIBA problem at high latitude ?
+%  ---> zodi
+%  ---> more testing needed, in any event, to prove Planck based reddening
+%       estimates outperform SFD
+
 % should mention that one definitive improvement of this work relative
 % to FDS99 is that there are uncertainty/covariances provided for
 % the derived parameters !!!!
