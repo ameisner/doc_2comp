@@ -1685,7 +1685,52 @@ influence their conclusions.
 
 \subsection{Towards a Replacement for SFD}
 \label{sec:replace}
-%  ---> CIBA
+Because of the broad frequency coverage and high angular resolution afforded
+by the \PLANCK~HFI full-sky maps, we initially speculated that a \PLANCK~based 
+extinction map might easily outperform SFD, the current industry standard data 
+product. However, at this point in time, we do not yet recommend that the 
+results presented in this work be considered a replacement for SFD in terms of 
+optical extinction/reddening estimates.
+
+% CIBA
+The CIBA remains a major imperfection that still requires further 
+investigation. The CIB anisotropies are very evident in low-dust regions of our
+maps of optical depth and predicted dust emission. As described in 
+$\S$\ref{sec:mcmc}, we have propagated the CIBA RMS amplitudes and 
+inter-frequency covariances into our uncertainty estimates through the 
+likelihood function in our MCMC procedure. However, this treatment falls far 
+short of actually removing the spatial imprint of the CIBA on our optical depth
+and temperature maps. The CIB anisotropies are more prominent in our optical 
+depth map relative to that of SFD because of the lower-frequency \PLANCK~maps 
+we rely upon to achieve a high-resolution temperature correction.
+
+Imperfect zodi corrections represent a second major limitation of our results.
+The prominence of the ecliptic plane in our 
+full-sky temperature map of Figure \ref{fig:results} suggests that zodiacal
+light subtractions performed on the input maps are not ideal. Our comparisons 
+of the maps used in this study against HI emission bear out this notion, and 
+show that the imperfect zodi corrections are not limited to \verb|i100| (the
+highest frequency for which the zodi should be most problematic), but in fact
+are noticeable in all of the HFI ZodiCorrected maps as well. We deemed it 
+infeasible to reconsider all of the \PLANCK~zodi corrections in addition to the
+3000 GHz zodi correction as a part of this study. Perhaps the forthcoming 
+\PLANCK~data release, including data from additional orbits, will effectively 
+eliminate any residual zodi problems in the \PLANCK~bands. Under these 
+circumstances it might then be worthwhile to consider revising the DIRBE 
+100$\mu$m zodi correction provided by SFD.
+
+Irrespective of the notable imperfections in our results, more detailed
+comparisons between our reddening estimates here and those of SFD are required 
+to determine/quantify which map is superior in particular applications. One 
+definitive improvement of our reddening estimates relative to those of SFD is 
+our ability to quote reddening uncertainties, which results from the 
+probabilistic framework of $\S$\ref{sec:mcmc}. The extinction estimates 
+from this work can also be employed as an alternative to those of SFD, to gauge
+the impact of dust map choice in a specific application.
+
+% perhaps zodi will just magically be fixed in the forthcoming Planck dta
+% release
+
 %   ---> do i want a figure illustrating the CIBA problem at high latitude ?
 %  ---> zodi
 %  ---> more testing needed, in any event, to prove Planck based reddening
@@ -1695,9 +1740,14 @@ influence their conclusions.
 % to FDS99 is that there are uncertainty/covariances provided for
 % the derived parameters !!!!
 
+% and should also say that it's worth looking up extinction values here
+% to gauge whether results are dependent on choice of dust map
+
 % should there be a future work section or can the suggestions/plans of
 % future work just be a part of ``SFD replacement'' subsection
 
+% mention here the idea of getting even higher resolution by folding
+% in WISE ?
 
 This material is based upon work supported by the National Science Foundation 
 Graduate Research Fellowship under Grant No. We acknowledge support of NASA 
