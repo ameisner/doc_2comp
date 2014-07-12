@@ -593,7 +593,7 @@ of the two-component model as a function of position on the sky
 The shape of the two-component model spectrum we will consider is given by:
 
 \begin{equation}
-M_{\nu} \propto f_{1}q_{1}\Big(\frac{\nu}{\nu_{0}}\Big)^{\beta_1}B_{\nu}(T_1) + (1-f_{1})q_{2}\Big(\frac{\nu}{\nu_0}\Big)^{\beta_2}B_{\nu}(T_2)
+M_{\nu} \propto f_{1}q_{1}\Big(\frac{\nu}{\nu_{0}}\Big)^{\beta_1}B_{\nu}(T_1) + f_{2}q_{2}\Big(\frac{\nu}{\nu_0}\Big)^{\beta_2}B_{\nu}(T_2)
 \end{equation}
 
 % With $f_{1}$ = 0.0363, $\beta_1$ = 1.67, $\beta_2$ = 2.70, and $q_1/q_2$ = 
@@ -608,9 +608,13 @@ M_{\nu} \propto f_{1}q_{1}\Big(\frac{\nu}{\nu_{0}}\Big)^{\beta_1}B_{\nu}(T_1) + 
 Where $B_{\nu}$ is the Planck function, $T_1$ is the `cold' dust temperature, 
 $T_2$ is the `hot' dust temperature, and $\beta_1$ and $\beta_2$ are the
 emissivity power-law indices of the cold and hot components respectively. 
-$q_1/q_2$ encodes the relative emission/absorption cross-sections of the two 
-dust species, while $f_1$ dictates the relative amounts of each species 
-present. Following the convention of FDS99, we choose $\nu_0$=3000 GHz. 
+$q_1$ represents the ratio of FIR emission cross section to optical absorption 
+cross section for species 1, and similarly $q_2$ for species 2. $f_1$ and 
+$f_2$ dictate the relative contributions of the two MBB components to the
+combined SED, and can be thought of as encoding the mass fraction of each 
+species, although technically $f_1$ ($f_2$) is the optical absorption 
+cross-section weighted mass fraction for species 1 (2). Following the 
+convention of FDS99, we choose $\nu_0$=3000 GHz and take $f_2$=(1$-$$f_1$).
 
 Mathematically, this two-MBB model requires specification of seven 
 parameters for every line of sight: $T_1$, $T_2$, $\beta_1$, $\beta_2$, $f_1$, 
@@ -773,15 +777,15 @@ color-corrected MBB terms:
 \tilde{I}_{\nu_i} \propto \sum_{k=1}^{2} b_{\nu_i}(T_k, \beta_k) f_k q_k (\nu_{i,c}/\nu_0)^{\beta_k} B_{\nu_{i,c}}(T_k)
 \end{equation}
 
-Note that, as in FDS99, $f_2$=(1$-$$f_1$) by convention. Our color correction 
-approach allows us to predict $\tilde{I}_{\nu_i}$ by computing monochromatic 
-flux densities at the central frequency $\nu_{i,c}$ and then multiplying by 
-factors $b_{\nu_i}(T, \beta)$ which are interpolated off of a set of 
-precomputed, one-dimensional lookup tables each listing $b_{\nu_i}(T, \beta)$ 
-as a function of $T$. We avoided the need to interpolate in both $\beta$ and 
-$T$ by computing only a small set of one dimensional correction factors for the
-particular set of $\beta$ values of interest (e.g. $\beta$=1.67, 2.7, 
-1.63, 2.82 ..., see Table \ref{tab:global}).
+%Note that, as in FDS99, $f_2$=(1$-$$f_1$) by convention. 
+Our color correction approach allows us to predict $\tilde{I}_{\nu_i}$ by 
+computing monochromatic flux densities at the central frequency $\nu_{i,c}$ and
+then multiplying by factors $b_{\nu_i}(T, \beta)$ which are interpolated off of
+a set of precomputed, one-dimensional lookup tables each listing 
+$b_{\nu_i}(T, \beta)$ as a function of $T$. We avoided the need to interpolate 
+in both $\beta$ and $T$ by computing only a small set of one dimensional 
+correction factors for the particular set of $\beta$ values of interest (e.g. 
+$\beta$=1.67, 2.7, 1.63, 2.82 ..., see Table \ref{tab:global}).
 
 % need some sort of clarification about the fact that, in the parts of the 
 % analysis where beta floats, i actually do interpolate color corrections 
