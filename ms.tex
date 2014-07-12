@@ -129,9 +129,6 @@ estimates based directly upon optical observations of stars
 extinction maps incorporating high-resolution, full-sky infrared data sets such
 as \WISE~\citep{wright10, meisner14} and \AKARI.
 
-% might be more appropriate to cite the 2D dust map Eddie is making rather
-% than the `methods' paper
-
 In $\S$\ref{sec:data} we introduce the data used throughout this study. In 
 $\S$\ref{sec:prepro} we describe our preprocessing of the \PLANCK~maps to 
 isolate thermal emission from Galactic dust. In $\S$\ref{sec:modeling} we 
@@ -142,9 +139,11 @@ derive constraints on our model's global parameters based on the \PLANCK~High
 Frequency Instrument (HFI) maps. In $\S$\ref{sec:fitting} we detail the Markov 
 chain Monte Carlo (MCMC) method with which we have estimated the spatially 
 varying parameters of our model. In $\S$\ref{sec:ebv} we calibrate our derived 
-optical depth to reddening at optical wavelengths. In $\S$\ref{sec:release} we 
-present the full-sky maps of dust temperature and optical depth we have 
-obtained, and conclude in $\S$\ref{sec:conclusion}.
+optical depth to reddening at optical wavelengths. In $\S$\ref{sec:lofreq} we
+evaluate the accuracy of our two-component thermal dust emission predictions 
+from 100-217 GHz. In $\S$\ref{sec:release} we present the full-sky maps of dust
+temperature and optical depth we have obtained, and conclude in 
+$\S$\ref{sec:conclusion}.
 
 \section{Data}
 \label{sec:data}
@@ -421,9 +420,6 @@ at $b$=0$^{\circ}$ and $l$=0$^{\circ}$, $l$=180$^{\circ}$. We again restricted
 to $\mathcal{I}_{857}$$<$2.15 MJy/sr, and repeated the regression in each 
 quadrant. The rms of the per-quadrant slopes was found to be 0.0188, while the 
 rms of the per-quadrant offsets was 0.0586 MJy/sr.
-
-% in previous sentence, think it might be better to only quote rms, and
-% omit the ranges of values for each parameter ?
 
 % mention that all of this assumes that residual CMB dipole
 % and other low order-corrections are negligible at 857 GHz
@@ -1585,6 +1581,7 @@ eliminated, and virtually no temperature dependence remains.}
 %%any other miscellaneous issues?
 
 \section{Low-frequency Emission Predictions}
+\label{sec:lofreq}
 FDS99 originally performed their \PLANCK+DIRBE dust SED analysis for the sake 
 of accurately forecasting low-frequency CMB foregrounds. Recently, Galactic CMB
 foregrounds, especially in the 100-150 GHz frequency range, have become a focal
