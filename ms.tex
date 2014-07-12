@@ -135,15 +135,16 @@ as \WISE~\citep{wright10, meisner14} and \AKARI.
 In $\S$\ref{sec:data} we introduce the data used throughout this study. In 
 $\S$\ref{sec:prepro} we describe our preprocessing of the \PLANCK~maps to 
 isolate thermal emission from Galactic dust. In $\S$\ref{sec:modeling} we 
-explain the dust emission model we fit to the \PLANCK~and \IRAS~data. In 
-$\S$\ref{sec:global} we describe our constraints on this model's global 
-parameters derived from the \PLANCK~High Frequency Instrument (HFI) maps. In 
-$\S$\ref{sec:fitting} we detail the Markov chain Monte Carlo (MCMC) method with
-which we have estimated the spatially varying parameters of our model. In 
-$\S$\ref{sec:ebv} we calibrate our derived optical depth to reddening at 
-optical wavelengths. In $\S$\ref{sec:release} we present the full-sky maps of 
-dust temperature and optical depth we have obtained, and conclude in 
-$\S$\ref{sec:conclusion}.
+explain the dust emission model we apply to the \PLANCK~and \IRAS/DIRBE data. 
+In $\S$\ref{sec:bpcorr}, we discuss the details of predicting 
+\PLANCK~observations based on this dust model. In $\S$\ref{sec:global} we 
+derive constraints on our model's global parameters based on the \PLANCK~High 
+Frequency Instrument (HFI) maps. In $\S$\ref{sec:fitting} we detail the Markov 
+chain Monte Carlo (MCMC) method with which we have estimated the spatially 
+varying parameters of our model. In $\S$\ref{sec:ebv} we calibrate our derived 
+optical depth to reddening at optical wavelengths. In $\S$\ref{sec:release} we 
+present the full-sky maps of dust temperature and optical depth we have 
+obtained, and conclude in $\S$\ref{sec:conclusion}.
 
 \section{Data}
 \label{sec:data}
@@ -550,10 +551,6 @@ sufficiently to warrant replacing the dipole-only correction in those cases.
 % e.g. With pre-processing completed, we turned to modeling the 
 % thermal dust emission.
 
-
-% mention that the two different emissivity power laws allow 
-% the model to simultaneously explain narrow SED peak, and flattening
-% of SED toward the millimeter
 At sufficiently high frequencies, Galactic thermal dust emission can be 
 adequately modeled as a single MBB with power-law emissivity 
 \citep[e.g. SFD;][]{planckdust}. However, it has long been recognized, 
@@ -577,9 +574,11 @@ with FIRAS and DIRBE observations. FDS99 also constructed a DIRBE
 $\sim$1.3$^{\circ}$ resolution. In this work we seek to apply FDS99-like 
 emission models to the \PLANCK~data set, which offers a dramatic enhancement in
 angular resolution relative to the FIRAS spectra. The \PLANCK~data thereby 
-allow us to derive an improved temperature correction at near-\IRAS~resolution,
-re-evaluate the best-fit global dust properties, and fit additional parameters 
-of the two-component model as a function of position on the sky. 
+allow us to derive an improved temperature correction at near-\IRAS~resolution
+($\S$\ref{sec:mcmc}), re-evaluate the best-fit global dust properties 
+($\S$\ref{sec:global}, $\S$\ref{sec:hier}), and fit additional parameters 
+of the two-component model as a function of position on the sky 
+($\S$\ref{sec:lores}). 
 % in this last sentence reference the relevant sections for each sub-goal 
 % mentioned
 
