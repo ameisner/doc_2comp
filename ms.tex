@@ -1196,19 +1196,19 @@ allowed to vary.}
 \end{center}
 \end{figure}
 
-\begin{figure}
-\begin{center}
-\epsfig{file=f1_lambert.eps, width=3.3in}
-\caption{\label{fig:f1lambert} The results of our low-resolution fit with $f_1$
-allowed to vary, shown in Lambert projection to highlight the salient features 
-near the north Galactic pole.}
-\end{center}
-\end{figure}
+%%%\begin{figure}
+%%%\begin{center}
+%%%\epsfig{file=f1_lambert.eps, width=3.3in}
+%%%\caption{\label{fig:f1lambert} The results of our low-resolution fit with $f_1$
+%%%allowed to vary, shown in Lambert projection to highlight the salient features 
+%%%near the north Galactic pole.}
+%%%\end{center}
+%%%\end{figure}
 
 The resulting full-sky map of $f_1$ is shown in Figure \ref{fig:f1}. Some of 
 the most striking features occur near the north Galactic pole, and to 
 highlight these regions of unusually high $f_1$, we display the northern
-Galactic hemisphere in Lambert projection in Figure \ref{fig:f1lambert}.
+Galactic hemisphere in Lambert projection in Figure \ref{fig:f1}.
  
 % add comment about high f_1 regions near NGP
 % also add sentences referring reader to the two f_1 figures
@@ -1594,23 +1594,59 @@ Here we show that our two-component foreground predictions are more accurate
 than those based on the \cite{planckdust} single-MBB model over the 100-217 GHz
 frequency range.
 
-% compare 100-217 GHz predictions using my model versus Planck Collaboration
-% single-MBB model
+\begin{figure*}
+\begin{center}
+\epsfig{file=compare_lofreq.eps, width=6.6in}
+\caption{\label{fig:lofreq} Comparison of low-frequency thermal dust emission 
+predictions.}
+\end{center}
+\end{figure*}
+
+To assess the accuracy of low-frequency emission predictions, we compare
+the \PLANCK~HFI map at each of 100, 143, 217 GHz to the corresponding 
+single-MBB and two-component predictions, with all maps smoothed to 
+$1^{\circ}$ FWHM and binned down to $N_{side}=64$. We restrict to the 
+same set of pixels used for the goodness-of-fit analysis of 
+$\S$\ref{sec:hier}, with $|b|>30^{\circ}$ and $|\beta|>30^{\circ}$, also 
+avoiding molecular emission, the SMICA inpainting mask, and compact sources. We
+then perform a linear fit between the \PLANCK~observed emission and the 
+predicted emission at each frequency and for each emission model. For these
+fits, we consider the predicted emission to be the independent variable, 
+since it has higher S/N than the observations, especially at 100 and 143 GHz.
+We also assign pixel weights proportional to the predicted emission, so that
+the best-fit lines faithfully capture the linear trend exhibited 
+without being biased by the large number of very low S/N pixels with minimal 
+emission. Scatter plots between the predicted and observed emission are shown 
+in Figure \ref{fig:lofreq}. The best-fit lines are overplotted and their 
+equations are given in the top left corner of each subplot.
+
+All of the best-fit offsets, in both the single-MBB and two-component cases,
+are within the uncertainties quoted in Table \ref{table:offs}. On the other 
+hand, Figure \ref{fig:lofreq} shows that the \cite{planckdust} single-MBB 
+predictions yield slopes substantially different from unity: 1.079 at 217 GHz, 
+1.126 at 143 GHz, and 1.188 at 100 GHz. The fact that the slopes are larger 
+than unity indicates that the \cite{planckdust} predictions are systematically 
+low. The systematic underprediction evidently become gradually more severe as 
+lower frequencies are considered, with a 7.9\% underprediction at 217 GHz, a 
+12.6\% underprediction at 143 GHz and an 18.8\% underprediction at 100 GHz.
+
+For the case of the two-component model, we perform full-resolution 217-3000 
+GHz fits using the \PLANCK+DIRBE favored global parameters (Table 
+\ref{tab:global}, model 2), then smooth to $1^{\circ}$ FWHM and bin down to 
+$N_{side}=64$ before predicting the 100-217 GHz emission. The bottom row of
+Figure 14 shows that each of the best-fit lines is very similar to the 
+corresponding red line which represents a perfect match between predicted and 
+observed emission. More quantitatively, the two-component slopes are all within
+2.2\% of unity: 0.978 at 217 GHz, 0.986 at 143 GHz and 1.022 at 100 GHz. 
+We note that at 217 GHz, the good agreement is in some sense predetermined by 
+the fact that \PLANCK~217 GHz has been included in our two-component MCMC fits.
+On the other hand, the 143 and 100 GHz predictions are truly based on 
+extrapolation.
+
+% mention imprint of Planck team's half-degree on low-freq extrapolation ?
 
 % is this the section where, potentially, plots of the residuals might go?
 
-%end section saying that the predictions accessible through our data 
-% release should be investigated/tested/swapped in by people doing
-% B-mode stuff
-
-%striping in IRAS/IRIS versus in SFD IRAS ... planck dust map obvious striping
-%%%An important difference between our maps and those of \cite{planckdust} is 
-%%%our 
-%%%use of SFD \verb|i100| instead of IRIS 100$\mu$m \citep{IRIS}. Residual 
-%%%\IRAS~striping at levels higher than that remaining in SFD \verb|i100| is 
-%%%clearly visible in the \cite{planckdust} maps.
-
-%we actually have 6.1' arcminute resolution
 %%%It is true that we have smoothed the input intensity maps for this study 
 %%%to $6.1'$ FWHM, which is nominally lower resolution than the $5'$ 
 %%%\cite{planckdust} maps. However, as is apparent from figure 
