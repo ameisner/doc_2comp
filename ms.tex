@@ -1620,15 +1620,16 @@ emission. Scatter plots between the predicted and observed emission are shown
 in Figure \ref{fig:lofreq}. The best-fit lines are overplotted and their 
 equations are given in the top left corner of each subplot.
 
-All of the best-fit offsets, in both the single-MBB and two-component cases,
+In both the single-MBB and two-component cases, all of the best fit offsets
 are within the uncertainties quoted in Table \ref{table:offs}. On the other 
-hand, Figure \ref{fig:lofreq} shows that the \cite{planckdust} single-MBB 
-predictions yield slopes substantially different from unity: 1.079 at 217 GHz, 
-1.126 at 143 GHz, and 1.188 at 100 GHz. The fact that the slopes are larger 
-than unity indicates that the \cite{planckdust} predictions are systematically 
-low. The systematic underprediction evidently become gradually more severe as 
-lower frequencies are considered, with a 7.9\% underprediction at 217 GHz, a 
-12.6\% underprediction at 143 GHz and an 18.8\% underprediction at 100 GHz.
+hand, the top row of Figure \ref{fig:lofreq} shows that the \cite{planckdust} 
+single-MBB predictions yield slopes substantially different from unity: 1.079 
+at 217 GHz, 1.126 at 143 GHz, and 1.188 at 100 GHz. The fact that the slopes 
+are larger than unity indicates that the \cite{planckdust} predictions are 
+systematically low. The systematic underprediction evidently become gradually 
+more severe as lower frequencies are considered, with a 7.9\% underprediction 
+at 217 GHz, a 12.6\% underprediction at 143 GHz and an 18.8\% underprediction 
+at 100 GHz.
 
 For the case of the two-component model, we perform full-resolution 217-3000 
 GHz fits using the \PLANCK+DIRBE favored global parameters (Table 
@@ -1640,8 +1641,14 @@ observed emission. More quantitatively, the two-component slopes are all within
 2.2\% of unity: 0.978 at 217 GHz, 0.986 at 143 GHz and 1.022 at 100 GHz. 
 We note that at 217 GHz, the good agreement is in some sense predetermined by 
 the fact that \PLANCK~217 GHz has been included in our two-component MCMC fits.
-On the other hand, the 143 and 100 GHz predictions are truly based on 
-extrapolation.
+On the other hand, the 143 and 100 GHz predictions are based on extrapolation.
+
+We conclude from our predicted versus observed emission comparison that our 
+two-component model outperforms the \cite{planckdust} single-MBB model at 
+predicting Galactic thermal dust emission in diffuse regions from 100-217 GHz. 
+
+% could add a last sentence trying to soften this, acknowledging that 
+% planck team warned about their model below 353 GHz
 
 % mention imprint of Planck team's half-degree on low-freq extrapolation ?
 
@@ -1711,11 +1718,13 @@ broad frequency channels, whereas FDS99 employed $>$200 narrow bands.
 Nevertheless, we have established that the two-component emission model
 remains viable in light of the \PLANCK~HFI data, and that the FIR/submm 
 dust SED's preference for two MBB components rather than just one is not
-simply an idiosyncracy of the FIRAS spectra. We recommend that those interested
-in thermal dust foregrounds in the 100-3000 GHz frequency range use our data 
-release to predict unpolarized dust emission, at the very least in order to 
-help determine the level at which the choice of dust emission model may 
-influence their conclusions.
+simply an idiosyncracy of the FIRAS spectra. Furthermore, we showed in 
+$\S$\ref{sec:lofreq} that our 100-217 GHz two-component emission predictions
+are more accurate than those of \cite{planckdust} by margins of $\sim$5-15\%.
+We therefore recommend that those interested in thermal dust foregrounds in 
+the 100-3000 GHz frequency range use our data release to predict unpolarized 
+dust emission, at the very least in order to help determine the level at which 
+the choice of dust emission model may influence their conclusions.
 %last sentence needs work
 
 % sentence criticizing the half-degree beta single MBB model of Planck team
