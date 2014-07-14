@@ -1007,22 +1007,25 @@ spatial pixel independently.
 \label{sec:samp}
 As discussed in $\S$\ref{sec:modeling}, our full-resolution fits
 consider the ``global'' parameters $f_1$, $q_1/q_2$, $\beta_1$, $\beta_2$ to be
-fixed, while the dust spectrum normalization and dust temperatures are allowed 
-to vary for each line-of-sight. In order to predict the dust SED for a given 
-pixel, we are thus left with two remaining degrees of freedom, and must 
-choose an appropriate set of two parameters to sample and thereby constrain via
-MCMC. To determine the SED normalization in each pixel, we draw samples in 
-$\tilde{I}_{545}$, the `IRAS convention' intensity in the 545 GHz bandpass, 
-as defined in Equation \ref{eqn:inten}. With the four aforementioned global 
+fixed. By default, we employ the best-fit \PLANCK+DIRBE global parameters of 
+Table \ref{tab:global}, model 2, although our data release 
+($\S$\ref{sec:release}) includes fits with the FDS99 global parameters as well.
+Still,  the dust spectrum normalization and dust temperatures are allowed to 
+vary for each line-of-sight. In order to predict the dust SED for a given 
+pixel, we are thus left with two remaining degrees of freedom, and must choose 
+an appropriate set of two parameters to sample and thereby constrain via MCMC. 
+To determine the SED normalization in each pixel, we draw samples in 
+$\tilde{I}_{545}$, the `IRAS convention' intensity in the 545 GHz bandpass, as 
+defined in Equation \ref{eqn:inten}. With the four aforementioned global 
 parameters fixed, the dust spectrum shape is determined entirely by the two 
-dust temperatures, which are coupled. To constrain the dust temperatures,
- we sample in $T_2$, the hot dust temperature. For each sample in $T_2$, we 
-compute the corresponding value of $T_1$, thereby determining the temperature
-and emissivity power law index for both MBB components and thus fully 
-specifying the SED shape. In principle, we could sample in either $T_1$ or 
-$T_2$, but have chosen to sample in $T_2$ because emission from this component 
-dominates in the relatively high frequency bands which most strongly constrain 
-the dust temperatures.
+dust temperatures, which are coupled. To constrain the dust temperatures, we 
+sample in $T_2$, the hot dust temperature. For each sample in $T_2$, we compute
+the corresponding value of $T_1$, thereby determining the temperature and 
+emissivity power law index for both MBB components and thus fully specifying 
+the SED shape. In principle, we could sample in either $T_1$ or $T_2$, but have
+chosen to sample in $T_2$ because emission from this component dominates in the
+relatively high frequency bands which most strongly constrain the dust 
+temperatures.
 
 For the lower resolution fits described in $\S$\ref{sec:lores}, we sample
 in three parameters: $\tilde{I}_{545}$, $T_2$, and $f_1$.
