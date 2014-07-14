@@ -1038,9 +1038,10 @@ in three parameters: $\tilde{I}_{545}$, $T_2$, and $f_1$.
 
 In our full-resolution fits, we use a MCMC approach to constrain the 
 parameters $\tilde{I}_{545}$ and $T_2$. For each pixel, we run a 
-Metropolis-Hastings Markov chain sampling the posterior probability as a 
-function of the two parameters $\tilde{I}_{545}$ and $T_2$. More specifically, 
-we are sampling the posterior given by:
+Metropolis-Hastings Markov chain sampling the posterior probability of
+reproducing the observed 217-3000 GHz SED as a function of the two parameters 
+$\tilde{I}_{545}$ and $T_2$. More specifically, we are sampling the posterior 
+given by:
 
 % check whether I545 normalization parameter is the monochromatic
 % 545 GHz intensity, or if it is for the Planck bandpass
@@ -1088,8 +1089,7 @@ represents the instrumental noise in the pixel of interest, and is taken to be
 the square root of the \verb|ii_cov| parameter that accompanies each 
 \PLANCK~intensity map.
 
-In order to ensure reasonable fit results at high latitude where the intensity 
-constraints are noisy, we include a prior on $T_2$:
+We include the following prior on the hot dust temperature:
 
 \begin{equation} \label{equ:t2prior}
 P(T_2) = \mathcal{N}(T_2|\bar{T}_2, \sigma_{\bar{T}_2})
@@ -1098,11 +1098,15 @@ P(T_2) = \mathcal{N}(T_2|\bar{T}_2, \sigma_{\bar{T}_2})
 % justification for T2 prior standard deviation
 With $\bar{T}_2$ = 15.7 K and $\sigma_{\bar{T}_2}$ = 1.4 K. The $T_2$ prior 
 mean is chosen based on the typical high-latitude $T_2$ value derived from
-the correlation slope analysis from $\S$\ref{sec:global}. In principle, there 
-can also be an informative prior on $\tilde{I}_{545}$. However, we have chosen 
-to assume a uniform prior on the SED normalization and, as a matter of 
-notation, will omit $P(\tilde{I}_{545})$ henceforward. In practice we always 
-perform computations using logarithms of the relevant probabilities.
+the correlation slope analysis from $\S$\ref{sec:global}. We find, as 
+desired, that this relatively broad $T_2$ prior has little influence on the 
+derived temperatures, other than to regularize the rare pixels with one or more
+defective intensities which might otherwise yield unreasonable parameter
+estimates. In principle, there can also be an informative prior on 
+$\tilde{I}_{545}$. However, we have chosen to assume a uniform prior on the SED
+normalization and, as a matter of notation, will omit $P(\tilde{I}_{545})$ 
+henceforward. In practice we always perform computations using logarithms of 
+the relevant probabilities.
 %mention something about the proposal distribution at some point?
 
 \begin{figure}
