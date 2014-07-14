@@ -959,10 +959,10 @@ allow the dust temperature to vary spatially.
 
 The following subsections detail our procedure for constraining the 
 two-component dust emission model parameters which are permitted to vary
-spatially. We perform two types of fits: (1) full-resolution 
-$6.1'$ fits, in which just two parameters, the SED normalization and the hot 
-dust temperature $T_2$, vary spatially and (2) lower-resolution fits in which 
-$f_1$ is also allowed to vary from one line of sight to another.
+spatially. We use the MCMC procedure described to perform two types of fits: 
+(1) full-resolution $6.1'$ fits, in which only  the SED normalization and dust 
+temperatures vary spatially, and (2) lower-resolution fits in which $f_1$ is 
+also allowed to vary from one line of sight to another.
 
 \begin{figure}
 \begin{center}
@@ -995,7 +995,7 @@ Right: Low S/N pixel at high-latitude in the Galactic south.}
 
 \subsection{Pixelization}
 \label{sec:pix}
-For the purpose of fitting, we break the sky into $\sim$50 million pixels of 
+For the purpose of fitting, we divide the sky into $\sim$50 million pixels of 
 angular size $\sim$1.72$'$, defined by the HEALPix pixelization in Galactic 
 coordinates, with $N_{side}$=2048. This pixelization is convenient because it 
 is the same format in which the \PLANCK~HFI maps were released, and because it 
@@ -1007,21 +1007,22 @@ spatial pixel independently.
 \label{sec:samp}
 As discussed in $\S$\ref{sec:modeling}, our full-resolution fits
 consider the ``global'' parameters $f_1$, $q_1/q_2$, $\beta_1$, $\beta_2$ to be
- fixed, while the dust spectrum normalization and dust temperature vary for
-each line-of-sight. In order to predict the dust SED for a given pixel, we are 
-therefore left with two remaining degrees of freedom, and must choose an 
-appropriate set of two parameters to sample and thereby constrain via MCMC. To 
-determine the SED normalization in each pixel, we draw samples in 
-$\tilde{I}_{545}$, the broadband intensity in the 545 GHz bandpass, as defined 
-in Equation \ref{eqn:inten}. With the four aforementioned global parameters 
-fixed, the dust spectrum shape is determined entirely by the two dust 
-temperatures, which are coupled. To constrain the dust temperatures,
+fixed, while the dust spectrum normalization and dust temperatures are allowed 
+to vary for each line-of-sight. In order to predict the dust SED for a given 
+pixel, we are thus left with two remaining degrees of freedom, and must 
+choose an appropriate set of two parameters to sample and thereby constrain via
+MCMC. To determine the SED normalization in each pixel, we draw samples in 
+$\tilde{I}_{545}$, the `IRAS convention' intensity in the 545 GHz bandpass, 
+as defined in Equation \ref{eqn:inten}. With the four aforementioned global 
+parameters fixed, the dust spectrum shape is determined entirely by the two 
+dust temperatures, which are coupled. To constrain the dust temperatures,
  we sample in $T_2$, the hot dust temperature. For each sample in $T_2$, we 
-compute the corresponding value of $T_1$, thereby specifying ($\beta$, $T$) for
-both MBB components and thus fully specifying the SED shape. In principle,
-we could sample in either $T_1$ or $T_2$, but have chosen to sample in $T_2$ 
-because emission from this component dominates in the relatively high frequency
-bands which most strongly constrain the dust temperatures.
+compute the corresponding value of $T_1$, thereby determining the temperature
+and emissivity power law index for both MBB components and thus fully 
+specifying the SED shape. In principle, we could sample in either $T_1$ or 
+$T_2$, but have chosen to sample in $T_2$ because emission from this component 
+dominates in the relatively high frequency bands which most strongly constrain 
+the dust temperatures.
 
 For the lower resolution fits described in $\S$\ref{sec:lores}, we sample
 in three parameters: $\tilde{I}_{545}$, $T_2$, and $f_1$.
@@ -1050,8 +1051,9 @@ P(\tilde{I}_{545}, T_2|\{I\}) \propto \mathcal{L}(\{I\}|\tilde{I}_{545}, T_2)P(T
 
 % be careful about notational consistency with e.g. tildes, etc.. in this sect
 
-Here \{$I$\} denotes the set of observed broadband intensities, $I_{217}$, 
-$I_{353}$, etc. The likelihood function is given by:
+Here \{$I$\} denotes the set of observed intensities quoted under
+the `IRAS convention': $I_{217}$, $I_{353}$, ... The likelihood function is 
+given by:
 
 \begin{equation} \label{equ:like}
 \mathcal{L}(\{I\}|\tilde{I}_{545}, T_2) = \displaystyle\prod\limits_{i}\mathcal{N}(\tilde{I}_{\nu_{i}}|I_{\nu_{i}}, \sigma_{\nu_i})
@@ -1083,19 +1085,17 @@ represents the instrumental noise in the pixel of interest, and is taken to be
 the square root of the \verb|ii_cov| parameter that accompanies each 
 \PLANCK~intensity map.
 
-In order to obtain reasonable fitting results at high latitude where the data 
-is noisy, we include the prior on $T_2$:
-
-%what about the offset uncertainty for 217 GHz
+In order to ensure reasonable fit results at high latitude where the intensity 
+constraints are noisy, we include a prior on $T_2$:
 
 \begin{equation} \label{equ:t2prior}
 P(T_2) = \mathcal{N}(T_2|\bar{T}_2, \sigma_{\bar{T}_2})
 \end{equation}
 
-% maybe have a section justifying the T2 prior value of 16.2K, presumably using
-% FIRAS as a cross-check?
-
-With $\bar{T}_2$ = 16.2 K and $\sigma_{\bar{T}_2}$ = 1.4 K. In principle, there
+% justification for T2 prior standard deviation
+With $\bar{T}_2$ = 15.7 K and $\sigma_{\bar{T}_2}$ = 1.4 K. The $T_2$ prior 
+mean is chosen based on the typical high-latitude $T_2$ value derived from
+the correlation slope analysis from $\S$\ref{sec:global}. In principle, there 
 can also be an informative prior on $\tilde{I}_{545}$. However, we have chosen 
 to assume a uniform prior on the SED normalization and, as a matter of 
 notation, will omit $P(\tilde{I}_{545})$ henceforward. In practice we always 
@@ -1596,7 +1596,7 @@ frequency range.
 
 \begin{figure*}
 \begin{center}
-\epsfig{file=compare_lofreq.eps, width=6.6in}
+\epsfig{file=compare_lofreq.eps, width=6.8in}
 \caption{\label{fig:lofreq} Comparison of low-frequency thermal dust emission 
 predictions.}
 \end{center}
