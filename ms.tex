@@ -484,8 +484,8 @@ $-72$$<$$v_{LSR}$$<$$+25$ km\,s$^{-1}$) and fit the following model:
 \mathcal{I}_{\nu_i, p} = m\mathcal{I}_{857, p} + b + d\mathcal{D}_{p}
 \end{equation}
 
-With $p$ denoting a single nside=64 HEALPix pixel \citep{healpix} in the maps 
-$\mathcal{I}_{857}$, $\mathcal{I}_{\nu_i}$, and $\mathcal{D}$. Here 
+With $p$ denoting a single $N_{side}$=64 HEALPix pixel \citep{healpix} in the 
+maps $\mathcal{I}_{857}$, $\mathcal{I}_{\nu_i}$, and $\mathcal{D}$. Here 
 $\mathcal{I}_{857}$ is the \PLANCK~857 GHz map with zodiacal emission, compact 
 sources, and the constant offset of $\S$\ref{sec:zp_abs} removed, smoothed to 
 $1^{\circ}$ resolution. $\mathcal{I}_{\nu_i}$ is the corresponding $1^{\circ}$ 
@@ -967,7 +967,7 @@ also allowed to vary from one line of sight to another.
 \begin{figure}
 \begin{center}
 \epsfig{file=sed.eps, width=3.3in}
-\caption{\label{fig:sed} Planck SED for a single nside=2048 pixel in the 
+\caption{\label{fig:sed} Planck SED for a single $N_{side}$=2048 pixel in the 
 Polaris region. Note that the two lowest-frequency data points (\PLANCK~100, 
 143 GHz) were not used in our fit, while the three lowest-frequency data
 points were not used in the \cite{planckdust} fit.}
@@ -979,15 +979,15 @@ points were not used in the \cite{planckdust} fit.}
 \begin{figure*}
 \begin{center}
 \epsfig{file=posteriors.eps, width=7.0in}
-\caption{Gridded posterior PDFs for three nside=2048 pixels. Red crosses mark 
-the best-fit parameters based on our Markov chain sampling of the posterior. 
-The posterior distributions are in general extremely well-behaved, showing
-no multimodality or other pathological qualities. Our MCMC parameter 
+\caption{Gridded posterior PDFs for three $N_{side}$=2048 pixels. Red crosses 
+mark the best-fit parameters based on our Markov chain sampling of the 
+posterior. The posterior distributions are in general extremely well-behaved, 
+showing no multimodality or other pathological qualities. Our MCMC parameter 
 estimates coincide well with the peaks in the gridded posteriors. The 
 colorscale is linear in $log(P)$, with black representing the maximum of 
 $log(P)$ and white representing $max(log(P))-5$. Left: Low S/N pixel at 
-high-latitude in Galactic north. Center: High S/N pixel in the Polaris region. 
-Right: Low S/N pixel at high-latitude in the Galactic south.}
+high latitude in the Galactic north. Center: High S/N pixel in the Polaris 
+region. Right: Low S/N pixel at high latitude in the Galactic south.}
 \end{center}
 \end{figure*}
 
@@ -1597,8 +1597,19 @@ frequency range.
 \begin{figure*}
 \begin{center}
 \epsfig{file=compare_lofreq.eps, width=6.8in}
-\caption{\label{fig:lofreq} Comparison of low-frequency thermal dust emission 
-predictions.}
+\caption{\label{fig:lofreq} Comparison between low-frequency thermal dust 
+emission predictions from our best-fit two-component model (Table 
+\ref{tab:global}, model 2) and those of \cite{planckdust}. The top row shows
+scatterplots of the \cite{planckdust} predictions versus observed \PLANCK~100 
+GHz (left), \PLANCK~143 GHz (center) and \PLANCK~217 GHz (right). The bottom 
+row shows scatterplots of the corresponding two-component predictions versus
+\PLANCK~observations. In all cases, the blue line indicates the best-fit linear
+relationship, while the red line represents a perfect match between predictions
+and observations. The lines of best-fit illustrate that the single-MBB model 
+systematically underpredicts emission (in the multiplicative sense) by 18.8\%, 
+12.6\% and 7.9\% at 100, 143 and 217 GHz respectively. On the other hand, by 
+the same metric, the two-component model predictions at 100-217 GHz are always 
+accurate to within $\le$2.2\%.}
 \end{center}
 \end{figure*}
 
@@ -1767,6 +1778,10 @@ release, including observations acquired during additional orbits, will
 effectively eliminate any residual zodi problems in the \PLANCK~bands. Under 
 these circumstances it might then be worthwhile to consider revising the DIRBE 
 100$\mu$m zodi correction provided by SFD.
+
+% could add a sentence noting that similar zodi corrections are evident
+% in all existing, comparable temperature map data products : Planck 2013a,
+% SFD98 and FDS99
 
 % audit for word ``zodi'' ... is this an acceptable jargon term ?
 % could use IPD as an abbreviation at certain points, not sure if i've 
