@@ -1146,6 +1146,22 @@ $\sigma^2_{\tilde{I}_{545}}$=$\langle \tilde{I}^2_{545, j}
 $\sigma_{T_2}\sigma_{\tilde{I}_{545}}$=$\langle T_{2,j}-\langle T_2 \rangle 
 \rangle \langle \tilde{I}_{545, j} - \langle \tilde{I}_{545} \rangle \rangle$. 
 
+After obtaining this initial estimate of the covariance matrix for each
+pixel, we re-run the entire MCMC procedure, starting from the first burn-in 
+iteration, but this time beginning with a proposal distribution that is a 
+two-dimensional normal distribution with covariance equal to the first-pass
+covariance estimate. This gives the proposal distribution for each pixel
+ approximately the ``right shape'', whereas on the first pass we had to start
+by making ad hoc assumptions about the relative widths of the proposal 
+distribution in $\tilde{I}_{545}$ and $T_2$, and also assumed that the 
+$\sigma_{T_2}\sigma_{\tilde{I}_{545}}$=0 for the proposal distribution. We
+validated the recovered parameters and uncertainties from our MCMC procedure
+by comparing with results based on gridded posterior calculations. These 
+comparisons verified that the proposal distribution rescaling and reshaping 
+steps that we employ do improve the accuracy of the recovered 
+parameters/uncertainties, and that the parameters/uncertainties ultimately 
+derived are highly reliable.
+
 We also compute the corresponding estimate of the monochromatic two-component 
 intensity at 545 GHz, $M_{545}$ = $\langle M_{545, j} \rangle$ = 
 $\langle \tilde{I}_{545, j}/b_{545}(T_{2,j}) \rangle$  and its variance. 
