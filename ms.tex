@@ -1132,17 +1132,21 @@ acceptance fraction $f_{acc}$ as close as possible to the optimal value
 $f_{opt}=0.234$. This is accomplished by multiplying the proposal distribution 
 standard deviations by $f_{acc}$/$f_{opt}$.
 
-We then estimate the parameters and their covariances by performing 10000 steps
-during which we keep track of the proposed $T_{2, j}$ and $\tilde{I}_{545, j}$ 
-values at the $j^{th}$ step since the end of burn-in. From these 2000 samples, 
-we compute estimates of each parameter, $T_2$ = $\langle T_{2, j} \rangle$, 
-$\tilde{I}_{545}$ = $\langle \tilde{I}_{545, j} \rangle$, and of each 
-parameter's variance, 
-$\sigma^2_{T_2}$ = $\langle T^2_{2, j} \rangle-\langle T_{2, j} \rangle ^2$ and
+We then estimate the parameters and their uncertainties by performing 10,000 
+sampling steps, with $T_{2, j}$ and $\tilde{I}_{545, j}$ denoting the proposed 
+parameter values at the $j^{th}$ step since the end of burn-in. From these 
+10,000 samples, we compute estimates of each parameter's mean, 
+$\langle T_2 \rangle$ = $\langle T_{2, j} \rangle$, 
+$\langle \tilde{I}_{545} \rangle$ = $\langle \tilde{I}_{545, j} \rangle$, of 
+each parameter's variance, 
+$\sigma^2_{T_2}$ = $\langle T^2_{2, j} \rangle-\langle T_{2, j} \rangle ^2$, 
 $\sigma^2_{\tilde{I}_{545}}$=$\langle \tilde{I}^2_{545, j} 
-\rangle-\langle \tilde{I}_{545, j} \rangle ^2$. We also compute the 
-corresponding estimate of the monochromatic two-component intensity at 545 GHz,
-$M_{545}$ = $\langle M_{545, j} \rangle$ = 
+\rangle-\langle \tilde{I}_{545, j} \rangle ^2$ and of the covariance 
+$\sigma_{T_2}\sigma_{\tilde{I}_{545}}$=$\langle T_{2,j}-\langle T_2 \rangle 
+\rangle \langle \tilde{I}_{545, j} - \langle \tilde{I}_{545} \rangle \rangle$. 
+
+We also compute the corresponding estimate of the monochromatic two-component 
+intensity at 545 GHz, $M_{545}$ = $\langle M_{545, j} \rangle$ = 
 $\langle \tilde{I}_{545, j}/b_{545}(T_{2,j}) \rangle$  and its variance. 
 $M_{545}$ is of more general utility in making foreground predictions because 
 it provides the normalization for the two-component spectrum $M_{\nu}$, 
