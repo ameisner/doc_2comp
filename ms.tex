@@ -1162,15 +1162,20 @@ steps that we employ do improve the accuracy of the recovered
 parameters/uncertainties, and that the parameters/uncertainties ultimately 
 derived are highly reliable.
 
-We also compute the corresponding estimate of the monochromatic two-component 
-intensity at 545 GHz, $M_{545}$ = $\langle M_{545, j} \rangle$ = 
-$\langle \tilde{I}_{545, j}/b_{545}(T_{2,j}) \rangle$  and its variance. 
-$M_{545}$ is of more general utility in making foreground predictions because 
-it provides the normalization for the two-component spectrum $M_{\nu}$, 
-independent of the \PLANCK~545 GHz bandpass. Lastly, we compute the 545 GHz
-optical depth as $\tau_{545}$ = $\langle \tau_{545, j} \rangle$ = 
-$\langle M_{545, j}/S_{545, j} \rangle$ and its variance, with the source 
-function $S_{545}$ calculated according to Equation \ref{eqn:source}.
+Lastly, during post burn-in sampling, we also estimate the monochromatic 
+two-component intensity at 545 GHz, $M_{545}$ = $\langle M_{545, j} \rangle$ = 
+$\langle \tilde{I}_{545, j}/b_{545}(T_{2,j}) \rangle$, its variance, and
+the 545 GHz optical depth $\langle \tau_{545, j} \rangle$ = 
+$\langle M_{545, j}/S_{545, j} \rangle$ and its variance. $\tau_{545}$ and 
+$M_{545}$ are more readily useful than the sampling parameters themselves for 
+translating our fit results into predicted reddening ($\S$\ref{sec:ebv}) and 
+thermal dust emission ($\S$\ref{sec:lofreq}), respectively.
+
+%$M_{545}$ is of more general utility in making foreground predictions because 
+%it provides the normalization for the two-component spectrum $M_{\nu}$, 
+%independent of the \PLANCK~545 GHz bandpass. Finally, we acompute the 545 GHz
+%optical depth as $\tau_{545}$ = and its variance, with the source 
+%function $S_{545}$ calculated according to Equation \ref{eqn:source}.
 
 \subsection{Low-resolution Fits}
 \label{sec:lores}
