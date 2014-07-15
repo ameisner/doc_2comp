@@ -1055,9 +1055,9 @@ P(\tilde{I}_{545}, T_2|\vec{I}~) \propto \mathcal{L}(\vec{I}~|\tilde{I}_{545}, T
 
 % be careful about notational consistency with e.g. tildes, etc.. in this sect
 
-Here $\vec{I}$ denotes the vector of observed intensities quoted under
-the `IRAS convention': $\vec{I}$ = ($I_{217}$, $I_{353}$, ..., $I_{3000}$). The
-likelihood function is given by:
+Here $\vec{I}$ denotes the vector of observed thermal dust intensities quoted 
+under the `IRAS convention': $\vec{I}$ = ($I_{217}$, $I_{353}$, ..., 
+$I_{3000}$). The likelihood function is given by:
 
 \begin{equation} \label{equ:like}
 \mathcal{L}(\vec{I}~|\tilde{I}_{545}, T_2) = \displaystyle\prod\limits_{i}\mathcal{N}(\tilde{I}_{\nu_{i}}|I_{\nu_{i}}, \sigma_{\nu_i})
@@ -1184,43 +1184,14 @@ thermal dust emission ($\S$\ref{sec:lofreq}), respectively.
 %S/N we try fitting t2, normalization and one of q1/q2, f_1
 %using more bands (including 143, and maybe 100 GHz)
 
-As explained in $\S$\ref{sec:modeling} and $\S$\ref{sec:samp}, our 
-full-resolution fits fix the parameters $f_1$, $q_1/q_2$, $\beta_1$, $\beta_2$ 
-globally so that only the dust temperatures and SED normalization vary on a 
-per-pixel basis. The reason for fixing so many parameters is that, at $6.1'$
-FWHM, only five SED measurements are available per pixel.
+%As explained in $\S$\ref{sec:modeling} and $\S$\ref{sec:samp}, our 
+%full-resolution fits fix the parameters $f_1$, $q_1/q_2$, $\beta_1$, $\beta_2$ 
+%globally so that only the dust temperatures and SED normalization vary on a 
+%per-pixel basis. The reason for fixing so many parameters is that, at $6.1'$
+%FWHM, only five SED measurements are available per pixel.
 
 % need some sort of add on to last sentence or another sentence entirely
 % to the effect of ``staying in overconstrained regime''
-
-However, sacrificing angular resolution in order to incorporate 
-the \PLANCK~100, 143 GHz bands can allow us to introduce an additional free 
-parameter and run our Markov chains in three-dimensional parameter space.
-
-We ran the Markov chains in three dimensions by allowing 
-$f_1$ to be a third free parameter. In these chains, we sampled the posterior
-given by:
-
-\begin{equation}
-\label{eqn:f1post}
-P(\tilde{I}_{545}, T_2, f_1|\{I\}) \propto \mathcal{L}(\{I\}|\tilde{I}_{545}, T_2, f_1)P(T_2)P(f_1)
-\end{equation}
-
-We still employ the likelihood function of Equation \ref{equ:like}, the only
-difference being that $f_1$ can vary from proposal to proposal within each 
-individual pixel when predicting \{$\tilde{I}_{\nu_i}$\} with Equation 
-\ref{eqn:inten}. The prior $P(T_2)$ from Equation \ref{equ:t2prior} remains 
-unchanged. The prior on $f_1$ is:
-
-\begin{equation} \label{equ:f1prior}
-P(f_1) = \mathcal{N}(f_1|\bar{f}_1, \sigma_{\bar{f}_1})
-\end{equation}
-
-With $\bar{f}_1$=0.0363 and $\sigma_{\bar{f}_1}$=0.003. This is a fairly
-stringent prior, but we must restrict the fit from wandering with too much
-freedom, as we are attempting to constrain three parameters using an SED
-with only seven intensity measurements. To boost S/N, we have performed
-the fits using maps smoothed to $1^{\circ}$ resolution.
 
 \begin{figure}
 \begin{center}
@@ -1229,6 +1200,51 @@ the fits using maps smoothed to $1^{\circ}$ resolution.
 low-resolution fit in which $f_1$ is allowed to vary spatially.}
 \end{center}
 \end{figure}
+
+As mentioned in $\S$\ref{sec:modeling}, the combination of high S/N and high 
+angular resolution afforded by the \PLANCK~HFI maps provides us with the 
+opportunity to allow additional parameters of the two-component model, 
+previously fixed by FDS99, to vary spatially. Specifically, we consider
+allowing $f_1$ to vary, while maintaining $\beta_1$, $\beta_2$, and $q_1/q_2$
+spatially constant. In such fits, there will therefore be three free 
+parameters.
+
+% sentence or two about why f_1 is natural parameter to try varying 
+% rather than q1/q2 or beta1 or beta2 !!!!!~~!!!
+
+In order for such fits to remain sufficiently constrained with an additional 
+free parameter, we consider \PLANCK~maps smoothed to $1^{\circ}$ FWHM to 
+boost per-pixel S/N, and pixelize at $N_{side}=64$. We also include DIRBE 
+140$\mu$m and 240$\mu$m at degree resolution in the fits with free-$f_1$ fits.
+
+% also we're adding in 100 GHz and 143 GHz, which is something not
+% done in full-resolution fits
+
+We run the Markov chains in three dimensions sampling in all three of $f_1$,
+$\tilde{I}_{545}$ and $T_2$. We are now sampling the posterior given by:
+
+\begin{equation}
+\label{eqn:f1post}
+P(\tilde{I}_{545}, T_2, f_1|\{I\}) \propto \mathcal{L}(\{I\}|\tilde{I}_{545}, T_2, f_1)P(T_2)P(f_1)
+\end{equation}
+
+This posterior still employs the likelihood function of Equation 
+\ref{equ:like}, the only difference being that $f_1$ can vary from proposal to 
+proposal within each individual pixel when predicting \{$\tilde{I}_{\nu_i}$\} 
+with Equation \ref{eqn:inten}. The prior $P(T_2)$ from Equation 
+\ref{equ:t2prior} remains unchanged. The prior on $f_1$ is:
+
+\begin{equation} \label{equ:f1prior}
+P(f_1) = \mathcal{N}(f_1|\bar{f}_1, \sigma_{\bar{f}_1})
+\end{equation}
+
+With $\bar{f}_1$=0.0363 and $\sigma_{\bar{f}_1}$=0.003. This is a fairly
+stringent prior, but we must restrict the fit from wandering with too much
+freedom, as we are attempting to constrain three parameters using an SED
+with only nine intensity measurements, several of which are quite noisy. 
+%To boost S/N, we have performed
+%the fits using maps smoothed to $1^{\circ}$ resolution.
+
 
 %%%\begin{figure}
 %%%\begin{center}
@@ -1239,10 +1255,16 @@ low-resolution fit in which $f_1$ is allowed to vary spatially.}
 %%%\end{center}
 %%%\end{figure}
 
-The resulting full-sky map of $f_1$ is shown in Figure \ref{fig:f1}. Some of 
-the most striking features occur near the north Galactic pole, and to 
-highlight these regions of unusually high $f_1$, we display the northern
-Galactic hemisphere in Lambert projection in Figure \ref{fig:f1}.
+The resulting full-sky map of $f_1$ is shown in Figure \ref{fig:f1}. A 
+general trend of increasing $f_1$ towards lower Galactic latitudes is 
+apparent. The other most salient features are the relatively low
+values of $f_1$ in the Polaris flare, and the relatively high $f_1$ values
+near the north Galactic pole.
+
+%Some of 
+%the most striking features occur near the north Galactic pole, and to 
+%highlight these regions of unusually high $f_1$, we display the northern
+%Galactic hemisphere in Lambert projection in Figure \ref{fig:f1}.
  
 % add comment about high f_1 regions near NGP
 % also add sentences referring reader to the two f_1 figures
