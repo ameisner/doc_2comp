@@ -1050,25 +1050,25 @@ given by:
 
 \begin{equation}
 \label{eqn:post}
-P(\tilde{I}_{545}, T_2|\{I\}) \propto \mathcal{L}(\{I\}|\tilde{I}_{545}, T_2)P(T_2)P(\tilde{I}_{545})
+P(\tilde{I}_{545}, T_2|\vec{I}~) \propto \mathcal{L}(\vec{I}~|\tilde{I}_{545}, T_2)P(T_2)P(\tilde{I}_{545})
 \end{equation}
 
 % be careful about notational consistency with e.g. tildes, etc.. in this sect
 
-Here \{$I$\} denotes the set of observed intensities quoted under
-the `IRAS convention': $I_{217}$, $I_{353}$, ... The likelihood function is 
-given by:
+Here $\vec{I}$ denotes the vector of observed intensities quoted under
+the `IRAS convention': $\vec{I}$ = ($I_{217}$, $I_{353}$, ..., $I_{3000}$). The
+likelihood function is given by:
 
 \begin{equation} \label{equ:like}
-\mathcal{L}(\{I\}|\tilde{I}_{545}, T_2) = \displaystyle\prod\limits_{i}\mathcal{N}(\tilde{I}_{\nu_{i}}|I_{\nu_{i}}, \sigma_{\nu_i})
+\mathcal{L}(\vec{I}~|\tilde{I}_{545}, T_2) = \displaystyle\prod\limits_{i}\mathcal{N}(\tilde{I}_{\nu_{i}}|I_{\nu_{i}}, \sigma_{\nu_i})
 \end{equation}
 
 %be more careful about notation re: color corrections
 
-Where the product runs over $\nu_i$ in $\{217,\ 353,\ 545,\ 857,\ 3000\}$ GHz
+Where the product runs over $\nu_i$$\in$$\{217,\ 353,\ 545,\ 857,\ 3000\}$ GHz
 and $\tilde{I}_{\nu_i}$ is a function of $\tilde{I}_{545}$ and $T_2$ as 
-specified by Equation \ref{eqn:inten}. For each pixel, the errors on each 
-intensity measurement $\sigma_{\nu_i}$ are given by:
+specified by Equation \ref{eqn:inten}. For each pixel, the uncertainty on each 
+intensity measurement $\sigma_{\nu_i}$ is given by:
 
 \begin{equation}
 \sigma_{\nu_i}(p) = \sqrt{c^2_{\nu_i}I_{\nu_i}(p)^2 + c^2_{\nu_i}CMB(p)^2 + (\delta O_{\nu_i})^2 + n_{\nu_i}(p)^2}
@@ -1544,6 +1544,19 @@ temperature dependence, but cannot completely resolve the systematic trends in
 reddening residuals.
 % last few words here are kind of bad, need better terminology
 
+\begin{figure*}
+\begin{center}
+\epsfig{file=ebv_resid_ecl.eps, width=6.6in}
+\caption{\label{fig:resid_ecl} Same as Figure \ref{fig:resid}, but 
+restricting to high ecliptic latitude, $|\beta|>20^{\circ}$. The top left and 
+top right plots both show that the bending of the reddening residuals as a 
+function of $E(B-V)_{SFD}$ as seen in Figure \ref{fig:resid} has been 
+eliminated. Further, the two-component reddening residual temperature 
+dependence (bottom left) has been significantly reduced relative to the
+corresponding trend shown in Figure \ref{fig:resid}, bottom left panel.}
+\end{center}
+\end{figure*}
+
 The only solution we have been able to identify that both removes the `bend' 
 vs. $E(B-V)_{SFD}$ and simultaneously reduces the temperature dependence of the
 reddening residuals is cutting out the ecliptic plane by restricting to 
@@ -1558,19 +1571,6 @@ Perhaps the improvements in the two-component reddening residuals after
 restricting to high ecliptic latitude should come as no surprise, given that 
 the ecliptic plane is the most obvious systematic problem with our temperature 
 map (see the full-sky results shown in Figure \ref{fig:results}).
-
-\begin{figure*}
-\begin{center}
-\epsfig{file=ebv_resid_ecl.eps, width=6.6in}
-\caption{\label{fig:resid_ecl} Same as Figure \ref{fig:resid}, but 
-restricting to high ecliptic latitude, $|\beta|>20^{\circ}$. The top left and 
-top right plots both show that the bending of the reddening residuals as a 
-function of $E(B-V)_{SFD}$ as seen in Figure \ref{fig:resid} has been 
-eliminated. Further, the two-component reddening residual temperature 
-dependence (bottom left) has been significantly reduced relative to the
-corresponding trend shown in Figure \ref{fig:resid}, bottom left panel.}
-\end{center}
-\end{figure*}
 
 After cutting the ecliptic plane, we found that only small zero level
 perturbations were required to fully flatten the temperature residuals,
