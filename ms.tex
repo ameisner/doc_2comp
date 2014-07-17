@@ -219,6 +219,7 @@ The FWHM values we assign to the native \PLANCK~maps are taken from
 \cite{planckbeam}, and are listed in Table \ref{table:offs}.
 
 \subsection{Molecular Emission}
+\label{sec:mole}
 Because the FIRAS spectra consist of many narrow frequency bins, FDS99 were
 able to discard the relatively small number of frequency intervals contaminated
 by strong molecular line emission. Unfortunately, while the \PLANCK~data 
@@ -1197,7 +1198,11 @@ thermal dust emission ($\S$\ref{sec:lofreq}), respectively.
 \begin{center}
 \epsfig{file=f1_1deg.eps, width=3.3in}
 \caption{\label{fig:f1} $1^{\circ}$ FWHM map of $f_1$ derived from our 
-low-resolution fit in which $f_1$ is allowed to vary spatially.}
+low-resolution fit in which $f_1$ is allowed to vary spatially. Red coloring
+masks pixels with appreciable molecular emission, as defined in 
+$\S$\ref{sec:mole}. Such pixels should not be trusted in this analysis, which 
+is sensitive to the SED shape at low frequencies that are contaminated by CO 
+line emission.}
 \end{center}
 \end{figure}
 
