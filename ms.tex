@@ -1007,25 +1007,25 @@ spatial pixel independently.
 \label{sec:samp}
 As discussed in $\S$\ref{sec:modeling}, our full-resolution fits
 consider the ``global'' parameters $f_1$, $q_1/q_2$, $\beta_1$, $\beta_2$ to be
-fixed. By default, we employ the best-fit \PLANCK+DIRBE global parameters of 
-Table \ref{tab:global}, model 2, although our data release 
+spatially constant. By default, we employ the best-fit \PLANCK+DIRBE global 
+parameters of Table \ref{tab:global}, model 2, although our data release 
 ($\S$\ref{sec:release}) includes fits with the FDS99 global parameters as well.
-Still,  the dust spectrum normalization and dust temperatures are allowed to 
-vary for each line-of-sight. In order to predict the dust SED for a given 
+For each line of sight, only the dust spectrum normalization and dust 
+temperatures are allowed to vary. In order to predict the dust SED for a given 
 pixel, we are thus left with two remaining degrees of freedom, and must choose 
 an appropriate set of two parameters to sample and thereby constrain via MCMC. 
 To determine the SED normalization in each pixel, we draw samples in 
-$\tilde{I}_{545}$, the `IRAS convention' intensity in the 545 GHz bandpass, as 
-defined in Equation \ref{eqn:inten}. With the four aforementioned global 
-parameters fixed, the dust spectrum shape is determined entirely by the two 
-dust temperatures, which are coupled. To constrain the dust temperatures, we 
-sample in $T_2$, the hot dust temperature. For each sample in $T_2$, we compute
-the corresponding value of $T_1$, thereby determining the temperature and 
-emissivity power law index for both MBB components and thus fully specifying 
-the SED shape. In principle, we could sample in either $T_1$ or $T_2$, but have
-chosen to sample in $T_2$ because emission from this component dominates in the
-relatively high frequency bands which most strongly constrain the dust 
-temperatures.
+$\tilde{I}_{545}$, the `IRAS convention' intensity in the \PLANCK~545 GHz 
+bandpass, as defined in Equation \ref{eqn:inten}. With the four aforementioned 
+global parameters fixed, the dust spectrum shape is determined entirely by the 
+two dust temperatures, which are coupled. To constrain the dust temperatures, 
+we sample in $T_2$, the hot dust temperature. For each sample in $T_2$, we 
+compute the corresponding value of $T_1$, thereby determining the temperature 
+and emissivity power law index for both MBB components and thus fully 
+specifying the SED shape. In principle, we could sample in either $T_1$ or 
+$T_2$, but have chosen to sample in $T_2$ because emission from this component 
+dominates in the relatively high frequency bands which most strongly constrain 
+the dust temperatures.
 
 For the lower resolution fits described in $\S$\ref{sec:lores}, we sample
 in three parameters: $\tilde{I}_{545}$, $T_2$, and $f_1$.
@@ -1196,7 +1196,7 @@ thermal dust emission ($\S$\ref{sec:lofreq}), respectively.
 \begin{figure}
 \begin{center}
 \epsfig{file=f1_1deg.eps, width=3.3in}
-\caption{\label{fig:f1} The $1^{\circ}$ FWHM map of $f_1$ derived from our 
+\caption{\label{fig:f1} $1^{\circ}$ FWHM map of $f_1$ derived from our 
 low-resolution fit in which $f_1$ is allowed to vary spatially.}
 \end{center}
 \end{figure}
@@ -1206,33 +1206,36 @@ angular resolution afforded by the \PLANCK~HFI maps provides us with the
 opportunity to allow additional parameters of the two-component model, 
 previously fixed by FDS99, to vary spatially. Specifically, we consider
 allowing $f_1$ to vary, while maintaining $\beta_1$, $\beta_2$, and $q_1/q_2$
-spatially constant. In such fits, there will therefore be three free 
-parameters.
+spatially constant. In principle, we could alternatively introduce a third free
+ parameter by allowing $q_1/q_2$, $\beta_1$ or $\beta_2$ to vary while holding 
+$f_1$ fixed. However, a model in which $f_1$ varies continuously from one line 
+of sight to another is the most natural three-parameter scenario, in that $f_1$
+variation can be attributed to continuous variation of the dust species' mass
+fractions, whereas continuous variations in the other global parameters, which 
+represent grain emission/absoprtion properties, seem less plausible.
 
 % sentence or two about why f_1 is natural parameter to try varying 
 % rather than q1/q2 or beta1 or beta2 !!!!!~~!!!
 
-In order for such fits to remain sufficiently constrained with an additional 
-free parameter, we consider \PLANCK~maps smoothed to $1^{\circ}$ FWHM to 
-boost per-pixel S/N, and pixelize at $N_{side}=64$. We also include DIRBE 
-140$\mu$m and 240$\mu$m at degree resolution in the fits with free-$f_1$ fits.
-
-% also we're adding in 100 GHz and 143 GHz, which is something not
-% done in full-resolution fits
+In order for our variable $f_1$ fits to remain sufficiently constrained with 
+the addition of another free parameter, we consider \PLANCK~maps smoothed to 
+$1^{\circ}$ FWHM for increased S/N, and pixelize at $N_{side}=64$. To best
+constrain the model parameters in each pixel, we also include \PLANCK~100 GHz 
+and 143 GHz, and DIRBE 140$\mu$m and 240$\mu$m, all at $1^{\circ}$ resolution.
 
 We run the Markov chains in three dimensions sampling in all three of $f_1$,
 $\tilde{I}_{545}$ and $T_2$. We are now sampling the posterior given by:
 
 \begin{equation}
 \label{eqn:f1post}
-P(\tilde{I}_{545}, T_2, f_1|\{I\}) \propto \mathcal{L}(\{I\}|\tilde{I}_{545}, T_2, f_1)P(T_2)P(f_1)
+P(\tilde{I}_{545}, T_2, f_1|\vec{I}~) \propto \mathcal{L}(\vec{I}~|\tilde{I}_{545}, T_2, f_1)P(T_2)P(f_1)
 \end{equation}
 
 This posterior still employs the likelihood function of Equation 
 \ref{equ:like}, the only difference being that $f_1$ can vary from proposal to 
 proposal within each individual pixel when predicting \{$\tilde{I}_{\nu_i}$\} 
 with Equation \ref{eqn:inten}. The prior $P(T_2)$ from Equation 
-\ref{equ:t2prior} remains unchanged. The prior on $f_1$ is:
+\ref{equ:t2prior} remains unchanged. We adopt the following prior on $f_1$:
 
 \begin{equation} \label{equ:f1prior}
 P(f_1) = \mathcal{N}(f_1|\bar{f}_1, \sigma_{\bar{f}_1})
