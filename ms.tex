@@ -1207,24 +1207,22 @@ opportunity to allow additional parameters of the two-component model,
 previously fixed by FDS99, to vary spatially. Specifically, we consider
 allowing $f_1$ to vary, while maintaining $\beta_1$, $\beta_2$, and $q_1/q_2$
 spatially constant. In principle, we could alternatively introduce a third free
- parameter by allowing $q_1/q_2$, $\beta_1$ or $\beta_2$ to vary while holding 
+parameter by permitting $\beta_1$, $\beta_2$ or $q_1/q_2$ to vary while holding
 $f_1$ fixed. However, a model in which $f_1$ varies continuously from one line 
 of sight to another is the most natural three-parameter scenario, in that $f_1$
-variation can be attributed to continuous variation of the dust species' mass
+variation can be attributed to continuous changes in the dust species' mass
 fractions, whereas continuous variations in the other global parameters, which 
 represent grain emission/absoprtion properties, seem less plausible.
 
-% sentence or two about why f_1 is natural parameter to try varying 
-% rather than q1/q2 or beta1 or beta2 !!!!!~~!!!
+In order for our variable $f_1$ fits to remain sufficiently constrained 
+following the introduction of a third free parameter, we enhance per-pixel S/N 
+by smoothing the input maps $1^{\circ}$ FWHM, and pixelize at $N_{side}=64$. To
+best constrain the model parameters in each pixel, we also include \PLANCK~100 
+GHz and 143 GHz, and DIRBE 140$\mu$m and 240$\mu$m, all at $1^{\circ}$ 
+resolution.
 
-In order for our variable $f_1$ fits to remain sufficiently constrained with 
-the addition of another free parameter, we consider \PLANCK~maps smoothed to 
-$1^{\circ}$ FWHM for increased S/N, and pixelize at $N_{side}=64$. To best
-constrain the model parameters in each pixel, we also include \PLANCK~100 GHz 
-and 143 GHz, and DIRBE 140$\mu$m and 240$\mu$m, all at $1^{\circ}$ resolution.
-
-We run the Markov chains in three dimensions sampling in all three of $f_1$,
-$\tilde{I}_{545}$ and $T_2$. We are now sampling the posterior given by:
+We now run Markov chains sampling in all three of $f_1$, $\tilde{I}_{545}$ and 
+$T_2$, with the posterior given by:
 
 \begin{equation}
 \label{eqn:f1post}
@@ -1244,10 +1242,7 @@ P(f_1) = \mathcal{N}(f_1|\bar{f}_1, \sigma_{\bar{f}_1})
 With $\bar{f}_1$=0.0363 and $\sigma_{\bar{f}_1}$=0.003. This is a fairly
 stringent prior, but we must restrict the fit from wandering with too much
 freedom, as we are attempting to constrain three parameters using an SED
-with only nine intensity measurements, several of which are quite noisy. 
-%To boost S/N, we have performed
-%the fits using maps smoothed to $1^{\circ}$ resolution.
-
+with only nine intensity measurements, several of which are quite noisy.
 
 %%%\begin{figure}
 %%%\begin{center}
