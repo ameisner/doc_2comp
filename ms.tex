@@ -1044,11 +1044,6 @@ reproducing the observed 217-3000 GHz SED as a function of the two parameters
 $\tilde{I}_{545}$ and $T_2$. More specifically, we are sampling the posterior 
 given by:
 
-% check whether I545 normalization parameter is the monochromatic
-% 545 GHz intensity, or if it is for the Planck bandpass
-% i think it should eventually be monochromatic, since that will be
-% more useful to people who want SED predictions
-
 \begin{equation}
 \label{eqn:post}
 P(\tilde{I}_{545}, T_2|\vec{I}~) \propto \mathcal{L}(\vec{I}~|\tilde{I}_{545}, T_2)P(T_2)P(\tilde{I}_{545})
@@ -1057,8 +1052,8 @@ P(\tilde{I}_{545}, T_2|\vec{I}~) \propto \mathcal{L}(\vec{I}~|\tilde{I}_{545}, T
 % be careful about notational consistency with e.g. tildes, etc.. in this sect
 
 Here $\vec{I}$ denotes the vector of observed thermal dust intensities quoted 
-under the `IRAS convention': $\vec{I}$ = ($I_{217}$, $I_{353}$, ..., 
-$I_{3000}$). The likelihood function is given by:
+under the `IRAS convention': $\vec{I}$ = ($I_{217}$, $I_{353}$, $I_{545}$, 
+$I_{857}$, $I_{3000}$). The likelihood function is given by:
 
 \begin{equation} \label{equ:like}
 \mathcal{L}(\vec{I}~|\tilde{I}_{545}, T_2) = \displaystyle\prod\limits_{i}\mathcal{N}(\tilde{I}_{\nu_{i}}|I_{\nu_{i}}, \sigma_{\nu_i})
@@ -1221,10 +1216,10 @@ represent grain emission/absoprtion properties, seem less plausible.
 
 In order for our variable $f_1$ fits to remain sufficiently constrained 
 following the introduction of a third free parameter, we enhance per-pixel S/N 
-by smoothing the input maps $1^{\circ}$ FWHM, and pixelize at $N_{side}=64$. To
-best constrain the model parameters in each pixel, we also include \PLANCK~100 
-GHz and 143 GHz, and DIRBE 140$\mu$m and 240$\mu$m, all at $1^{\circ}$ 
-resolution.
+by smoothing the input maps to $1^{\circ}$ FWHM, and pixelize at $N_{side}=64$.
+To best constrain the model parameters in each pixel, we also include 
+\PLANCK~100 GHz and 143 GHz, and DIRBE 140$\mu$m and 240$\mu$m, all at 
+$1^{\circ}$ resolution.
 
 We now run Markov chains sampling in all three of $f_1$, $\tilde{I}_{545}$ and 
 $T_2$, with the posterior given by:
@@ -1234,20 +1229,25 @@ $T_2$, with the posterior given by:
 P(\tilde{I}_{545}, T_2, f_1|\vec{I}~) \propto \mathcal{L}(\vec{I}~|\tilde{I}_{545}, T_2, f_1)P(T_2)P(f_1)
 \end{equation}
 
-This posterior still employs the likelihood function of Equation 
-\ref{equ:like}, the only difference being that $f_1$ can vary from proposal to 
-proposal within each individual pixel when predicting \{$\tilde{I}_{\nu_i}$\} 
-with Equation \ref{eqn:inten}. The prior $P(T_2)$ from Equation 
-\ref{equ:t2prior} remains unchanged. We adopt the following prior on $f_1$:
+The likelihood here is conceptually the same as that of Equation 
+\ref{equ:like}, but now depends on $f_1$, which can vary from proposal to 
+proposal within each individual pixel. The other difference is that 
+$\vec{\mathbf{I}}$ and $\underline{\mathbf{\tilde{I}}}$ now include 100 GHz, 
+143 GHz, 140$\mu$m and 240$\mu$m, in addition to the five bands used for the 
+full-resolution fits.
+
+The prior $P(T_2)$ from Equation \ref{equ:t2prior} 
+remains unchanged. We adopt the following prior on $f_1$:
 
 \begin{equation} \label{equ:f1prior}
 P(f_1) = \mathcal{N}(f_1|\bar{f}_1, \sigma_{\bar{f}_1})
 \end{equation}
 
-With $\bar{f}_1$=0.0363 and $\sigma_{\bar{f}_1}$=0.003. This is a fairly
-stringent prior, but we must restrict the fit from wandering with too much
-freedom, as we are attempting to constrain three parameters using an SED
-with only nine intensity measurements, several of which are quite noisy.
+With $\bar{f}_1$=0.0485 (from Table \ref{tab:global}, model 2) and 
+$\sigma_{\bar{f}_1}$=0.003. This is a fairly stringent prior, but we must 
+restrict the fit from wandering with too much freedom, as we are attempting to 
+constrain three parameters using an SED with only nine intensity measurements, 
+several of which are quite noisy.
 
 %%%\begin{figure}
 %%%\begin{center}
@@ -1549,6 +1549,19 @@ quadrants.
 list.
 \end{itemize}
 
+\begin{figure*}
+\begin{center}
+\epsfig{file=ebv_resid_ecl.eps, width=6.6in}
+\caption{\label{fig:resid_ecl} Same as Figure \ref{fig:resid}, but 
+restricting to high ecliptic latitude, $|\beta|>20^{\circ}$. The top left and 
+top right plots both show that the bending of the reddening residuals as a 
+function of $E(B-V)_{SFD}$ as seen in Figure \ref{fig:resid} has been 
+eliminated. Further, the two-component reddening residual temperature 
+dependence (bottom left) has been significantly reduced relative to the
+corresponding trend shown in Figure \ref{fig:resid}, bottom left panel.}
+\end{center}
+\end{figure*}
+
 However, we found that changing the zero level offsets of the input maps 
 had a significant effect on the strength of the anticorrelation between median 
 reddening residual and $T_2$. In particular, we experimented with perturbing 
@@ -1568,19 +1581,6 @@ offsets showed hints of promise in rectifying the reddening residual
 temperature dependence, but cannot completely resolve the systematic trends in 
 reddening residuals.
 % last few words here are kind of bad, need better terminology
-
-\begin{figure*}
-\begin{center}
-\epsfig{file=ebv_resid_ecl.eps, width=6.6in}
-\caption{\label{fig:resid_ecl} Same as Figure \ref{fig:resid}, but 
-restricting to high ecliptic latitude, $|\beta|>20^{\circ}$. The top left and 
-top right plots both show that the bending of the reddening residuals as a 
-function of $E(B-V)_{SFD}$ as seen in Figure \ref{fig:resid} has been 
-eliminated. Further, the two-component reddening residual temperature 
-dependence (bottom left) has been significantly reduced relative to the
-corresponding trend shown in Figure \ref{fig:resid}, bottom left panel.}
-\end{center}
-\end{figure*}
 
 The only solution we have been able to identify that both removes the `bend' 
 vs. $E(B-V)_{SFD}$ and simultaneously reduces the temperature dependence of the
