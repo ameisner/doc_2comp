@@ -4,6 +4,7 @@
 \usepackage[dvips]{rotating}
 \usepackage{subfigure}
 \usepackage{mathrsfs}
+\usepackage{amsmath}
 
 \newcommand{\IRAS}{{\it IRAS}}
 \newcommand{\HERSCHEL}{{\it Herschel}}
@@ -807,8 +808,8 @@ thereby modify the dust spectrum shape.
 
 With these color corrections and the  formalism established in 
 $\S$\ref{sec:modeling} in hand, we can mathematically state the model we will 
-use e.g. during MCMC sampling to predict the observed SED, which we will 
-denote by \{$\tilde{I}_{\nu_i}$\}. The predicted observations are given by:
+use e.g. during MCMC sampling to predict the observed SED. The predicted 
+observation in band $\nu_i$ is given by:
 
 \begin{equation}
 \label{eqn:inten}
@@ -1040,34 +1041,50 @@ in three parameters: $\tilde{I}_{545}$, $T_2$, and $f_1$.
 In our full-resolution fits, we use a MCMC approach to constrain the 
 parameters $\tilde{I}_{545}$ and $T_2$. For each pixel, we run a 
 Metropolis-Hastings (MH) Markov chain sampling the posterior probability of
-reproducing the observed 217-3000 GHz SED as a function of the two parameters 
+the observed 217-3000 GHz thermal dust SED as a function of the two parameters 
 $\tilde{I}_{545}$ and $T_2$. More specifically, we are sampling the posterior 
 given by:
 
 \begin{equation}
 \label{eqn:post}
-P(\tilde{I}_{545}, T_2|\vec{I}~) \propto \mathcal{L}(\vec{I}~|\tilde{I}_{545}, T_2)P(T_2)P(\tilde{I}_{545})
+P(\tilde{I}_{545}, T_2|\vec{\mathbf{I}}~) \propto \mathcal{L}(\vec{\mathbf{I}}~|\tilde{I}_{545}, T_2)P(T_2)P(\tilde{I}_{545})
 \end{equation}
 
 % be careful about notational consistency with e.g. tildes, etc.. in this sect
 
-Here $\vec{I}$ denotes the vector of observed thermal dust intensities quoted 
-under the `IRAS convention': $\vec{I}$ = ($I_{217}$, $I_{353}$, $I_{545}$, 
+Here $\vec{\mathbf{I}}$ denotes the vector of observed thermal dust intensities quoted 
+under the `IRAS convention': $\vec{\mathbf{I}}$ = ($I_{217}$, $I_{353}$, $I_{545}$, 
 $I_{857}$, $I_{3000}$). The likelihood function is given by:
 
+%\begin{equation} \label{equ:like}
+%\mathcal{L}(\vec{I}~|\tilde{I}_{545}, T_2) = \displaystyle\prod\limits_{i}\mathcal{N}(\tilde{I}_{\nu_{i}}|I_{\nu_{i}}, \sigma_{\nu_i})
+%\end{equation}
+
 \begin{equation} \label{equ:like}
-\mathcal{L}(\vec{I}~|\tilde{I}_{545}, T_2) = \displaystyle\prod\limits_{i}\mathcal{N}(\tilde{I}_{\nu_{i}}|I_{\nu_{i}}, \sigma_{\nu_i})
+\mathcal{L}(\vec{I}~|\tilde{I}_{545}, T_2) = \textrm{exp}\Big[-\frac{1}{2}(\vec{\mathbf{I}}-\underline{\mathbf{\tilde{I}}})\Sigma^{-1}(\vec{\mathbf{I}}-\underline{\mathbf{\tilde{I}}})^T\Big]
 \end{equation}
 
 %be more careful about notation re: color corrections
 
-Where the product runs over $\nu_i$$\in$$\{217,\ 353,\ 545,\ 857,\ 3000\}$ GHz
-and $\tilde{I}_{\nu_i}$ is a function of $\tilde{I}_{545}$ and $T_2$ as 
-specified by Equation \ref{eqn:inten}. For each pixel, the uncertainty on each 
-intensity measurement $\sigma_{\nu_i}$ is given by:
+Here $\underline{\mathbf{\tilde{I}}}$ is the vector of predicted observations 
+based on Equation \ref{eqn:inten} and the proposed values of $\tilde{I}_{545}$ 
+and $T_2$: $\underline{\mathbf{\tilde{I}}} = $($\tilde{I}_{217}$, 
+$\tilde{I}_{353}$, $\tilde{I}_{545}$, $\tilde{I}_{857}$, $\tilde{I}_{3000}$). 
+$\Sigma$ is the covariance matrix constructed based on the uncertainties in the
+observed intensities:
 
 \begin{equation}
-\sigma_{\nu_i}(p) = \sqrt{c^2_{\nu_i}I_{\nu_i}(p)^2 + c^2_{\nu_i}CMB(p)^2 + (\delta O_{\nu_i})^2 + n_{\nu_i}(p)^2}
+\Sigma = \begin{pmatrix} \sigma^2_{217}                           & \ldots  & \rho_{217,3000}\sigma_{217}\sigma_{3000} \\ 
+                         \vdots                                   & \ddots  & \vdots                                   \\
+                         \rho_{3000,217}\sigma_{3000}\sigma_{217} & \ldots  & \sigma^2_{3000}
+\end{pmatrix}
+\end{equation}
+
+For each pixel $p$ and band $\nu_i$, the variance of the measured value 
+$I_{\nu_i}(p)$ is taken to be:
+
+\begin{equation}
+\sigma_{\nu_i}(p) = c^2_{\nu_i}I_{\nu_i}(p)^2 + c^2_{\nu_i}CMB(p)^2 + (\delta O_{\nu_i})^2 + n_{\nu_i}(p)^2
 \end{equation}
 
 % is I_nu on RHS inclusive of offsets or is it the ``pure'' thermal dust
