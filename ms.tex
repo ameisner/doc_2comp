@@ -1084,24 +1084,35 @@ For each pixel $p$ in band $\nu_i$, the variance of the measured value
 $I_{\nu_i}(p)$ is taken to be:
 
 \begin{multline}
-\sigma^2_{\nu_i}(p) = c^2_{\nu_i}I_{\nu_i}(p)^2 + c^2_{\nu_i}\sigma_{CMB}^2 + (\delta O_{\nu_i})^2 \\
-+ n_{\nu_i}^2 + \sigma^2_{\nu_i, CIBA} + \sigma^2_{CO}(p)
+\sigma^2_{\nu_i}(p) = c^2_{\nu_i}I_{\nu_i}^2(p) + c^2_{\nu_i}\sigma_{CMB, \nu_i}^2 + (\delta O_{\nu_i})^2 \\
++ n_{\nu_i}^2 + \sigma^2_{CIBA, \nu_i} + \sigma^2_{CO, \nu_i}(p)
 \end{multline}
 
 % is I_nu on RHS inclusive of offsets or is it the ``pure'' thermal dust
 % intensity
 
-This error budget is the same as that of \cite{planckdust} Equation 7. 
-$c_{\nu_i}$ is the multiplicative calibration uncertainty for the intensity in 
-each band. We have adopted the $c_{\nu_i}$ values listed in \cite{planckdust} 
-Table 1. For the 217 GHz band, we have assigned $c_{217 GHz}$ = 0.54, from 
-Table 11 of \cite{planckcalib}. $CMB$ represents the CMB intensity 
-subtracted at the relevant pixel. $\delta O_{\nu_i}$ represents the uncertainty
-in the offset used to tie \PLANCK~intensity to H\,\textsc{i}. We have adopted 
-the  $\delta O_{\nu_i}$ values of \cite{planckdust} Table 1. $n_{\nu_i}$ 
-represents the instrumental noise in the pixel of interest, and is taken to be 
-the square root of the \verb|ii_cov| parameter that accompanies each 
-\PLANCK~intensity map.
+% need to make sure to cite planckcalib paper
+
+This error budget is modeled after \cite{planckdust} Equation 7, but with some 
+modifications and additions. The first term accounts for the multiplicative 
+uncertainty on the input maps. Table \ref{table:offs} lists the multiplicative 
+calibration uncertainty $c_{\nu}$ for each band. These values are taken from 
+Table 11 of \cite{planckcalib}. The second term is intended to represent a 
+typical uncertainty due to the subtraction of the \verb|SMICA| CMB model. The 
+analogous term in \cite{planckdust} Equation 7 is 
+($c_{\nu}$$\times$\verb|SMICA|($p$))$^2$, i.e. a term proportional to CMB model
+amplitude. Because this error term's spatial dependence has the potential to 
+imprint the CMB anisotropies on the derived parameters, we have chosen to 
+replace \verb|SMICA|($p$) with a spatially constant, RMS value for the CMB 
+amplitude, $\sigma_{CMB}$. Table \ref{table:offs} lists the adopted values of 
+$\sigma_{CMB}$. $\delta O_{\nu_i}$ represents the uncertainty in the band 
+$\nu_i$ zero level offset, and the values of $\delta O_{\nu_i}$ can be read 
+off from the second column of Table \ref{table:offs}. $n_{\nu_i}$ represents 
+the instrumental noise in the pixel of interest, and is taken to be the square 
+root of the \verb|ii_cov| parameter that accompanies each \PLANCK~intensity 
+map.
+
+% still need to explain off-diagonal terms in covariance ...
 
 We include the following prior on the hot dust temperature:
 
