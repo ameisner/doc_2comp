@@ -1080,12 +1080,13 @@ observed intensities:
 \end{pmatrix}
 \end{equation}
 
-For each pixel $p$ and band $\nu_i$, the variance of the measured value 
+For each pixel $p$ in band $\nu_i$, the variance of the measured value 
 $I_{\nu_i}(p)$ is taken to be:
 
-\begin{equation}
-\sigma_{\nu_i}(p) = c^2_{\nu_i}I_{\nu_i}(p)^2 + c^2_{\nu_i}CMB(p)^2 + (\delta O_{\nu_i})^2 + n_{\nu_i}(p)^2
-\end{equation}
+\begin{multline}
+\sigma^2_{\nu_i}(p) = c^2_{\nu_i}I_{\nu_i}(p)^2 + c^2_{\nu_i}\sigma_{CMB}^2 + (\delta O_{\nu_i})^2 \\
++ n_{\nu_i}^2 + \sigma^2_{\nu_i, CIBA} + \sigma^2_{CO}(p)
+\end{multline}
 
 % is I_nu on RHS inclusive of offsets or is it the ``pure'' thermal dust
 % intensity
@@ -1110,7 +1111,7 @@ P(T_2) = \mathcal{N}(T_2|\bar{T}_2, \sigma_{\bar{T}_2})
 
 With $\bar{T}_2$ = 15.7 K and $\sigma_{\bar{T}_2}$ = 1.4 K. The $T_2$ prior 
 mean is chosen based on the typical high-latitude $T_2$ value derived from
-the correlation slope analysis from $\S$\ref{sec:global}. We find, as 
+the correlation slope analysis of $\S$\ref{sec:global}. We find, as 
 desired, that this relatively broad $T_2$ prior has little influence on the 
 derived temperatures, other than to regularize the rare pixels with one or more
 defective intensities which might otherwise yield unreasonable parameter
@@ -1119,7 +1120,6 @@ $\tilde{I}_{545}$. However, we have chosen to assume a uniform prior on the SED
 normalization and, as a matter of notation, will omit $P(\tilde{I}_{545})$ 
 henceforward. In practice we always perform computations using logarithms of 
 the relevant probabilities.
-%mention something about the proposal distribution at some point?
 
 \begin{figure}
 \begin{center}
@@ -1139,7 +1139,7 @@ DIRBE 100$\mu$m/240$\mu$m ratio map $\mathscr{R}$. The initial proposal
 distribution is a two-dimensional normal distribution, with 
 $\sigma_{T_2}$=0.25 K, 
 $\sigma_{\tilde{I}_{545}}$=max(0.01$\times$$I_{545}$, 0.05 MJy/sr) and
-$\sigma_{T_2}\sigma_{\tilde{I}_{545}}$=0. We run 5 iterations of burn-in, each 
+$\rho_{T_2, \tilde{I}_{545}}$=0. We run 5 iterations of burn-in, each 
 consisting of 500 MH steps. After each burn-in iteration, we rescale the 
 proposal distribution so as to ultimately attain an acceptance fraction 
 $f_{acc}$ as close as possible to the optimal value $f_{opt}=0.234$. This is 
@@ -1159,16 +1159,17 @@ $\sigma^2_{\tilde{I}_{545}}$=$\langle \tilde{I}^2_{545, j}
 $\sigma_{T_2}\sigma_{\tilde{I}_{545}}$=$\langle T_{2,j}-\langle T_2 \rangle 
 \rangle \langle \tilde{I}_{545, j} - \langle \tilde{I}_{545} \rangle \rangle$. 
 
-After obtaining this initial estimate of the covariance matrix for each
-pixel, we re-run the entire MCMC procedure, starting from the first burn-in 
-iteration, but this time beginning with a proposal distribution that is a 
-two-dimensional normal distribution with covariance equal to the first-pass
-covariance estimate. This gives the proposal distribution for each pixel
- approximately the ``right shape'', whereas on the first pass we had to start
-by making ad hoc assumptions about the relative widths of the proposal 
-distribution in $\tilde{I}_{545}$ and $T_2$, and also assumed that the 
-$\sigma_{T_2}\sigma_{\tilde{I}_{545}}$=0 for the proposal distribution. We
-validated the recovered parameters and uncertainties from our MCMC procedure
+After obtaining this initial estimate of the covariance matrix for each pixel, 
+we re-run a second iteration of the entire MCMC procedure, starting from the 
+first burn-in period. On this iteration, for each pixel, we begin with a 
+proposal distribution that is a two-dimensional Gaussian with covariance equal 
+to the first-pass covariance estimate. This gives the each pixel's proposal 
+distribution approximately the `right shape', whereas on the first pass we 
+started by simply guessing the relative widths of the proposal distribution in 
+$\tilde{I}_{545}$, $T_2$, and also assumed that the 
+$\rho_{T_2, \tilde{I}_{545}}$=0. 
+
+We validated the recovered parameters and uncertainties from our MCMC procedure
 by comparing with results based on gridded posterior calculations. These 
 comparisons verified that the proposal distribution rescaling and reshaping 
 steps that we employ do improve the accuracy of the recovered 
@@ -1177,34 +1178,15 @@ derived are highly reliable.
 
 Lastly, during post burn-in sampling, we also estimate the monochromatic 
 two-component intensity at 545 GHz, $M_{545}$ = $\langle M_{545, j} \rangle$ = 
-$\langle \tilde{I}_{545, j}/b_{545}(T_{2,j}) \rangle$, its variance, and
-the 545 GHz optical depth $\langle \tau_{545, j} \rangle$ = 
+$\langle \tilde{I}_{545, j}/b_{545}(T_{2,j}) \rangle$, its variance, and the 
+545 GHz optical depth $\tau_{545}$=$\langle \tau_{545, j} \rangle$ = 
 $\langle M_{545, j}/S_{545, j} \rangle$ and its variance. $\tau_{545}$ and 
 $M_{545}$ are more readily useful than the sampling parameters themselves for 
-translating our fit results into predicted reddening ($\S$\ref{sec:ebv}) and 
-thermal dust emission ($\S$\ref{sec:lofreq}), respectively.
-
-%$M_{545}$ is of more general utility in making foreground predictions because 
-%it provides the normalization for the two-component spectrum $M_{\nu}$, 
-%independent of the \PLANCK~545 GHz bandpass. Finally, we acompute the 545 GHz
-%optical depth as $\tau_{545}$ = and its variance, with the source 
-%function $S_{545}$ calculated according to Equation \ref{eqn:source}.
+translating our fit results into predictions of reddening ($\S$\ref{sec:ebv}) 
+and thermal dust emission ($\S$\ref{sec:lofreq}), respectively.
 
 \subsection{Low-resolution Fits}
 \label{sec:lores}
-%mention that the pixelization changes ---> to lower HEALpix nside
-%mention that over some region of the sky with high signal and high
-%S/N we try fitting t2, normalization and one of q1/q2, f_1
-%using more bands (including 143, and maybe 100 GHz)
-
-%As explained in $\S$\ref{sec:modeling} and $\S$\ref{sec:samp}, our 
-%full-resolution fits fix the parameters $f_1$, $q_1/q_2$, $\beta_1$, $\beta_2$ 
-%globally so that only the dust temperatures and SED normalization vary on a 
-%per-pixel basis. The reason for fixing so many parameters is that, at $6.1'$
-%FWHM, only five SED measurements are available per pixel.
-
-% need some sort of add on to last sentence or another sentence entirely
-% to the effect of ``staying in overconstrained regime''
 
 \begin{figure}
 \begin{center}
