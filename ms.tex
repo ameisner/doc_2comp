@@ -1047,28 +1047,28 @@ given by:
 
 \begin{equation}
 \label{eqn:post}
-P(\tilde{I}_{545}, T_2|\vec{\mathbf{I}}~) \propto \mathcal{L}(\vec{\mathbf{I}}~|\tilde{I}_{545}, T_2)P(T_2)P(\tilde{I}_{545})
+P(\tilde{I}_{545}, T_2|\mathbf{I}) \propto \mathcal{L}(\mathbf{I}|\tilde{I}_{545}, T_2)P(T_2)P(\tilde{I}_{545})
 \end{equation}
 
 % be careful about notational consistency with e.g. tildes, etc.. in this sect
 
-Here $\vec{\mathbf{I}}$ denotes the vector of observed thermal dust intensities quoted 
-under the `IRAS convention': $\vec{\mathbf{I}}$ = ($I_{217}$, $I_{353}$, $I_{545}$, 
-$I_{857}$, $I_{3000}$). The likelihood function is given by:
+Here $\mathbf{I}$ denotes the vector of observed thermal dust intensities 
+quoted under the `IRAS convention': $\mathbf{I}$ = ($I_{217}$, $I_{353}$,
+$I_{545}$, $I_{857}$, $I_{3000}$). The likelihood function is given by:
 
 %\begin{equation} \label{equ:like}
 %\mathcal{L}(\vec{I}~|\tilde{I}_{545}, T_2) = \displaystyle\prod\limits_{i}\mathcal{N}(\tilde{I}_{\nu_{i}}|I_{\nu_{i}}, \sigma_{\nu_i})
 %\end{equation}
 
 \begin{equation} \label{equ:like}
-\mathcal{L}(\vec{I}~|\tilde{I}_{545}, T_2) = \textrm{exp}\Big[-\frac{1}{2}(\vec{\mathbf{I}}-\underline{\mathbf{\tilde{I}}})\Sigma^{-1}(\vec{\mathbf{I}}-\underline{\mathbf{\tilde{I}}})^T\Big]
+\mathcal{L}(\mathbf{I}|\tilde{I}_{545}, T_2) = \textrm{exp}\Big[-\frac{1}{2}(\mathbf{I}-\mathbf{\tilde{I}})\Sigma^{-1}(\mathbf{I}-\mathbf{\tilde{I}})^T\Big]
 \end{equation}
 
 %be more careful about notation re: color corrections
 
-Here $\underline{\mathbf{\tilde{I}}}$ is the vector of predicted observations 
+Here $\mathbf{\tilde{I}}$ is the vector of predicted observations 
 based on Equation \ref{eqn:inten} and the proposed values of $\tilde{I}_{545}$ 
-and $T_2$: $\underline{\mathbf{\tilde{I}}} = $($\tilde{I}_{217}$, 
+and $T_2$: $\mathbf{\tilde{I}} = $($\tilde{I}_{217}$, 
 $\tilde{I}_{353}$, $\tilde{I}_{545}$, $\tilde{I}_{857}$, $\tilde{I}_{3000}$). 
 $\Sigma$ is the covariance matrix constructed based on the uncertainties in the
 observed intensities:
@@ -1243,13 +1243,13 @@ $T_2$, with the posterior given by:
 
 \begin{equation}
 \label{eqn:f1post}
-P(\tilde{I}_{545}, T_2, f_1|\vec{I}~) \propto \mathcal{L}(\vec{I}~|\tilde{I}_{545}, T_2, f_1)P(T_2)P(f_1)
+P(\tilde{I}_{545}, T_2, f_1|\mathbf{I}) \propto \mathcal{L}(\mathbf{I}|\tilde{I}_{545}, T_2, f_1)P(T_2)P(f_1)
 \end{equation}
 
 The likelihood here is conceptually the same as that of Equation 
 \ref{equ:like}, but now depends on $f_1$, which can vary from proposal to 
 proposal within each individual pixel. The other difference is that 
-$\vec{\mathbf{I}}$ and $\underline{\mathbf{\tilde{I}}}$ now include 100 GHz, 
+$\mathbf{I}$ and $\mathbf{\tilde{I}}$ now include 100 GHz, 
 143 GHz, 140$\mu$m and 240$\mu$m, in addition to the five bands used for the 
 full-resolution fits.
 
