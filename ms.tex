@@ -540,7 +540,7 @@ linear. Figure \ref{fig:harm} illustrates the improved correlation of 100 GHz
 vs. 857 GHz when including the spherical harmonic corrections relative to the 
 dipole-only correction. The spherical harmonic decomposition of Equation 
 \ref{equ:harm} did not improve the correlations at higher frequencies 
-sufficiently to warrant replacing the dipole-only correction in those cases.
+enough to warrant replacing the dipole-only correction in those cases.
 
 % mention how offset/dipole values compare to those derived in the Planck
 % team paper ?
@@ -951,10 +951,6 @@ peak, which makes FIRAS a better suited data set than \PLANCK~for a detailed
 analysis of the globally best-fit dust SED model. In $\S$\ref{sec:hier}, we
 confirm the basic conclusions of this section via an approach in which we 
 allow the dust temperature to vary spatially.
-
-% also might be worth mentioning that the MCMC analysis involves constraints
-% where the zero level matters, whereas the correlation slope analysis here
-% renders the zero levels irrelevant
 
 % maybe a table listing the correlation slopes and their uncertainties
 % would be useful here
@@ -1439,12 +1435,12 @@ might improve reddening estimates relative to SFD.
 
 \subsection{Reddening Calibration Procedure}
 
-% scatterplot figure showing linear regression of EBV vs. tau
 \begin{figure}
 \begin{center}
 \epsfig{file=calib_ebv.eps, width=3.3in}
 \caption{\label{fig:calib} Linear fit of $E(B-V)_{SSPP}$ as function of
-$\tau_{545}$.}
+$\tau_{545}$, restricting to $|b|$$>$20$^{\circ}$ and 
+$|\beta|$$>$20$^{\circ}$.}
 \end{center}
 \end{figure}
 
@@ -1499,9 +1495,6 @@ than the SSPP $E(B-V)$ estimates.
 
 % MENTION THAT THE TAU TEMPLATE IS INDEPENDENT OF FREQUENCY FOR 
 % TWO-COMPONENT MODELS WITH SPATIALLY CONSTANT BETAS, Q1/Q2 AND F1
-
-% need to explain SSPP acronym somewhere ?
-% cite Green appendix for details of deriving EBV_SSPP from Schlafly 11 data ?
 
 This regression is illustrated in Figure \ref{fig:calib}. As expected, there 
 is a strong linear correlation between $E(B-V)_{SSPP}$ and $\tau_{545}$. The 
@@ -1779,15 +1772,17 @@ predicting Galactic thermal dust emission in diffuse regions from 100-217 GHz.
 \section{Data Release}
 \label{sec:release}
 We are releasing $N_{side}$=2048 HEALPix maps in Galactic coordinates 
-summarizing the results of of our two-component dust fits.
+summarizing the results of our full-resolution two-component dust fits. 
+Refer to the data release documentation and FITS file headers for further 
+details.
+
+% will we release software for making thermal dust predictions (i suppose
+% we can just release a reddening map, and there doesn't need to be 
+% any software released in that regard?)
 
 % if we're not going to be claiming to be superseding SFD in terms of 
 % reddening, then do we even want to include anything extinction-related
 % (data files and/or code) in this data release ?
-
-%at some point in this should make statements re: the fact that in terms
-%of predicting *emission* the conversion to tau is unnecessary and
-%and actually the raw uncertainty on Ghz 545 amplitude is the relevant quantity
 
 %software utilities
 %provide maps at multiple different nsides ?
