@@ -163,7 +163,12 @@ refer to as \verb|i100|, and at times by frequency as 3000 GHz. The \verb|i100|
  map has angular resolution of $6.1'$, and was constructed so as to contain 
 only thermal emission from Galactic dust, with compact sources and zodiacal 
 light removed, and its zero level tied to H\,\textsc{i}. We use the \verb|i100|
-map as is, without any custom modifications.
+map as is, without any custom modifications. 
+
+In some of our FIR dust SED analyses which do not require high angular 
+resolution, specifically those of $\S$\ref{sec:global}, $\S$\ref{sec:lores}, 
+and $\S$\ref{sec:hier}, we also make use of the SFD reprocessings of DIRBE 
+140$\mu$m (2141 GHz) and 240$\mu$m (1250 GHz).
 
 \section{Preprocessing}
 \label{sec:prepro}
@@ -284,7 +289,7 @@ Formally, then, the CO contamination in band $\nu_i$ is given by:
 % 100 GHz, J=1->0 : 1.478e-5, 217 GHz, J=2->1 : 4.585e-5, 
 % 353 GHz, J=3->2 : 1.751e-4
 
-\begin{equation}
+\begin{equation} \label{equ:molcorr}
 I_{CO, \nu_i} = \sum\limits_{N} I_{CO, \nu_i, N, N-1}
 \end{equation}
 
@@ -1085,7 +1090,7 @@ $I_{\nu_i}(p)$ is taken to be:
 
 \begin{multline}
 \sigma^2_{\nu_i}(p) = c^2_{\nu_i}I_{\nu_i}^2(p) + c^2_{\nu_i}\sigma_{CMB, \nu_i}^2 + (\delta O_{\nu_i})^2 \\
-+ n_{\nu_i}^2 + \sigma^2_{CIBA, \nu_i} + \sigma^2_{CO, \nu_i}(p)
++ n_{\nu_i}^2 + \sigma^2_{CO, \nu_i}(p)  + \sigma^2_{CIBA, \nu_i}
 \end{multline}
 
 % is I_nu on RHS inclusive of offsets or is it the ``pure'' thermal dust
@@ -1100,17 +1105,19 @@ calibration uncertainty $c_{\nu}$ for each band. These values are taken from
 Table 11 of \cite{planckcalib}. The second term is intended to represent a 
 typical uncertainty due to the subtraction of the \verb|SMICA| CMB model. The 
 analogous term in \cite{planckdust} Equation 7 is 
-($c_{\nu}$$\times$\verb|SMICA|($p$))$^2$, i.e. a term proportional to CMB model
-amplitude. Because this error term's spatial dependence has the potential to 
-imprint the CMB anisotropies on the derived parameters, we have chosen to 
-replace \verb|SMICA|($p$) with a spatially constant, RMS value for the CMB 
-amplitude, $\sigma_{CMB}$. Table \ref{table:offs} lists the adopted values of 
-$\sigma_{CMB}$. $\delta O_{\nu_i}$ represents the uncertainty in the band 
-$\nu_i$ zero level offset, and the values of $\delta O_{\nu_i}$ can be read 
-off from the second column of Table \ref{table:offs}. $n_{\nu_i}$ represents 
-the instrumental noise in the pixel of interest, and is taken to be the square 
-root of the \verb|ii_cov| parameter that accompanies each \PLANCK~intensity 
-map.
+($c_{\nu}$$\times$\verb|SMICA|($p$))$^2$, i.e. an uncertainty proportional to 
+the CMB model amplitude in each pixel. Because this term's spatial dependence 
+has the potential to imprint the CMB anisotropies on the derived parameters, we
+have chosen to replace \verb|SMICA|($p$) with a spatially constant, RMS value 
+for the CMB amplitude, $\sigma_{CMB}$. Table \ref{table:offs} lists the adopted
+values of $\sigma_{CMB}$. $\delta O_{\nu_i}$ represents the uncertainty in the 
+band $\nu_i$ zero level offset, and the values of $\delta O_{\nu_i}$ can be 
+read off from the second column of Table \ref{table:offs}. $n_{\nu_i}$ 
+represents the instrumental noise in the pixel of interest, and is taken to be 
+the square root of the \verb|ii_cov| parameter that accompanies each 
+\PLANCK~intensity map. The next term accounts for the uncertainty on the 
+CO emission correction, with $\sigma_{CO, \nu_i}$=0.15$\times$$I_{CO, \nu_i}$
+(see $\S$\ref{sec:mole}, specifically Equation \ref{equ:molcorr}).
 
 % still need to explain off-diagonal terms in covariance ...
 
