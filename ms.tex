@@ -1106,18 +1106,17 @@ to our subtraction of the \verb|SMICA| CMB model. The analogous term in
 an uncertainty proportional to the CMB model amplitude in each pixel. Because 
 this term's spatial dependence can imprint the CMB anisotropies on the derived 
 parameters, we have chosen to replace \verb|SMICA|($p$) with a spatially 
-constant, RMS value for the CMB amplitude, $\sigma_{CMB}$. Table 
-\ref{table:offs} lists the adopted values of $\sigma_{CMB}$. $\delta O_{\nu_i}$
-represents the uncertainty in the band $\nu_i$ zero level offset, and the 
-values of $\delta O_{\nu_i}$ can be read off from the second column of Table 
-\ref{table:offs}. $n_{\nu_i}$ represents the instrumental noise in band 
-$\nu_i$. Because using per-pixel noise estimates based on the \verb|ii_cov| 
-parameter can imprint sharp-edged features of the survey pattern onto the 
+constant, RMS value for the CMB amplitude, $\sigma_{CMB, \nu_i}$. 
+$\delta O_{\nu_i}$ represents the uncertainty in the band $\nu_i$ zero level 
+offset, and the values of $\delta O_{\nu_i}$ can be read off from the second 
+column of Table \ref{table:offs}. $n_{\nu_i}$ represents the instrumental noise
+in band $\nu_i$. Because using per-pixel noise estimates based on the \PLANCK~
+\verb|ii_cov| parameter can imprint features of the survey pattern onto the 
 derived parameters, we have adopted a conservative, spatially constant value of
-$n_{\nu_i}$ for each band. Table \ref{table:offs} lists the values of 
-$n_{\nu_i}$ adopted. The next term accounts for the uncertainty on the CO 
-emission correction, taking $\sigma_{CO, \nu_i}$=0.15$\times$$I_{CO, \nu_i}$ 
-(see $\S$\ref{sec:mole}, specifically Equation \ref{equ:molcorr}).
+$n_{\nu_i}$ for each band. These values of $n_{\nu_i}$ are listed in Table 
+\ref{table:offs}. The next term accounts for the uncertainty on the CO emission
+correction, taking $\sigma_{CO, \nu_i}$=0.15$\times$$I_{CO, \nu_i}$ (see 
+$\S$\ref{sec:mole}, specifically Equation \ref{equ:molcorr}).
 
 % still need to explain off-diagonal terms in covariance ...
 
