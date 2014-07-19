@@ -428,9 +428,6 @@ to $\mathcal{I}_{857}$$<$2.15 MJy/sr, and repeated the regression in each
 quadrant. The rms of the per-quadrant slopes was found to be 0.0188, while the 
 rms of the per-quadrant offsets was 0.0586 MJy/sr.
 
-% mention that all of this assumes that residual CMB dipole
-% and other low order-corrections are negligible at 857 GHz
-
 % what HI intensity does the 2.15 MJy/sr 857 GHz correspond to ?
 %  ---> pretty high actually
 
@@ -1102,24 +1099,29 @@ This error budget is modeled after \cite{planckdust} Equation 7, but with some
 modifications and additions. The first term accounts for the multiplicative 
 uncertainty on the input maps. Table \ref{table:offs} lists the multiplicative 
 calibration uncertainty $c_{\nu}$ for each band. These values are taken from 
-Table 11 of \cite{planckcalib}. The second term is intended to represent a 
-typical uncertainty due to the subtraction of the \verb|SMICA| CMB model. The 
-analogous term in \cite{planckdust} Equation 7 is 
-($c_{\nu}$$\times$\verb|SMICA|($p$))$^2$, i.e. an uncertainty proportional to 
-the CMB model amplitude in each pixel. Because this term's spatial dependence 
-has the potential to imprint the CMB anisotropies on the derived parameters, we
-have chosen to replace \verb|SMICA|($p$) with a spatially constant, RMS value 
-for the CMB amplitude, $\sigma_{CMB}$. Table \ref{table:offs} lists the adopted
-values of $\sigma_{CMB}$. $\delta O_{\nu_i}$ represents the uncertainty in the 
-band $\nu_i$ zero level offset, and the values of $\delta O_{\nu_i}$ can be 
-read off from the second column of Table \ref{table:offs}. $n_{\nu_i}$ 
-represents the instrumental noise in the pixel of interest, and is taken to be 
-the square root of the \verb|ii_cov| parameter that accompanies each 
-\PLANCK~intensity map. The next term accounts for the uncertainty on the 
-CO emission correction, with $\sigma_{CO, \nu_i}$=0.15$\times$$I_{CO, \nu_i}$
+Table 11 of \cite{planckcalib}. The second term represents an uncertainty due 
+to our subtraction of the \verb|SMICA| CMB model. The analogous term in 
+\cite{planckdust} Equation 7 is ($c_{\nu}$$\times$\verb|SMICA|($p$))$^2$, i.e. 
+an uncertainty proportional to the CMB model amplitude in each pixel. Because 
+this term's spatial dependence can imprint the CMB anisotropies on the derived 
+parameters, we have chosen to replace \verb|SMICA|($p$) with a spatially 
+constant, RMS value for the CMB amplitude, $\sigma_{CMB}$. Table 
+\ref{table:offs} lists the adopted values of $\sigma_{CMB}$. $\delta O_{\nu_i}$
+represents the uncertainty in the band $\nu_i$ zero level offset, and the 
+values of $\delta O_{\nu_i}$ can be read off from the second column of Table 
+\ref{table:offs}. $n_{\nu_i}$ represents the instrumental noise in band 
+$\nu_i$. Because using per-pixel noise estimates based on the \verb|ii_cov| 
+parameter can imprint sharp-edged features of the survey pattern onto the 
+derived parameters, we have adopted a conservative, spatially constant value of
+$n_{\nu_i}$ for each band. Table \ref{table:offs} lists the values of 
+$n_{\nu_i}$ adopted. The next term accounts for the uncertainty on the CO 
+emission correction, taking $\sigma_{CO, \nu_i}$=0.15$\times$$I_{CO, \nu_i}$ 
 (see $\S$\ref{sec:mole}, specifically Equation \ref{equ:molcorr}).
 
 % still need to explain off-diagonal terms in covariance ...
+
+% mention that each of the error terms is always rescaled properly according
+% to smoothing/rebinning and relevant power spectrum
 
 We include the following prior on the hot dust temperature:
 
