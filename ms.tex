@@ -1076,7 +1076,7 @@ $\tilde{I}_{353}$, $\tilde{I}_{545}$, $\tilde{I}_{857}$, $\tilde{I}_{3000}$).
 $\Sigma$ is the covariance matrix constructed based on the uncertainties in the
 observed intensities:
 
-\begin{equation}
+\begin{equation} \label{equ:covariance}
 \Sigma = \begin{pmatrix} \sigma^2_{217}                           & \ldots  & \rho_{217,3000}\sigma_{217}\sigma_{3000} \\ 
                          \vdots                                   & \ddots  & \vdots                                   \\
                          \rho_{3000,217}\sigma_{3000}\sigma_{217} & \ldots  & \sigma^2_{3000}
@@ -1118,7 +1118,30 @@ $n_{\nu_i}$ for each band. These values of $n_{\nu_i}$ are listed in Table
 correction, taking $\sigma_{CO, \nu_i}$=0.15$\times$$I_{CO, \nu_i}$ (see 
 $\S$\ref{sec:mole}, specifically Equation \ref{equ:molcorr}).
 
-% still need to explain off-diagonal terms in covariance ...
+Finally, we include a term to account for the RMS amplitude of the CIBA in
+band $\nu_i$, $\sigma_{CIBA, \nu_i}$. The values for the CIBA RMS amplitudes 
+are obtained by assuming a $T$=18.3 K, $\beta$=1.0 MBB spectrum for the CIB, 
+with 857 GHz normalization from \cite{ciba}. The CIBA not only contributes to 
+the per-band variance $\sigma^2_{\nu_i}$, but also to the inter-frequency 
+covariances; this is why we have included the off-diagonal terms in the
+covariance matrix of Equation \ref{equ:covariance}. In our noise model, the 
+CIBA is the only source of inter-frequency covariance. Thus, the off-diagonal 
+covariance matrix element between bands $\nu_i$ and $\nu_j$ is given by:
+
+\begin{equation}
+\Sigma_{ij} = \rho_{\nu_i, \nu_j}\sigma_{\nu_i}\sigma_{\nu_j} = \rho_{CIBA, \nu_i, \nu_j}\sigma_{CIBA, \nu_i}\sigma_{CIBA, \nu_j}
+\end{equation}
+
+With values for $\rho_{CIBA, \nu_i, \nu_j}$ from \cite{covarciba}. The approach
+we have taken in accounting for the CIBA is similar to that of 
+\cite{planckdust}, Appendix B, in that we treat the CIBA amplitude in each 
+pixel as a Gaussian random draw. However, instead of performing a separate 
+analysis to gauge the uncertainty on derived dust parameters due to the CIBA, 
+we allow the CIBA covariance to propagate naturally into our uncertainties via 
+the likelihood function. Still, our treatment of the CIBA is a major 
+oversimplification relative to the ideal situation in which the detailed 
+spatial structure of the CIBA would be thoroughly accounted for or even removed
+by subtraction.
 
 % mention that each of the error terms is always rescaled properly according
 % to smoothing/rebinning and relevant power spectrum
@@ -1513,6 +1536,19 @@ could arise from aliasing of discrepancies particular to certain sky regions
 % only having issues at the ~<10 mmag level for EBV_SFD ~< 0.4 mag, since
 % it could be a lot worse ...
 
+\begin{figure*}
+\begin{center}
+\epsfig{file=ebv_resid_ecl.eps, width=6.6in}
+\caption{\label{fig:resid_ecl} Same as Figure \ref{fig:resid}, but 
+restricting to high ecliptic latitude, $|\beta|>20^{\circ}$. The top left and 
+top right plots both show that the bending of the reddening residuals as a 
+function of $E(B-V)_{SFD}$ as seen in Figure \ref{fig:resid} has been 
+eliminated. Further, the two-component reddening residual temperature 
+dependence (bottom left) has been significantly reduced relative to the
+corresponding trend shown in Figure \ref{fig:resid}, bottom left panel.}
+\end{center}
+\end{figure*}
+
 The obvious culprit for any potential nonlinearity in FIR-based reddening
 estimates is a faulty temperature correction. For this reason, we have included
 the bottom panels of Figure \ref{fig:resid}, to check for the presence of
@@ -1526,6 +1562,7 @@ trends downward with increasing $T_2$ over the entire $T_2$ range shown, with a
 peak-to-peak amplitude of $\sim$20 mmag.
 
 \subsection{Rectifying the Reddening Residuals}
+
 In this section we describe our attempts to eliminate the systematic
 problems in the two-component reddening residuals shown in the left column
 of Figure \ref{fig:resid}. We employed two main strategies: (1) recomputing
@@ -1567,19 +1604,6 @@ quadrants.
 \item Combining these spatial cuts with the dust model changes of the previous
 list.
 \end{itemize}
-
-\begin{figure*}
-\begin{center}
-\epsfig{file=ebv_resid_ecl.eps, width=6.6in}
-\caption{\label{fig:resid_ecl} Same as Figure \ref{fig:resid}, but 
-restricting to high ecliptic latitude, $|\beta|>20^{\circ}$. The top left and 
-top right plots both show that the bending of the reddening residuals as a 
-function of $E(B-V)_{SFD}$ as seen in Figure \ref{fig:resid} has been 
-eliminated. Further, the two-component reddening residual temperature 
-dependence (bottom left) has been significantly reduced relative to the
-corresponding trend shown in Figure \ref{fig:resid}, bottom left panel.}
-\end{center}
-\end{figure*}
 
 However, we found that changing the zero level offsets of the input maps 
 had a significant effect on the strength of the anticorrelation between median 
