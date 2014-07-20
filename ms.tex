@@ -1166,7 +1166,7 @@ the relevant probabilities.
 \caption{\label{fig:comparison} Comparison of SFD temperature, two-component 
 model $T_2$, and \cite{planckdust} temperature (labeled $T_{R1.20}$) for a
  $10.5^{\circ}\times8.3^{\circ}$  region centered about 
-$(l,b) = (111.6^{\circ}, 20.3^{\circ})$. Note the differing colorscales. Both 
+$(l,b) = (111.6^{\circ}, 18.3^{\circ})$. Note the differing colorscales. Both 
 models incorporating \PLANCK~data clearly show a major improvement in angular 
 resolution relative to SFD.}
 \end{center}
@@ -1222,7 +1222,9 @@ $\langle \tilde{I}_{545, j}/b_{545}(T_{2,j}) \rangle$, its variance, and the
 $\langle M_{545, j}/S_{545, j} \rangle$ and its variance. $\tau_{545}$ and 
 $M_{545}$ are more readily useful than the sampling parameters themselves for 
 translating our fit results into predictions of reddening ($\S$\ref{sec:ebv}) 
-and thermal dust emission ($\S$\ref{sec:lofreq}), respectively.
+and thermal dust emission ($\S$\ref{sec:lofreq}), respectively. At high
+Galactic latitude, we find a typical $T_2$ uncertainty of 0.45 K, and
+typical $\tilde{I}_{545}$ fractional uncertainty of 13\%.
 
 \subsection{Low-resolution Fits}
 \label{sec:lores}
@@ -1282,7 +1284,7 @@ P(f_1) = \mathcal{N}(f_1|\bar{f}_1, \sigma_{\bar{f}_1})
 \end{equation}
 
 With $\bar{f}_1$=0.0485 (from Table \ref{tab:global}, model 2) and 
-$\sigma_{\bar{f}_1}$=0.003. This is a fairly stringent prior, but we must 
+$\sigma_{\bar{f}_1}$=0.005. This is a fairly stringent prior, but we must 
 restrict the fit from wandering with too much freedom, as we are attempting to 
 constrain three parameters using an SED with only nine intensity measurements, 
 several of which are quite noisy.
@@ -1899,9 +1901,7 @@ probabilistic framework of $\S$\ref{sec:mcmc}. The extinction estimates
 from this work can also be employed as an alternative to those of SFD, to gauge
 the impact of dust map choice in a specific end user's application.
 
-% perhaps zodi will just magically be fixed in the forthcoming Planck dta
-% release
-
+% perhaps zodi will just magically be fixed in the forthcoming Planck
 %   ---> do i want a figure illustrating the CIBA problem at high latitude ?
 %  ---> zodi
 %  ---> more testing needed, in any event, to prove Planck based reddening
@@ -1910,9 +1910,6 @@ the impact of dust map choice in a specific end user's application.
 % should mention that one definitive improvement of this work relative
 % to FDS99 is that there are uncertainty/covariances provided for
 % the derived parameters !!!!
-
-% and should also say that it's worth looking up extinction values here
-% to gauge whether results are dependent on choice of dust map
 
 % should there be a future work section or can the suggestions/plans of
 % future work just be a part of ``SFD replacement'' subsection
