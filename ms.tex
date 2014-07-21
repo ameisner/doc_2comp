@@ -970,10 +970,13 @@ also allowed to vary from one line of sight to another.
 \begin{figure}
 \begin{center}
 \epsfig{file=sed.eps, width=3.3in}
-\caption{\label{fig:sed} Planck SED for a single $N_{side}$=2048 pixel in the 
-Polaris region. Note that the two lowest-frequency data points (\PLANCK~100, 
-143 GHz) were not used in our fit, while the three lowest-frequency data
-points were not used in the \cite{planckdust} fit.}
+\caption{\label{fig:sed} Observed SED (black points and error bars) and 
+best-fit thermal dust emission models for a single $N_{side}$=2048 pixel in the
+Polaris flare region. The best-fit two-component model (black line) is derived 
+based on \PLANCK~217-857 GHz and SFD 100$\mu$m at full $6.1'$ resolution. Note 
+that the two lowest-frequency data points were not used in the two-component 
+fit shown, while the three lowest-frequency data points were not used in the 
+\cite{planckdust} single-MBB fit shown (cyan).}
 \end{center}
 \end{figure}
 
@@ -982,16 +985,19 @@ points were not used in the \cite{planckdust} fit.}
 \begin{figure*}
 \begin{center}
 \epsfig{file=posteriors.eps, width=7.0in}
-\caption{Gridded posterior PDFs for three $N_{side}$=2048 pixels. Light green
+\caption{\label{fig:post} Gridded posterior PDFs for three $N_{side}$=2048 
+pixels, based on \PLANCK~217-857 GHz and SFD 100$\mu$m at full $6.1'$ 
+resolution. The colorscale is linear in $log(P)$, with black corresponding to 
+the maximum of $log(P)$ and white representing $max[log(P)]-5$. Light green 
 crosses and ellipses mark the best-fit parameters and $1\sigma$ uncertainties 
-based on our MCMC sampling of the posteriors. The posterior distributions are 
-in general extremely well-behaved, showing no multimodality or other 
-pathological qualities. Our MCMC parameter and uncertainty estimates are in 
-good agreement with the gridded posteriors. The colorscale is linear in 
-$log(P)$, with black representing the maximum of $log(P)$ and white 
-representing $max(log(P))-5$. Left: Low S/N pixel at high latitude in the 
-Galactic north. Center: High S/N pixel in the Polaris region. Right: Low S/N 
-pixel at high latitude in the Galactic south.}
+based on our MCMC sampling of the posteriors. Our MCMC parameter and 
+uncertainty estimates are in good agreement with those based on gridded 
+posteriors. These three pixels are also representative in that we find the 
+posterior distributions from Equation \ref{eqn:post} are in general extremely 
+well-behaved, showing no multimodality or other pathological qualities. Left: 
+Low S/N pixel at high latitude in the Galactic north. Center: High S/N pixel in
+the Polaris flare region. Right: Low S/N pixel at high latitude in the Galactic
+south.}
 \end{center}
 \end{figure*}
 
@@ -1138,9 +1144,9 @@ pixel as a Gaussian random draw. However, instead of performing a separate
 analysis to gauge the uncertainty on derived dust parameters due to the CIBA, 
 we allow the CIBA covariance to propagate naturally into our uncertainties via 
 the likelihood function. Still, our treatment of the CIBA is a major 
-oversimplification relative to the ideal situation in which the detailed 
-spatial structure of the CIBA would be thoroughly accounted for or even removed
-by subtraction.
+oversimplification; a more sophisticated approach that accounts for the 
+detailed CIBA spatial structure, or even removes the CIBA by subtraction would
+be preferable. 
 
 % mention that each of the error terms is always rescaled properly according
 % to smoothing/rebinning and relevant power spectrum
@@ -1166,11 +1172,14 @@ the relevant probabilities.
 \begin{figure}
 \begin{center}
 \epsfig{file=tcomparison.eps, width=3.3in}
-\caption{\label{fig:comparison} Comparison of SFD temperature, two-component 
-model $T_2$, and \cite{planckdust} temperature (labeled $T_{R1.20}$) for a
- $10.5^{\circ}\times8.3^{\circ}$  region centered about 
-$(l,b) = (111.6^{\circ}, 18.3^{\circ})$. Note the differing colorscales. Both 
-models incorporating \PLANCK~data clearly show a major improvement in angular 
+\caption{\label{fig:comparison} Comparison of temperature maps based on FIR 
+dust emission over a $10.5^{\circ}\times8.3^{\circ}$ region centered about 
+$(l,b) = (111.6^{\circ}, 18.3^{\circ})$. Top: SFD temperature map based on 
+DIRBE $100\mu$m and $240\mu$m, with $\sim$1.3$^{\circ}$ resolution. Center: 
+$6.1'$ resolution two-component temperature based on \PLANCK~217-857 GHz and 
+SFD 100$\mu$m. Bottom: \cite{planckdust} single-MBB temperature map based on 
+\PLANCK~353-857 GHz and 100$\mu$m data, with $5.1'$ FWHM. Both temperature maps
+incorporating \PLANCK~observations clearly show a major improvement in angular 
 resolution relative to SFD.}
 \end{center}
 \end{figure}
@@ -1227,7 +1236,10 @@ $M_{545}$ are more readily useful than the sampling parameters themselves for
 translating our fit results into predictions of reddening ($\S$\ref{sec:ebv}) 
 and thermal dust emission ($\S$\ref{sec:lofreq}), respectively. At high
 Galactic latitude, we find a typical $T_2$ uncertainty of 0.45 K, and
-typical $\tilde{I}_{545}$ fractional uncertainty of 13\%.
+typical $\tilde{I}_{545}$ fractional uncertainty of 13\%. Figure \ref{fig:sed}
+shows a summary of the observed SED and resulting best-fit two-component
+model for a single $N_{side}$=2048 pixel, and Figure \ref{fig:post} 
+shows posterior PDFs for three pixels.
 
 \subsection{Low-resolution Fits}
 \label{sec:lores}
@@ -1333,15 +1345,15 @@ per-pixel chi-squared per degree of freedom as $\chi^2_{p, \nu}$.
 \begin{center}
 \epsfig{file=chi2_dirbe.eps, width=3.3in}
 \caption{\label{fig:chi2_dirbe} Comparison of goodness-of-fit, 
-$\chi^2_{\nu}$=$\langle \chi^2_{p, \nu} \rangle$ for various dust SED models. 
-For single-MBB models with spatially constant $\beta$, we varied $\beta$ 
-between 1 and 2 (x axis), achieving reduced chi-squared $\chi^2_{\nu}$ shown by
-the black line, with $\beta$=1.57 providing the best fit. Horizontal lines 
-indicate $\chi^2_{\nu}$ for other dust SED models considered, including the 
-FDS99 best-fit model and our best-fit \PLANCK+DIRBE model from 
-$\S$\ref{sec:global}. The minimum $\chi^2_{\nu}$ was achieved with
-two-componenent `model 2' from Table \ref{tab:global} (horizontal magenta 
-line).}
+$\chi^2_{\nu}$=$\langle \chi^2_{p, \nu} \rangle$, for various dust SED models,
+as described in $\S$\ref{sec:hier}. For single-MBB models with spatially 
+constant $\beta$, we varied $\beta$ between 1 and 2 (horizontal axis), 
+achieving reduced chi-squared $\chi^2_{\nu}$ shown by the black line, with 
+$\beta$=1.57 providing the best fit. Horizontal lines indicate $\chi^2_{\nu}$ 
+for other dust emission models considered, including the FDS99 best-fit 
+two-component model (Table \ref{tab:global}, model 1, red) and the 
+\cite{planckdust} single-MBB model (green). The minimum $\chi^2_{\nu}$ is 
+achieved with two-componenent `model 2' from Table \ref{tab:global} (magenta).}
 \end{center}
 \end{figure}
 
@@ -1477,8 +1489,8 @@ temperature $T_2$. (top right) Same as top left, but illustrating the residuals
 of $E(B-V)_{mbb}$, our calibration of the \cite{planckdust} $\tau_{353}$ to 
 $E(B-V)_{SSPP}$. (bottom right)  Same as bottom left, but showing the 
 $E(B-V)_{mbb}$ residuals as a function of the single-MBB dust temperature from 
-\cite{planckdust}. The temperature axes always range from the 
-0.4$^{th}$ percentile to 99.6$^{th}$ percentile temperature values.}
+\cite{planckdust}. The temperature axes always range from the 0.4$^{th}$ 
+percentile temperature value to the 99.6$^{th}$ percentile temperature value.}
 \end{center}
 \end{figure*}
 
@@ -1798,8 +1810,8 @@ details.
 \epsfig{file=results.eps, width=7.0in}
 \caption{\label{fig:results} (top) Hot dust temperature derived from our 
 full-resolution two-component model fits of \PLANCK~217-857 GHz and SFD 
-\texttt{i100}, downbinned to 27.5$'$ resolution. (bottom) Corresponding
-full-sky map of best-fit 545 GHz optical depth.}
+100$\mu$m, downbinned to 27.5$'$ resolution. (bottom) Corresponding full-sky 
+map of best-fit 545 GHz optical depth.}
 \end{center}
 \end{figure*}
 
