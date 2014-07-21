@@ -356,9 +356,9 @@ for \PLANCK~857 GHz differ by $\sim$0.37 MJy/sr.
 \begin{figure}
 \begin{center}
 \epsfig{file=zp_857.eps, width=3.4in}
-\caption{\label{fig:fdsref} Scatterplot of $\mathcal{F}_{857}$ versus 
-$\mathcal{I}_{857}$, illustrating our absolute zero point determination by
-comparison to the FDS99 prediction for \PLANCK~857 GHz.}
+\caption{\label{fig:fdsref} Scatter plot of FDS99-predicted 857 GHz thermal
+dust emission versus \PLANCK~857 GHz observations, illustrating our absolute 
+zero level determination described in $\S$\ref{sec:zp_abs}.}
 \end{center}
 \end{figure}
 
@@ -366,11 +366,12 @@ comparison to the FDS99 prediction for \PLANCK~857 GHz.}
 \begin{center}
 \epsfig{file=dipole_all_100.eps, width=3.4in}
 \caption{\label{fig:dip}  Scatter plots of \PLANCK~100, 143, 217, 353, and 545 
-GHz versus \PLANCK~857 GHz. Left: before applying zero-level offsets and 
-additional low-order corrections. Right: after correcting for the best-fit 
-offset and residual Solar dipole (143-545 GHz). 100 GHz is shown after applying
-the spherical harmonic correction of Equation \ref{equ:harm}. The dashed red 
-line shows the best-fit linear relationship in all cases.}
+GHz versus \PLANCK~857 GHz. Left: before applying our best-fit zero level 
+offsets and additional low-order corrections. Right, top four panels: 
+\PLANCK~143-545 GHz after correcting for the best-fit offset and residual Solar
+dipole. Bottom right: \PLANCK~100 GHz after applying the spherical harmonic 
+corrections of Equation \ref{equ:harm}. The dashed red line shows the best-fit 
+linear relationship in all cases.}
 \end{center}
 \end{figure}
 
@@ -378,15 +379,16 @@ line shows the best-fit linear relationship in all cases.}
 \begin{center}
 \epsfig{file=harm_100.eps, width=6.5in}
 \caption{\label{fig:harm} Summary of low-order corrections at 100 GHz. Left: 
-prior to our low-order corrections, a $\sim$17$\mu$K zero-level offset is 
+prior to our low-order corrections, a $\sim$17$\mu$K zero level offset is 
 present and strong low-order problems reduce the linearity of the 100 GHz 
-scatter versus 857 GHz. Center: scatter plot versus 857 GHz after applying the 
-best-fit offset and residual Solar dipole corrections derived with Equation 
-\ref{equ:dip} to \PLANCK~100 GHz. The correlation is strengthened, but remains
-far less tight than for 143-545 GHz (see Figure \ref{fig:dip}, top four rows, 
-right column). Right: after applying the spherical harmonic correction of
-Equation \ref{equ:harm} to \PLANCK~100 GHz, the correlation versus 857 GHz is 
-far more tightly linear than following the dipole correction.}
+trend versus 857 GHz. Center: scatter plot of \PLANCK~100 GHz versus 857 GHz 
+after applying the best-fit offset and residual Solar dipole corrections 
+derived with Equation \ref{equ:dip} to \PLANCK~100 GHz. The correlation is 
+strengthened, but remains far less tight than for 143-545 GHz (see right 
+column of Figure \ref{fig:dip}, top four rows). Right: after applying the 
+spherical harmonic corrections of Equation \ref{equ:harm} to \PLANCK~100 GHz, 
+the correlation versus 857 GHz is far more tightly linear than following the 
+dipole correction.}
 \end{center}
 \end{figure*}
 
@@ -853,10 +855,10 @@ represents the conversion factor from $K_{CMB}$ to MJy/sr, given by
 \begin{figure*}
 \begin{center}
 \epsfig{file=dirbe_slopes.eps, width=6.5in}
-\caption{\label{fig:dirbe_slopes} Linear fits of DIRBE 240$\mu$m (left), 
-140$\mu$m (center), and 100$\mu$m (right) as a function of \PLANCK~857 GHz. The
-red lines illustrate the DIRBE correlation slopes used in our global parameter 
-analysis of $\S$\ref{sec:global}.}
+\caption{\label{fig:dirbe_slopes} Linear fits of SFD-reprocessed DIRBE 
+240$\mu$m (left), 140$\mu$m (center), and 100$\mu$m (right) as a function of 
+\PLANCK~857 GHz. The red lines illustrate the DIRBE correlation slopes used in 
+our dust emission model optimization of $\S$\ref{sec:global}.}
 \end{center}
 \end{figure*}
 
@@ -875,7 +877,7 @@ slope analysis whether or not the combination of \PLANCK+DIRBE data favors
 two-component models over single-MBB models in the same way that the 
 FIRAS+DIRBE data did in the FDS99 analysis.
 
-In the case of the two-component model, based on a spectrum of \PLANCK~and 
+In the two-component model case, based on a spectrum of \PLANCK~and 
 DIRBE correlations slopes, we wish to obtain estimates for six free parameters:
 $\beta_1$, $\beta_2$, $q_1/q_2$, $f_1$, $T_2$ and the overall spectrum 
 normalization $n$. The constraints we employ are the correlation slopes of each
@@ -887,7 +889,7 @@ to be those derived from the relative zero level fits of $\S$\ref{sec:relzero},
 and are illustrated by the dashed red lines in the right-hand column plots of 
 Figure \ref{fig:dip}. The 857 GHz slope is unity by definition.
 
-At 1250, 2141 and 3000 GHz, we use the SFD98-reprocessed DIRBE maps. For each
+At 1250, 2141 and 3000 GHz, we use the SFD-reprocessed DIRBE maps. For each
 DIRBE band, we determine $s_{i, 857}$ by performing a linear fit to DIRBE as a 
 function of \PLANCK~857 GHz, after both have been zodiacal light subtracted and
 smoothed to $1^{\circ}$ FWHM, also restricting to the low HI mask of 
@@ -982,14 +984,14 @@ points were not used in the \cite{planckdust} fit.}
 \epsfig{file=posteriors.eps, width=7.0in}
 \caption{Gridded posterior PDFs for three $N_{side}$=2048 pixels. Light green
 crosses and ellipses mark the best-fit parameters and $1\sigma$ uncertainties 
-based on our MCMC sampling of the posterior. The posterior distributions are in
-general extremely well-behaved, showing no multimodality or other pathological 
-qualities. Our MCMC parameter and uncertainty estimates are in good agreement 
-with the gridded posteriors. The colorscale is linear in $log(P)$, with black 
-representing the maximum of $log(P)$ and white representing $max(log(P))-5$. 
-Left: Low S/N pixel at high latitude in the Galactic north. Center: High S/N 
-pixel in the Polaris region. Right: Low S/N pixel at high latitude in the 
-Galactic south.}
+based on our MCMC sampling of the posteriors. The posterior distributions are 
+in general extremely well-behaved, showing no multimodality or other 
+pathological qualities. Our MCMC parameter and uncertainty estimates are in 
+good agreement with the gridded posteriors. The colorscale is linear in 
+$log(P)$, with black representing the maximum of $log(P)$ and white 
+representing $max(log(P))-5$. Left: Low S/N pixel at high latitude in the 
+Galactic north. Center: High S/N pixel in the Polaris region. Right: Low S/N 
+pixel at high latitude in the Galactic south.}
 \end{center}
 \end{figure*}
 
@@ -1611,13 +1613,12 @@ flattening the reddening residual dependence on $T_2$ required unreasonably
 large zero level modifications. For example, flattening the $T_2$ residual 
 required adding $\gtrsim$0.6 MJy/sr to the \verb|i100| map. Such an offset is 
 implausible, being an order of magnitude larger than the nominal \verb|i100| 
-zero level uncertainty quoted by SFD98, and comparable to the entire 3000 GHz 
-CIB monopole signal. Furthermore, we note that even these large zero 
-level modifications had virtually no effect in eliminating the reddening 
-residual `bend' versus $E(B-V)_{SFD}$. Thus, changing the zero level 
-offsets showed hints of promise in rectifying the reddening residual 
-temperature dependence, but cannot completely resolve the systematic trends in 
-reddening residuals.
+zero level uncertainty quoted by SFD, and comparable to the entire 3000 GHz CIB
+monopole signal. Furthermore, we note that even these large zero level 
+modifications had virtually no effect in eliminating the reddening residual 
+`bend' versus $E(B-V)_{SFD}$. Thus, changing the zero level offsets showed 
+hints of promise in rectifying the reddening residual temperature dependence, 
+but cannot completely resolve the systematic trends in reddening residuals.
 % last few words here are kind of bad, need better terminology
 
 The only solution we have been able to identify that both removes the `bend' 
