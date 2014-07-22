@@ -368,10 +368,10 @@ zero level determination described in $\S$\ref{sec:zp_abs}.}
 \caption{\label{fig:dip}  Scatter plots of \PLANCK~100, 143, 217, 353, and 545 
 GHz versus \PLANCK~857 GHz. Left: before applying our best-fit zero level 
 offsets and additional low-order corrections. Right, top four panels: 
-\PLANCK~143-545 GHz after correcting for the best-fit offset and residual Solar
-dipole. Bottom right: \PLANCK~100 GHz after applying the spherical harmonic 
-corrections of Equation \ref{equ:harm}. The dashed red line shows the best-fit 
-linear relationship in all cases.}
+\PLANCK~143-545 GHz after correcting for each band's best-fit offset and 
+residual Solar dipole. Bottom right: \PLANCK~100 GHz after applying the 
+spherical harmonic corrections of Equation \ref{equ:harm}. The dashed red line 
+shows the best-fit linear relationship in all cases.}
 \end{center}
 \end{figure}
 
@@ -410,7 +410,7 @@ of $\S$\ref{sec:bpcorr}, using the FDS99 temperature map to determine the dust
 spectrum shape. We then rebin to $N_{side}$=64 and restrict to pixels with 
 $\mathcal{I}_{857}$$<$2.15 MJy/sr. Since \PLANCK~857 GHz smoothed to degree 
 resolution has very high S/N, we can safely perform such a cut on 
-$\mathcal{I}_{857}$. Figure \ref{fig:fdsref} shows a scatterplot of 
+$\mathcal{I}_{857}$. Figure \ref{fig:fdsref} shows a scatter plot of 
 $\mathcal{I}_{857}$ versus $\mathcal{F}_{857}$, with a moving median and linear
 fit overplotted. The linear fit was performed with uniform weights and 
 iterative outlier rejection. The best-fit linear model is given by 
@@ -512,10 +512,10 @@ represents the constant offset that must be subtracted from the band $\nu_i$
 map to make its zero level consistent with that of the 857 GHz map. For each 
 band $\nu_i$, we obtain estimates of $m$, $d$, and $b$ by performing a linear 
 least squares fit with uniform weights and iterative outlier rejection. Figure 
-\ref{fig:dip} shows scatterplots of the band $\nu_i$ versus 857 GHz correlation
- before and after correcting for the best-fit offset and residual dipole, for 
-each $\nu_i \in$ \{143, 217, 353, 545\} GHz. Not only are the tightened 
-correlations striking in these scatterplots, but the residual dipole 
+\ref{fig:dip} shows scatter plots of the band $\nu_i$ versus 857 GHz 
+correlation before and after correcting for the best-fit offset and residual 
+dipole, for each $\nu_i \in$ \{143, 217, 353, 545\} GHz. Not only are the 
+tightened correlations striking in these scatter plots, but the residual dipole
 subtractions appear very successful in the two-dimensional band $\nu_i$ maps 
 themselves. Before performing thermal dust fits, we therefore subtract the 
 best-fit $b$ and $d\mathcal{D}$ from each band $\nu_i$ map. The best-fit 
@@ -1239,7 +1239,9 @@ Galactic latitude, we find a typical $T_2$ uncertainty of 0.45 K, and
 typical $\tilde{I}_{545}$ fractional uncertainty of 13\%. Figure \ref{fig:sed}
 shows a summary of the observed SED and resulting best-fit two-component
 model for a single $N_{side}$=2048 pixel, and Figure \ref{fig:post} 
-shows posterior PDFs for three pixels.
+shows posterior PDFs for three pixels. Figure \ref{fig:comparison} shows
+a map of our derived hot dust temperature at full-resolution, for a patch
+of sky in the Polaris flare region.
 
 \subsection{Low-resolution Fits}
 \label{sec:lores}
@@ -1456,7 +1458,8 @@ might improve reddening estimates relative to SFD.
 \begin{center}
 \epsfig{file=calib_ebv.eps, width=3.3in}
 \caption{\label{fig:calib} Linear fit of $E(B-V)_{SSPP}$ as a function of
-two-component $\tau_{545}$, restricting to $|b|$$>$20$^{\circ}$.}
+two-component $\tau_{545}$, illustrating our procedure for calibrating optical 
+depth to reddening.}
 \end{center}
 \end{figure}
 
@@ -1549,12 +1552,12 @@ could arise from aliasing of discrepancies particular to certain sky regions
 \begin{center}
 \epsfig{file=ebv_resid_ecl.eps, width=6.6in}
 \caption{\label{fig:resid_ecl} Same as Figure \ref{fig:resid}, but 
-restricting to high ecliptic latitude, $|\beta|>20^{\circ}$. The top left and 
-top right plots both show that the bending of the reddening residuals as a 
-function of $E(B-V)_{SFD}$ as seen in Figure \ref{fig:resid} has been 
-eliminated. Further, the two-component reddening residual temperature 
-dependence (bottom left) has been significantly reduced relative to the
-corresponding trend shown in Figure \ref{fig:resid}, bottom left panel.}
+restricting to high ecliptic latitude, $|\beta|>20^{\circ}$. In both the top 
+left and top right plots, the bending of the reddening residuals as a function 
+of $E(B-V)_{SFD}$ seen in Figure \ref{fig:resid} has been eliminated. Further, 
+the two-component reddening residual temperature dependence (bottom left) has 
+been significantly reduced relative to the corresponding trend shown in Figure 
+\ref{fig:resid}.}
 \end{center}
 \end{figure*}
 
@@ -1710,9 +1713,9 @@ frequency range.
 \caption{\label{fig:lofreq} Comparison between low-frequency thermal dust 
 emission predictions from our best-fit two-component model (Table 
 \ref{tab:global}, model 2) and those of \cite{planckdust}. The top row shows
-scatterplots of the \cite{planckdust} predictions versus observed \PLANCK~100 
+scatter plots of the \cite{planckdust} predictions versus observed \PLANCK~100 
 GHz (left), \PLANCK~143 GHz (center) and \PLANCK~217 GHz (right). The bottom 
-row shows scatterplots of the corresponding two-component predictions versus
+row shows scatter plots of the corresponding two-component predictions versus
 \PLANCK~observations. In all cases, the blue line indicates the best-fit linear
 relationship, while the red line represents a perfect match between predictions
 and observations. The lines of best-fit illustrate that the single-MBB model 
