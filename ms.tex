@@ -22,7 +22,7 @@
 
 \begin{document}
 
-\title{Two-component thermal dust emission model: application to the 
+\title{Modeling thermal dust emission with two components: application to the 
 {\it PLANCK} HFI maps}
 \author{Aaron M. Meisner\altaffilmark{1,2}}
 \author{Douglas P. Finkbeiner\altaffilmark{1,2}}
@@ -48,13 +48,13 @@ flattening of the dust spectrum at millimeter wavelengths, and specifies dust
 temperature at 6.1$'$ FWHM, our model provides reliable, high-resolution 
 thermal dust emission foreground predictions from 100 GHz to 3000 GHz. We find 
 that, in diffuse sky regions, our two-component 100-217 GHz thermal dust 
-emission predictions are on average accurate to within $\le$2.2\%, which 
-represents an improvement of 5-15\% relative to predictions based on the 
-\cite{planckdust} single-MBB model. We calibrate our two-component optical 
-depth to reddening at visible wavelengths, and compare the resulting reddening 
-estimates with those based on stellar spectra. We find that imperfect zodiacal 
-light subtraction is the dominant large-scale systematic problem in our 
-two-component temperature map and reddening estimates.
+emission predictions are on average accurate to within 2.2\%, which represents 
+an improvement of 5-15\% relative to predictions based on the \cite{planckdust}
+single-MBB model. We calibrate our two-component optical depth to reddening at 
+visible wavelengths, and compare the resulting reddening estimates with those 
+based on stellar spectra. We find imperfect zodiacal light subtraction in both 
+DIRBE/\IRAS~and \PLANCK~to be the dominant large-scale systematic problem 
+in our two-component temperature map and reddening estimates.
 
 % might consider changing the word `specifies' in penultimate sentence
 
@@ -583,16 +583,14 @@ species, for example the emissivity power law indices, to be constant over the
 sky, and performed a correlation slope analysis to constrain these parameters 
 with FIRAS and DIRBE observations. FDS99 also constructed a DIRBE 
 240$\mu$m/100$\mu$m ratio to account for temperature variation at 
-$\sim$1.3$^{\circ}$ resolution. In this work we seek to apply FDS99-like 
-emission models to the \PLANCK~data set, which offers a dramatic enhancement in
+$\sim$1.3$^{\circ}$ resolution. In this work we seek to apply the FDS99 
+emission model to the \PLANCK~data set, which offers a dramatic enhancement in
 angular resolution relative to the FIRAS spectra. The \PLANCK~data thereby 
 allow us to derive an improved temperature correction at near-\IRAS~resolution
 ($\S$\ref{sec:mcmc}), re-evaluate the best-fit global dust properties 
-($\S$\ref{sec:global}, $\S$\ref{sec:hier}), and fit additional parameters 
-of the two-component model as a function of position on the sky 
-($\S$\ref{sec:lores}). 
-% in this last sentence reference the relevant sections for each sub-goal 
-% mentioned
+($\S$\ref{sec:global}, $\S$\ref{sec:hier}), and fit additional 
+two-component model parameters as a function of position on the sky 
+($\S$\ref{sec:lores}).
 
 % kind of feel like i'm re-writing the introduction here ??
 
@@ -1836,14 +1834,13 @@ map of best-fit 545 GHz optical depth.}
 
 \subsection{Single-MBB versus Two-component emission}
 A major aim of this work has been to determine whether the  FDS99 
-two-component dust emission model (or an FDS99-like model) remains favored over
-single-MBB models when swapping the \PLANCK~HFI maps for FIRAS at frequencies 
-below 1250 GHz. We compared dust SED models in two ways (1) by fitting a 
-100-3000 GHz spectrum composed of per-band correlation slopes versus 
-\PLANCK~857 GHz (2) by finding the best-fit dust temperature and optical depth
-per line-of-sight, with each pixel's SED comprised of 100-3000 GHz 
-\PLANCK+DIRBE data, and comparing the average goodness-of-fit under various
-emission models.
+two-component dust emission model remains favored over single-MBB models when 
+swapping the \PLANCK~HFI maps for FIRAS at frequencies below 1250 GHz. We 
+compared dust SED models in two ways (1) by fitting a 100-3000 GHz spectrum 
+composed of per-band correlation slopes versus \PLANCK~857 GHz (2) by finding 
+the best-fit dust temperature and optical depth per line-of-sight, with each 
+pixel's SED comprised of 100-3000 GHz \PLANCK+DIRBE data, and comparing the 
+average goodness-of-fit under various emission models.
 
 In both the correlation slope analysis of $\S$\ref{sec:global} and the 
 goodness-of-fit analysis of $\S$\ref{sec:hier} we found that the 
