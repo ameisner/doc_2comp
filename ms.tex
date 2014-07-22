@@ -32,20 +32,29 @@ Cambridge, MA 02138, USA; ameisner@fas.harvard.edu}
 Cambridge, MA 02138, USA; dfinkbeiner@cfa.harvard.edu}
 
 \begin{abstract}
-We present full-sky, $6.1'$ resolution maps of dust optical depth and 
-temperature derived by fitting the \cite{FDS99} two-component dust emission 
-model to the \PLANCK~217, 353, 545, and 857 GHz maps along with  
-\IRAS~100$\mu$m data. This parametrization of the far-infrared thermal dust 
-spectrum as the sum of two modified blackbodies serves as an important 
-alternative to the commonly adopted single modified blackbody dust emission 
-model. Because our two-component model matches the dust spectrum near its 
-peak, accounts for the flattening of the dust spectrum at millimeter 
-wavelengths, and specifies dust temperature at 6.1$'$ FWHM, our model 
-provides accurate, high-resolution thermal dust emission foreground predictions
-from 100 GHz to 3000 GHz. We also calibrate the derived optical depth to 
-reddening at visible wavelengths, and compare the resulting reddening estimates
-with those based on stellar spectra, as well as those of \cite{SFD} and 
-\cite{planckdust} based on infrared emission.
+
+We apply the \cite{FDS99} two-component thermal dust emission model to the
+\PLANCK~HFI maps. This parametrization of the far-infrared dust spectrum as the
+sum of two modified blackbodies serves as an important alternative to the 
+commonly adopted single modified blackbody (MBB) dust emission model. Analyzing
+the joint \PLANCK/DIRBE dust spectrum, we show that two-component models 
+provide a better fit to the 100-3000 GHz emission than do single-MBB models, 
+though by a lesser margin than found by \cite{FDS99} based on FIRAS and DIRBE. 
+We also derive full-sky $6.1'$ resolution maps of dust optical depth and 
+temperature by fitting the two-component model to the \PLANCK~217, 353, 545, 
+and 857 GHz maps along with  DIRBE/\IRAS~100$\mu$m data. Because our 
+two-component model matches the dust spectrum near its peak, accounts for the 
+flattening of the dust spectrum at millimeter wavelengths, and specifies dust 
+temperature at 6.1$'$ FWHM, our model provides reliable, high-resolution 
+thermal dust emission foreground predictions from 100 GHz to 3000 GHz. We find 
+that, in diffuse sky regions, our two-component 100-217 GHz thermal dust 
+emission predictions are on average accurate to within $\le$2.2\%, which 
+represents an improvement of 5-15\% relative to predictions based on the 
+\cite{planckdust} single-MBB model. We calibrate our two-component optical 
+depth to reddening at visible wavelengths, and compare the resulting reddening 
+estimates with those based on stellar spectra. We find that imperfect zodiacal 
+light subtraction is the dominant large-scale systematic problem in our 
+two-component temperature map and reddening estimates.
 
 % might consider changing the word `specifies' in penultimate sentence
 
@@ -113,19 +122,20 @@ The \PLANCK~2013 data release \citep{planck2013} represents an important
 opportunity to revisit foreground predictions in light of \PLANCK's superb, 
 relatively artifact-free broadband data covering the entire sky and a wide 
 range of frequencies. \cite{planckdust} has recently conducted a study modeling
-\PLANCK~353 GHz, 545 GHz, 857 GHz and \IRAS~100$\mu$m emission with a single
-MBB spectrum. Here we investigate the FDS99 two-component dust emission model 
-as an alernative parametrization for the dust spectral energy distribution 
-(SED) composed  of \PLANCK~and \IRAS~data. In doing so, we obtain maps of dust 
-temperature and optical depth, both at $6.1'$ resolution. Because we employ a 
-model that has been validated with FIRAS data down to sub-mm wavelengths, we 
-expect our best-fit parameters to be useful in constructing high-resolution 
+\PLANCK~353 GHz, 545 GHz, 857 GHz and DIRBE/\IRAS~100$\mu$m emission with a 
+single-MBB spectrum. Here we investigate the FDS99 two-component dust emission 
+model as an alernative parametrization for the dust spectral energy 
+distribution (SED) composed  of \PLANCK High Frequency Instrument (HFI), DIRBE 
+and \IRAS~data. In doing so, we obtain maps of dust temperature and optical 
+depth, both at $6.1'$ resolution. Because we employ a model that has been 
+validated with FIRAS data down to submillimeter (submm) wavelengths, we expect 
+our best-fit parameters to be useful in constructing high-resolution 
 predictions of dust emission over a very broad range of wavelengths. This 
 includes low frequencies ($<$350 GHz), which \cite{planckdust} caution their 
 model may not adequately fit, and also measurements near the peak of the dust 
 SED, for example \AKARI~140-160$\mu$m \citep{akari}. We also anticipate our 
-derived optical depth map will serve as a useful cross-check for extinction 
-estimates based directly upon optical observations of stars
+derived optical depth map will serve as a valuable cross-check for extinction 
+estimates based directly upon optical observations of stars 
 \citep[e.g.][]{schlafly14} and as a baseline for next-generation dust 
 extinction maps incorporating high-resolution, full-sky infrared data sets such
 as \WISE~\citep{wright10, meisner14} and \AKARI.
@@ -133,18 +143,17 @@ as \WISE~\citep{wright10, meisner14} and \AKARI.
 In $\S$\ref{sec:data} we introduce the data used throughout this study. In 
 $\S$\ref{sec:prepro} we describe our preprocessing of the \PLANCK~maps to 
 isolate thermal emission from Galactic dust. In $\S$\ref{sec:modeling} we 
-explain the dust emission model we apply to the \PLANCK~and \IRAS/DIRBE data. 
-In $\S$\ref{sec:bpcorr}, we discuss the details of predicting 
+explain the two-component emission model we apply to the \PLANCK-based dust 
+SED. In $\S$\ref{sec:bpcorr}, we discuss the details of predicting 
 \PLANCK~observations based on this dust model. In $\S$\ref{sec:global} we 
-derive constraints on our model's global parameters based on the \PLANCK~High 
-Frequency Instrument (HFI) maps. In $\S$\ref{sec:fitting} we detail the Markov 
-chain Monte Carlo (MCMC) method with which we have estimated the spatially 
-varying parameters of our model. In $\S$\ref{sec:ebv} we calibrate our derived 
-optical depth to reddening at optical wavelengths. In $\S$\ref{sec:lofreq} we
-evaluate the accuracy of our two-component thermal dust emission predictions 
-from 100-217 GHz. In $\S$\ref{sec:release} we present the full-sky maps of dust
-temperature and optical depth we have obtained, and conclude in 
-$\S$\ref{sec:conclusion}.
+derive constraints on our model's global parameters in light of the \PLANCK~HFI
+maps. In $\S$\ref{sec:fitting} we detail the Markov chain Monte Carlo (MCMC) 
+method with which we have estimated the spatially varying parameters of our 
+model. In $\S$\ref{sec:ebv} we calibrate our derived optical depth to reddening
+at optical wavelengths. In $\S$\ref{sec:lofreq} we evaluate the accuracy of our
+two-component thermal dust emission predictions from 100-217 GHz. In 
+$\S$\ref{sec:release} we present the full-sky maps of dust temperature and 
+optical depth we have obtained, and conclude in $\S$\ref{sec:conclusion}.
 
 \section{Data}
 \label{sec:data}
@@ -174,8 +183,8 @@ and $\S$\ref{sec:hier}, we also make use of the SFD reprocessings of DIRBE
 \label{sec:prepro}
 
 The following subsections detail the processing steps we have applied to 
-isolate Galactic dust emission in the \PLANCK~maps in preparation for our joint
-\PLANCK/\IRAS~SED fits. % reference fitting section at end of this sentence ?
+isolate Galactic dust emission in the \PLANCK~maps in preparation for SED
+fitting. % reference fitting section at end of this sentence ?
 
 \subsection{CMB Anisotropy Removal}
 \label{sec:cmb}
@@ -437,7 +446,7 @@ rms of the per-quadrant offsets was 0.0586 MJy/sr.
 \tabletypesize{\scriptsize}
 \tablecolumns{6} 
 \tablewidth{0pc} 
-\tablecaption{\label{table:offs} Planck/IRAS Map Properties \& Pre-processing} 
+\tablecaption{\label{table:offs} Input Map Properties \& Pre-processing} 
 \tablehead{
 \colhead{$\nu$ (GHz)} &
 \colhead{Offset ($K_{CMB}$)} & 
