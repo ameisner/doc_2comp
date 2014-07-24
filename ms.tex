@@ -41,19 +41,19 @@ the joint \PLANCK/DIRBE dust spectrum, we show that two-component models
 provide a better fit to the 100-3000 GHz emission than do single-MBB models, 
 though by a lesser margin than found by \cite{FDS99} based on FIRAS and DIRBE. 
 We also derive full-sky $6.1'$ resolution maps of dust optical depth and 
-temperature by fitting the two-component model to the \PLANCK~217, 353, 545, 
-and 857 GHz maps along with  DIRBE/\IRAS~100$\mu$m data. Because our 
-two-component model matches the dust spectrum near its peak, accounts for the 
-flattening of the dust spectrum at millimeter wavelengths, and specifies dust 
-temperature at 6.1$'$ FWHM, our model provides reliable, high-resolution 
-thermal dust emission foreground predictions from 100 GHz to 3000 GHz. We find 
-that, in diffuse sky regions, our two-component 100-217 GHz thermal dust 
-emission predictions are on average accurate to within 2.2\%, which represents 
-an improvement of 5-15\% relative to predictions based on the \cite{planckdust}
-single-MBB model. We calibrate our two-component optical depth to reddening at 
-visible wavelengths, and compare the resulting reddening estimates with those 
-based on stellar spectra. We find imperfect zodiacal light subtraction in both 
-DIRBE/\IRAS~and \PLANCK~to be the dominant large-scale systematic problem 
+temperature by fitting the two-component model to \PLANCK~217, 353, 545, and 
+857 GHz along with  DIRBE/\IRAS~100$\mu$m data. Because our two-component model
+matches the dust spectrum near its peak, accounts for the flattening of the 
+dust spectrum at millimeter wavelengths, and specifies dust temperature at 
+6.1$'$ FWHM, our model provides reliable, high-resolution thermal dust emission
+foreground predictions from 100 GHz to 3000 GHz. We find that, in diffuse sky 
+regions, our two-component 100-217 GHz thermal dust emission predictions are on
+average accurate to within 2.2\%, while the \cite{planckdust} single-MBB model 
+systematically underpredicts emission by 18.8\% at 100 GHz, 12.6\% at 143 GHz 
+and 7.9\% at 217 GHz. We calibrate our two-component optical depth to reddening
+at visible wavelengths, and compare the resulting reddening estimates with 
+those based on stellar spectra. We find imperfect zodiacal light subtraction in
+both DIRBE/\IRAS~and \PLANCK~to be the dominant large-scale systematic problem 
 in our two-component temperature map and reddening estimates.
 
 % might consider changing the word `specifies' in penultimate sentence
@@ -1427,15 +1427,17 @@ favored by the combination of \PLANCK~and DIRBE to be nearly identical here
 ($\beta$=1.57) versus in $\S$\ref{sec:global} ($\beta$=1.59). As in 
 $\S$\ref{sec:global}, we also find that the \PLANCK+FIRAS and \PLANCK+DIRBE 
 best-fit two-component models from Table \ref{tab:global} outperform single-MBB
-alternatives, though only by a relatively small margin. The agreement between 
-our correlation slope analysis and the present goodness-of-fit analysis is 
-especially encouraging for two main reasons: (1) in the present analysis, dust 
-temperature has been allowed to vary on degree scales, whereas in 
-$\S$\ref{sec:global} we assumed a single global dust temperature (2) in the
-present analysis, our zero-level offsets factor into the dust temperature,
-whereas in $\S$6 this was not the case, meaning the former and latter analyses 
-agree in spite of their potential to be affected by rather different 
-systematics.
+alternatives, though only by a relatively small margin in $\chi^2_{\nu}$. 
+Still, because our present analysis has $\sim$75,500 degrees-of-freedom, 
+$\Delta \chi^2_{\nu}$=0.4 formally corresponds to an enormously significant
+improvement in $\chi^2$. The agreement between our correlation slope analysis 
+and the present goodness-of-fit analysis is especially encouraging for two main
+reasons: (1) in the present analysis, dust temperature has been allowed to vary
+on degree scales, whereas in $\S$\ref{sec:global} we assumed a single global 
+dust temperature and (2) in the present analysis, our zero-level offsets factor
+into the dust temperature, whereas in $\S$6 this was not the case, meaning the 
+former and latter analyses agree in spite of their potential to be affected by 
+rather different systematics.
 
 % say that, becuase such little improvement for two-component versus
 % single MBB in this analysis, we include a single-MBB beta = 1.57 fit in
@@ -1845,15 +1847,18 @@ average goodness-of-fit under various emission models.
 In both the correlation slope analysis of $\S$\ref{sec:global} and the 
 goodness-of-fit analysis of $\S$\ref{sec:hier} we found that the 
 best-fit \PLANCK+DIRBE two-component model (Table \ref{tab:global}, model 2) 
-outperformed the best-fit single-MBB model, but by a lesser margin than found 
-by FDS99 using FIRAS+DIRBE. Specifically, our best-fit \PLANCK+DIRBE 
-two-component model yielded an improvement of $\Delta \chi^2_{\nu}$=3.41 
-($\S$\ref{sec:global}) and $\Delta \chi^2_{\nu}$=0.4 ($\S$\ref{sec:hier}). This
-represents a far less dramatic contrast than found by the FDS99 correlation 
-slope analysis, $\Delta \chi^2_{\nu}$=29.2. Perhaps, though, the relative lack 
-of discrimination amongst competing dust SED models when relying on 
-\PLANCK+DIRBE is not surprising, given that our constraints include only nine 
-broad frequency channels, whereas FDS99 employed $>$200 narrow bands.
+outperformed the best-fit single-MBB model, but by a lesser margin in 
+$\chi^2_{\nu}$ than found by FDS99 using FIRAS+DIRBE. Specifically, our 
+best-fit \PLANCK+DIRBE two-component model yielded an improvement of 
+$\Delta \chi^2_{\nu}$=3.41 ($\S$\ref{sec:global}) and $\Delta \chi^2_{\nu}$=0.4
+($\S$\ref{sec:hier}). This represents a far less dramatic contrast in 
+$\chi^2_{\nu}$ than found by the FDS99 correlation slope analysis, 
+$\Delta \chi^2_{\nu}$=29.2. Perhaps a relative lack of discrimination amongst 
+competing dust SED models when relying on \PLANCK+DIRBE is to be expected, 
+given that our constraints include only nine broad frequency channels, whereas 
+FDS99 employed $>$200 narrow bands. Still, $\Delta \chi^2_{\nu}$=0.4 from 
+$\S$\ref{sec:hier} is formally of enormous significance, given the 
+$\sim$75,000 degrees of freedom in that analysis.
 
 % in above paragraph, say which single-MBB beta(s) we find to be favored
 
@@ -1862,11 +1867,13 @@ remains viable in light of the \PLANCK~HFI data, and that the FIR/submm
 dust SED's preference for two MBB components rather than just one is not
 simply an idiosyncracy of the FIRAS spectra. Furthermore, we showed in 
 $\S$\ref{sec:lofreq} that our 100-217 GHz two-component emission predictions
-are more accurate than those of \cite{planckdust} by margins of $\sim$5-15\%.
-We therefore recommend that those interested in thermal dust foregrounds in 
-the 100-3000 GHz frequency range use our data release to predict unpolarized 
-dust emission, at the very least in order to help determine the level at which 
-the choice of dust emission model may influence their conclusions.
+are on average accurate to within 2.2\%, whereas the \cite{planckdust} 
+single-MBB model systematically understimates low-frequency dust emission by 
+18.8\% at 100 GHz, 12.6\% at 143 GHz and 7.9\% at 217 GHz. We therefore 
+recommend that those interested in thermal dust foregrounds in the 100-3000 GHz
+frequency range use our data release to predict unpolarized dust emission, at 
+the very least in order to help determine the level at which the choice of dust
+emission model may influence their conclusions.
 %last sentence needs work
 
 % sentence criticizing the half-degree beta single MBB model of Planck team
