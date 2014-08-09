@@ -337,8 +337,8 @@ frequency, there can exist an overall, constant offset that must be subtracted
 to set the zero level of Galactic dust by removing the mean cosmic IR 
 background (CIB), as well as any instrumental offset. Additionally, faint 
 residuals of the Solar dipole remain at low frequencies. We will address these 
-issues by separately solving two sub-problems: first, fixing the absolute zero 
-level of \PLANCK~857 GHz relative to external data, and second fitting 
+issues by separately solving two sub-problems: first, we set the absolute zero 
+level of \PLANCK~857 GHz relative to external data, and second we fit the 
 100-545 GHz offsets and low order corrections by correlating these 
 \PLANCK~bands against \PLANCK~857 GHz.
 
@@ -401,11 +401,11 @@ dipole correction.}
 \end{center}
 \end{figure*}
 
-Because of these ambiguities in the relationship between 857 GHz and 
-H\,\textsc{i} emission, we decided to instead constrain the 857 GHz zero level 
-by comparison to the FDS99 857 GHz prediction. This renders our \PLANCK~857 GHz
-absolute zero level tied indirectly to H\,\textsc{i} through the FDS99 
-100$\mu$m and 240$\mu$m zero levels.
+Because of this ambiguity in the relationship between 857 GHz and H\,\textsc{i}
+emission, we decided to instead constrain the \PLANCK~857 GHz zero level by 
+comparison to the FDS99-predicted 857 GHz thermal dust emission. This renders 
+our \PLANCK~857 GHz absolute zero level tied indirectly to H\,\textsc{i} 
+through the FDS99 100$\mu$m and 240$\mu$m zero levels.
 
 We perform a linear fit to the FDS99-predicted 857 GHz values as 
 a function of \PLANCK~857 GHz. For this purpose, we employ a version of the 
@@ -476,7 +476,7 @@ zero level offsets that must be applied to each of the five lowest-frequency
 \PLANCK~bands, we perform a regression versus the \PLANCK~857 GHz map corrected
 for the best-fit absolute zero level offset from $\S$\ref{sec:zp_abs}. We 
 assume no offset need be applied to \verb|i100|, which already has its zero 
-level tied to H\,\textsc{i}.
+level tied to H\,\textsc{i} by SFD.
 
 The need for additional low-order corrections beyond simple scalar offsets 
 became evident upon inspecting the HFI maps at 100-545 GHz. In particular, we 
@@ -522,15 +522,15 @@ map to make its zero level consistent with that of the 857 GHz map. For each
 band $\nu_i$, we obtain estimates of $m$, $d$, and $b$ by performing a linear 
 least squares fit with uniform weights and iterative outlier rejection. Figure 
 \ref{fig:dip} shows scatter plots of the band $\nu_i$ versus 857 GHz 
-correlation before and after correcting for the best-fit offset and residual 
-dipole, for each $\nu_i \in$ \{143, 217, 353, 545\} GHz. Not only are the 
-tightened correlations striking in these scatter plots, but the residual dipole
-subtractions appear very successful in the two-dimensional band $\nu_i$ maps 
-themselves. Before performing thermal dust fits, we therefore subtract the 
-best-fit $b$ and $d\mathcal{D}$ from each band $\nu_i$ map. The best-fit 
-offsets and residual dipole amplitudes are listed in Table \ref{table:offs},
-along with other important per-band parameters, such as the fractional 
-multiplicative calibration uncertainty $c_{\nu}$.
+correlation before (left) and after (right) correcting for the best-fit offset 
+and residual dipole, for each $\nu_i \in$ \{143, 217, 353, 545\} GHz. Not only 
+are the tightened correlations striking in these scatter plots, but the 
+residual dipole subtractions appear very successful in the two-dimensional band
+$\nu_i$ maps themselves. Before performing thermal dust fits, we therefore 
+subtract the best-fit $b$ and $d\mathcal{D}$ from each 143-545 GHz map. The 
+best-fit offsets and residual dipole amplitudes are listed in Table 
+\ref{table:offs}, along with other important per-band parameters, such as the 
+fractional multiplicative calibration uncertainty $c_{\nu}$.
 
 We found that a dipole correction alone could not sufficiently rectify the 
 \PLANCK~100 GHz map (see Figure \ref{fig:harm}). Therefore, for 100 GHz, we 
@@ -568,7 +568,7 @@ adequately modeled as a single MBB with power-law emissivity
 \citep[e.g. SFD;][]{planckdust}. However, it has long been recognized, 
 particularly in view of the FIRAS spectra, that the dust SED flattens toward 
 the millimeter in a manner which is not consistent with a simple extrapolation 
-of the single-MBB model to low frequencies. In the diffuse ISM, \cite{reach95} 
+of single-MBB models to low frequencies. In the diffuse ISM, \cite{reach95} 
 found an improved fit to the FIRAS data using an empirically motivated 
 superposition of two $\beta$=2 MBBs, one representing a `hot' grain population 
 ($T$$\approx$16$-$21 K), the other a `cold' grain population 
@@ -625,10 +625,10 @@ emissivity power-law indices of the cold and hot dust components respectively.
 $q_1$ represents the ratio of FIR emission cross section to optical absorption 
 cross section for species 1, and similarly $q_2$ for species 2. $f_1$ and 
 $f_2$ dictate the relative contributions of the two MBB components to the
-combined SED, and can be thought of as encoding the mass fraction of each 
-species, although technically $f_1$ ($f_2$) is the optical absorption 
-cross-section weighted mass fraction for species 1 (2). Following the 
-convention of FDS99, we choose $\nu_0$=3000 GHz and take $f_2$=(1$-$$f_1$).
+combined SED. Thus, $f_1$ and $f_2$ can be thought of as encoding the mass 
+fraction of each species, although technically $f_1$ ($f_2$) is the optical 
+absorption cross-section weighted mass fraction for species 1 (2). Following 
+the convention of FDS99, we choose $\nu_0$=3000 GHz and take $f_2$=(1$-$$f_1$).
 
 Mathematically, this two-MBB model requires specification of seven 
 parameters for every line of sight: $T_1$, $T_2$, $\beta_1$, $\beta_2$, $f_1$, 
@@ -771,19 +771,19 @@ predict $\tilde{I}_{\nu_i}$ by computing monochromatic flux densities at the
 central frequency $\nu_{i,c}$ and then multiplying by factors 
 $b_{\nu_i}(T, \beta)$. In practice, we interpolated the color corrections off 
 of a set of precomputed, one-dimensional lookup tables each listing 
-$b_{\nu_i}(T, \beta)$ as a function of $T$. We avoided the need to interpolate 
-in both $\beta$ and $T$ by computing only a small set of one dimensional 
-correction factors for the particular set of $\beta$ values of interest (e.g. 
-$\beta$=1.67, 2.7, 1.63, 2.82 ..., see Table \ref{tab:global}). This color 
-correction approach makes the MCMC sampling described in $\S$\ref{sec:mcmc} 
-much more computationally efficient by circumventing the need to perform the 
-integral in the numerator of Equation \ref{equ:bpcorr} on-the-fly for each 
-proposed dust temperature. We have chosen to compute the color corrections on a
-per-MBB basis because this approach is very versatile; all possible 
-two-component (and single-MBB) models are linear combinations of MBBs, so we 
-can apply all of our color correction machinery even when we allow parameters 
-other than temperature (e.g. $f_1$) to vary and thereby modify the dust 
-spectrum shape.
+$b_{\nu_i}(T, \beta)$ for a single $\beta$ value as a function of $T$. We thus
+avoided the need to interpolate in both $\beta$ and $T$ by computing only a 
+small set of one dimensional correction factors for the particular set of 
+$\beta$ values of interest (e.g. $\beta$=1.67, 2.7, 1.63, 2.82 ..., see Table 
+\ref{tab:global}). This color correction approach makes the MCMC sampling 
+described in $\S$\ref{sec:mcmc} much more computationally efficient by 
+circumventing the need to perform the integral in the numerator of Equation 
+\ref{equ:bpcorr} on-the-fly for each proposed dust temperature. We have chosen 
+to compute the color corrections on a per-MBB basis because this approach is 
+very versatile; all possible two-component (and single-MBB) models are linear 
+combinations of MBBs, so we can apply all of our color correction machinery 
+even when we allow parameters other than temperature (e.g. $f_1$) to vary and 
+thereby modify the dust spectrum shape.
 
 % need some sort of clarification about the fact that, in the parts of the 
 % analysis where beta floats, i actually do interpolate color corrections 
@@ -935,10 +935,10 @@ analysis of the globally best-fit dust SED model. In $\S$\ref{sec:hier}, we
 confirm the basic conclusions of this section via an approach in which we 
 allow the dust temperature to vary spatially. The analysis of $\S$7.5 also
 allows us to confirm the conclusions of this section while including a 
-fully detailed uncertainty model; our assumption of 2\% per-band uncertainties
+fully detailed uncertainty model; our assumption of 2\% per-band uncertainties 
 on the correlation slopes is largely a statement that we seek a model
 accurate to 2\% from 100-3000 GHz, although the fact that our $\chi^2_{\nu}$ 
-values are order unity shows that the assumed uncertainties are not grossly 
+values are order unity suggests that the assumed uncertainties are not grossly 
 over or underestimated.
 
 % maybe a table listing the correlation slopes and their uncertainties
@@ -1015,12 +1015,11 @@ we draw samples in $\tilde{I}_{545}$, the `IRAS convention' intensity in the
 aforementioned global parameters fixed, the dust spectrum shape is determined 
 entirely by the two dust temperatures, which are coupled. To constrain the dust
 temperatures, we sample in $T_2$, the hot dust temperature. For each sample in 
-$T_2$, we compute the corresponding value of $T_1$, thereby determining the 
-temperature and emissivity power law index for both MBB components and thus 
-fully specifying the SED shape. In principle, we could sample in either $T_1$ 
-or $T_2$, but have chosen to sample in $T_2$ because emission from this 
-component dominates in the relatively high frequency bands which most strongly 
-constrain the dust temperatures.
+$T_2$, we compute the corresponding value of $T_1$, thereby fully specifying 
+the SED shape. In principle, we could sample in either $T_1$ or $T_2$, but have
+chosen to sample in $T_2$ because emission from this component dominates in the
+relatively high frequency bands which most strongly constrain the dust 
+temperatures.
 
 For the lower resolution fits described in $\S$\ref{sec:lores}, we sample
 in three parameters: $\tilde{I}_{545}$, $T_2$, and $f_1$.
@@ -1054,7 +1053,7 @@ $I_{545}$, $I_{857}$, $I_{3000}$). The likelihood function is given by:
 %\end{equation}
 
 \begin{equation} \label{equ:like}
-\mathcal{L}(\mathbf{I}|\tilde{I}_{545}, T_2) = \textrm{exp}\Big[-\frac{1}{2}(\mathbf{I}-\mathbf{\tilde{I}})\Sigma^{-1}(\mathbf{I}-\mathbf{\tilde{I}})^T\Big]
+\mathcal{L}(\mathbf{I}|\tilde{I}_{545}, T_2) = \textrm{exp}\Big[-\frac{1}{2}(\mathbf{I}-\mathbf{\tilde{I}})^T\Sigma^{-1}(\mathbf{I}-\mathbf{\tilde{I}})\Big]
 \end{equation}
 
 %be more careful about notation re: color corrections
@@ -1063,8 +1062,8 @@ Here $\mathbf{\tilde{I}}$ is the vector of predicted observations
 based on Equation \ref{eqn:inten} and the proposed values of $\tilde{I}_{545}$ 
 and $T_2$: $\mathbf{\tilde{I}} = $($\tilde{I}_{217}$, 
 $\tilde{I}_{353}$, $\tilde{I}_{545}$, $\tilde{I}_{857}$, $\tilde{I}_{3000}$). 
-$\Sigma$ is the covariance matrix constructed based on the uncertainties in the
-observed intensities:
+$\Sigma$ is the per-pixel covariance matrix constructed based on the 
+uncertainties in the observed intensities:
 
 \begin{equation} \label{equ:covariance}
 \Sigma = \begin{pmatrix} \sigma^2_{217}                           & \ldots  & \rho_{217,3000}\sigma_{217}\sigma_{3000} \\ 
@@ -1105,7 +1104,7 @@ in band $\nu_i$. Because using per-pixel noise estimates based on the \PLANCK~
 derived parameters, we have adopted a conservative, spatially constant value of
 $n_{\nu_i}$ for each band. These values of $n_{\nu_i}$ are listed in Table 
 \ref{table:offs}. The next term accounts for the uncertainty on the CO emission
-correction, taking $\sigma_{CO, \nu_i}$=0.15$\times$$I_{CO, \nu_i}$ (see 
+correction, taking $\sigma_{CO, \nu_i}(p)$=0.15$\times$$I_{CO, \nu_i}(p)$ (see 
 $\S$\ref{sec:mole}, specifically Equation \ref{equ:molcorr}).
 
 Finally, we include a term to account for the RMS amplitude of the CIBA in
@@ -1214,19 +1213,19 @@ derived are highly reliable.
 
 Lastly, during post burn-in sampling, we also estimate the monochromatic 
 two-component intensity at 545 GHz, $M_{545}$ = $\langle M_{545, j} \rangle$ = 
-$\langle \tilde{I}_{545, j}/b_{545}(T_{2,j}) \rangle$, its variance, and the 
-545 GHz optical depth $\tau_{545}$=$\langle \tau_{545, j} \rangle$ = 
+$\langle \tilde{I}_{545, j}/b_{545}(T_{2,j}, \beta_2) \rangle$, its variance, 
+and the 545 GHz optical depth $\tau_{545}$=$\langle \tau_{545, j} \rangle$ = 
 $\langle M_{545, j}/S_{545, j} \rangle$ and its variance. $\tau_{545}$ and 
 $M_{545}$ are more readily useful than the sampling parameters themselves for 
 translating our fit results into predictions of reddening ($\S$\ref{sec:ebv}) 
-and thermal dust emission ($\S$\ref{sec:lofreq}), respectively. At high
-Galactic latitude, we find a typical $T_2$ uncertainty of 0.45 K, and
-typical $\tilde{I}_{545}$ fractional uncertainty of 13\%. Figure \ref{fig:sed}
-shows a summary of the observed SED and resulting best-fit two-component
-model for a single $N_{side}$=2048 pixel, and Figure \ref{fig:post} 
-shows posterior PDFs for three pixels. Figure \ref{fig:comparison} shows
-a map of our derived hot dust temperature at full-resolution, for a patch
-of sky in the Polaris flare region.
+and thermal dust emission ($\S$\ref{sec:lofreq}), respectively. At high 
+Galactic latitude, we find a typical $T_2$ uncertainty of 0.45 K, and typical 
+$\tilde{I}_{545}$ fractional uncertainty of 13\%. Figure \ref{fig:sed} shows a 
+summary of the observed SED and resulting best-fit two-component model for a 
+single $N_{side}$=2048 pixel, and Figure \ref{fig:post} shows posterior PDFs 
+for three pixels. Figure \ref{fig:comparison} shows a map of our derived hot 
+dust temperature at full-resolution, for a patch of sky in the Polaris flare 
+region.
 
 \subsection{Low-resolution Fits}
 \label{sec:lores}
@@ -1243,7 +1242,7 @@ along the ecliptic plane are spurious results of imperfect zodiacal light
 subtractions. However, interesting astrophysical variations of $f_1$ 
 are evident, particularly the trend of increasing $f_1$ with decreasing
 Galactic latitude, the relatively low $f_1$ values in the Polaris flare region,
-and the clouds with relatively high $f_1$ near the north Galactic pole.}
+and the clouds with relatively high $f_1$ values the north Galactic pole.}
 \end{center}
 \end{figure}
 
@@ -1295,28 +1294,16 @@ restrict the fit from wandering with too much freedom, as we are attempting to
 constrain three parameters using an SED with only nine intensity measurements, 
 several of which are quite noisy.
 
-%%%\begin{figure}
-%%%\begin{center}
-%%%\epsfig{file=f1_lambert.eps, width=3.3in}
-%%%\caption{\label{fig:f1lambert} The results of our low-resolution fit with $f_1$
-%%%allowed to vary, shown in Lambert projection to highlight the salient features 
-%%%near the north Galactic pole.}
-%%%\end{center}
-%%%\end{figure}
-
 The resulting full-sky map of $f_1$ is shown in Figure \ref{fig:f1}. A 
 general trend of increasing $f_1$ towards lower Galactic latitudes is 
 apparent. The other most salient features are the relatively low
-values of $f_1$ in the Polaris flare, and the relatively high $f_1$ values
+values of $f_1$ in the Polaris flare, and the relatively high $f_1$ clouds
 near the north Galactic pole.
 
 %Some of 
 %the most striking features occur near the north Galactic pole, and to 
 %highlight these regions of unusually high $f_1$, we display the northern
 %Galactic hemisphere in Lambert projection in Figure \ref{fig:f1}.
- 
-% add comment about high f_1 regions near NGP
-% also add sentences referring reader to the two f_1 figures
 
 \subsection{Global Parameters Revisited}
 \label{sec:hier}
@@ -1328,7 +1315,7 @@ $\S$\ref{sec:global}. The basic idea will be to continue evaluating the
 posterior of Equation \ref{eqn:post}, but at low resolution ($N_{side}$=64), 
 including all HFI bands as well as DIRBE 100$\mu$m, 140$\mu$m and 240$\mu$m, 
 and switching to a uniform prior on $T_2$. Under these circumstances, the 
-chi-squared corresponding to the best-fit parameters for each pixel, termed 
+chi-squared corresponding to the best-fit parameters for pixel $p$, termed 
 $\chi^2_p$, is simply $-2 \times log(P_{max})$. We will refer to the
 per-pixel chi-squared per degree of freedom as $\chi^2_{p, \nu}$.
 
@@ -1363,30 +1350,29 @@ taking $\chi^2$=$\sum\chi^2_{p}$.
 
 We calculate $\chi^2_{\nu}$ for various dust SED models, independently 
 minimizing each $\chi^2_p$ by finding pixel $p$'s best-fitting dust 
-temperature and normalization, then evaluating $\langle \chi_{p}^2 \rangle$. 
-First, we consider single-MBB models with $\beta$ spatially constant (see the
-black line in Figure \ref{fig:chi2_dirbe}). $\beta$=1.57 yields the best fit, 
-with $\chi^2_{\nu}$=2.51. This result is in excellent agreement with that of 
-$\S$\ref{sec:global}, where we found the best-fit single-MBB model to have 
-$\beta$=1.59. 
+temperature and normalization, then evaluating 
+$\langle \chi_{p, \nu}^2 \rangle$. First, we consider single-MBB models with 
+$\beta$ spatially constant (see the black line in Figure \ref{fig:chi2_dirbe}).
+$\beta$=1.57 yields the best fit, with $\chi^2_{\nu}$=2.51. This result is in 
+excellent agreement with that of $\S$\ref{sec:global}, where we found the 
+best-fit single-MBB model to have $\beta$=1.59. 
 
-We also evaluated $\chi^2_{\nu}$ for single-MBB models in which
-$\beta$ varies spatially. In these cases, we adopted the 0.5$^{\circ}$ 
-resolution $\beta$ map from \cite{planckdust}. We started by calculating 
-$\chi^2_{\nu}$ using the \cite{planckdust} temperature map, finding 
-$\chi^2_{\nu}$=4.68. Note that in this case no per-pixel chi-squared 
-minimization was involved, as we simply evaluated $\chi^2_{p}$ for each pixel 
-based on the fully-specified \cite{planckdust} emission model. Next, we tested 
-a single-MBB model for which we adopted the \cite{planckdust} $\beta$ map, but 
-allowed the per-pixel temperature and normalization to vary so as to minimize 
-$\chi^2_p$. In this case, we found $\chi^2_{\nu}$=2.51, effectively identical 
-to the value found for the spatially constant $\beta$=1.57 single-MBB model. 
-This is perhaps unsurprising, as the average $\beta$ value from 
-\cite{planckdust} over the mask in question is $\langle\beta\rangle$=1.58. 
-This result does suggest, however, that the half-degree variations in $\beta$ 
-are not materially improving the goodness-of-fit over the full frequency range 
-100-3000 GHz relative to a model with appropriately chosen spatially constant 
-$\beta$.
+We also evaluated $\chi^2_{\nu}$ for single-MBB models in which $\beta$ varies 
+spatially. In these cases, we adopted the 0.5$^{\circ}$ resolution $\beta$ map 
+from \cite{planckdust}. We started by calculating $\chi^2_{\nu}$ using the 
+\cite{planckdust} temperature map, finding $\chi^2_{\nu}$=4.68. Note that in 
+this case no per-pixel chi-squared minimization was involved, as we simply 
+evaluated $\chi^2_{p}$ for each pixel based on the fully-specified 
+\cite{planckdust} emission model. Next, we tested a single-MBB model for which 
+we adopted the \cite{planckdust} $\beta$ map, but allowed the per-pixel 
+temperature and normalization to vary so as to minimize $\chi^2_p$. In this 
+case, we found $\chi^2_{\nu}$=2.51, effectively identical to the value found 
+for the spatially constant $\beta$=1.57 single-MBB model. This is perhaps 
+unsurprising, as the average $\beta$ value from \cite{planckdust} over the mask
+in question is $\langle\beta\rangle$=1.58. This result does suggest, however, 
+that in diffuse regions the half-degree variations in $\beta$ are not 
+materially improving the goodness-of-fit over the full frequency range 100-3000
+GHz relative to a model with appropriately chosen spatially constant $\beta$.
 
 % mention that when t floats, we find a lower T by ~ 1 degree than the Planck 
 %team?
@@ -1409,17 +1395,14 @@ alternatives, though only by a relatively small margin in $\chi^2_{\nu}$.
 Still, because our present analysis has $\sim$75,500 degrees-of-freedom, 
 $\Delta \chi^2_{\nu}$=0.4 formally corresponds to an enormously significant
 improvement in $\chi^2$. The agreement between our correlation slope analysis 
-and the present goodness-of-fit analysis is especially encouraging for two main
-reasons: (1) in the present analysis, dust temperature has been allowed to vary
-on degree scales, whereas in $\S$\ref{sec:global} we assumed a single global 
-dust temperature and (2) in the present analysis, our zero-level offsets factor
-into the dust temperature, whereas in $\S$6 this was not the case, meaning the 
-former and latter analyses agree in spite of their potential to be affected by 
-rather different systematics.
-
-% say that, becuase such little improvement for two-component versus
-% single MBB in this analysis, we include a single-MBB beta = 1.57 fit in
-% our data release ???
+and the present goodness-of-fit analysis is especially encouraging for three 
+main reasons: (1) in the present analysis, dust temperature has been allowed to
+vary on degree scales, whereas in $\S$\ref{sec:global} we assumed a single 
+global dust temperature (2) the present analysis employs a fully detailed, 
+per-pixel uncertainty model and (3) in the present analysis, our zero-level 
+offsets factor into the dust temperature, whereas in $\S$6 this was not the 
+case, meaning the former and latter analyses agree in spite of their potential 
+to be affected by rather different systematics.
 
 % could compare temperatures from correlation slope analysis versus here, but 
 % masks are different, so i guess it's just not worth it
@@ -1427,17 +1410,17 @@ rather different systematics.
 \section{Optical Reddening}
 \label{sec:ebv}
 
-While the temperature and optical depth maps thus far derived are
-useful for making thermal dust emission foreground predictions, estimating 
-optical reddening/extinction is another important application of the 
-$\tau_{545}$ map. Translating our two-component optical depth to reddening
-is especially valuable because our $T_2$ map has $\sim$13$\times$ better
-angular resolution than the SFD temperature correction, and thus there is 
-reason to believe our two-component reddening estimates may be superior to
-those of SFD. However, as discussed in $\S$\ref{sec:replace}, we do not yet 
-advocate for the wholesale replacement of SFD, and more detailed work is still 
-necessary to determine/quantify the extent to which \PLANCK-based dust maps
-might improve reddening estimates relative to SFD.
+While the temperature and optical depth maps thus far derived are useful for 
+making thermal dust emission foreground predictions, estimating optical 
+reddening/extinction is another important application of the $\tau_{545}$ map. 
+Translating our two-component optical depth to reddening is especially valuable
+because our $T_2$ map has $\sim$13$\times$ better angular resolution than the 
+SFD temperature correction, and thus there is reason to believe our 
+two-component reddening estimates may be superior to those of SFD. However, as 
+discussed in $\S$\ref{sec:replace}, we do not yet advocate for the wholesale 
+replacement of SFD, and more detailed work is still necessary to 
+determine/quantify the extent to which \PLANCK-based dust maps might improve 
+reddening estimates relative to SFD.
 
 % mention that this is especially true because Planck gives such a huge
 % increase in temperature resolution relative to SFD (and possibly reference
@@ -1508,8 +1491,8 @@ than the SSPP $E(B-V)$ estimates.
 
 This regression is illustrated in Figure \ref{fig:calib}. As expected, there 
 is a strong linear correlation between $E(B-V)_{SSPP}$ and $\tau_{545}$. The 
-conversion factor from $\tau_{545}$ to $E(B-V)$ is 2.46$\times$10$^{3}$. 
-Reassuringly, the best-fit offset is quite close to zero, $\sim$0.6 mmag.
+conversion factor from $\tau_{545}$ to $E(B-V)$ is 2.62$\times$10$^{3}$. 
+Reassuringly, the best-fit offset is close to zero, $\sim$2.6 mmag.
 
 Figure \ref{fig:resid} shows the residuals of our $\tau_{545}$-based reddening 
 predictions, $E(B-V)_{2comp}$, relative to the corresponding SF11 reddening 
@@ -1556,29 +1539,29 @@ comparison.}
 
 The obvious culprit for any potential nonlinearity in FIR-based reddening
 estimates is a faulty temperature correction. For this reason, we have included
-the bottom panels of Figure \ref{fig:resid}, to check for the presence of
-a temperature dependence of the reddening residuals. Indeed, in both the
+the bottom panels of Figure \ref{fig:resid}, to check for the presence of a 
+temperature dependence of the reddening residuals. Indeed, in both the
 two-component and single-MBB cases there exists some systematic dependence of
-the reddening residuals on temperature. For $T_{mbb}$$\gtrsim$19 K, the 
-median residual is reasonably flat, but at lower temperatures (the lowest 
-temperature $\sim$20\% of the sky), the median shows trends at the $\sim$10 
-mmag level. On the other hand, the median residual in the two-component case 
-trends downward with increasing $T_2$ over the entire $T_2$ range shown, with a
+the reddening residuals on temperature. For $T_{mbb}$$\gtrsim$19 K, the median 
+residual is reasonably flat, but at lower temperatures (the lowest temperature 
+$\sim$20\% of SSPP sight lines), the median shows trends at the $\sim$10 mmag 
+level. On the other hand, the median residual in the two-component case trends 
+downward with increasing $T_2$ over the entire $T_2$ range shown, with a 
 peak-to-peak amplitude of $\sim$20 mmag.
 
 \subsection{Rectifying the Reddening Residuals}
 
-In this section we describe our attempts to eliminate the systematic
-problems in the two-component reddening residuals shown in the left column
-of Figure \ref{fig:resid}. We employed two main strategies: (1) recomputing
-the two-component $\tau_{545}$ by re-running our Markov chains after modifying 
-the input maps and/or changing the particular two-component model adopted and
-(2) making spatial cuts to isolate sky regions in which the 
-residuals are especially pristine (or especially problematic).
+In this section we describe our attempts to eliminate the systematic problems 
+in the two-component reddening residuals shown in the left column of Figure 
+\ref{fig:resid}. We employed two main strategies: (1) recomputing the 
+two-component $\tau_{545}$ by re-running our Markov chains after modifying the 
+input maps and/or changing the particular two-component model paramters adopted
+and (2) making spatial cuts to isolate sky regions in which the residuals are 
+especially pristine (or especially problematic).
 
-The following is a list of dust model modifications we tested, but which
-proved to have little impact on the reddening residual trends as a function 
-of either $E(B-V)_{SFD}$ or $T_2$:
+The following is a list of dust model modifications we tested, but which proved
+to have little impact on the reddening residual trends as a function of either 
+$E(B-V)_{SFD}$ or $T_2$:
 
 \begin{itemize}
 \item Varying each of the global two-component model parameters $\beta_1$, 
@@ -1626,7 +1609,8 @@ monopole signal. Furthermore, we note that even these large zero level
 modifications had virtually no effect in eliminating the reddening residual 
 `bend' versus $E(B-V)_{SFD}$. Thus, changing the zero level offsets showed 
 hints of promise in rectifying the reddening residual temperature dependence, 
-but cannot completely resolve the systematic trends in reddening residuals.
+but could not by itself completely resolve the systematic trends in reddening 
+residuals.
 % last few words here are kind of bad, need better terminology
 
 The only solution we have been able to identify that both removes the `bend' 
@@ -1645,11 +1629,11 @@ the ecliptic plane is the most obvious systematic problem with our temperature
 map (see the full-sky results shown in Figure \ref{fig:results}).
 
 After cutting the ecliptic plane, we found that only small zero level
-perturbations were required to fully flatten the temperature residuals,
-while still maintaining flat residuals versus $E(B-V)_{SFD}$. The optimal
-offsets we found were $\pm$0.08 MJy/sr to \verb|i100| and 857 GHz respectively
-(see Figure \ref{fig:resid_offs}). These offsets are well within reason, 
-given the nominal zero level uncertainties quoted in Table \ref{table:offs}.
+perturbations were required to fully flatten the temperature residuals, while 
+still maintaining flat residuals versus $E(B-V)_{SFD}$. The optimal offsets we 
+found were $\pm$0.08 MJy/sr to \verb|i100| and 857 GHz respectively (see Figure
+\ref{fig:resid_offs}). These offsets are well within reason, given the nominal 
+zero level uncertainties quoted in Table \ref{table:offs}.
 
 \begin{figure}
 \begin{center}
@@ -1661,10 +1645,6 @@ respectively. The bending behavior as a function of $E(B-V)_{SFD}$ has been
 eliminated, and virtually no temperature dependence remains.}
 \end{center}
 \end{figure}
-
-% but then we tried ECL cuts, and in combination with modest offsets, that 
-% worked
-
 
 %%\section{Systematics}
 %%
@@ -1722,34 +1702,34 @@ process itself to some extent.}
 \end{center}
 \end{figure*}
 
-To assess the accuracy of low-frequency emission predictions, we compare
-the \PLANCK~HFI map at each of 100, 143, 217 GHz to the corresponding 
-single-MBB and two-component predictions, with all maps smoothed to 
-$1^{\circ}$ FWHM and binned down to $N_{side}=64$. We restrict to the 
-same set of pixels used for the goodness-of-fit analysis of 
-$\S$\ref{sec:hier}, with $|b|>30^{\circ}$ and $|\beta|>30^{\circ}$, also 
-avoiding molecular emission, the SMICA inpainting mask, and compact sources. We
-then perform a linear fit between the \PLANCK~observed emission and the 
-predicted emission at each frequency and for each emission model. For these
-fits, we consider the predicted emission to be the independent variable, 
-since it has higher S/N than the observations, especially at 100 and 143 GHz.
-We also assign pixel weights proportional to the predicted emission, so that
-the best-fit lines faithfully capture the linear trend exhibited 
-without being biased by the large number of very low S/N pixels with minimal 
-emission. Scatter plots between the predicted and observed emission are shown 
-in Figure \ref{fig:lofreq}. The best-fit lines are overplotted and their 
-equations are given in the top left corner of each subplot.
+To assess the accuracy of low-frequency emission predictions, we compare the 
+observed \PLANCK~HFI map at each of 100, 143, 217 GHz to the corresponding 
+single-MBB and two-component predictions, with all maps smoothed to $1^{\circ}$
+FWHM and binned down to $N_{side}$=$64$. We restrict to the same set of pixels 
+used for the goodness-of-fit analysis of $\S$\ref{sec:hier}, with 
+$|b|>30^{\circ}$ and $|\beta|>30^{\circ}$, also avoiding molecular emission, 
+the SMICA inpainting mask, and compact sources. We then perform a linear fit 
+between the \PLANCK~observed emission and the predicted emission at each 
+frequency and for each emission model. For these fits, we consider the 
+predicted emission to be the independent variable, since it has higher S/N than
+the observations, especially at 100 and 143 GHz. We also assign pixel weights 
+proportional to the predicted emission, so that the best-fit lines faithfully 
+capture the linear trend exhibited without being biased by the large number of 
+very low S/N pixels with minimal emission. Scatter plots between the predicted 
+and observed emission are shown in Figure \ref{fig:lofreq}. The best-fit lines 
+are overplotted and their equations are given in the top left corner of each 
+subplot.
 
-In both the single-MBB and two-component cases, all of the best fit offsets
-are within the uncertainties quoted in Table \ref{table:offs}. On the other 
-hand, the top row of Figure \ref{fig:lofreq} shows that the \cite{planckdust} 
+In both the single-MBB and two-component cases, all of the best fit offsets are
+within the uncertainties quoted in Table \ref{table:offs}. On the other hand, 
+the top row of Figure \ref{fig:lofreq} shows that the \cite{planckdust} 
 single-MBB predictions yield slopes substantially different from unity: 1.079 
 at 217 GHz, 1.126 at 143 GHz, and 1.188 at 100 GHz. The fact that the slopes 
 are larger than unity indicates that the \cite{planckdust} predictions are 
-systematically low. The systematic underprediction evidently become gradually 
-more severe as lower frequencies are considered, with a 7.9\% underprediction 
-at 217 GHz, a 12.6\% underprediction at 143 GHz and an 18.8\% underprediction 
-at 100 GHz.
+systematically low. The systematic underprediction evidently becomes gradually 
+more pronounced as lower frequencies are considered, with a 7.9\% 
+underprediction at 217 GHz, a 12.6\% underprediction at 143 GHz and an 18.8\% 
+underprediction at 100 GHz.
 
 For the case of the two-component model, we perform full-resolution 217-3000 
 GHz fits using the \PLANCK+DIRBE favored global parameters (Table 
@@ -1758,14 +1738,18 @@ $N_{side}=64$ before predicting the 100-217 GHz emission. The bottom row of
 Figure 14 shows that each of the best-fit lines is very similar to the 
 corresponding red line which represents a perfect match between predicted and 
 observed emission. More quantitatively, the two-component slopes are all within
-2.2\% of unity: 0.978 at 217 GHz, 0.986 at 143 GHz and 1.022 at 100 GHz. 
-We note that at 217 GHz, the good agreement is in some sense predetermined by 
-the fact that \PLANCK~217 GHz has been included in our two-component MCMC fits.
-On the other hand, the 143 and 100 GHz predictions are based on extrapolation.
+2.2\% of unity: 0.978 at 217 GHz, 0.986 at 143 GHz and 1.022 at 100 GHz. We 
+note that at 217 GHz, the good agreement is in some sense predetermined by the 
+fact that \PLANCK~217 GHz has been included in our two-component MCMC fits. On 
+the other hand, the 143 and 100 GHz predictions are based on extrapolation.
 
-We conclude from our predicted versus observed emission comparison that our 
+We conclude from these predicted versus observed emission comparisons that our 
 two-component model outperforms the \cite{planckdust} single-MBB model at 
-predicting Galactic thermal dust emission in diffuse regions from 100-217 GHz. 
+predicting Galactic thermal dust emission in diffuse regions from 100-217 GHz.
+It should be noted, though, that \cite{planckdust} did not intend for their 
+single-MBB model to be extrapolated to frequencies below 350 GHz (see their
+$\S$7.2.1), whereas we optimized our two-component model to be valid over the 
+entire 100-3000 GHz frequency range.
 
 % could add a last sentence trying to soften this, acknowledging that 
 % planck team warned about their model below 353 GHz
@@ -1790,18 +1774,9 @@ software utilities for obtaining emission and reddening predictions from our
 \PLANCK-based two-component fits. Refer to the data release documentation and 
 FITS file headers for further details.\footnote{\texttt{http://faun.rc.fas.harvard.edu/ameisner/planckdust}}
 
-% mention that DR includes software to obtain emission and extinction 
-% predictions
-
 % if we're not going to be claiming to be superseding SFD in terms of 
 % reddening, then do we even want to include anything extinction-related
 % (data files and/or code) in this data release ?
-
-%software utilities
-%provide maps at multiple different nsides ?
-%   -> if so, actually smooth the maps before rebinning, or leave 
-%      undersampled?
-% provide uncertainty maps for tau and T2 ??
 
 \begin{figure*} [ht]
 \begin{center}
@@ -1817,18 +1792,18 @@ map of best-fit 545 GHz optical depth.}
 \label{sec:conclusion}
 
 \subsection{Single-MBB versus Two-component emission}
-A major aim of this work has been to determine whether the  FDS99 
-two-component dust emission model remains favored over single-MBB models when 
-swapping the \PLANCK~HFI maps for FIRAS at frequencies below 1250 GHz. We 
-compared dust SED models in two ways (1) by fitting a 100-3000 GHz spectrum 
-composed of per-band correlation slopes versus \PLANCK~857 GHz (2) by finding 
-the best-fit dust temperature and optical depth per line-of-sight, with each 
-pixel's SED comprised of 100-3000 GHz \PLANCK+DIRBE data, and comparing the 
-average goodness-of-fit under various emission models.
+A major aim of this work has been to determine whether the  FDS99 two-component
+dust emission model remains favored over single-MBB models when swapping the 
+\PLANCK~HFI maps for FIRAS at frequencies below 1250 GHz. We compared dust SED 
+models in two ways (1) by fitting a 100-3000 GHz spectrum composed of per-band 
+correlation slopes versus \PLANCK~857 GHz (2) by finding the best-fit dust 
+temperature and optical depth per line-of-sight, with each pixel's SED 
+comprised of 100-3000 GHz \PLANCK+DIRBE data, and comparing the average 
+goodness-of-fit under various emission models.
 
 In both the correlation slope analysis of $\S$\ref{sec:global} and the 
-goodness-of-fit analysis of $\S$\ref{sec:hier} we found that the 
-best-fit \PLANCK+DIRBE two-component model (Table \ref{tab:global}, model 2) 
+goodness-of-fit analysis of $\S$\ref{sec:hier} we found that the best-fit 
+\PLANCK+DIRBE two-component model (Table \ref{tab:global}, model 2) 
 outperformed the best-fit single-MBB model, but by a lesser margin in 
 $\chi^2_{\nu}$ than found by FDS99 using FIRAS+DIRBE. Specifically, our 
 best-fit \PLANCK+DIRBE two-component model yielded an improvement of 
@@ -1839,24 +1814,23 @@ $\Delta \chi^2_{\nu}$=29.2. Perhaps a relative lack of discrimination amongst
 competing dust SED models when relying on \PLANCK+DIRBE is to be expected, 
 given that our constraints include only nine broad frequency channels, whereas 
 FDS99 employed $>$200 narrow bands. Still, $\Delta \chi^2_{\nu}$=0.4 from 
-$\S$\ref{sec:hier} is formally of enormous significance, given the 
-$\sim$75,000 degrees of freedom in that analysis.
+$\S$\ref{sec:hier} is formally of enormous significance, given the $\sim$75,000
+degrees of freedom in that analysis.
 
-% in above paragraph, say which single-MBB beta(s) we find to be favored
+% in above paragraph, say which single-MBB beta(s) we find to be favored ?
 
-Nevertheless, we have established that the two-component emission model
-remains viable in light of the \PLANCK~HFI data, and that the FIR/submm 
-dust SED's preference for two MBB components rather than just one is not
-simply an idiosyncracy of the FIRAS spectra. Furthermore, we showed in 
-$\S$\ref{sec:lofreq} that our 100-217 GHz two-component emission predictions
+Nevertheless, we have established that the two-component emission model remains
+viable in light of the \PLANCK~HFI data, and that the FIR/submm dust SED's 
+preference for two MBB components rather than just one is not simply an 
+idiosyncracy of the FIRAS spectra. Furthermore, we showed in 
+$\S$\ref{sec:lofreq} that our 100-217 GHz two-component emission predictions 
 are on average accurate to within 2.2\%, whereas the \cite{planckdust} 
-single-MBB model systematically understimates low-frequency dust emission by 
+single-MBB model systematically underestimates low-frequency dust emission by 
 18.8\% at 100 GHz, 12.6\% at 143 GHz and 7.9\% at 217 GHz. We therefore 
 recommend that those interested in thermal dust foregrounds in the 100-3000 GHz
 frequency range use our data release to predict unpolarized dust emission, at 
 the very least in order to help determine the level at which the choice of dust
 emission model may influence their conclusions.
-%last sentence needs work
 
 % sentence criticizing the half-degree beta single MBB model of Planck team
 % in terms of the imprint that leaves on low-frequency emission 
@@ -1888,16 +1862,16 @@ The ecliptic plane's prominence in our full-sky temperature map (Figure
 \ref{fig:results}) suggests that the zodiacal light subtractions performed on 
 the input maps are not ideal. Our comparisons of the FIR maps used in this 
 study against H\,\textsc{i} emission bear out this notion, further revealing 
-that the imperfect zodi corrections are not limited to \verb|i100| (the 
-map for which one would expect zodiacal contamination to be most 
-problematic), but in fact are noticeable in all of the HFI 
-\verb|R1.10_nominal_ZodiCorrected| maps as well. We deemed it infeasible to 
-reconsider all of the \PLANCK~zodi corrections in addition to the 3000 GHz zodi
-correction as a part of this study. Perhaps the forthcoming \PLANCK~data 
-release, including observations acquired during additional orbits, will 
-effectively eliminate any residual zodi problems in the \PLANCK~bands. Under 
-these circumstances it might then be worthwhile to consider revising the DIRBE 
-100$\mu$m zodi correction provided by SFD.
+that the imperfect zodi corrections are not limited to \verb|i100| (the map for
+which one would expect zodiacal contamination to be most problematic), but in 
+fact are noticeable in all of the HFI \verb|R1.10_nominal_ZodiCorrected| maps 
+as well. We deemed it infeasible to reconsider all of the \PLANCK~zodi 
+corrections in addition to the 3000 GHz zodi correction as a part of this 
+study. Perhaps the forthcoming \PLANCK~data release, including observations 
+acquired during additional orbits, will effectively eliminate any residual zodi
+problems in the \PLANCK~bands. Under these circumstances it might then be 
+worthwhile to consider revising the DIRBE 100$\mu$m zodi correction provided by
+SFD.
 
 % could add a sentence noting that similar zodi corrections are evident
 % in all existing, comparable temperature map data products : Planck 2013a,
@@ -1912,9 +1886,9 @@ comparisons between our reddening estimates here and those of SFD are required
 to determine/quantify which map is superior in particular applications. One 
 definitive improvement of our reddening estimates relative to those of SFD is 
 our ability to quote reddening uncertainties, which results from the 
-probabilistic framework of $\S$\ref{sec:mcmc}. The extinction estimates 
-from this work can also be employed as an alternative to those of SFD, to gauge
-the impact of dust map choice in a specific end user's application.
+probabilistic framework of $\S$\ref{sec:mcmc}. The extinction estimates from 
+this work can also be employed as an alternative to those of SFD, to gauge the 
+impact of dust map choice in a specific end user's application.
 
 % perhaps zodi will just magically be fixed in the forthcoming Planck
 %   ---> do i want a figure illustrating the CIBA problem at high latitude ?
