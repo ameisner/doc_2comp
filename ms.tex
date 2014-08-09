@@ -973,7 +973,7 @@ fit shown, while the three lowest-frequency data points were not used in the
 \begin{center}
 \epsfig{file=posteriors.eps, width=7.0in}
 \caption{\label{fig:post} Gridded posterior PDFs for three $N_{side}$=2048 
-pixels, based on \PLANCK~217-857 GHz and SFD 100$\mu$m at full $6.1'$ 
+HEALPix pixels, based on \PLANCK~217-857 GHz and SFD 100$\mu$m at full $6.1'$ 
 resolution. The colorscale is linear in $log(P)$, with black corresponding to 
 the maximum of $log(P)$ and white representing $max[log(P)]-5$. Light green 
 crosses and ellipses mark the best-fit parameters and $1\sigma$ uncertainties 
@@ -1240,9 +1240,10 @@ pixels should not be trusted in this analysis, which is sensitive to the SED
 shape at low frequencies affected by CO line emission. Variations in $f_1$
 along the ecliptic plane are spurious results of imperfect zodiacal light
 subtractions. However, interesting astrophysical variations of $f_1$ 
-are evident, particularly the trend of increasing $f_1$ with decreasing
-Galactic latitude, the relatively low $f_1$ values in the Polaris flare region,
-and the clouds with relatively high $f_1$ values the north Galactic pole.}
+are evident, particularly the trend of increasing $f_1$ with decreasing 
+absolute Galactic latitude, the relatively low $f_1$ values in the Polaris 
+flare region, and the clouds with relatively high $f_1$ values near the north 
+Galactic pole.}
 \end{center}
 \end{figure}
 
@@ -1295,7 +1296,7 @@ constrain three parameters using an SED with only nine intensity measurements,
 several of which are quite noisy.
 
 The resulting full-sky map of $f_1$ is shown in Figure \ref{fig:f1}. A 
-general trend of increasing $f_1$ towards lower Galactic latitudes is 
+general trend of increasing $f_1$ towards lower absolute Galactic latitudes is 
 apparent. The other most salient features are the relatively low
 values of $f_1$ in the Polaris flare, and the relatively high $f_1$ clouds
 near the north Galactic pole.
@@ -1327,9 +1328,9 @@ $\chi^2_{\nu}$=$\langle \chi^2_{p, \nu} \rangle$, for various dust SED models,
 as described in $\S$\ref{sec:hier}. For single-MBB models with spatially 
 constant $\beta$, we varied $\beta$ between 1 and 2 (horizontal axis), 
 achieving reduced chi-squared $\chi^2_{\nu}$ shown by the black line, with 
-$\beta$=1.57 providing the best fit. Horizontal lines indicate $\chi^2_{\nu}$ 
-for other dust emission models considered, including the FDS99 best-fit 
-two-component model (Table \ref{tab:global}, model 1, red) and the 
+$\beta$=1.57 providing the best single-MBB fit. Horizontal lines indicate 
+$\chi^2_{\nu}$ for other dust emission models considered, including the FDS99 
+best-fit two-component model (Table \ref{tab:global}, model 1, red) and the 
 \cite{planckdust} single-MBB model (green). The minimum $\chi^2_{\nu}$ is 
 achieved with two-componenent `model 2' from Table \ref{tab:global} (magenta).}
 \end{center}
@@ -1427,13 +1428,15 @@ reddening estimates relative to SFD.
 % temperature comparison figure as well)
 
 \subsection{Reddening Calibration Procedure}
+\label{sec:calib_ebv}
 
 \begin{figure}
 \begin{center}
 \epsfig{file=calib_ebv.eps, width=3.3in}
 \caption{\label{fig:calib} Linear fit of $E(B-V)_{SSPP}$ as a function of
-two-component $\tau_{545}$, illustrating our procedure for calibrating optical 
-depth to reddening.}
+two-component 545 GHz optical depth, illustrating our procedure for 
+calibrating optical depth to reddening, as described in 
+$\S$\ref{sec:calib_ebv}.}
 \end{center}
 \end{figure}
 
@@ -1787,7 +1790,7 @@ FITS file headers for further details.\footnote{\texttt{http://faun.rc.fas.harva
 \caption{\label{fig:results} (top) Hot dust temperature derived from our 
 full-resolution two-component model fits of \PLANCK~217-857 GHz and SFD 
 100$\mu$m, downbinned to 27.5$'$ resolution. (bottom) Corresponding full-sky 
-map of best-fit 545 GHz optical depth.}
+map of best-fit two-component 545 GHz optical depth.}
 \end{center}
 \end{figure*}
 
